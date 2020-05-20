@@ -535,7 +535,7 @@ let boards = `[
       "cratedAt": 1589982025703,
       "background": {
         "color": "red",
-        "content": "https://media.gettyimages.com/photos/closeup-of-insect-on-flower-against-blurred-background-picture-id687826817?s=612x612"
+        "content": "https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
       },
       "msgs": [
         {
@@ -2638,8 +2638,8 @@ let boards = `[
       "creator": {},
       "cratedAt": 1589982630831,
       "background": {
-        "color": "red",
-        "content": "https://media.gettyimages.com/photos/closeup-of-insect-on-flower-against-blurred-background-picture-id687826817?s=612x612"
+        "color": "#dfe4ea",
+        "content": ""
       },
       "msgs": [
         {
@@ -4214,4 +4214,3 @@ export function getBoards() {
     let boardToReturn = JSON.parse(boards)
     return boardToReturn;
 }
-

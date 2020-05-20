@@ -14,7 +14,7 @@ function App() {
       <header>
         <NavBar />
       </header>
-      <main>
+      <main className="app-main-container">
         <Switch>
           <Route component={Board} path="/board/:boardId/:cardId?" />
           <Route component={UserDetails} path="/user/:userId" />
