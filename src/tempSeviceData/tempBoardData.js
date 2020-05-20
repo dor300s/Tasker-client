@@ -8,7 +8,7 @@ let boards = `[
       "creator": {},
       "cratedAt": 1589982128547,
       "background": {
-        "colot": "red",
+        "color": "red",
         "content": "https://media.gettyimages.com/photos/closeup-of-insect-on-flower-against-blurred-background-picture-id687826817?s=612x612"
       },
       "msgs": [
@@ -534,7 +534,7 @@ let boards = `[
       "creator": {},
       "cratedAt": 1589982025703,
       "background": {
-        "colot": "red",
+        "color": "red",
         "content": "https://media.gettyimages.com/photos/closeup-of-insect-on-flower-against-blurred-background-picture-id687826817?s=612x612"
       },
       "msgs": [
@@ -1060,7 +1060,7 @@ let boards = `[
       "creator": {},
       "cratedAt": 1589977188348,
       "background": {
-        "colot": "red",
+        "color": "red",
         "content": "https://media.gettyimages.com/photos/closeup-of-insect-on-flower-against-blurred-background-picture-id687826817?s=612x612"
       },
       "msgs": [
@@ -1586,7 +1586,7 @@ let boards = `[
       "creator": {},
       "cratedAt": 1589982411060,
       "background": {
-        "colot": "red",
+        "color": "red",
         "content": "https://media.gettyimages.com/photos/closeup-of-insect-on-flower-against-blurred-background-picture-id687826817?s=612x612"
       },
       "msgs": [
@@ -2112,7 +2112,7 @@ let boards = `[
       "creator": {},
       "cratedAt": 1589978763719,
       "background": {
-        "colot": "red",
+        "color": "red",
         "content": "https://media.gettyimages.com/photos/closeup-of-insect-on-flower-against-blurred-background-picture-id687826817?s=612x612"
       },
       "msgs": [
@@ -2638,7 +2638,7 @@ let boards = `[
       "creator": {},
       "cratedAt": 1589982630831,
       "background": {
-        "colot": "red",
+        "color": "red",
         "content": "https://media.gettyimages.com/photos/closeup-of-insect-on-flower-against-blurred-background-picture-id687826817?s=612x612"
       },
       "msgs": [
@@ -3164,7 +3164,7 @@ let boards = `[
       "creator": {},
       "cratedAt": 1589983193935,
       "background": {
-        "colot": "red",
+        "color": "red",
         "content": "https://media.gettyimages.com/photos/closeup-of-insect-on-flower-against-blurred-background-picture-id687826817?s=612x612"
       },
       "msgs": [
@@ -3690,7 +3690,7 @@ let boards = `[
       "creator": {},
       "cratedAt": 1589978715174,
       "background": {
-        "colot": "red",
+        "color": "red",
         "content": "https://media.gettyimages.com/photos/closeup-of-insect-on-flower-against-blurred-background-picture-id687826817?s=612x612"
       },
       "msgs": [

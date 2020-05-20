@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import {getBoards} from "../tempSeviceData/tempBoards"
+import {NavMenu} from '../cmps/NavMenu'
 
-export default class NavBar extends React.Component {
+export class NavBar extends React.Component {
 
     state = {
         boards: null,
-        isBoardsListActive: false
+        isMenuActive: false
     }
 
     componentDidMount(){
@@ -16,15 +17,20 @@ export default class NavBar extends React.Component {
         })
     }
 
-    onBoardsClick = () => {
-        this.setState(prevState => ({ isBoardsListActive: !prevState.isBoardsListActive }))
+    onMenuClick = () => {
+        this.setState(prevState => ({ isMenuActive: !prevState.isMenuActive }))
+    }
+
+    onCloseMenu = () => {
+        this.setState({isMenuActive: false })
     }
 
     render() {
+        const {isMenuActive , boards , dynamicClass} = this.state
         return (
             <div className="nav-bar flex align-center">
-                <Link to={`/board`}>Home</Link>
-                <button onClick={this.onBoardsClick}>Boards</button>
+                <button onClick={this.onMenuClick}>Hamurger</button>
+                {isMenuActive && <NavMenu boards={boards} closeMenu={this.onCloseMenu}/>}
             </div>
         )
     }
