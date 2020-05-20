@@ -1,17 +1,189 @@
-import React from 'react';
+import React, { Component } from "react";
 import CardDetails from './CardDetails.jsx';
+import ReactDOM from "react-dom";
+import { DragDropContext } from "react-beautiful-dnd";
+import initialData from '../tempSeviceData/list-initial-data.js'
+import Column from '../cmps/Column'
 
-export default class Board extends React.Component {
+
+export default class Board extends Component {
+    state = initialData;
 
 
+    onDragStart = () => {
+
+    }
+
+    onDragUpdate = () => {
+
+    }
+
+    onDragEnd = result => {
+        //TODO: reorder our column        
+    }
 
     render() {
-        const { cardId } = this.props.match.params
         return (
-            <div>
-                {cardId && <CardDetails />}
-                <h2>BoardDetails</h2>
-            </div>
+            <DragDropContext 
+                onDragStart={this.onDragStart} 
+                onDragUpdate={this.onDragUpdate} 
+                onDragEnd={this.onDragEnd}
+            >
+                {this.state.columnOrder.map(columnId => {
+            const column = this.state.columns[columnId];
+            const tasks = column.taskIds.map(taskId => this.state.tasks[taskId]);
+
+            return <Column key={column.id} column={column} tasks={tasks} />
+
+        })}
+            </DragDropContext>
         )
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// // fake data generator
+// const getItems = count =>
+//   Array.from({ length: count }, (v, k) => k).map(k => ({
+//     id: `item-${k}`,
+//     content: `item ${k}`
+//   }));
+
+// // a little function to help us with reordering the result
+// const reorder = (list, startIndex, endIndex) => {
+//   const result = Array.from(list);
+//   const [removed] = result.splice(startIndex, 1);
+//   result.splice(endIndex, 0, removed);
+
+//   return result;
+// };
+
+// const grid = 8;
+
+// const getItemStyle = (isDragging, draggableStyle) => ({
+//   // some basic styles to make the items look a bit nicer
+//   userSelect: "none",
+//   padding: grid * 2,
+//   margin: `0 0 ${grid}px 0`,
+
+//   // change background colour if dragging
+//   background: isDragging ? "lightgreen" : "grey",
+
+//   // styles we need to apply on draggables
+//   ...draggableStyle
+// });
+
+// const getListStyle = isDraggingOver => ({
+//   background: isDraggingOver ? "lightblue" : "lightgrey",
+//   padding: grid,
+//   width: 250
+// });
+
+// export default class Board extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       items: getItems(10)
+//     };
+//     this.onDragEnd = this.onDragEnd.bind(this);
+//   }
+
+//   onDragEnd(result) {
+//     // dropped outside the list
+//     if (!result.destination) {
+//       return;
+//     }
+
+//     const items = reorder(
+//       this.state.items,
+//       result.source.index,
+//       result.destination.index
+//     );
+
+//     this.setState({
+//       items
+//     });
+//   }
+
+//   // Normally you would want to split things out into separate components.
+//   // But in this example everything is just done in one place for simplicity
+//   render() {
+//     return (
+//       <div className="flex space-between">
+//         <DragDropContext  onDragEnd={this.onDragEnd}>
+//           <Droppable  droppableId="droppable">
+//             {(provided, snapshot) => (
+//               <div
+//                 {...provided.droppableProps}
+//                 ref={provided.innerRef}
+//                 style={getListStyle(snapshot.isDraggingOver)}
+//               >
+//                 {this.state.items.map((item, index) => (
+//                   <Draggable key={item.id} draggableId={item.id} index={index}>
+//                     {(provided, snapshot) => (
+//                       <div
+//                         ref={provided.innerRef}
+//                         {...provided.draggableProps}
+//                         {...provided.dragHandleProps}
+//                         style={getItemStyle(
+//                           snapshot.isDragging,
+//                           provided.draggableProps.style
+//                         )}
+//                       >
+//                         {item.content}
+//                       </div>
+//                     )}
+//                   </Draggable>
+//                 ))}
+//                 {provided.placeholder}
+//               </div>
+//             )}
+//           </Droppable>
+//         </DragDropContext>
+//         <DragDropContext onDragEnd={this.onDragEnd}>
+//           <Droppable droppableId="droppable">
+//             {(provided, snapshot) => (
+//               <div
+//                 {...provided.droppableProps}
+//                 ref={provided.innerRef}
+//                 style={getListStyle(snapshot.isDraggingOver)}
+//               >
+//                 {this.state.items.map((item, index) => (
+//                   <Draggable key={item.id} draggableId={item.id} index={index}>
+//                     {(provided, snapshot) => (
+//                       <div
+//                         ref={provided.innerRef}
+//                         {...provided.draggableProps}
+//                         {...provided.dragHandleProps}
+//                         style={getItemStyle(
+//                           snapshot.isDragging,
+//                           provided.draggableProps.style
+//                         )}
+//                       >
+//                         {item.content}
+//                       </div>
+//                     )}
+//                   </Draggable>
+//                 ))}
+//                 {provided.placeholder}
+//               </div>
+//             )}
+//           </Droppable>
+//         </DragDropContext>
+//       </div>
+//     )
+//   }
+// }
+
+// // Put the thing into the DOM!
+// // ReactDOM.render(<App />, document.getElementById("root"));
