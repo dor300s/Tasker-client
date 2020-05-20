@@ -17,13 +17,12 @@ const TaskList = styled.div`
 
 export default class Column extends Component {
     render() {
+        console.log('column' ,this.props.column)
 
         return (
             <Container>
                 <Title>{this.props.column.title}</Title>
-                <Droppable
-                    droppableId={this.props.column.id}
-                >
+                <Droppable droppableId={this.props.column.id}>
                     {provided => (
                         <TaskList
                             innerRef={provided.innerRef}
