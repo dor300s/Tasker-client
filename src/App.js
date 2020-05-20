@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './pages/Home.jsx'
-import NavBar from './cmps/NavBar.jsx'
+import {NavBar} from './cmps/NavBar.jsx'
 import UserDetails from './pages/UserDetails.jsx'
 import DashBoard from './pages/DashBoard.jsx';
 import Board from './pages/Board.jsx';

@@ -1,5 +1,5 @@
-import { getBoard } from './tempBoardData.js';
+import { getBoards } from './tempBoardData.js';
 
-let gBoard = getBoard();
+let gBoard = getBoards();
 
 console.log(gBoard);
