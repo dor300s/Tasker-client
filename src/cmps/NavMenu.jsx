@@ -1,31 +1,74 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-
+import BoardList from '../cmps/BoardList';
+import { NavMenuFilter } from '../cmps/NavMenuFilter'
 
 export class NavMenu extends React.Component {
 
     state = {
-
+        filteredBoards: null
     }
 
     componentDidMount() {
 
     }
 
+    onBoardClicked = (id) => {
+        this.props.history.push(`/board/${id}`)
+    }
 
+    addBoard() {
+        console.log('hii');
+
+    }
+
+    onFilter = (filterBy) => {
+        console.log(filterBy);
+
+        if (!filterBy.length) {
+            this.setState({ filteredBoards: null })
+            return
+        }
+        const { boards } = this.props
+        const filteredBoards = boards.filter(board => board.title.toLowerCase().includes(filterBy.toLowerCase()));
+
+        this.setState({ filteredBoards })
+    }
 
     render() {
         const { boards } = this.props
+        const { filteredBoards } = this.state
+        let starredBoards = boards.filter(board => board.isStarred);
+
         return (
             <div className="nav-menu flex column">
                 <div className="nav-menu-header flex align-center space-between">
                     <Link to={`/board`}>Home</Link>
                     <button onClick={this.props.closeMenu}>X</button>
                 </div>
-                <div className="flex align-center justify-center">
-                    <h3>Personal boards</h3>
+                <NavMenuFilter onFilter={(filterBy) => this.onFilter(filterBy)} />
+
+                <div className="nav-boards-preview-wrapper flex column">
+                    <div className="nav-board-preview-overlay"></div>
+
+
+
+                    {filteredBoards && <h3 className="label searched-boards-header">Searched Boards</h3>}
+                    {filteredBoards && !filteredBoards.length && <h4 className="label">There is no matches</h4> }
+                    {filteredBoards && <div className="boards-container flex column align-center">
+                         <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} />
+                    </div>}
+
+                    <h3 className="label"><span>&#9734;</span> Starred</h3>
+                    <div className="boards-container flex column align-center">
+                        <BoardList boards={starredBoards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} />
+                    </div>
+
+                    <h3 className="label">All Boards</h3>
+                    <div className="boards-container flex column align-center">
+                        <BoardList boards={boards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} />
+                    </div>
                 </div>
-                {/* <NavBoardsList boards={boards} /> */}
             </div>
         )
     }

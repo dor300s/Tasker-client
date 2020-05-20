@@ -16,6 +16,45 @@
     animation: navMenuSlide 0.25s ease ;
     animation-fill-mode: forwards;
 }
+.nav-menu {
+    .label {
+        margin: 0px 0px 10px 10px;
+        font-family: 'DM Mono';
+        font-size: 14px;
+        span{
+            font-size: 18px;  
+        }
+    }
+  
+   
+    .boards-container {
+        margin-bottom: 15px;
+       
+        .board {
+            color: $clr6;
+            height: 30px;
+            width: 95%;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-bottom: 8px;
+            background-color: #dfe4ea;
+            display: flex;
+            justify-content: center;
+            align-items: center;  
+            transition: 0.3s ease;
+            &:hover{
+                height: 50px;
+            }
+        }
+    }
+    .nav-boards-preview-header{
+        margin-bottom: 10px;
+    }
+}
+
+.nav-boards-preview-wrapper{
+    overflow: scroll;
+}
 
 @keyframes navMenuSlide {
     from {

@@ -5,15 +5,13 @@ import {NavBar} from './cmps/NavBar.jsx'
 import UserDetails from './pages/UserDetails.jsx'
 import DashBoard from './pages/DashBoard.jsx';
 import Board from './pages/Board.jsx';
-
-
+import { createBrowserHistory } from 'history'
+const history = createBrowserHistory();
 
 function App() {
   return (
     <div>
-      <header>
-        <NavBar />
-      </header>
+        <NavBar history={history} />
       <main className="app-main-container">
         <Switch>
           <Route component={Board} path="/board/:boardId/:cardId?" />
