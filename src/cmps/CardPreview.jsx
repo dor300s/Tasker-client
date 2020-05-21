@@ -7,25 +7,14 @@ export default function CardPreview(props) {
     const {index, item} = props
 
     return (
-        <Draggable
-            key={item.id}
-            draggableId={item.id}
-            index={index}
-        >
+        <Draggable key={item.id} draggableId={item.id} index={index} >
             {(provided, snapshot) => {
                 return (
                     <div
-                        className={`card-preview ${snapshot.isDragging ? "isDragging" : "isNotDraging" }`}
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
+                        className={`card-preview ${snapshot.isDragging ? "isDragging" : "" }`}
+                        ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
                         style={{
                             userSelect: "none",
-                        
-                            // backgroundColor: snapshot.isDragging
-                            //     ? "#263B4A"
-                            //     : "#456C86",
-                            color: "white",
                             ...provided.draggableProps.style
                         }}
                     >
