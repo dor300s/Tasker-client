@@ -5,86 +5,104 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import initialData from '../tempSeviceData/list-initial-data.js'
 import CardListPreview from '../cmps/CardListPreview.jsx'
 import uuid from "uuid/v4";
+import { getBoards } from '../tempSeviceData/tempBoardData.js'
 
 
-const itemsFromBackend = [
-    { id: uuid(), content: "First task" },
-    { id: uuid(), content: "Second task" },
-    { id: uuid(), content: "Third task" },
-    { id: uuid(), content: "Fourth task" },
-    { id: uuid(), content: "Fifth task" }
-];
+// const cardsFromBackend = [
+//     { id: uuid(), content: "First task" },
+//     { id: uuid(), content: "Second task" },
+//     { id: uuid(), content: "Third task" },
+//     { id: uuid(), content: "Fourth task" },
+//     { id: uuid(), content: "Fifth task" }
+// ];
 
 
-const columns = [
-    {
-        id: uuid(),
-        name: "Requested",
-        items: itemsFromBackend
-    },
-    {
-        id: uuid(),
-        name: "Todo",
-        items: []
-    },
-    {
-        id: uuid(),
-        name: "Done",
-        items: []
-    },
-    {
-        id: uuid(),
-        name: "Archive",
-        items: []
-    },
-];
+// const cardLists = [
+//     {
+//         id: uuid(),
+//         txt: "Requested",
+//         cards: cardsFromBackend
+//     },
+//     {
+//         id: uuid(),
+//         txt: "Todo",
+//         cards: []
+//     },
+//     {
+//         id: uuid(),
+//         txt: "Done",
+//         cards: []
+//     },
+//     {
+//         id: uuid(),
+//         txt: "Archive",
+//         cards: []
+//     },
+// ];
+
+const boards = getBoards()
+console.log(boards)
+
+const { cardLists } = boards[0]
+console.log(cardLists)
 
 
 export default class Board extends Component {
 
     state = {
-        columns
+        cardLists
     };
 
-    setColumns = (columns) => {
-        this.setState({ columns })
+
+
+    setcardLists = (cardLists) => {
+        this.setState({ cardLists })
     }
 
-    onDragEnd = (result, stateColumns, setColumns) => {
-        const columns = JSON.parse(JSON.stringify(stateColumns))
+    onDragEnd = (result, statecardLists, setcardLists) => {
+        const cardLists = JSON.parse(JSON.stringify(statecardLists))
         console.log(result)
         if (!result.destination) return;
-        const { source, destination } = result;
+        const { source, destination, type } = result;
 
-        const sourceColumn = columns.find(column => source.droppableId === column.id);
-        const destColumn = columns.find(column => destination.droppableId === column.id);
+        switch (type) {
+            case "card":
+                const sourceColumn = cardLists.find(column => source.droppableId === column.id);
+                const destColumn = cardLists.find(column => destination.droppableId === column.id);
 
-        const sourceItems = sourceColumn.items;
-        const destItems = destColumn.items;
-        const [removed] = sourceItems.splice(source.index, 1);
-        destItems.splice(destination.index, 0, removed);
-        setColumns(columns);
+                const sourcecards = sourceColumn.cards;
+                const destcards = destColumn.cards;
+                const [removed] = sourcecards.splice(source.index, 1);
+                destcards.splice(destination.index, 0, removed);
+                setcardLists(cardLists);
+                break;
+            case "list":
+                const [ removedList ] = cardLists.splice(source.index, 1);
+                cardLists.splice(destination.index , 0, removedList);
+                setcardLists(cardLists);
+                break;
+        }
+
 
     };
 
     render() {
 
 
-        const { setColumns, onDragEnd } = this;
-        const { columns } = this.state;
-        console.log(columns)
-        console.log(Object.entries(columns))
+        const { setcardLists, onDragEnd } = this;
+        const { cardLists } = this.state;
+
 
 
         return (
             <div /* style={{ display: "flex", justifyContent: "center", height: "100%" }} */>
-                <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)} >
-                    <Droppable droppableId={"all-columns"} direction="horizontal" type="column" >
+                <DragDropContext onDragEnd={result => onDragEnd(result, cardLists, setcardLists)} >
+                    <Droppable droppableId={"all-cardLists"} direction="horizontal" type="list" >
                         {(provided, snapshot) => (
-                            <div className={`card-col  ${snapshot.isDraggingOver ? "lightblue" : "lightgrey"}`}
+                            <div className={`card-col flex ${snapshot.isDraggingOver ? "light" : "light"}`}
                                 {...provided.droppableProps} ref={provided.innerRef}
                             >
-                                {columns.map((column, index) => {
+                                {cardLists.map((column, index) => {
                                     return (<CardListPreview columnId={column.id} column={column} index={index} />
                                     );
                                 })}
@@ -93,33 +111,8 @@ export default class Board extends Component {
                         )}
                     </Droppable >
                 </DragDropContext>
-                {/* <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)} >
-                    {Object.entries(columns).map(([columnId, column], index) => {
-                        return (<CardListPreview columnId={columnId} column={column} index={index}/>
-                         );
-                    })}
-                </DragDropContext> */}
 
             </div>
         );
     }
 }
-
-
-{/* <div
-    className={`card-col ${snapshot.isDraggingOver ? "lightblue" : "lightgrey"}`}
-    {...provided.droppableProps}
-    ref={provided.innerRef}
->
-    {column.items.map((item, index) => {
-        return (
-            <CardPreview item={item} index={index} />
-        );
-    })}
-    {provided.placeholder}
-</div>
-    );
-}}
-</Droppable >
-</div >
- */}

@@ -11,7 +11,7 @@ function App() {
   
   return (
     <div>
-        <Route component={NavBar} path="/board" />
+      <NavBar />
       <main className="app-main-container">
         <Switch>
           {/* <Route component={DndBoard} path="/board/:boardId/:cardId?" /> */}

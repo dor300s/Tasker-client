@@ -1,6 +1,7 @@
 import React from 'react';
 import boardService from "../services/boardService.js"
-import { NavMenu } from '../cmps/NavMenu'
+// import { getBoards } from "../tempSeviceData/tempBoardData"
+import NavMenu from '../cmps/NavMenu'
 import { connect } from 'react-redux'
 import { setBoards } from '../store/actions/boardActions.js'
 import userService from '../services/userService.js'
@@ -21,6 +22,7 @@ class NavBar extends React.Component {
     }
 
     getLoggedUserDetails = () => {
+        if(!this.props.loggedUser) return
         userService.get(this.props.loggedUser._id)
             .then(res => this.setState({ loggedUser: res }))
     }

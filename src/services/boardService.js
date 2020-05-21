@@ -12,24 +12,19 @@ export default {
     save
 }
 
-function query(filter) {
-    return getBoards();
-}
-
 /* function query(filter) {
+    return getBoards();
+} */
+
+function query(filter) {
     return axios.get(baseUrl, { params: { ...filter } })
         .then(res => res.data)
-} */
+}
 
 function get(id) {
     return axios.get(`${baseUrl}/${id}`)
         .then(res => res.data)
 }
-
-/* function get(id) {
-    return axios.get(`${baseUrl}/${id}`)
-        .then(res => res.data)
-} */
 
 function remove(id) {
     return axios.delete(`${baseUrl}/${id}`)

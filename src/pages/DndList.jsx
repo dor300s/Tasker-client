@@ -1,6 +1,7 @@
 import React from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import DndCard from './DndCard';
+import DndAddBtn from './DndAddBtn';
 
 
 export default function DndList({ listId, title, cards }) {
@@ -13,6 +14,8 @@ export default function DndList({ listId, title, cards }) {
                     {cards.map((card, index) => (
                         <DndCard key={card.id} text={card.text} id={card.id} index={index} />
                     ))}
+                    {provided.placeholder}
+                    <DndAddBtn list={listId}/>
                 </div>
             )}
         </Droppable>
