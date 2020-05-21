@@ -5,10 +5,12 @@ import {NavBar} from './cmps/NavBar.jsx'
 import UserDetails from './pages/UserDetails.jsx'
 import DashBoard from './pages/DashBoard.jsx';
 import Board from './pages/Board.jsx';
+import DndBoard from './pages/DndBoard.jsx';
 
 
 
 function App() {
+  
   return (
     <div>
       <header>
@@ -16,6 +18,7 @@ function App() {
       </header>
       <main className="app-main-container">
         <Switch>
+          {/* <Route component={DndBoard} path="/board/:boardId/:cardId?" /> */}
           <Route component={Board} path="/board/:boardId/:cardId?" />
           <Route component={UserDetails} path="/user/:userId" />
           <Route component={DashBoard} path="/board" />

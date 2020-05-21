@@ -1,20 +1,27 @@
 import React from 'react';
-import { getBoards } from '../tempSeviceData/tempBoardData.js'
+// import { getBoards } from '../tempSeviceData/tempBoardData.js';
+import { connect } from 'react-redux';
 import BoardList from '../cmps/BoardList.jsx';
+import { setBoards } from '../store/actions/boardActions.js'
 
 
-export default class DashBoard extends React.Component {
+class DashBoard extends React.Component {
 
     state = {
         boards: []
     }
 
     componentDidMount() {
+        this.props.setBoards();
         this.loadBoards()
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props !== prevProps) this.loadBoards()
+    }
+
     loadBoards() {
-        let currBoards = getBoards()
+        let currBoards = this.props.boards
         this.setState({ boards: currBoards })
     }
 
@@ -29,7 +36,7 @@ export default class DashBoard extends React.Component {
 
 
     render() {
-        const { boards } = this.state
+        const { boards } = this.state;
         let filteredBoards = boards.filter(board => board.isStarred);
         console.log(filteredBoards);
 
@@ -49,3 +56,14 @@ export default class DashBoard extends React.Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        boards: state.boardApp.boards
+    }
+}
+const mapDispatchToProps = {
+    setBoards
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashBoard)
