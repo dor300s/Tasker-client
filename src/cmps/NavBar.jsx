@@ -22,11 +22,6 @@ class NavBar extends React.Component {
     }
 
     getLoggedUserDetails = () => {
-<<<<<<< HEAD
-=======
-        //TOREMOVE
-        if(!this.props.loggedUser) return
->>>>>>> 7943b5be460e071d0e76a92411e1fe7200272196
         userService.get(this.props.loggedUser._id)
             .then(res => this.setState({ loggedUser: res }))
     }
@@ -47,7 +42,7 @@ class NavBar extends React.Component {
         const { isMenuActive, isUserMenuActive, loggedUser } = this.state
         const { boards } = this.props
 
-        if (!loggedUser) return ' Loading... '
+        if (!loggedUser) return <React.Fragment></React.Fragment>
         return (
             <nav className="nav-bar flex align-center space-between">
                 <button onClick={this.onMenuClick}>Hamurger</button>
