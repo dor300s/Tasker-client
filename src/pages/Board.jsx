@@ -8,46 +8,52 @@ import uuid from "uuid/v4";
 import { getBoards } from '../tempSeviceData/tempBoardData.js'
 
 
-const cardsFromBackend = [
-    { id: uuid(), content: "First task" },
-    { id: uuid(), content: "Second task" },
-    { id: uuid(), content: "Third task" },
-    { id: uuid(), content: "Fourth task" },
-    { id: uuid(), content: "Fifth task" }
-];
+// const cardsFromBackend = [
+//     { id: uuid(), content: "First task" },
+//     { id: uuid(), content: "Second task" },
+//     { id: uuid(), content: "Third task" },
+//     { id: uuid(), content: "Fourth task" },
+//     { id: uuid(), content: "Fifth task" }
+// ];
 
 
-const cardLists = [
-    {
-        id: uuid(),
-        name: "Requested",
-        cards: cardsFromBackend
-    },
-    {
-        id: uuid(),
-        name: "Todo",
-        cards: []
-    },
-    {
-        id: uuid(),
-        name: "Done",
-        cards: []
-    },
-    {
-        id: uuid(),
-        name: "Archive",
-        cards: []
-    },
-];
+// const cardLists = [
+//     {
+//         id: uuid(),
+//         txt: "Requested",
+//         cards: cardsFromBackend
+//     },
+//     {
+//         id: uuid(),
+//         txt: "Todo",
+//         cards: []
+//     },
+//     {
+//         id: uuid(),
+//         txt: "Done",
+//         cards: []
+//     },
+//     {
+//         id: uuid(),
+//         txt: "Archive",
+//         cards: []
+//     },
+// ];
 
-// const boards = getBoards()
-// const { cardLists } = boards
+const boards = getBoards()
+console.log(boards)
+
+const { cardLists } = boards[0]
+console.log(cardLists)
+
 
 export default class Board extends Component {
 
     state = {
         cardLists
     };
+
+
 
     setcardLists = (cardLists) => {
         this.setState({ cardLists })
@@ -72,9 +78,6 @@ export default class Board extends Component {
                 break;
             case "list":
                 const [ removedList ] = cardLists.splice(source.index, 1);
-                console.log("cardLists", cardLists)
-                console.log("removeList", removedList)
-                console.log(removedList)
                 cardLists.splice(destination.index , 0, removedList);
                 setcardLists(cardLists);
                 break;

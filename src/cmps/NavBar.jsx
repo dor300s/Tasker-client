@@ -21,6 +21,7 @@ class NavBar extends React.Component {
     }
 
     getLoggedUserDetails = () => {
+        if(!this.props.loggedUser) return
         userService.get(this.props.loggedUser._id)
             
     }

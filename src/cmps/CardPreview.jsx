@@ -18,7 +18,7 @@ export default function CardPreview(props) {
                             ...provided.draggableProps.style
                         }}
                     >
-                        {card.content}
+                        {card.text}
                     </div>
                 );
             }}
