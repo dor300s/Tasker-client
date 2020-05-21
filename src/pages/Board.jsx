@@ -74,6 +74,7 @@ class Board extends Component {
         const { cardLists } = currBoard;
         cardLists.push(this.getNewList());
         //work until here
+        console.log('success')
         saveBoard(currBoard);
     }
 
