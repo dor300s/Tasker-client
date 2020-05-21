@@ -8,11 +8,14 @@
         border-radius: 50%;
         color: $clr5;
         background-color: $clr2;
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
         margin-left: 15px;
         padding: 5px;
-        font-size: 14px;
+        font-size: 18px;
         font-family: Arial, Helvetica, sans-serif;
+        &:hover{
+            cursor: pointer;
+        }
     }
 }

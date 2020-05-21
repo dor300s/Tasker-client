@@ -11,18 +11,18 @@ class NavBar extends React.Component {
         boards: null,
         isMenuActive: false,
         isUserMenuActive: false,
-        loggedUser: null
+        loggedUser: JSON.parse(window.localStorage.getItem('loggedUser'))
     }
 
     componentDidMount() {
-        this.getLoggedUserDetails()
+        // this.getLoggedUserDetails()
         this.props.setBoards()
         boardService.query()
     }
 
     getLoggedUserDetails = () => {
         userService.get(this.props.loggedUser._id)
-            
+            .then(res => this.setState({ loggedUser: res }))
     }
 
     onMenuClick = () => {
@@ -38,8 +38,10 @@ class NavBar extends React.Component {
     }
 
     render() {
-        const { isMenuActive, isUserMenuActive , loggedUser} = this.state
+        const { isMenuActive, isUserMenuActive, loggedUser } = this.state
         const { boards } = this.props
+
+        if (!loggedUser) return ' Loading... '
         return (
             <nav className="nav-bar flex align-center space-between">
                 <button onClick={this.onMenuClick}>Hamurger</button>
@@ -47,10 +49,16 @@ class NavBar extends React.Component {
                 <h2>LOGO</h2>
                 <div className="flex align-center">
                     <button>N</button>
-                    <div className="nav-user-profile flex justify-center align-center">
-                        <h3 onClick={this.onUserProfileClick}>RA</h3>
-                        
+                    {loggedUser.imgUrl ?
+                    <div className="nav-user-profile" onClick={this.onUserProfileClick} style={{
+                        backgroundImage: "url(" + `${loggedUser.imgUrl}` + ")",
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'
+                    }}> 
                     </div>
+                    :
+                <h3 onClick={this.onUserProfileClick} className="nav-user-profile flex justify-center align-center">{loggedUser.userName.charAt(0)}</h3>}
                 </div>
             </nav>
         )
