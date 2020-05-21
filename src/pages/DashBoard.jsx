@@ -13,16 +13,6 @@ class DashBoard extends React.Component {
 
     componentDidMount() {
         this.props.setBoards();
-        this.loadBoards()
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props !== prevProps) this.loadBoards()
-    }
-
-    loadBoards() {
-        let currBoards = this.props.boards
-        this.setState({ boards: currBoards })
     }
 
     onBoardClicked = (id) => {
@@ -36,7 +26,7 @@ class DashBoard extends React.Component {
 
 
     render() {
-        const { boards } = this.state;
+        const { boards } = this.props;
         let filteredBoards = boards.filter(board => board.isStarred);
         console.log(filteredBoards);
 
@@ -51,7 +41,6 @@ class DashBoard extends React.Component {
                 <div className="boards-container flex">
                     <BoardList boards={boards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} />
                 </div>
-
             </div >
         )
     }

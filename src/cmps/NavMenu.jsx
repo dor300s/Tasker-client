@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
 import BoardList from '../cmps/BoardList';
 import { NavMenuFilter } from '../cmps/NavMenuFilter'
 
-export class NavMenu extends React.Component {
+class NavMenu extends React.Component {
 
     state = {
         filteredBoards: null
@@ -73,3 +75,8 @@ export class NavMenu extends React.Component {
         )
     }
 }
+
+export default withRouter(NavMenu);
+
+
+// export default connect(mapStateToProps, mapDispatchToProps)(withRouter(DashBoard))

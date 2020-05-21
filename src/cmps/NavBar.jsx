@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import boardService from "../services/boardService.js"
 // import { getBoards } from "../tempSeviceData/tempBoardData"
-import { NavMenu } from '../cmps/NavMenu'
+import NavMenu from '../cmps/NavMenu'
 import { connect } from 'react-redux'
 import { setBoards } from '../store/actions/boardActions.js'
 
@@ -17,9 +17,9 @@ class NavBar extends React.Component {
     componentDidMount() {
         this.props.setBoards()
         boardService.query()
-            /* .then(res => {
-                this.setState({ boards: res }, () => { console.log('Nav Mount- boards:', this.state.boards) })
-            }) */
+        /* .then(res => {
+            this.setState({ boards: res }, () => { console.log('Nav Mount- boards:', this.state.boards) })
+        }) */
     }
 
     onMenuClick = () => {
