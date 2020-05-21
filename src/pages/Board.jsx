@@ -1,85 +1,57 @@
 import React, { Component } from "react";
 import CardDetails from './CardDetails.jsx';
-import ReactDOM from "react-dom";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import initialData from '../tempSeviceData/list-initial-data.js'
 import CardListPreview from '../cmps/CardListPreview.jsx'
+import { connect } from 'react-redux';
 import uuid from "uuid/v4";
 import { getBoards } from '../tempSeviceData/tempBoardData.js'
+import { setBoards, setBoard, saveBoard, removeBoard/* , getBoard */ } from '../store/actions/boardActions.js'
 
 
-// const cardsFromBackend = [
-//     { id: uuid(), content: "First task" },
-//     { id: uuid(), content: "Second task" },
-//     { id: uuid(), content: "Third task" },
-//     { id: uuid(), content: "Fourth task" },
-//     { id: uuid(), content: "Fifth task" }
-// ];
-
-
-// const cardLists = [
-//     {
-//         id: uuid(),
-//         txt: "Requested",
-//         cards: cardsFromBackend
-//     },
-//     {
-//         id: uuid(),
-//         txt: "Todo",
-//         cards: []
-//     },
-//     {
-//         id: uuid(),
-//         txt: "Done",
-//         cards: []
-//     },
-//     {
-//         id: uuid(),
-//         txt: "Archive",
-//         cards: []
-//     },
-// ];
+// work ofline with localData
 
 const boards = getBoards()
-console.log(boards)
-
-const { cardLists } = boards[0]
-console.log(cardLists)
+const currBoard = boards[0].cardLists
 
 
-export default class Board extends Component {
+class Board extends Component {
 
     state = {
-        cardLists
+        currBoard
     };
 
-
-
-    setcardLists = (cardLists) => {
-        this.setState({ cardLists })
+    componentDidMount() {
+        const { boardId } = this.props.match.params
+        // this.props.getBoard(boardId);
+        console.log(boardId)
     }
 
-    onDragEnd = (result, statecardLists, setcardLists) => {
-        const cardLists = JSON.parse(JSON.stringify(statecardLists))
+    setcurrBoard = (currBoard) => {
+
+        this.setState({ currBoard })
+    }
+
+    onDragEnd = (result, statecurrBoard, setcurrBoard) => {
+        const currBoard = JSON.parse(JSON.stringify(statecurrBoard))
         console.log(result)
         if (!result.destination) return;
         const { source, destination, type } = result;
 
         switch (type) {
             case "card":
-                const sourceColumn = cardLists.find(column => source.droppableId === column.id);
-                const destColumn = cardLists.find(column => destination.droppableId === column.id);
+                const sourceColumn = currBoard.find(column => source.droppableId === column.id);
+                const destColumn = currBoard.find(column => destination.droppableId === column.id);
 
                 const sourcecards = sourceColumn.cards;
                 const destcards = destColumn.cards;
                 const [removed] = sourcecards.splice(source.index, 1);
                 destcards.splice(destination.index, 0, removed);
-                setcardLists(cardLists);
+                setcurrBoard(currBoard);
                 break;
             case "list":
-                const [ removedList ] = cardLists.splice(source.index, 1);
-                cardLists.splice(destination.index , 0, removedList);
-                setcardLists(cardLists);
+                const [removedList] = currBoard.splice(source.index, 1);
+                currBoard.splice(destination.index, 0, removedList);
+                setcurrBoard(currBoard);
                 break;
         }
 
@@ -89,21 +61,21 @@ export default class Board extends Component {
     render() {
 
 
-        const { setcardLists, onDragEnd } = this;
-        const { cardLists } = this.state;
+        const { setcurrBoard, onDragEnd } = this;
+        const { currBoard } = this.state
 
 
 
         return (
             <div /* style={{ display: "flex", justifyContent: "center", height: "100%" }} */>
-                <DragDropContext onDragEnd={result => onDragEnd(result, cardLists, setcardLists)} >
-                    <Droppable droppableId={"all-cardLists"} direction="horizontal" type="list" >
+                <DragDropContext onDragEnd={result => onDragEnd(result, currBoard, setcurrBoard)} >
+                    <Droppable droppableId={"all-currBoard"} direction="horizontal" type="list" >
                         {(provided, snapshot) => (
                             <div className={`card-col flex ${snapshot.isDraggingOver ? "light" : "light"}`}
                                 {...provided.droppableProps} ref={provided.innerRef}
                             >
-                                {cardLists.map((column, index) => {
-                                    return (<CardListPreview columnId={column.id} column={column} index={index} />
+                                {currBoard.map((column, index) => {
+                                    return (<CardListPreview columnId={column.id} key={column.id} column={column} index={index} />
                                     );
                                 })}
                                 {provided.placeholder}
@@ -116,3 +88,18 @@ export default class Board extends Component {
         );
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        currBoard: state.boardApp.currBoard
+    }
+}
+const mapDispatchToProps = {
+    setBoards,
+    setBoard,
+    saveBoard,
+    removeBoard
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board)
