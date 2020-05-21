@@ -1,4 +1,4 @@
-import userService from '../services/userService';
+import userService from '../../services/userService'
 
 
 export function loadUsers() {
@@ -33,7 +33,7 @@ export function login(userCreds) {
 export function signup(userCreds) {
   return async dispatch => {
     const user = await userService.signup(userCreds)
-    /* dispatch(setUser(user)) */
+     dispatch(setUser(user)) 
   }
 }
 
