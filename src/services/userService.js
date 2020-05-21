@@ -39,6 +39,7 @@ function login(userCreds) {
         .then(res => res.data)
 }
 function signup(userCreds) {
+    
     return axios.post(`${authUrl}/signup`, userCreds)
         .then(res => console.log(res.data))
 

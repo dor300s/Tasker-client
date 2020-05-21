@@ -1,0 +1,25 @@
+.home-container{
+ width: 100%;
+ height: 95vh;
+ .home-content-wrapper{
+     width: 100%;
+     height: 90%;  
+ }
+ .home-pitch{
+     width: 50%;
+     height: 100%;
+     background-color: khaki;
+     text-align: center;
+     h1 {
+         margin-bottom: 30px;
+     }
+     h2 {
+         margin-bottom: 50px;
+     }
+ }
+ .home-login-container{
+     width: 50%;
+     height: 100%;
+     background-color: rgb(140, 240, 240);
+ }
+}
