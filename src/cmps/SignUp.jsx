@@ -24,7 +24,8 @@ class SignUp extends React.Component {
             email,
             password,
             fullName,
-            username
+            username,
+            isGuest: false
         }
 
         this.props.signup(credentials)

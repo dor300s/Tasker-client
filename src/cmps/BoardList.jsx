@@ -7,7 +7,7 @@ export default function BoardList(props) {
         <React.Fragment>
             {boards.map((board, idx) => <BoardPreview key={idx} board={board} onBoardClicked={onBoardClicked} />)}
             <div className="board add-board flex justify-center align-center" onClick={addBoard}>
-                <h2>+</h2>
+                <h3>Create new board</h3>
             </div>
         </React.Fragment>
 
