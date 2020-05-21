@@ -26,6 +26,7 @@ export function removeUser(userId) {
 export function login(userCreds) {
   return async dispatch => {
     const user = await userService.login(userCreds);
+    
     dispatch(setUser(user));
   }
 }
@@ -45,6 +46,7 @@ export function logout() {
 }
 
 export function setUser(user) {
+  
   return {
     type: 'SET_USER',
     user
