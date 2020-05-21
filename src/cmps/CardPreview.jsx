@@ -4,10 +4,10 @@ import { Draggable } from "react-beautiful-dnd";
 
 export default function CardPreview(props) {
 
-    const {index, item} = props
+    const {index, card} = props
 
     return (
-        <Draggable key={item.id} draggableId={item.id} index={index} >
+        <Draggable key={card.id} draggableId={card.id} index={index} >
             {(provided, snapshot) => {
                 return (
                     <div
@@ -18,7 +18,7 @@ export default function CardPreview(props) {
                             ...provided.draggableProps.style
                         }}
                     >
-                        {item.content}
+                        {card.content}
                     </div>
                 );
             }}

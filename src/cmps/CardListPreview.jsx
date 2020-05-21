@@ -12,16 +12,16 @@ export default function CardListPreview(props) {
             <div className="card-list flex column align-center" key={columnId} 
              ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                 <h2  >{column.name}</h2>
-                <Droppable droppableId={columnId} key={columnId}>
+                <Droppable droppableId={columnId} key={columnId} type={"card"}>
                     {(provided, snapshot) => (
                             <div
                                 className={`card-col ${snapshot.isDraggingOver ? "lightblue" : "lightgrey"}`}
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
                             >
-                                {column.items.map((item, index) => {
+                                {column.cards.map((card, index) => {
                                     return (
-                                        <CardPreview item={item} index={index} />
+                                        <CardPreview card={card} index={index} />
                                     );
                                 })}
                                 {provided.placeholder}
@@ -43,5 +43,5 @@ export default function CardListPreview(props) {
 //     ...provided.draggableProps.style
 // }}
 // >
-// {item.content}
+// {card.content}
 // </div>
