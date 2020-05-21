@@ -1,5 +1,5 @@
 import React from 'react'
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable, Draggable } from "react-beautiful-dnd";
 import CardPreview from './CardPreview.jsx'
 
 
@@ -7,29 +7,42 @@ export default function CardListPreview(props) {
 
     const { columnId, column, index } = props
     return (
-        <div className="flex column align-center" key={columnId} >
-            <h2>{column.name}</h2>
-            <div style={{ margin: 8 }}>
-                <Droppable droppableId={columnId} key={columnId}>
-                    {(provided, snapshot) => {
-                        return (
+        <Draggable key={columnId} draggableId={columnId} index={index} >
+            {(provided, snapshot) => (
+            <div className="card-list flex column align-center" key={columnId} 
+             ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                <h2  >{column.title}</h2>
+                <Droppable droppableId={columnId} key={columnId} type={"card"}>
+                    {(provided, snapshot) => (
                             <div
-                                className={`card-list ${snapshot.isDraggingOver ? "lightblue" : "lightgrey"}`}
+                                className={`card-col ${snapshot.isDraggingOver ? "lightblue" : "lightgrey"}`}
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
+                     
                             >
-                                {column.items.map((item, index) => {
+                                {column.cards.map((card, index) => {
                                     return (
-                                        <CardPreview item={ item } index={ index } />
+                                        <CardPreview card={card} index={index} />
                                     );
                                 })}
                                 {provided.placeholder}
                             </div>
-                        );
-                    }}
+                        )}
                 </Droppable>
-            </div>
-        </div>
-
+             </div>
+            )}
+        </Draggable>
     )
 }
+
+
+// <div
+// className={`card-preview ${snapshot.isDragging ? "isDragging" : ""}`}
+// ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
+// style={{
+//     userSelect: "none",
+//     ...provided.draggableProps.style
+// }}
+// >
+// {card.content}
+// </div>

@@ -2,11 +2,20 @@
     padding: 16px;
     margin: 0 0 8px 0;
     min-height: 50px;
+    color: $clr2;
+    background-color: $clr6;
+
+
 
     &.isDragging {
-        background-color: #263B4A;
+        background-color: $clr5-1;
+        // transform: rotate(6deg);
+        }
+    &:hover {
+        background-color: $clr5;
     }
-    &.isNotDraging {
-        background-color: #456C86;
+    &:active {
+        transform: rotate(6deg);
     }
+
 }

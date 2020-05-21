@@ -1,25 +1,30 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import boardService from "../services/boardService.js"
 // import { getBoards } from "../tempSeviceData/tempBoardData"
 import NavMenu from '../cmps/NavMenu'
 import { connect } from 'react-redux'
 import { setBoards } from '../store/actions/boardActions.js'
+import userService from '../services/userService.js'
 
 class NavBar extends React.Component {
 
     state = {
         boards: null,
         isMenuActive: false,
-        isUserMenuActive: false
+        isUserMenuActive: false,
+        loggedUser: null
     }
 
     componentDidMount() {
+        this.getLoggedUserDetails()
         this.props.setBoards()
         boardService.query()
-        /* .then(res => {
-            this.setState({ boards: res }, () => { console.log('Nav Mount- boards:', this.state.boards) })
-        }) */
+    }
+
+    getLoggedUserDetails = () => {
+        if(!this.props.loggedUser) return
+        userService.get(this.props.loggedUser._id)
+            
     }
 
     onMenuClick = () => {
@@ -35,7 +40,7 @@ class NavBar extends React.Component {
     }
 
     render() {
-        const { isMenuActive, isUserMenuActive } = this.state
+        const { isMenuActive, isUserMenuActive , loggedUser} = this.state
         const { boards } = this.props
         return (
             <nav className="nav-bar flex align-center space-between">
@@ -46,7 +51,7 @@ class NavBar extends React.Component {
                     <button>N</button>
                     <div className="nav-user-profile flex justify-center align-center">
                         <h3 onClick={this.onUserProfileClick}>RA</h3>
-                        {/* {isUserMenuActive && <NavUserMenu />} */}
+                        
                     </div>
                 </div>
             </nav>
@@ -57,12 +62,11 @@ const mapStateToProps = (state) => {
     return {
         loggedUser: state.user.loggedInUser,
         boards: state.boardApp.boards
-
     }
 }
 
 const mapDispatchToProps = {
-    setBoards
+    setBoards,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

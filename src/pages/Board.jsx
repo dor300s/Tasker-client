@@ -1,105 +1,118 @@
 import React, { Component } from "react";
 import CardDetails from './CardDetails.jsx';
 import ReactDOM from "react-dom";
-import { DragDropContext } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import initialData from '../tempSeviceData/list-initial-data.js'
 import CardListPreview from '../cmps/CardListPreview.jsx'
 import uuid from "uuid/v4";
+import { getBoards } from '../tempSeviceData/tempBoardData.js'
 
 
-const itemsFromBackend = [
-    { id: uuid(), content: "First task" },
-    { id: uuid(), content: "Second task" },
-    { id: uuid(), content: "Third task" },
-    { id: uuid(), content: "Fourth task" },
-    { id: uuid(), content: "Fifth task" }
-];
+// const cardsFromBackend = [
+//     { id: uuid(), content: "First task" },
+//     { id: uuid(), content: "Second task" },
+//     { id: uuid(), content: "Third task" },
+//     { id: uuid(), content: "Fourth task" },
+//     { id: uuid(), content: "Fifth task" }
+// ];
 
-const columns = {
-    [uuid()]: {
-        name: "Requested",
-        items: itemsFromBackend
-    },
-    [uuid()]: {
-        name: "To do",
-        items: []
-    },
-    [uuid()]: {
-        name: "In Progress",
-        items: []
-    },
-    [uuid()]: {
-        name: "Done",
-        items: []
-    }
-};
+
+// const cardLists = [
+//     {
+//         id: uuid(),
+//         txt: "Requested",
+//         cards: cardsFromBackend
+//     },
+//     {
+//         id: uuid(),
+//         txt: "Todo",
+//         cards: []
+//     },
+//     {
+//         id: uuid(),
+//         txt: "Done",
+//         cards: []
+//     },
+//     {
+//         id: uuid(),
+//         txt: "Archive",
+//         cards: []
+//     },
+// ];
+
+const boards = getBoards()
+console.log(boards)
+
+const { cardLists } = boards[0]
+console.log(cardLists)
 
 
 export default class Board extends Component {
 
     state = {
-        columns
+        cardLists
     };
 
-    setColumns = (columns) => {
-        this.setState({ columns })
+
+
+    setcardLists = (cardLists) => {
+        this.setState({ cardLists })
     }
 
-     onDragEnd = (result, columns, setColumns) => {
+    onDragEnd = (result, statecardLists, setcardLists) => {
+        const cardLists = JSON.parse(JSON.stringify(statecardLists))
+        console.log(result)
         if (!result.destination) return;
-        const { source, destination } = result;
+        const { source, destination, type } = result;
 
-        if (source.droppableId !== destination.droppableId) {
-            const sourceColumn = columns[source.droppableId];
-            const destColumn = columns[destination.droppableId];
-            const sourceItems = [...sourceColumn.items];
-            const destItems = [...destColumn.items];
-            const [removed] = sourceItems.splice(source.index, 1);
-            destItems.splice(destination.index, 0, removed);
-            setColumns({
-                ...columns,
-                [source.droppableId]: {
-                    ...sourceColumn,
-                    items: sourceItems
-                },
-                [destination.droppableId]: {
-                    ...destColumn,
-                    items: destItems
-                }
-            });
-        } else {
-            const column = columns[source.droppableId];
-            const copiedItems = [...column.items];
-            const [removed] = copiedItems.splice(source.index, 1);
-            copiedItems.splice(destination.index, 0, removed);
-            setColumns({
-                ...columns,
-                [source.droppableId]: {
-                    ...column,
-                    items: copiedItems
-                }
-            });
+        switch (type) {
+            case "card":
+                const sourceColumn = cardLists.find(column => source.droppableId === column.id);
+                const destColumn = cardLists.find(column => destination.droppableId === column.id);
+
+                const sourcecards = sourceColumn.cards;
+                const destcards = destColumn.cards;
+                const [removed] = sourcecards.splice(source.index, 1);
+                destcards.splice(destination.index, 0, removed);
+                setcardLists(cardLists);
+                break;
+            case "list":
+                const [ removedList ] = cardLists.splice(source.index, 1);
+                cardLists.splice(destination.index , 0, removedList);
+                setcardLists(cardLists);
+                break;
         }
-    };
 
+
+    };
 
     render() {
 
-        const { setColumns, onDragEnd } = this;
-        const { columns } = this.state;
+
+        const { setcardLists, onDragEnd } = this;
+        const { cardLists } = this.state;
+
+
 
         return (
-            <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
-                <DragDropContext
-                    onDragEnd={result => onDragEnd(result, columns, setColumns)}
-                >
-                    {Object.entries(columns).map(([columnId, column], index) => {
-                        return (<CardListPreview columnId={columnId} column={column} index={index}/>
-                         );
-                    })}
+            <div /* style={{ display: "flex", justifyContent: "center", height: "100%" }} */>
+                <DragDropContext onDragEnd={result => onDragEnd(result, cardLists, setcardLists)} >
+                    <Droppable droppableId={"all-cardLists"} direction="horizontal" type="list" >
+                        {(provided, snapshot) => (
+                            <div className={`card-col flex ${snapshot.isDraggingOver ? "light" : "light"}`}
+                                {...provided.droppableProps} ref={provided.innerRef}
+                            >
+                                {cardLists.map((column, index) => {
+                                    return (<CardListPreview columnId={column.id} column={column} index={index} />
+                                    );
+                                })}
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable >
                 </DragDropContext>
+
             </div>
         );
     }
 }
-
