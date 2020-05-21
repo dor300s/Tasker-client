@@ -1,9 +1,9 @@
 import React from 'react'
-import { Droppable, Draggable } from "react-beautiful-dnd";
-import Lists from './Lists'
+import { Droppable } from "react-beautiful-dnd";
+import CardPreview from './CardPreview.jsx'
 
 
-export default function CardLists(props) {
+export default function CardListPreview(props) {
 
     const { columnId, column, index } = props
     return (
@@ -14,20 +14,13 @@ export default function CardLists(props) {
                     {(provided, snapshot) => {
                         return (
                             <div
+                                className={`card-list ${snapshot.isDraggingOver ? "lightblue" : "lightgrey"}`}
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
-                                style={{
-                                    background: snapshot.isDraggingOver
-                                        ? "lightblue"
-                                        : "lightgrey",
-                                    padding: 4,
-                                    width: 250,
-                                    minHeight: 500
-                                }}
                             >
                                 {column.items.map((item, index) => {
                                     return (
-                                        <Lists item={ item } index={ index } />
+                                        <CardPreview item={ item } index={ index } />
                                     );
                                 })}
                                 {provided.placeholder}

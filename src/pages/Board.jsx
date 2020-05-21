@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import CardDetails from './CardDetails.jsx';
 import ReactDOM from "react-dom";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DragDropContext } from "react-beautiful-dnd";
 import initialData from '../tempSeviceData/list-initial-data.js'
-import Lists from '../cmps/CardLists'
+import CardListPreview from '../cmps/CardListPreview.jsx'
 import uuid from "uuid/v4";
 
 
@@ -94,7 +94,7 @@ export default class Board extends Component {
                     onDragEnd={result => onDragEnd(result, columns, setColumns)}
                 >
                     {Object.entries(columns).map(([columnId, column], index) => {
-                        return (<Lists columnId={columnId} column={column} index={index}/>
+                        return (<CardListPreview columnId={columnId} column={column} index={index}/>
                          );
                     })}
                 </DragDropContext>

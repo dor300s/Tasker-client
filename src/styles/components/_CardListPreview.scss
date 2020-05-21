@@ -1,0 +1,12 @@
+.card-list{
+    padding: 4px;
+    width: 250px;
+    min-height: 500px;
+
+    &.lightblue {
+        background-color: lightblue;
+    }
+    &.lightgrey {
+        background-color: lightgrey;
+    }
+}
