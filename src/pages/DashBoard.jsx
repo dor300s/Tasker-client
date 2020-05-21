@@ -7,10 +7,6 @@ import { setBoards } from '../store/actions/boardActions.js'
 
 class DashBoard extends React.Component {
 
-    state = {
-        boards: []
-    }
-
     componentDidMount() {
         this.props.setBoards();
     }
