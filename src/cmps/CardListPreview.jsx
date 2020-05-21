@@ -5,44 +5,35 @@ import CardPreview from './CardPreview.jsx'
 
 export default function CardListPreview(props) {
 
-    const { columnId, column, index } = props
+    const { cardListId, cardList, index, onDeleteList, onDeleteCard, onAddCard, currBoard } = props
+
     return (
-        <Draggable key={columnId} draggableId={columnId} index={index} >
+        <Draggable key={cardListId} draggableId={cardListId} index={index} >
             {(provided, snapshot) => (
-            <div className="card-list flex column align-center" key={columnId} 
-             ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                <h2  >{column.title}</h2>
-                <Droppable droppableId={columnId} key={columnId} type={"card"}>
-                    {(provided, snapshot) => (
-                            <div
-                                className={`card-col ${snapshot.isDraggingOver ? "lightblue" : "lightgrey"}`}
-                                {...provided.droppableProps}
-                                ref={provided.innerRef}
-                     
-                            >
-                                {column.cards.map((card, index) => {
-                                    return (
-                                        <CardPreview key={card.id} card={card} index={index} />
-                                    );
-                                })}
-                                {provided.placeholder}
+                <div className={`wrap-card-list flex`} key={cardListId}
+                    ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                    <Droppable droppableId={cardListId} key={cardListId} type={"card"}>
+                        {(provided, snapshot) => (
+                            <div className={`card-list flex column ${snapshot.isDraggingOver ? "lightblue" : ""}`} >
+                                <h2 onClick={() => onDeleteList(currBoard, cardListId)}> X </h2>
+                                <h2 >{cardList.title}</h2>
+                                <div
+                                    {...provided.droppableProps}
+                                    ref={provided.innerRef}
+                                >
+                                    {cardList.cards.map((card, index) => {
+                                        return (
+                                            <CardPreview key={card.id} currBoard={currBoard} onDeleteCard={onDeleteCard} card={card} index={index} />
+                                        );
+                                    })}
+                                    {provided.placeholder}
+                                </div>
+                                <div onClick={() => {onAddCard(props.currBoard)}} className={`card-preview`} >+add card+</div>
                             </div>
                         )}
-                </Droppable>
-             </div>
+                    </Droppable>
+                </div>
             )}
         </Draggable>
     )
 }
-
-
-// <div
-// className={`card-preview ${snapshot.isDragging ? "isDragging" : ""}`}
-// ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
-// style={{
-//     userSelect: "none",
-//     ...provided.draggableProps.style
-// }}
-// >
-// {card.content}
-// </div>
