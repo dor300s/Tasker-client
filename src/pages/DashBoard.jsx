@@ -3,12 +3,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import BoardList from '../cmps/BoardList.jsx';
 import { setBoards } from '../store/actions/boardActions.js'
+import userService from '../services/userService.js'
 
 
 class DashBoard extends React.Component {
 
     componentDidMount() {
         this.props.setBoards();
+        userService.session();
     }
 
     onBoardClicked = (id) => {
@@ -27,12 +29,12 @@ class DashBoard extends React.Component {
 
         return (
             <div className="dashboard">
-                <h3 className="label">&#9734; Starred:</h3>
+                <h3 className="label">&#9734; Starred</h3>
                 <div className="boards-container flex">
                     <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} />
                 </div>
 
-                <h3 className="label">All Boards:</h3>
+                <h3 className="label">All Boards</h3>
                 <div className="boards-container flex">
                     <BoardList boards={boards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} />
                 </div>

@@ -1,11 +1,6 @@
 import boardService from '../../services/boardService.js'
 
-/* export function setBoards() {
-    return dispatch => {
-        const boards = boardService.query()
-        dispatch({ type: 'SET_BOARDS', boards })
-    }
-} */
+
 export function setBoards(filter = '') {
     return dispatch => {
         return boardService.query(filter)

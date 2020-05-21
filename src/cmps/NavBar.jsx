@@ -20,7 +20,15 @@ class NavBar extends React.Component {
         boardService.query()
     }
 
+    componentDidUpdate(){
+        
+    }
+
     getLoggedUserDetails = () => {
+<<<<<<< HEAD
+=======
+    
+>>>>>>> f5903bc5bbb468dba0b0ee09bbba41e119686815
         userService.get(this.props.loggedUser._id)
             .then(res => this.setState({ loggedUser: res }))
     }
