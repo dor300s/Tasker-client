@@ -36,12 +36,15 @@ function update(user) {
 
 function login(userCreds) {
     return axios.post(`${authUrl}/login`, userCreds)
-        .then(res => res.data)
+        .then(res => {
+            window.localStorage.setItem('loggedUser', JSON.stringify(res.data));  
+          return res.data
+        })
 }
 function signup(userCreds) {
     
     return axios.post(`${authUrl}/signup`, userCreds)
-        .then(res => console.log(res.data))
+        .then(res => res.data)
 
 }
 function logout() {

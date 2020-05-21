@@ -1,6 +1,5 @@
 let boards = `[
     {
-      "_id": "5ec53fa8d5d4bef31b686db0",
       "title": "mollit",
       "isStarred": true,
       "description": "tempor consequat sint in culpa voluptate cillum eu officia magna",
@@ -56,7 +55,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8848af669776816ae",
+                "id": "5ec53fa8848af669776816ae",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -104,19 +103,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8145b628d7d5a30b0",
+                  "id": "5ec53fa8145b628d7d5a30b0",
                   "txt": "voluptate",
                   "createdAt": 1589982483171,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa884a6840b652e9fb4",
+                  "id": "5ec53fa884a6840b652e9fb4",
                   "txt": "laboris",
                   "createdAt": 1589983836247,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8d07e29d065a618dd",
+                  "id": "5ec53fa8d07e29d065a618dd",
                   "txt": "cupidatat",
                   "createdAt": 1589984981961,
                   "writeBy": {}
@@ -134,7 +133,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8c2e7ae646ea7994f",
+                "id": "5ec53fa8c2e7ae646ea7994f",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -182,19 +181,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8f660315a7db5a3bc",
+                  "id": "5ec53fa8f660315a7db5a3bc",
                   "txt": "in",
                   "createdAt": 1589984605947,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa87be38092415358dc",
+                  "id": "5ec53fa87be38092415358dc",
                   "txt": "voluptate",
                   "createdAt": 1589985103163,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8d47b7ed170f72bcf",
+                  "id": "5ec53fa8d47b7ed170f72bcf",
                   "txt": "labore",
                   "createdAt": 1589981983545,
                   "writeBy": {}
@@ -212,7 +211,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa86647981aa24359c2",
+                "id": "5ec53fa86647981aa24359c2",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -260,19 +259,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8b8d505fab9712be4",
+                  "id": "5ec53fa8b8d505fab9712be4",
                   "txt": "reprehenderit",
                   "createdAt": 1589978417423,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8e65746f15895b468",
+                  "id": "5ec53fa8e65746f15895b468",
                   "txt": "exercitation",
                   "createdAt": 1589983595596,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa84a7b3922ad03243b",
+                  "id": "5ec53fa84a7b3922ad03243b",
                   "txt": "cupidatat",
                   "createdAt": 1589978767162,
                   "writeBy": {}
@@ -298,7 +297,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8320fba27ec2d0c7b",
+                "id": "5ec53fa8320fba27ec2d0c7b",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -346,19 +345,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8b37a586324a1b660",
+                  "id": "5ec53fa8b37a586324a1b660",
                   "txt": "exercitation",
                   "createdAt": 1589982021821,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8a9fb86e463bc6f18",
+                  "id": "5ec53fa8a9fb86e463bc6f18",
                   "txt": "ipsum",
                   "createdAt": 1589978564229,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa84e073a515a2565b2",
+                  "id": "5ec53fa84e073a515a2565b2",
                   "txt": "elit",
                   "createdAt": 1589978939232,
                   "writeBy": {}
@@ -376,7 +375,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8e10aa47c59b763b6",
+                "id": "5ec53fa8e10aa47c59b763b6",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -424,19 +423,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa87c86835a225cbffe",
+                  "id": "5ec53fa87c86835a225cbffe",
                   "txt": "incididunt",
                   "createdAt": 1589984155544,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa81299dda70aae7be3",
+                  "id": "5ec53fa81299dda70aae7be3",
                   "txt": "occaecat",
                   "createdAt": 1589978559925,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa80cdb5593217914ca",
+                  "id": "5ec53fa80cdb5593217914ca",
                   "txt": "cupidatat",
                   "createdAt": 1589975484265,
                   "writeBy": {}
@@ -454,7 +453,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa88332a17c366634b3",
+                "id": "5ec53fa88332a17c366634b3",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -502,19 +501,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8b64db9d76b408d57",
+                  "id": "5ec53fa8b64db9d76b408d57",
                   "txt": "consequat",
                   "createdAt": 1589984666264,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa86b0211efb7f3674a",
+                  "id": "5ec53fa86b0211efb7f3674a",
                   "txt": "duis",
                   "createdAt": 1589980744009,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa886f37df4ce0c0b56",
+                  "id": "5ec53fa886f37df4ce0c0b56",
                   "txt": "do",
                   "createdAt": 1589982196777,
                   "writeBy": {}
@@ -526,7 +525,6 @@ let boards = `[
       ]
     },
     {
-      "_id": "5ec53fa86c58b12f0263d3b0",
       "title": "laborum",
       "isStarred": true,
       "description": "ex labore minim est labore do non minim aute ad",
@@ -582,7 +580,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa876a856b6dc1efcb5",
+                "id": "5ec53fa876a856b6dc1efcb5",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -630,19 +628,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8047d3d6df33b29bf",
+                  "id": "5ec53fa8047d3d6df33b29bf",
                   "txt": "officia",
                   "createdAt": 1589985157878,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa845d1f816435ce2b3",
+                  "id": "5ec53fa845d1f816435ce2b3",
                   "txt": "ad",
                   "createdAt": 1589981206490,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa82d38e200d38cacc6",
+                  "id": "5ec53fa82d38e200d38cacc6",
                   "txt": "ut",
                   "createdAt": 1589983143362,
                   "writeBy": {}
@@ -660,7 +658,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8432ddf66c5b20036",
+                "id": "5ec53fa8432ddf66c5b20036",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -708,19 +706,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa843b1c5f89fe08480",
+                  "id": "5ec53fa843b1c5f89fe08480",
                   "txt": "magna",
                   "createdAt": 1589982223499,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8e1f9c1572c99622b",
+                  "id": "5ec53fa8e1f9c1572c99622b",
                   "txt": "et",
                   "createdAt": 1589977107451,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8c6f3fc8d20927792",
+                  "id": "5ec53fa8c6f3fc8d20927792",
                   "txt": "aliqua",
                   "createdAt": 1589981903632,
                   "writeBy": {}
@@ -738,7 +736,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8049ded669407094b",
+                "id": "5ec53fa8049ded669407094b",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -786,19 +784,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa86b94ef461331d8e5",
+                  "id": "5ec53fa86b94ef461331d8e5",
                   "txt": "est",
                   "createdAt": 1589981913964,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa88c22fe6492ee0837",
+                  "id": "5ec53fa88c22fe6492ee0837",
                   "txt": "esse",
                   "createdAt": 1589984925039,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8a449538519274f25",
+                  "id": "5ec53fa8a449538519274f25",
                   "txt": "ullamco",
                   "createdAt": 1589976801438,
                   "writeBy": {}
@@ -824,7 +822,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa801e7d9df96797a61",
+                "id": "5ec53fa801e7d9df96797a61",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -872,19 +870,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa80b71bbf7d23bea33",
+                  "id": "5ec53fa80b71bbf7d23bea33",
                   "txt": "cupidatat",
                   "createdAt": 1589984208296,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa89a3b632ba57761e7",
+                  "id": "5ec53fa89a3b632ba57761e7",
                   "txt": "laboris",
                   "createdAt": 1589976680078,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa85177773eb5332c15",
+                  "id": "5ec53fa85177773eb5332c15",
                   "txt": "velit",
                   "createdAt": 1589975464245,
                   "writeBy": {}
@@ -902,7 +900,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8c0dd9606fb44a598",
+                "id": "5ec53fa8c0dd9606fb44a598",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -950,19 +948,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa897606ca6999805f3",
+                  "id": "5ec53fa897606ca6999805f3",
                   "txt": "anim",
                   "createdAt": 1589983375622,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa82861fa7df8038f20",
+                  "id": "5ec53fa82861fa7df8038f20",
                   "txt": "consequat",
                   "createdAt": 1589982104615,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8c5c0ac648b0b6021",
+                  "id": "5ec53fa8c5c0ac648b0b6021",
                   "txt": "minim",
                   "createdAt": 1589981675198,
                   "writeBy": {}
@@ -980,7 +978,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8e0de3fe51ea45e7b",
+                "id": "5ec53fa8e0de3fe51ea45e7b",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -1028,19 +1026,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa88263cafec71baf1e",
+                  "id": "5ec53fa88263cafec71baf1e",
                   "txt": "duis",
                   "createdAt": 1589981869559,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8ef4968bba4309426",
+                  "id": "5ec53fa8ef4968bba4309426",
                   "txt": "incididunt",
                   "createdAt": 1589979858810,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa81eb85c4c26f6feae",
+                  "id": "5ec53fa81eb85c4c26f6feae",
                   "txt": "dolor",
                   "createdAt": 1589980399931,
                   "writeBy": {}
@@ -1052,7 +1050,6 @@ let boards = `[
       ]
     },
     {
-      "_id": "5ec53fa8c5f3668296f14004",
       "title": "irure",
       "isStarred": true,
       "description": "reprehenderit eu commodo culpa elit eiusmod exercitation consectetur anim aliqua",
@@ -1108,7 +1105,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8ed911f193a31b1c9",
+                "id": "5ec53fa8ed911f193a31b1c9",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -1156,19 +1153,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa859d94625fb50ff1a",
+                  "id": "5ec53fa859d94625fb50ff1a",
                   "txt": "aute",
                   "createdAt": 1589981852540,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8741b20f641e31940",
+                  "id": "5ec53fa8741b20f641e31940",
                   "txt": "veniam",
                   "createdAt": 1589980896451,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa87e6c27e68cb4fac7",
+                  "id": "5ec53fa87e6c27e68cb4fac7",
                   "txt": "aliqua",
                   "createdAt": 1589978125788,
                   "writeBy": {}
@@ -1186,7 +1183,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa88f35ef928c82533e",
+                "id": "5ec53fa88f35ef928c82533e",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -1234,19 +1231,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa878b3c23308cfd3b9",
+                  "id": "5ec53fa878b3c23308cfd3b9",
                   "txt": "adipisicing",
                   "createdAt": 1589976939780,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8ffaf9a589898b6c5",
+                  "id": "5ec53fa8ffaf9a589898b6c5",
                   "txt": "dolor",
                   "createdAt": 1589976073101,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa82325c895785cdde4",
+                  "id": "5ec53fa82325c895785cdde4",
                   "txt": "adipisicing",
                   "createdAt": 1589980161804,
                   "writeBy": {}
@@ -1264,7 +1261,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8fce1fc3b294edaf9",
+                "id": "5ec53fa8fce1fc3b294edaf9",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -1312,19 +1309,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8971337af093b69a8",
+                  "id": "5ec53fa8971337af093b69a8",
                   "txt": "cillum",
                   "createdAt": 1589984402331,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa82c82e0976b7f6d79",
+                  "id": "5ec53fa82c82e0976b7f6d79",
                   "txt": "in",
                   "createdAt": 1589976621991,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa844b5e2e1b632c994",
+                  "id": "5ec53fa844b5e2e1b632c994",
                   "txt": "officia",
                   "createdAt": 1589982432857,
                   "writeBy": {}
@@ -1350,7 +1347,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa832e1f18cfa00befe",
+                "id": "5ec53fa832e1f18cfa00befe",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -1398,19 +1395,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8ff963b9c4bf76bf8",
+                  "id": "5ec53fa8ff963b9c4bf76bf8",
                   "txt": "quis",
                   "createdAt": 1589979719198,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa86d63224cfe79f540",
+                  "id": "5ec53fa86d63224cfe79f540",
                   "txt": "commodo",
                   "createdAt": 1589982805355,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa80783be6ea53e2a7d",
+                  "id": "5ec53fa80783be6ea53e2a7d",
                   "txt": "in",
                   "createdAt": 1589981000535,
                   "writeBy": {}
@@ -1428,7 +1425,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8e7fb8a88d6591533",
+                "id": "5ec53fa8e7fb8a88d6591533",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -1476,19 +1473,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8a9a0e98f0a62b915",
+                  "id": "5ec53fa8a9a0e98f0a62b915",
                   "txt": "aliqua",
                   "createdAt": 1589978842619,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8580f85880940350e",
+                  "id": "5ec53fa8580f85880940350e",
                   "txt": "dolore",
                   "createdAt": 1589982968815,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8867bc89aea4c90c8",
+                  "id": "5ec53fa8867bc89aea4c90c8",
                   "txt": "nulla",
                   "createdAt": 1589976821082,
                   "writeBy": {}
@@ -1506,7 +1503,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8f888426f5afd71d1",
+                "id": "5ec53fa8f888426f5afd71d1",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -1554,19 +1551,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8677a591a3f351500",
+                  "id": "5ec53fa8677a591a3f351500",
                   "txt": "laboris",
                   "createdAt": 1589975265189,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa82879f39ae2893b01",
+                  "id": "5ec53fa82879f39ae2893b01",
                   "txt": "qui",
                   "createdAt": 1589984497790,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8ffff223c08a1a741",
+                  "id": "5ec53fa8ffff223c08a1a741",
                   "txt": "dolor",
                   "createdAt": 1589979653973,
                   "writeBy": {}
@@ -1578,7 +1575,6 @@ let boards = `[
       ]
     },
     {
-      "_id": "5ec53fa8642aa109e7e7dd30",
       "title": "irure",
       "isStarred": false,
       "description": "ad adipisicing amet excepteur ullamco occaecat aliqua est sint fugiat",
@@ -1634,7 +1630,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8e4f7ca8740585033",
+                "id": "5ec53fa8e4f7ca8740585033",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -1682,19 +1678,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa888fc1eca416ce2b9",
+                  "id": "5ec53fa888fc1eca416ce2b9",
                   "txt": "nulla",
                   "createdAt": 1589980044065,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa80afcef3fb2bff7da",
+                  "id": "5ec53fa80afcef3fb2bff7da",
                   "txt": "proident",
                   "createdAt": 1589980339445,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa86562a2ca9d9deaf7",
+                  "id": "5ec53fa86562a2ca9d9deaf7",
                   "txt": "cupidatat",
                   "createdAt": 1589981687702,
                   "writeBy": {}
@@ -1712,7 +1708,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8664d0f27a642d0d5",
+                "id": "5ec53fa8664d0f27a642d0d5",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -1760,19 +1756,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa80c8d2f1cec474b94",
+                  "id": "5ec53fa80c8d2f1cec474b94",
                   "txt": "velit",
                   "createdAt": 1589982447985,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8d26fee001bded431",
+                  "id": "5ec53fa8d26fee001bded431",
                   "txt": "dolore",
                   "createdAt": 1589977296675,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa837d3b89a7fd9a415",
+                  "id": "5ec53fa837d3b89a7fd9a415",
                   "txt": "nulla",
                   "createdAt": 1589980707800,
                   "writeBy": {}
@@ -1790,7 +1786,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8bfb310fbef0040f7",
+                "id": "5ec53fa8bfb310fbef0040f7",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -1838,19 +1834,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa83ff891e9b647e85b",
+                  "id": "5ec53fa83ff891e9b647e85b",
                   "txt": "veniam",
                   "createdAt": 1589983807593,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8c607c3c1511afe39",
+                  "id": "5ec53fa8c607c3c1511afe39",
                   "txt": "velit",
                   "createdAt": 1589983803853,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8df1370c14fc9ac38",
+                  "id": "5ec53fa8df1370c14fc9ac38",
                   "txt": "elit",
                   "createdAt": 1589985048518,
                   "writeBy": {}
@@ -1876,7 +1872,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8da65fe30da43a87f",
+                "id": "5ec53fa8da65fe30da43a87f",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -1924,19 +1920,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa86af989e323bb54f3",
+                  "id": "5ec53fa86af989e323bb54f3",
                   "txt": "incididunt",
                   "createdAt": 1589983356962,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8ff6e2f812fb12274",
+                  "id": "5ec53fa8ff6e2f812fb12274",
                   "txt": "veniam",
                   "createdAt": 1589980869466,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8366c3fe69506df01",
+                  "id": "5ec53fa8366c3fe69506df01",
                   "txt": "reprehenderit",
                   "createdAt": 1589978059162,
                   "writeBy": {}
@@ -1954,7 +1950,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8909817fec44e378e",
+                "id": "5ec53fa8909817fec44e378e",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -2002,19 +1998,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8f7ced80a7883c9f0",
+                  "id": "5ec53fa8f7ced80a7883c9f0",
                   "txt": "proident",
                   "createdAt": 1589977405220,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa81a0af8afda55f9ee",
+                  "id": "5ec53fa81a0af8afda55f9ee",
                   "txt": "ex",
                   "createdAt": 1589982223143,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa83461ce226239f96c",
+                  "id": "5ec53fa83461ce226239f96c",
                   "txt": "sint",
                   "createdAt": 1589978500618,
                   "writeBy": {}
@@ -2032,7 +2028,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa801c59cb38bfa964b",
+                "id": "5ec53fa801c59cb38bfa964b",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -2080,19 +2076,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa81fe272d9c29a0327",
+                  "id": "5ec53fa81fe272d9c29a0327",
                   "txt": "sit",
                   "createdAt": 1589980684778,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8d78963364db555a1",
+                  "id": "5ec53fa8d78963364db555a1",
                   "txt": "occaecat",
                   "createdAt": 1589979307400,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8fef1783cfc566c2d",
+                  "id": "5ec53fa8fef1783cfc566c2d",
                   "txt": "id",
                   "createdAt": 1589981258919,
                   "writeBy": {}
@@ -2104,7 +2100,6 @@ let boards = `[
       ]
     },
     {
-      "_id": "5ec53fa86f512de794346639",
       "title": "reprehenderit",
       "isStarred": false,
       "description": "nulla consequat veniam eiusmod cupidatat nostrud adipisicing labore irure aliquip",
@@ -2160,7 +2155,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8b74f1f2e1fbb0da3",
+                "id": "5ec53fa8b74f1f2e1fbb0da3",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -2208,19 +2203,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa87adf9da30ac234f8",
+                  "id": "5ec53fa87adf9da30ac234f8",
                   "txt": "in",
                   "createdAt": 1589984031747,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8da3a56e3c7638713",
+                  "id": "5ec53fa8da3a56e3c7638713",
                   "txt": "do",
                   "createdAt": 1589984830972,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa80699e7ae48076152",
+                  "id": "5ec53fa80699e7ae48076152",
                   "txt": "Lorem",
                   "createdAt": 1589979016310,
                   "writeBy": {}
@@ -2238,7 +2233,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8b5f23e63c501266a",
+                "id": "5ec53fa8b5f23e63c501266a",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -2286,19 +2281,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8ae16b312117f5aee",
+                  "id": "5ec53fa8ae16b312117f5aee",
                   "txt": "veniam",
                   "createdAt": 1589977217144,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8b0b58bf57816be5f",
+                  "id": "5ec53fa8b0b58bf57816be5f",
                   "txt": "sit",
                   "createdAt": 1589975965596,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8cce584b382525a75",
+                  "id": "5ec53fa8cce584b382525a75",
                   "txt": "laboris",
                   "createdAt": 1589976430868,
                   "writeBy": {}
@@ -2316,7 +2311,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8bbfc72ab8bd5c735",
+                "id": "5ec53fa8bbfc72ab8bd5c735",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -2364,19 +2359,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa809f5c1c175ba2006",
+                  "id": "5ec53fa809f5c1c175ba2006",
                   "txt": "amet",
                   "createdAt": 1589977934068,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa823309f96081ba9e1",
+                  "id": "5ec53fa823309f96081ba9e1",
                   "txt": "anim",
                   "createdAt": 1589981471153,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8df7e6e4f3a306cc6",
+                  "id": "5ec53fa8df7e6e4f3a306cc6",
                   "txt": "laboris",
                   "createdAt": 1589976100503,
                   "writeBy": {}
@@ -2402,7 +2397,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa827a717f31f7bdda6",
+                "id": "5ec53fa827a717f31f7bdda6",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -2450,19 +2445,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa80afb11ea3aae26c7",
+                  "id": "5ec53fa80afb11ea3aae26c7",
                   "txt": "consectetur",
                   "createdAt": 1589984974248,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8bfef1dfe7da19ffa",
+                  "id": "5ec53fa8bfef1dfe7da19ffa",
                   "txt": "do",
                   "createdAt": 1589977488975,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8cc1a4db8ebdcb424",
+                  "id": "5ec53fa8cc1a4db8ebdcb424",
                   "txt": "aute",
                   "createdAt": 1589979333214,
                   "writeBy": {}
@@ -2480,7 +2475,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa885c43807cc0edbf8",
+                "id": "5ec53fa885c43807cc0edbf8",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -2528,19 +2523,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8cfcfb924b7ea233e",
+                  "id": "5ec53fa8cfcfb924b7ea233e",
                   "txt": "incididunt",
                   "createdAt": 1589980095887,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa88bd8c68d34c96735",
+                  "id": "5ec53fa88bd8c68d34c96735",
                   "txt": "eu",
                   "createdAt": 1589981625617,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa858cd38a62397168c",
+                  "id": "5ec53fa858cd38a62397168c",
                   "txt": "nulla",
                   "createdAt": 1589977899769,
                   "writeBy": {}
@@ -2558,7 +2553,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8b9af841d2d9d35f6",
+                "id": "5ec53fa8b9af841d2d9d35f6",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -2606,19 +2601,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8c16ec1c9cffd4e73",
+                  "id": "5ec53fa8c16ec1c9cffd4e73",
                   "txt": "ipsum",
                   "createdAt": 1589978319202,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8dc811862c44cc759",
+                  "id": "5ec53fa8dc811862c44cc759",
                   "txt": "consequat",
                   "createdAt": 1589983750270,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa85383af9494cda607",
+                  "id": "5ec53fa85383af9494cda607",
                   "txt": "do",
                   "createdAt": 1589981039880,
                   "writeBy": {}
@@ -2630,7 +2625,6 @@ let boards = `[
       ]
     },
     {
-      "_id": "5ec53fa89cc2b9b70de824b8",
       "title": "cillum",
       "isStarred": true,
       "description": "anim amet proident minim reprehenderit irure aliquip officia ullamco occaecat",
@@ -2686,7 +2680,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa83a8761342d65f402",
+                "id": "5ec53fa83a8761342d65f402",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -2734,19 +2728,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa88a1c981c39b3813f",
+                  "id": "5ec53fa88a1c981c39b3813f",
                   "txt": "est",
                   "createdAt": 1589983413674,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa80682e689dd4b3690",
+                  "id": "5ec53fa80682e689dd4b3690",
                   "txt": "est",
                   "createdAt": 1589983529544,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa888516226f9f0c238",
+                  "id": "5ec53fa888516226f9f0c238",
                   "txt": "anim",
                   "createdAt": 1589977290427,
                   "writeBy": {}
@@ -2764,7 +2758,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa809ce62031d07cf26",
+                "id": "5ec53fa809ce62031d07cf26",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -2812,19 +2806,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa88670e1c3cb6b5f51",
+                  "id": "5ec53fa88670e1c3cb6b5f51",
                   "txt": "enim",
                   "createdAt": 1589985047634,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8bbb031384c298901",
+                  "id": "5ec53fa8bbb031384c298901",
                   "txt": "nulla",
                   "createdAt": 1589977141694,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8b84972246efa528c",
+                  "id": "5ec53fa8b84972246efa528c",
                   "txt": "Lorem",
                   "createdAt": 1589978999008,
                   "writeBy": {}
@@ -2842,7 +2836,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa847b53911bd077f94",
+                "id": "5ec53fa847b53911bd077f94",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -2890,19 +2884,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8708f66c5ec094772",
+                  "id": "5ec53fa8708f66c5ec094772",
                   "txt": "anim",
                   "createdAt": 1589980012759,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8e00cfde854dbbefe",
+                  "id": "5ec53fa8e00cfde854dbbefe",
                   "txt": "deserunt",
                   "createdAt": 1589976674656,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8746666172b68fd92",
+                  "id": "5ec53fa8746666172b68fd92",
                   "txt": "deserunt",
                   "createdAt": 1589984131234,
                   "writeBy": {}
@@ -2928,7 +2922,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa82d02efa890ff5108",
+                "id": "5ec53fa82d02efa890ff5108",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -2976,19 +2970,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8ff7d0c3276f0be32",
+                  "id": "5ec53fa8ff7d0c3276f0be32",
                   "txt": "ex",
                   "createdAt": 1589978545679,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa827fd30abf45f1462",
+                  "id": "5ec53fa827fd30abf45f1462",
                   "txt": "occaecat",
                   "createdAt": 1589975981449,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa809ca171437b3f788",
+                  "id": "5ec53fa809ca171437b3f788",
                   "txt": "dolore",
                   "createdAt": 1589983899283,
                   "writeBy": {}
@@ -3006,7 +3000,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa821f10bdccad3ff7a",
+                "id": "5ec53fa821f10bdccad3ff7a",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -3054,19 +3048,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8b941ade51d153299",
+                  "id": "5ec53fa8b941ade51d153299",
                   "txt": "irure",
                   "createdAt": 1589984020731,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8df7004943b9f75a4",
+                  "id": "5ec53fa8df7004943b9f75a4",
                   "txt": "esse",
                   "createdAt": 1589978362787,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa87ee6eab18a08953e",
+                  "id": "5ec53fa87ee6eab18a08953e",
                   "txt": "adipisicing",
                   "createdAt": 1589982131230,
                   "writeBy": {}
@@ -3084,7 +3078,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8e557211f1e375150",
+                "id": "5ec53fa8e557211f1e375150",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -3132,19 +3126,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8768c028addc61bb8",
+                  "id": "5ec53fa8768c028addc61bb8",
                   "txt": "exercitation",
                   "createdAt": 1589978361182,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa81b083d4b168d9b88",
+                  "id": "5ec53fa81b083d4b168d9b88",
                   "txt": "id",
                   "createdAt": 1589980668618,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa835f81f4e589ff297",
+                  "id": "5ec53fa835f81f4e589ff297",
                   "txt": "aliquip",
                   "createdAt": 1589981755075,
                   "writeBy": {}
@@ -3156,7 +3150,6 @@ let boards = `[
       ]
     },
     {
-      "_id": "5ec53fa8067c674614896262",
       "title": "commodo",
       "isStarred": false,
       "description": "et ad amet tempor enim qui quis deserunt magna veniam",
@@ -3212,7 +3205,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8e589a8a7363783cd",
+                "id": "5ec53fa8e589a8a7363783cd",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -3260,19 +3253,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa85b46bde1ed68127b",
+                  "id": "5ec53fa85b46bde1ed68127b",
                   "txt": "qui",
                   "createdAt": 1589984091472,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8935747b900f84c5a",
+                  "id": "5ec53fa8935747b900f84c5a",
                   "txt": "ad",
                   "createdAt": 1589981009044,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8e04d81b38d78c01c",
+                  "id": "5ec53fa8e04d81b38d78c01c",
                   "txt": "esse",
                   "createdAt": 1589980457265,
                   "writeBy": {}
@@ -3290,7 +3283,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa82368d9e503db3d4e",
+                "id": "5ec53fa82368d9e503db3d4e",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -3338,19 +3331,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa83da7d6dbe1384179",
+                  "id": "5ec53fa83da7d6dbe1384179",
                   "txt": "occaecat",
                   "createdAt": 1589975838146,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8e73fcf9c46dd87f3",
+                  "id": "5ec53fa8e73fcf9c46dd87f3",
                   "txt": "sit",
                   "createdAt": 1589976461319,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8479ff6ebaf8781ae",
+                  "id": "5ec53fa8479ff6ebaf8781ae",
                   "txt": "ullamco",
                   "createdAt": 1589980937942,
                   "writeBy": {}
@@ -3368,7 +3361,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8e426b316fe73904f",
+                "id": "5ec53fa8e426b316fe73904f",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -3416,19 +3409,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa85bcbaeb624c8a293",
+                  "id": "5ec53fa85bcbaeb624c8a293",
                   "txt": "labore",
                   "createdAt": 1589975835907,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa857ebfb16adc03370",
+                  "id": "5ec53fa857ebfb16adc03370",
                   "txt": "amet",
                   "createdAt": 1589975781010,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa820d8b75d28db2770",
+                  "id": "5ec53fa820d8b75d28db2770",
                   "txt": "officia",
                   "createdAt": 1589984335970,
                   "writeBy": {}
@@ -3454,7 +3447,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa805b08ef853e8a9e2",
+                "id": "5ec53fa805b08ef853e8a9e2",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -3502,19 +3495,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8ea7e5a2237110f23",
+                  "id": "5ec53fa8ea7e5a2237110f23",
                   "txt": "elit",
                   "createdAt": 1589979938623,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa877792d232c191402",
+                  "id": "5ec53fa877792d232c191402",
                   "txt": "nulla",
                   "createdAt": 1589983549414,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa88e443f95674d0ac2",
+                  "id": "5ec53fa88e443f95674d0ac2",
                   "txt": "duis",
                   "createdAt": 1589976208737,
                   "writeBy": {}
@@ -3532,7 +3525,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8c8447ae14e9ab690",
+                "id": "5ec53fa8c8447ae14e9ab690",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -3580,19 +3573,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8ec7f8fcf5e63d541",
+                  "id": "5ec53fa8ec7f8fcf5e63d541",
                   "txt": "nisi",
                   "createdAt": 1589982557371,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa82f2efed72e452d63",
+                  "id": "5ec53fa82f2efed72e452d63",
                   "txt": "consectetur",
                   "createdAt": 1589977126975,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa842abafb50b842f90",
+                  "id": "5ec53fa842abafb50b842f90",
                   "txt": "dolore",
                   "createdAt": 1589984110214,
                   "writeBy": {}
@@ -3610,7 +3603,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa801de5d362a8eb6d6",
+                "id": "5ec53fa801de5d362a8eb6d6",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -3658,19 +3651,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa88a640e43e6a774be",
+                  "id": "5ec53fa88a640e43e6a774be",
                   "txt": "sit",
                   "createdAt": 1589978807301,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa809a016ca35ef1ffb",
+                  "id": "5ec53fa809a016ca35ef1ffb",
                   "txt": "labore",
                   "createdAt": 1589980713600,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8fac409748639195f",
+                  "id": "5ec53fa8fac409748639195f",
                   "txt": "pariatur",
                   "createdAt": 1589980471250,
                   "writeBy": {}
@@ -3682,7 +3675,6 @@ let boards = `[
       ]
     },
     {
-      "_id": "5ec53fa8e28a1a1fea9952d6",
       "title": "cillum",
       "isStarred": true,
       "description": "consectetur culpa enim anim deserunt aute adipisicing labore ullamco amet",
@@ -3738,7 +3730,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8ab814659483545c8",
+                "id": "5ec53fa8ab814659483545c8",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -3786,19 +3778,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8ef705d9692352e8f",
+                  "id": "5ec53fa8ef705d9692352e8f",
                   "txt": "occaecat",
                   "createdAt": 1589977746417,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa867410957614fd4de",
+                  "id": "5ec53fa867410957614fd4de",
                   "txt": "veniam",
                   "createdAt": 1589984674596,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa89b0db9b777c371b5",
+                  "id": "5ec53fa89b0db9b777c371b5",
                   "txt": "quis",
                   "createdAt": 1589983266674,
                   "writeBy": {}
@@ -3816,7 +3808,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa85ba348f9c6a1ed18",
+                "id": "5ec53fa85ba348f9c6a1ed18",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -3864,19 +3856,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8afc0f4b225c0686d",
+                  "id": "5ec53fa8afc0f4b225c0686d",
                   "txt": "velit",
                   "createdAt": 1589981471090,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa80289dd8d16f74dc4",
+                  "id": "5ec53fa80289dd8d16f74dc4",
                   "txt": "aute",
                   "createdAt": 1589984543295,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa82dcf64df7905b936",
+                  "id": "5ec53fa82dcf64df7905b936",
                   "txt": "commodo",
                   "createdAt": 1589978554574,
                   "writeBy": {}
@@ -3894,7 +3886,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8ec8033ad38e1753a",
+                "id": "5ec53fa8ec8033ad38e1753a",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -3942,19 +3934,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8e809b298932cf539",
+                  "id": "5ec53fa8e809b298932cf539",
                   "txt": "esse",
                   "createdAt": 1589978500883,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa854ff632021580006",
+                  "id": "5ec53fa854ff632021580006",
                   "txt": "incididunt",
                   "createdAt": 1589975786074,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8d7d9dbe017a3584f",
+                  "id": "5ec53fa8d7d9dbe017a3584f",
                   "txt": "esse",
                   "createdAt": 1589979944616,
                   "writeBy": {}
@@ -3980,7 +3972,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8283dde5baccf5219",
+                "id": "5ec53fa8283dde5baccf5219",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -4028,19 +4020,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8436f69df757c146f",
+                  "id": "5ec53fa8436f69df757c146f",
                   "txt": "amet",
                   "createdAt": 1589984167938,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa86e6a6579438583b9",
+                  "id": "5ec53fa86e6a6579438583b9",
                   "txt": "nostrud",
                   "createdAt": 1589978655347,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa84d6a098675b1cb28",
+                  "id": "5ec53fa84d6a098675b1cb28",
                   "txt": "elit",
                   "createdAt": 1589975316122,
                   "writeBy": {}
@@ -4058,7 +4050,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa8863ba3aac16671da",
+                "id": "5ec53fa8863ba3aac16671da",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -4106,19 +4098,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa8e2d984f38b8cd509",
+                  "id": "5ec53fa8e2d984f38b8cd509",
                   "txt": "adipisicing",
                   "createdAt": 1589983953772,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8b28250dbaff20abd",
+                  "id": "5ec53fa8b28250dbaff20abd",
                   "txt": "aliqua",
                   "createdAt": 1589976604656,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8fa8506b997562143",
+                  "id": "5ec53fa8fa8506b997562143",
                   "txt": "incididunt",
                   "createdAt": 1589978902408,
                   "writeBy": {}
@@ -4136,7 +4128,7 @@ let boards = `[
                 {}
               ],
               "covers": {
-                "_id": "5ec53fa880290ca5fb24ae5b",
+                "id": "5ec53fa880290ca5fb24ae5b",
                 "imgUrl": "https://kbob.github.io/images/sample-5.jpg",
                 "isShown": true
               },
@@ -4184,19 +4176,19 @@ let boards = `[
               ],
               "comments": [
                 {
-                  "_id": "5ec53fa861d6e7bb475bdf4d",
+                  "id": "5ec53fa861d6e7bb475bdf4d",
                   "txt": "in",
                   "createdAt": 1589978889101,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa80ef24ad32ddc469c",
+                  "id": "5ec53fa80ef24ad32ddc469c",
                   "txt": "sint",
                   "createdAt": 1589984420603,
                   "writeBy": {}
                 },
                 {
-                  "_id": "5ec53fa8ab2cfcb1e63263ce",
+                  "id": "5ec53fa8ab2cfcb1e63263ce",
                   "txt": "consequat",
                   "createdAt": 1589976557082,
                   "writeBy": {}
