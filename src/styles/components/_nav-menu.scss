@@ -24,6 +24,7 @@
         span{
             font-size: 18px;  
         }
+        
     }
   
    
@@ -54,6 +55,10 @@
 
 .nav-boards-preview-wrapper{
     overflow: scroll;
+    .no-match{
+        color: red ;
+        font-size: 10px;
+    }
 }
 
 @keyframes navMenuSlide {
