@@ -51,6 +51,7 @@ export function setUser(user) {
   }
 }
 
+
 function setUsers(users) {
   return {
     type: 'SET_USERS',
