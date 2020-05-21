@@ -37,12 +37,11 @@ function update(user) {
 function login(userCreds) {
     return axios.post(`${authUrl}/login`, userCreds)
         .then(res => {
-            window.localStorage.setItem('loggedUser', JSON.stringify(res.data));  
-          return res.data
+            window.localStorage.setItem('loggedUser', JSON.stringify(res.data));
+            return res.data
         })
 }
 function signup(userCreds) {
-    
     return axios.post(`${authUrl}/signup`, userCreds)
         .then(res => res.data)
 

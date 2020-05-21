@@ -24,16 +24,15 @@ class DashBoard extends React.Component {
     render() {
         const { boards } = this.props;
         let filteredBoards = boards.filter(board => board.isStarred);
-        console.log(filteredBoards);
 
         return (
             <div className="dashboard">
-                <h2 className="label">Starred:</h2>
+                <h3 className="label">&#9734; Starred:</h3>
                 <div className="boards-container flex">
                     <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} />
                 </div>
 
-                <h2 className="label">All Boards:</h2>
+                <h3 className="label">All Boards:</h3>
                 <div className="boards-container flex">
                     <BoardList boards={boards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} />
                 </div>

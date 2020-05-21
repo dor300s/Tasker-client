@@ -16,7 +16,7 @@ export default function BoardPreview(props) {
     return (
         <React.Fragment>
             <div className="board" onClick={() => onBoardClicked(board._id)} style={getBackground()}>
-                <h2>{board.title}</h2>
+                <h3>{board.title}</h3>
             </div>
         </React.Fragment>
     )
