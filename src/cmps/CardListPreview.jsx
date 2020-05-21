@@ -22,7 +22,7 @@ export default function CardListPreview(props) {
                             >
                                 {column.cards.map((card, index) => {
                                     return (
-                                        <CardPreview card={card} index={index} />
+                                        <CardPreview key={card.id} card={card} index={index} />
                                     );
                                 })}
                                 {provided.placeholder}
