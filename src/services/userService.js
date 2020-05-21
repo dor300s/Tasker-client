@@ -12,7 +12,8 @@ export default {
     update,
     login,
     signup,
-    logout
+    logout,
+    session
 }
 
 function query() {
@@ -23,6 +24,13 @@ function query() {
 function get(id) {
     return axios.get(`${userUrl}/${id}`)
         .then(res => res.data)
+}
+
+function session() {
+    console.log('sesssion');
+    
+    return axios.get(`${authUrl}/session}`)
+        .then(res => console.log(res.data))
 }
 
 function remove(id) {

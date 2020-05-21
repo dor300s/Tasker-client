@@ -1,4 +1,3 @@
-import { getBoards } from '../tempSeviceData/tempBoardData.js'
 import Axios from 'axios';
 const baseUrl = (process.env.NODE_ENV !== 'development') ? '/api/board' : '//localhost:3030/api/board';
 const axios = Axios.create({
@@ -11,10 +10,6 @@ export default {
     remove,
     save
 }
-
-/* function query(filter) {
-    return getBoards();
-} */
 
 function query(filter) {
     return axios.get(baseUrl, { params: { ...filter } })
