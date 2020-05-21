@@ -1,12 +1,12 @@
-let localLoggedinUser = null;
-if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
+// let localLoggedinUser = null;
+// if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
 
 const initialState = {
-  loggedInUser: localLoggedinUser,
-  users: []
+  users: [],
+  loggedInUser: null
 };
 
-export default function (state = initialState, action = {}) {
+export function UserReducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'SET_USERS':
       return {
