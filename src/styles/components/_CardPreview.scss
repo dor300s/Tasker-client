@@ -1,0 +1,12 @@
+.card-preview{
+    padding: 16px;
+    margin: 0 0 8px 0;
+    min-height: 50px;
+
+    &.isDragging {
+        background-color: #263B4A;
+    }
+    &.isNotDraging {
+        background-color: #456C86;
+    }
+}
