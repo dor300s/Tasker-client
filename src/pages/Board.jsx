@@ -5,7 +5,7 @@ import CardListPreview from '../cmps/CardListPreview.jsx'
 import { connect } from 'react-redux';
 import uuid from "uuid/v4";
 import { getBoards } from '../tempSeviceData/tempBoardData.js'
-import { setBoards, setBoard, saveBoard, removeBoard/* , getBoard */ } from '../store/actions/boardActions.js'
+import { setBoards, setBoard, saveBoard, removeBoard } from '../store/actions/boardActions.js'
 
 
 // work ofline with localData
