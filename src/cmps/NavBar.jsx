@@ -8,12 +8,13 @@ import { setBoards } from '../store/actions/boardActions.js'
 import { getUser } from '../store/actions/userActions.js'
 // import userService from '../services/userService.js'
 import { BoardMembers } from './BoardMembers'
+import InviteMemberModal from './InviteMemberModal'
 
 
 class NavBar extends React.Component {
 
     state = {
-        boards: null,
+        // boards: null,
         isMenuActive: false,
         isBoardActive: false,
         isUserMenuActive: false,
@@ -49,6 +50,10 @@ class NavBar extends React.Component {
     onUserNotificationClick = () => {
         this.setState(prevState => ({ isNotificationMenuActive: !prevState.isNotificationMenuActive }))
     }
+    
+    onInviteMember = () => {
+        this.setState(prevState => ({ isInviteModalActive: !prevState.isInviteModalActive }))
+    }
 
     render() {
         const { isMenuActive, isNotificationMenuActive, isBoardActive } = this.state
@@ -62,15 +67,15 @@ class NavBar extends React.Component {
         return (
             <nav className="nav-bar flex align-center space-between">
                 <div className="flex align-center">
-                    <button onClick={this.onMenuClick}>Hamburger</button>
-                    {activeBoard && <h5>{activeBoard.title}</h5>}
-                    {activeBoard && <BoardMembers board={activeBoard} />}
-                    {activeBoard && <input type="text" placeholder="Find a card" />}
+                    <button onClick={this.onMenuClick}>Hamurger</button>
+                    {activeBoard && <BoardMembers onInvite={this.onInviteMember} history={history} board={activeBoard} />}
+                    {isInviteModalActive && <InviteMemberModal />}
+                    {activeBoard && <input type="text" placeholder="Find card" />}
                 </div>
                 {isMenuActive && <NavMenu history={history} boards={boards} closeMenu={this.onCloseMenu} />}
                 <div className="flex align-center">
-                    <button>Board Menu</button>
-                    <button className="nav-notification-btn" onClick={this.onUserNotificationClick}>N</button>
+                    <button className="board-menu">Board Menu</button>
+                    <span className="nav-notification-btn" onClick={this.onUserNotificationClick}></span>
                     {loggedUser.imgUrl ?
                         <div className="nav-user-profile" style={{
                             backgroundImage: "url(" + `${loggedUser.imgUrl}` + ")",
@@ -101,3 +106,5 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar))
+
+
