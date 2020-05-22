@@ -1,0 +1,15 @@
+.labels{
+    > *:not(:last-child){
+        margin-right: 4px;
+    }
+    .label{
+        font-size: 7px;
+        font-weight: bold;
+        color: $clr6;
+        text-align: center;
+        padding:  3px 5px;
+        border-radius: 118px 118px 118px 118px;
+        line-height: 1em;
+
+    }
+}

@@ -8,6 +8,7 @@
 @import "basics/helpers.scss";
 @import "basics/layout.scss";
 @import "basics/base.scss";
+@import "basics/icons.scss";
 @import "basics/links.scss";
 @import "basics/buttons.scss";
 
@@ -20,6 +21,12 @@
 @import "components/nav-menu-filter.scss";
 @import "components/CardListPreview.scss";
 @import "components/CardPreview.scss";
+<<<<<<< HEAD
+@import "components/CardIconPreview.scss";
+@import "components/cardLabelsPreview.scss";
+=======
+@import "components/nav-user-notifications-menu";
+>>>>>>> d5b0aaee52333a7ce418682e4b393f262548245b
 
 // Pages
 
