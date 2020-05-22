@@ -138,34 +138,35 @@ class Board extends Component {
     render() {
 
         const { setcurrBoard, onDragEnd, onAddList, onAddCard, onDeleteList, onDeleteCard } = this;
-        const { currBoard } = this.props;
+        const { currBoard, history } = this.props;
         console.log('BOARD PROPS:', currBoard);
-
+        const { cardId } = this.props.match.params;
         if (!currBoard) return <div>loading</div>;
-
         const { cardLists } = currBoard;
 
         return (
+            <>
+                <div className={`wrap-card-lists flex`} >
+                    <DragDropContext onDragEnd={result => onDragEnd(result, currBoard, setcurrBoard)} >
+                        <Droppable droppableId="all-lists" direction="horizontal" type="list">
+                            {(provided, snapshot) => (
+                                <div className={`card-lists flex ${snapshot.isDraggingOver ? "light" : "light"}`}
+                                    {...provided.droppableProps} ref={provided.innerRef}
+                                >
+                                    {cardLists.map((cardList, index) => {
+                                        return (<CardListPreview currBoard={currBoard} onAddCard={onAddCard} cardListId={cardList.id} key={cardList.id} onDeleteCard={onDeleteCard} onDeleteList={onDeleteList} cardList={cardList} index={index} history={history} />
+                                        );
+                                    })}
+                                    {provided.placeholder}
+                                </div>
+                            )}
+                        </Droppable>
+                    </DragDropContext>
 
-            <div className={`wrap-card-lists flex`} >
-                <DragDropContext onDragEnd={result => onDragEnd(result, currBoard, setcurrBoard)} >
-                    <Droppable droppableId="all-lists" direction="horizontal" type="list">
-                        {(provided, snapshot) => (
-                            <div className={`card-lists flex ${snapshot.isDraggingOver ? "light" : "light"}`}
-                                {...provided.droppableProps} ref={provided.innerRef}
-                            >
-                                {cardLists.map((cardList, index) => {
-                                    return (<CardListPreview currBoard={currBoard} onAddCard={onAddCard} cardListId={cardList.id} key={cardList.id} onDeleteCard={onDeleteCard} onDeleteList={onDeleteList} cardList={cardList} index={index} />
-                                    );
-                                })}
-                                {provided.placeholder}
-                            </div>
-                        )}
-                    </Droppable>
-                </DragDropContext>
-
-                <div onClick={() => { onAddList(currBoard) }} className="card-list" > +add list+  </div>
-            </div >
+                    <div onClick={() => { onAddList(currBoard) }} className="card-list" > +add list+  </div>
+                </div >
+                {cardId && <CardDetails history={history} currBoard={currBoard} cardId={cardId} />}
+            </>
         );
     }
 }

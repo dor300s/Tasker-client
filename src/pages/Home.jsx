@@ -7,7 +7,10 @@ class Home extends React.Component {
 
     componentDidMount(){
         console.log('Home mounted');
-        
+        if(this.props.loggedUser) this.props.history.push('/board')
+    }
+
+    componentDidUpdate(){
         if(this.props.loggedUser) this.props.history.push('/board')
     }
 
