@@ -26,7 +26,6 @@ export function removeUser(userId) {
 export function login(userCreds) {
   return async dispatch => {
     const user = await userService.login(userCreds);
-    
     dispatch(setUser(user));
   }
 }
@@ -34,7 +33,7 @@ export function login(userCreds) {
 export function signup(userCreds) {
   return async dispatch => {
     const user = await userService.signup(userCreds)
-     dispatch(setUser(user)) 
+    dispatch(setUser(user))
   }
 }
 
@@ -45,25 +44,24 @@ export function logout() {
   }
 }
 
-export function setUser(user) {
-  
-  return {
-    type: 'SET_USER',
-    user
+export function getUser() {
+  return async dispatch => {
+    const user = await userService.getUserFromSession();
+    dispatch(setUser(user));
   }
+}
+
+export function setUser(user) {
+  return { type: 'SET_USER', user }
 }
 
 
 function setUsers(users) {
-  return {
-    type: 'SET_USERS',
-    users
-  }
+  return { type: 'SET_USERS', users }
 }
 
 function _removeUser(userId) {
-  return {
-    type: 'USER_REMOVE',
-    userId
-  }
+  return { type: 'USER_REMOVE', userId }
 }
+
+

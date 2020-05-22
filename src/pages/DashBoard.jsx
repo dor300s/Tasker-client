@@ -3,24 +3,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import BoardList from '../cmps/BoardList.jsx';
 import { setBoards, saveBoard } from '../store/actions/boardActions.js'
-import userService from '../services/userService.js'
+
 
 
 class DashBoard extends React.Component {
 
     componentDidMount() {
         this.props.setBoards();
-        // userService.session();
     }
 
     onBoardClicked = (id) => {
         this.props.history.push(`/board/${id}`)
     }
-
-/*     addBoard(board) {
-        this.props.saveBoard(board)
-    }
- */
 
     render() {
         const { boards, saveBoard } = this.props;

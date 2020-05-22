@@ -1,12 +1,14 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
-import boardService from "../services/boardService.js"
+// import boardService from "../services/boardService.js"
 import NavMenu from '../cmps/NavMenu'
 import NavUserNotificationMenu from './NavUserNotificationMenu'
 import { connect } from 'react-redux'
 import { setBoards } from '../store/actions/boardActions.js'
-import userService from '../services/userService.js'
+import { getUser } from '../store/actions/userActions.js'
+// import userService from '../services/userService.js'
 import { BoardMembers } from './BoardMembers'
+
 
 class NavBar extends React.Component {
 
@@ -15,26 +17,26 @@ class NavBar extends React.Component {
         isMenuActive: false,
         isBoardActive: false,
         isUserMenuActive: false,
-        loggedUser: JSON.parse(localStorage.getItem('loggedUser'))
+        // loggedUser: null
     }
 
     componentDidMount() {
-        console.log('AAAAAAAAAAAAAAAAAAAAAA', this.props.ownProps);
-
-        this.getLoggedUserDetails()
+        this.props.getUser()
+        // this.getLoggedUserDetails()
+        if (!this.props.boards.length) this.props.setBoards()
     }
 
     componentDidUpdate() {
-        const { boardId } = this.props.match.params
+        // const { boardId } = this.props.match.params
+        console.log('navbar propsssssssssssssss', this.props);
 
-        this.getLoggedUserDetails()
+        // this.getLoggedUserDetails()
     }
 
-    getLoggedUserDetails = () => {
+    /* getLoggedUserDetails = () => {
         if (!this.props.loggedUser) return
-        userService.get(this.props.loggedUser?._id)
-            .then(res => this.setState({ loggedUser: res }))
-    }
+        this.props.getUser()
+    } */
 
     onMenuClick = () => {
         this.setState(prevState => ({ isMenuActive: !prevState.isMenuActive }))
@@ -49,13 +51,18 @@ class NavBar extends React.Component {
     }
 
     render() {
-        const { isMenuActive, isNotificationMenuActive, loggedUser, isBoardActive } = this.state
-        const { boards, activeBoard , history} = this.props
-        if (!loggedUser) return <> </>
+        const { isMenuActive, isNotificationMenuActive, isBoardActive } = this.state
+        const { boards, activeBoard, history } = this.props
+        const { loggedUser } = this.props
+        console.log('LOGEEDDD USERRRRRRRRR', loggedUser);
+        console.log('BOARDSSSSssssssssssssssssssss', boards);
+
+
+        if (!loggedUser) return <></>
         return (
             <nav className="nav-bar flex align-center space-between">
                 <div className="flex align-center">
-                    <button onClick={this.onMenuClick}>Hamurger</button>
+                    <button onClick={this.onMenuClick}>Hamburger</button>
                     {activeBoard && <h5>{activeBoard.title}</h5>}
                     {activeBoard && <BoardMembers board={activeBoard} />}
                     {activeBoard && <input type="text" placeholder="Find a card" />}
@@ -89,7 +96,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    setBoards
+    setBoards,
+    getUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar))

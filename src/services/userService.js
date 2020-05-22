@@ -1,9 +1,67 @@
-import Axios from 'axios';
+import httpService from './httpService'
+
+export default {
+    login,
+    logout,
+    signup,
+    getUsers,
+    getById,
+    remove,
+    update,
+    getUserFromSession
+}
+
+function getUsers() {
+    return httpService.get('user')
+}
+
+function getById(userId) {
+    return httpService.get(`user/${userId}`)
+}
+
+function remove(userId) {
+    return httpService.delete(`user/${userId}`)
+}
+
+function update(user) {
+    return httpService.put(`user/${user._id}`, user)
+}
+
+async function login(userCred) {
+    const user = await httpService.post('auth/login', userCred)
+    return _handleLogin(user)
+}
+
+async function signup(userCred) {
+    const user = await httpService.post('auth/signup', userCred)
+    return _handleLogin(user)
+}
+
+async function logout() {
+    await httpService.post('auth/logout');
+    sessionStorage.clear();
+}
+
+function _handleLogin(user) {
+    sessionStorage.setItem('user', JSON.stringify(user))
+    return user;
+}
+
+async function getUserFromSession() {
+    console.log('sesssion');
+
+    const session = await httpService.get('auth/session');
+    console.log(session);
+    return session;
+}
+
+
+/* import Axios from 'axios';
 const userUrl = (process.env.NODE_ENV !== 'development') ? '/api/user' : '//localhost:3030/api/user';
 const authUrl = (process.env.NODE_ENV !== 'development') ? '/api/auth' : '//localhost:3030/api/auth';
 const axios = Axios.create({
     withCredentials: true
-})
+});
 
 export default {
     query,
@@ -17,7 +75,7 @@ export default {
     clearNotifications
 }
 
-function clearNotifications(user){
+function clearNotifications(user) {
     user.notifications.map(notifi => notifi.isRead = true)
     update(user)
 }
@@ -32,12 +90,6 @@ function get(id) {
         .then(res => res.data)
 }
 
-function session() {
-    console.log('sesssion');
-    
-    return axios.get(`${authUrl}/session}`)
-        .then(res => console.log(res.data))
-}
 
 function remove(id) {
     return axios.delete(`${userUrl}/${id}`)
@@ -68,3 +120,12 @@ function logout() {
         .then(res => res.data)
 }
 
+function session() {
+    console.log('sesssion');
+
+    return axios.get(`${authUrl}/session}`)
+        .then(res => {
+            console.log(res.data)
+            return res.data
+        })
+} */
