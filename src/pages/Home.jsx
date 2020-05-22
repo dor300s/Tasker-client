@@ -5,12 +5,10 @@ import SignUp from '../cmps/SignUp.jsx'
 import { connect } from 'react-redux'
 class Home extends React.Component {
 
-    componentDidMount(){
-        console.log('Home mounted');
-        
+    
+    componentDidUpdate(){
         if(this.props.loggedUser) this.props.history.push('/board')
     }
-
 
     render() {
 
@@ -24,7 +22,7 @@ class Home extends React.Component {
                         boards , lists , cards <br />
                         Improves and simplify the way you manage your projects.
                         </h2>
-                        <button>Try Live Demo</button>
+                        <Link to="/board">Try Our Demo!</Link>
                     </div>
                     <div className="home-login-container flex justify-center align-center">
                         <Switch>
@@ -33,7 +31,7 @@ class Home extends React.Component {
                         </Switch>
                     </div>
                 </div>
-                {/* <Link to="/board">Try Our Demo!</Link> */}
+                
 
             </div>
         )

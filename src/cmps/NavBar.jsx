@@ -29,7 +29,6 @@ class NavBar extends React.Component {
 
     componentDidUpdate() {
         // const { boardId } = this.props.match.params
-        console.log('navbar propsssssssssssssss', this.props);
 
         // this.getLoggedUserDetails()
     }
@@ -56,12 +55,9 @@ class NavBar extends React.Component {
     }
 
     render() {
-        const { isMenuActive, isNotificationMenuActive, isBoardActive } = this.state
+        const { isMenuActive, isNotificationMenuActive, isBoardActive , isInviteModalActive } = this.state
         const { boards, activeBoard, history } = this.props
         const { loggedUser } = this.props
-        console.log('LOGEEDDD USERRRRRRRRR', loggedUser);
-        console.log('BOARDSSSSssssssssssssssssssss', boards);
-
 
         if (!loggedUser) return <></>
         return (
