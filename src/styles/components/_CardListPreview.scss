@@ -1,17 +1,24 @@
-.wrap-card-lists{
-    margin-top: 50px;
-}
+.board-app-container {
+    z-index: -1;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 50px 0 0;
+    .wrap-card-lists {
+        padding: 20px 0 0 30px;
+        .card-list {
+            border-radius: 4px;
+            padding: 4px;
+            height: fit-content;
+            width: 250px;
+            margin: 8px;
+            min-height: 30px;
+            background-color: lightgrey;
 
-.card-list{
-    padding: 4px;
-    width: 250px;
-    margin: 8px;
-    min-height: 30px;
-    background-color: lightgrey;
-
-
-    &.lightblue {
-        background-color: lightblue;
+            &.lightblue {
+                background-color: lightblue;
+            }
+        }
     }
 }
-

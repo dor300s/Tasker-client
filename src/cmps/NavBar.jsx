@@ -22,6 +22,8 @@ class NavBar extends React.Component {
     }
 
     componentDidMount() {
+        console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', this.props);
+
         this.props.getUser()
         // this.getLoggedUserDetails()
         if (!this.props.boards.length) this.props.setBoards()
@@ -29,7 +31,7 @@ class NavBar extends React.Component {
 
     componentDidUpdate() {
         // const { boardId } = this.props.match.params
-        console.log('navbar propsssssssssssssss', this.props);
+        // console.log('navbar propsssssssssssssss', this.props);
 
         // this.getLoggedUserDetails()
     }
@@ -50,7 +52,7 @@ class NavBar extends React.Component {
     onUserNotificationClick = () => {
         this.setState(prevState => ({ isNotificationMenuActive: !prevState.isNotificationMenuActive }))
     }
-    
+
     onInviteMember = () => {
         this.setState(prevState => ({ isInviteModalActive: !prevState.isInviteModalActive }))
     }

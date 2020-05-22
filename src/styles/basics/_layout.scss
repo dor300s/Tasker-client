@@ -56,8 +56,8 @@
 .app-main-container{
     width: 100vw;
     height: 100vh;
-    padding: 15px 30px;
-    background-image: url(https://images.pexels.com/photos/1654489/pexels-photo-1654489.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-    background-position: center;
-    background-size: 100%;
+    z-index: -1;
+    position: fixed;
+    margin: 0;
+    // padding: 43px 0 0;
 }

@@ -134,6 +134,14 @@ class Board extends Component {
         }
     };
 
+    getBackground(board) {
+        return board.background.content ? {
+            backgroundImage: "url(" + `${board.background.content}` + ")",
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat'
+        } : { background: board.background.color }
+    }
 
     render() {
 
@@ -145,8 +153,8 @@ class Board extends Component {
         const { cardLists } = currBoard;
 
         return (
-            <>
-                <div className={`wrap-card-lists flex`} >
+            <div className="board-app-container"  style={this.getBackground(currBoard)} >
+                <div className={`wrap-card-lists flex`}>
                     <DragDropContext onDragEnd={result => onDragEnd(result, currBoard, setcurrBoard)} >
                         <Droppable droppableId="all-lists" direction="horizontal" type="list">
                             {(provided, snapshot) => (
@@ -166,7 +174,7 @@ class Board extends Component {
                     <div onClick={() => { onAddList(currBoard) }} className="card-list" > +add list+  </div>
                 </div >
                 {cardId && <CardDetails history={history} currBoard={currBoard} cardId={cardId} />}
-            </>
+            </div>
         );
     }
 }

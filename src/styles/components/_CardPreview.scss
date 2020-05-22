@@ -8,11 +8,11 @@
     
 
     &.drag.isDragging {
-        background-color: $clr5-1;
+        background-color: $clr4;
         // transform: rotate(6deg);
         }
     &:hover {
-        background-color: $clr5-1;
+        background-color: $clr4;
     }
     &.drag:active {
         // transform: rotate(6deg);
