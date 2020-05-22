@@ -27,18 +27,11 @@ class NavBar extends React.Component {
     }
 
     componentDidUpdate(){
-<<<<<<< HEAD
-        this.getLoggedUserDetails()
-    }
-
-    getLoggedUserDetails = () => {
-=======
         this.getLoggedUserDetails()  
     }
 
     getLoggedUserDetails = () => {
         if(!this.props.loggedUser) return
->>>>>>> d5b0aaee52333a7ce418682e4b393f262548245b
         userService.get(this.props.loggedUser?._id)
             .then(res => this.setState({ loggedUser: res }))
     }
@@ -58,11 +51,6 @@ class NavBar extends React.Component {
     render() {
         const { isMenuActive, isNotificationMenuActive, loggedUser } = this.state
         const { boards } = this.props
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> d5b0aaee52333a7ce418682e4b393f262548245b
         if (!loggedUser) return <> </>
         return (
             <nav className="nav-bar flex align-center space-between">
