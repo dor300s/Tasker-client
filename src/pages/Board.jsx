@@ -83,7 +83,7 @@ class Board extends Component {
         this.props.saveBoard(currBoard);
     }
 
-    onDeleteCard = (cardId, cardListId ,currBoardState) => {
+    onDeleteCard = (cardId, cardListId, currBoardState) => {
         const currBoard = JSON.parse(JSON.stringify(currBoardState))
         const { cardLists } = currBoard
         const list = cardLists.find(cardList => cardList.id === cardListId);
@@ -149,7 +149,7 @@ class Board extends Component {
 
             <div className={`wrap-card-lists flex`} >
                 <DragDropContext onDragEnd={result => onDragEnd(result, currBoard, setcurrBoard)} >
-                    <Droppable droppableId={"all-currBoard"} direction="horizontal" type="list" >
+                    <Droppable droppableId="all-lists" direction="horizontal" type="list">
                         {(provided, snapshot) => (
                             <div className={`card-lists flex ${snapshot.isDraggingOver ? "light" : "light"}`}
                                 {...provided.droppableProps} ref={provided.innerRef}

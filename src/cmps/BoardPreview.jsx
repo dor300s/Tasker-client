@@ -16,12 +16,14 @@ export default function BoardPreview(props) {
         board.isStarred = !board.isStarred;
         saveBoard(board)
     }
+    
 
     return (
         <React.Fragment>
             <div className="board" onClick={() => onBoardClicked(board._id)} style={getBackground()}>
                 <h3>{board.title}</h3>
                 <div className={`fs24 ${board.isStarred ? 'starred' : 'not-starred'}`} onClick={(ev) => starToggle(board, ev)} />
+                <div className="menu-btn" /* onClick={this.openMenu} */></div>
             </div>
         </React.Fragment>
     )

@@ -12,6 +12,16 @@
         margin-bottom: 20px;
 
         .board {
+            padding: 5px;
+            border: 0;
+            border-radius: 4px;
+            background-color: rgba(9, 30, 66, 0.04);
+            margin: 10px;
+            height: 100px;
+            width: 200px;
+            color: $clr6;
+            cursor: pointer;
+
             .starred,
             .not-starred {
                 display: none;
@@ -21,18 +31,19 @@
                 cursor: pointer;
             }
 
-            padding: 5px;
-            border: 0;
-            border-radius: 4px;
-            background-color: #dfe4ea;
-            margin: 10px;
-            height: 100px;
-            width: 200px;
-            color: $clr6;
-            cursor: pointer;
+            .menu-btn {
+                content: url(../../images/iconmonstr-menu.svg);
+                display: none;
+                width: 1rem;
+                position: relative;
+                bottom: 45%;
+                left: 91%;
+                cursor: pointer;
+            }
 
-            &:hover{
-                .starred, .not-starred{
+            &:hover {
+                .starred,
+                .not-starred, .menu-btn {
                     display: block;
                 }
             }
@@ -42,6 +53,21 @@
             }
             .not-starred:before {
                 content: "\2606";
+            }
+
+            
+        }
+
+        .add-board {
+            h3 {
+                color: $clr2;
+                font-size: 1rem;
+                transition: 0.2s;
+            }
+            &:hover {
+                h3 {
+                    font-size: 1.1rem;
+                }
             }
         }
     }
