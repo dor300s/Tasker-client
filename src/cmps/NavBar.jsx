@@ -11,18 +11,21 @@ class NavBar extends React.Component {
         boards: null,
         isMenuActive: false,
         isUserMenuActive: false,
-        loggedUser: JSON.parse(window.localStorage.getItem('loggedUser'))
+        loggedUser:  null
     }
 
     componentDidMount() {
-        console.log(this.props.boards);
-        // this.getLoggedUserDetails() // only at production ENV 
+        this.getLoggedUserDetails()
         this.props.setBoards()
         boardService.query()
     }
 
+    componentDidUpdate(){
+        this.getLoggedUserDetails()
+    }
+
     getLoggedUserDetails = () => {
-        userService.get(this.props.loggedUser._id)
+        userService.get(this.props.loggedUser?._id)
             .then(res => this.setState({ loggedUser: res }))
     }
 
@@ -41,8 +44,8 @@ class NavBar extends React.Component {
     render() {
         const { isMenuActive, isUserMenuActive, loggedUser } = this.state
         const { boards } = this.props
-
-        if (!loggedUser) return <React.Fragment></React.Fragment>
+        
+        if (!loggedUser) return <> </>
         return (
             <nav className="nav-bar flex align-center space-between">
                 <button onClick={this.onMenuClick}>Hamurger</button>
