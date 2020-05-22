@@ -2,7 +2,7 @@ import React from 'react';
 // import { getBoards } from '../tempSeviceData/tempBoardData.js';
 import { connect } from 'react-redux';
 import BoardList from '../cmps/BoardList.jsx';
-import { setBoards } from '../store/actions/boardActions.js'
+import { setBoards, saveBoard } from '../store/actions/boardActions.js'
 import userService from '../services/userService.js'
 
 
@@ -10,7 +10,7 @@ class DashBoard extends React.Component {
 
     componentDidMount() {
         this.props.setBoards();
-        userService.session();
+        // userService.session();
     }
 
     onBoardClicked = (id) => {
@@ -24,19 +24,19 @@ class DashBoard extends React.Component {
 
 
     render() {
-        const { boards } = this.props;
+        const { boards, saveBoard } = this.props;
         let filteredBoards = boards.filter(board => board.isStarred);
 
         return (
             <div className="dashboard">
                 <h3 className="label">&#9734; Starred</h3>
                 <div className="boards-container flex">
-                    <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} />
+                    <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} saveBoard={saveBoard} />
                 </div>
 
-                <h3 className="label">All Boards</h3>
+                <h3 className="label">❒ All Boards</h3>
                 <div className="boards-container flex">
-                    <BoardList boards={boards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} />
+                    <BoardList boards={boards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} saveBoard={saveBoard} />
                 </div>
             </div >
         )
@@ -49,7 +49,8 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = {
-    setBoards
+    setBoards,
+    saveBoard
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard)

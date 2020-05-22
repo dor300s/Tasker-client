@@ -1,7 +1,8 @@
-import boardService from '../../services/boardService.js'
+import boardService from '../../services/boardService.js';
 
 
 export function setBoards(filter = '') {
+
     return dispatch => {
         return boardService.query(filter)
             .then(boards => dispatch({ type: 'SET_BOARDS', boards }))
