@@ -23,12 +23,12 @@ export default function CardListPreview(props) {
                                 >
                                     {cardList.cards.map((card, index) => {
                                         return (
-                                            <CardPreview key={card.id} currBoard={currBoard} onDeleteCard={onDeleteCard} card={card} index={index} />
+                                            <CardPreview key={card.id} cardListId={cardListId} currBoard={currBoard} onDeleteCard={onDeleteCard} card={card} index={index} />
                                         );
                                     })}
                                     {provided.placeholder}
                                 </div>
-                                <div onClick={() => {onAddCard(props.currBoard)}} className={`card-preview`} >+add card+</div>
+                                <div onClick={() => {onAddCard(props.currBoard, cardListId)}} className={`card-preview`} >+add card+</div>
                             </div>
                         )}
                     </Droppable>

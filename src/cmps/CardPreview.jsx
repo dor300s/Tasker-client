@@ -4,7 +4,7 @@ import { Draggable } from "react-beautiful-dnd";
 
 export default function CardPreview(props) {
 
-    const {index, card, onDeleteCard, currBoard} = props
+    const {index, card, onDeleteCard, currBoard, cardListId} = props
 
     return (
         <Draggable key={card.id} draggableId={card.id} index={index} >
@@ -18,7 +18,7 @@ export default function CardPreview(props) {
                             ...provided.draggableProps.style
                         }}
                     >
-                        <div onClick={() => onDeleteCard(card.id, currBoard)}>X</div>
+                        <div onClick={() => onDeleteCard(card.id, cardListId, currBoard)}>X</div>
                         {card.text}
                     </div>
                 );
