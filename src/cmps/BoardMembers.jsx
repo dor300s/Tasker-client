@@ -1,19 +1,24 @@
 import React from 'react'
 
 export function BoardMembers(props) {
-    const { members } = props.board
-    console.log(members);
+    const { board, history } = props
+    console.log(history);
 
     return (
         <div className="nav-board-members flex align-center">
-            {members.map((member, idx) => {
+            <button className="member-invite" onClick={()=>props.onInvite()}>Invite</button>
+
+            {board.members.map((member, idx) => {
                 if (member.imgUrl) {
                     return <div key={idx} className="board-member" style={{
                         backgroundImage: "url(" + `${member.imgUrl}` + ")",
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat'
-                    }}>
+                    }} onClick={() => history.push(`/user/${member._id}`)}>
+                        <div className="board-member-tooltip">
+                            <p>{member.fullName}</p>
+                        </div>
                     </div>
 
                 }
@@ -21,7 +26,6 @@ export function BoardMembers(props) {
                     return <h3 className="nav-user-profile flex justify-center align-center">{member.userName.charAt(0)}</h3>
                 }
             })}
-            <button className="member-invite">Invite</button>
         </div>
     )
 }

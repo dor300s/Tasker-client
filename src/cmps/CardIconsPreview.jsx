@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export function CardIconsPreview(props) {
     const { card } = props
-    console.log("card", card);
+    // console.log("card", card);
 
 
     if (!card) return 'loading'
