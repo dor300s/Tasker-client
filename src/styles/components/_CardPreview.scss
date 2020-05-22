@@ -3,18 +3,18 @@
     margin: 0 0 8px 0;
     min-height: 50px;
     color: $clr2;
-    background-color: $clr6;
+    background-color: $clr5;
 
+    
 
-
-    &.isDragging {
+    &.drag.isDragging {
         background-color: $clr5-1;
         // transform: rotate(6deg);
         }
     &:hover {
-        background-color: $clr5;
+        background-color: $clr5-1;
     }
-    &:active {
+    &.drag:active {
         transform: rotate(6deg);
     }
 
