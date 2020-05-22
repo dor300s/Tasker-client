@@ -13,7 +13,13 @@ export default {
     login,
     signup,
     logout,
-    session
+    session,
+    clearNotifications
+}
+
+function clearNotifications(user){
+    user.notifications.map(notifi => notifi.isRead = true)
+    update(user)
 }
 
 function query() {
@@ -39,7 +45,10 @@ function remove(id) {
 
 function update(user) {
     return axios.put(`${userUrl}/${user._id}`, user)
-        .then(res => res.data)
+        .then(res => {
+            window.localStorage.setItem('loggedUser', JSON.stringify(res.data));
+            return res.data
+        })
 }
 
 function login(userCreds) {
