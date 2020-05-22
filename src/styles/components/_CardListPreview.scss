@@ -1,13 +1,12 @@
-.card-col{
+.card-list{
     padding: 4px;
     width: 250px;
     margin: 8px;
-    min-height: 500px;
+    min-height: 30px;
+    background-color: lightgrey;
+
 
     &.lightblue {
         background-color: lightblue;
-    }
-    & .lightgrey {
-        background-color: lightgrey;
     }
 }

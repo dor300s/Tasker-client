@@ -12,7 +12,14 @@ export default {
     update,
     login,
     signup,
-    logout
+    logout,
+    session,
+    clearNotifications
+}
+
+function clearNotifications(user){
+    user.notifications.map(notifi => notifi.isRead = true)
+    update(user)
 }
 
 function query() {
@@ -25,13 +32,23 @@ function get(id) {
         .then(res => res.data)
 }
 
+function session() {
+    console.log('sesssion');
+    
+    return axios.get(`${authUrl}/session}`)
+        .then(res => console.log(res.data))
+}
+
 function remove(id) {
     return axios.delete(`${userUrl}/${id}`)
 }
 
 function update(user) {
     return axios.put(`${userUrl}/${user._id}`, user)
-        .then(res => res.data)
+        .then(res => {
+            window.localStorage.setItem('loggedUser', JSON.stringify(res.data));
+            return res.data
+        })
 }
 
 function login(userCreds) {
