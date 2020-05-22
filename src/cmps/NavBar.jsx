@@ -1,6 +1,8 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 import boardService from "../services/boardService.js"
 import  NavMenu  from '../cmps/NavMenu'
+import  NavUserNotificationMenu  from './NavUserNotificationMenu'
 import { connect } from 'react-redux'
 import { setBoards } from '../store/actions/boardActions.js'
 import userService from '../services/userService.js'
@@ -10,26 +12,25 @@ class NavBar extends React.Component {
     state = {
         boards: null,
         isMenuActive: false,
-        isUserMenuActive: false,
-        loggedUser: JSON.parse(window.localStorage.getItem('loggedUser'))
+        isNotificationMenuActive: false,
+        loggedUser: null
+        // loggedUser: JSON.parse(localStorage.getItem("loggedUser"))
+        
     }
 
     componentDidMount() {
-        // this.getLoggedUserDetails() // only at production ENV 
+        this.getLoggedUserDetails() 
         this.props.setBoards()
         boardService.query()
     }
 
     componentDidUpdate(){
-        
+        this.getLoggedUserDetails()  
     }
 
     getLoggedUserDetails = () => {
-<<<<<<< HEAD
-=======
-    
->>>>>>> f5903bc5bbb468dba0b0ee09bbba41e119686815
-        userService.get(this.props.loggedUser._id)
+        if(!this.props.loggedUser) return
+        userService.get(this.props.loggedUser?._id)
             .then(res => this.setState({ loggedUser: res }))
     }
 
@@ -41,24 +42,24 @@ class NavBar extends React.Component {
         this.setState({ isMenuActive: false })
     }
 
-    onUserProfileClick = () => {
-        this.setState(prevState => ({ isUserMenuActive: !prevState.isUserMenuActive }))
+    onUserNotificationClick = () => {
+        this.setState(prevState => ({ isNotificationMenuActive: !prevState.isNotificationMenuActive }))
     }
 
     render() {
-        const { isMenuActive, isUserMenuActive, loggedUser } = this.state
+        const { isMenuActive, isNotificationMenuActive, loggedUser } = this.state
         const { boards } = this.props
 
-        if (!loggedUser) return ' Loading... '
+        if (!loggedUser) return <> </>
         return (
             <nav className="nav-bar flex align-center space-between">
                 <button onClick={this.onMenuClick}>Hamurger</button>
                 {isMenuActive && <NavMenu history={this.props.history} boards={boards} closeMenu={this.onCloseMenu} />}
                 <h2>LOGO</h2>
                 <div className="flex align-center">
-                    <button>N</button>
+                    <button onClick={this.onUserNotificationClick}>N</button>
                     {loggedUser.imgUrl ?
-                    <div className="nav-user-profile" onClick={this.onUserProfileClick} style={{
+                    <div className="nav-user-profile"  style={{
                         backgroundImage: "url(" + `${loggedUser.imgUrl}` + ")",
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
@@ -66,7 +67,8 @@ class NavBar extends React.Component {
                     }}> 
                     </div>
                     :
-                <h3 onClick={this.onUserProfileClick} className="nav-user-profile flex justify-center align-center">{loggedUser.userName.charAt(0)}</h3>}
+                <h3 className="nav-user-profile flex justify-center align-center">{loggedUser.userName.charAt(0)}</h3>}
+                {isNotificationMenuActive && <NavUserNotificationMenu history={this.props.history} user={loggedUser} />}
                 </div>
             </nav>
         )
@@ -83,4 +85,5 @@ const mapDispatchToProps = {
     setBoards,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+// export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar))
