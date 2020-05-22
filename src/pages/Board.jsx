@@ -69,24 +69,23 @@ class Board extends Component {
     }
 
     onAddList = (currBoardState) => {
-         //TODO add toalk with service
+        //TODO add toalk with service
         const currBoard = JSON.parse(JSON.stringify(currBoardState));
         const { cardLists } = currBoard;
         cardLists.push(this.getNewList());
         //work until here
-        console.log('success')
-        saveBoard(currBoard);
+        this.props.saveBoard(currBoard);
     }
 
     onAddCard = (currBoardState, listId) => {
-         //TODO add toalk with service
+        //TODO add toalk with service
         const currBoard = JSON.parse(JSON.stringify(currBoardState));
         const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === listId);
         console.log(list)
         list.push(this.getNewCard())
         console.log(list)
-        saveBoard(currBoard);
+        this.props.saveBoard(currBoard);
     }
 
     onDeleteCard(cardId, currBoardState) {
@@ -97,7 +96,7 @@ class Board extends Component {
         const cardIdx = cards.findIndex(list => cardId === list.id);
 
         cards.splice(cardIdx, 1);
-        saveBoard(currBoard);
+        this.props.saveBoard(currBoard);
     }
 
     onDeleteList(listId, currBoardState) {
@@ -107,7 +106,7 @@ class Board extends Component {
         const listIdx = cardLists.findIndex(list => listId === list.id);
 
         cardLists.splice(listIdx, 1);
-        saveBoard(currBoard);
+        this.props.saveBoard(currBoard);
     }
 
     onDragEnd = (result, currBoardState, setcurrBoard) => {
@@ -127,12 +126,13 @@ class Board extends Component {
                 const destcards = destcardList.cards;
                 const [removed] = sourcecards.splice(source.index, 1);
                 destcards.splice(destination.index, 0, removed);
-                saveBoard(currBoard);
+                this.props.saveBoard(currBoard);
+
                 break;
             case "list":
                 const [removedList] = cardLists.splice(source.index, 1);
                 cardLists.splice(destination.index, 0, removedList);
-                saveBoard(currBoard);
+                this.props.saveBoard(currBoard)
                 break;
         }
     };
@@ -142,6 +142,7 @@ class Board extends Component {
 
         const { setcurrBoard, onDragEnd, onAddList, onAddCard, onDeleteList, onDeleteCard } = this;
         const { currBoard } = this.props;
+        console.log('BOARD PROPS:', currBoard);
 
         if (!currBoard) return <div>loading</div>;
 
