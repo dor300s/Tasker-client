@@ -17,11 +17,10 @@ class DashBoard extends React.Component {
         this.props.history.push(`/board/${id}`)
     }
 
-    addBoard() {
-        console.log('hii');
-
+/*     addBoard(board) {
+        this.props.saveBoard(board)
     }
-
+ */
 
     render() {
         const { boards, saveBoard } = this.props;
@@ -36,7 +35,7 @@ class DashBoard extends React.Component {
 
                 <h3 className="label">❒ All Boards</h3>
                 <div className="boards-container flex">
-                    <BoardList boards={boards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} saveBoard={saveBoard} />
+                    <BoardList boards={boards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} saveBoard={saveBoard} addBoard={true}/>
                 </div>
             </div >
         )
