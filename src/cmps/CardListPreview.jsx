@@ -53,7 +53,8 @@ export default class CardListPreview extends Component {
 
     render() {
         const { cardListId, cardList, index, onDeleteList, onDeleteCard, onAddCard, currBoard, history } = this.props
-
+        console.log(cardList);
+        
         return (
             <Draggable key={cardListId} draggableId={cardListId} index={index} >
                 {(provided, snapshot) => (
@@ -63,7 +64,8 @@ export default class CardListPreview extends Component {
                             {(provided, snapshot) => (
                                 <div className={`card-list-container flex column ${snapshot.isDraggingOver ? "lightblue" : ""}`} >
                                     <h2 className="trash" onClick={(event) => onDeleteList(currBoard, cardListId, event)}></h2>
-                                    <div className={`card-list`} {...provided.droppableprops} ref={provided.innerRef} >
+                                    <h2 className="list-title">{cardList.title}</h2>
+                                    <div className={"card-list"} {...provided.droppableprops} ref={provided.innerRef} >
                                         {cardList.cards.map((card, index) => {
                                             return (
                                                 <CardPreview key={card.id} cardListId={cardListId} currBoard={currBoard} onDeleteCard={onDeleteCard} card={card} index={index} history={history} />
