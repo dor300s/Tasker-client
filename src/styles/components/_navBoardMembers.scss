@@ -17,13 +17,14 @@
     height: 35px;
     width: fit-content;
     border: none;
-    background-color: rgba(255, 255, 255, 0.226);
+    background-color: transparent;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
     font-weight: 600;
     border-radius: 5px;
     margin-left: 10px;
     color: $clr1;
     &:hover{
-        background-color: rgba(136, 172, 250, 0.267);
+        background-color: rgba(95, 143, 247, 0.267);
     }
 }
 .board-member-tooltip{
