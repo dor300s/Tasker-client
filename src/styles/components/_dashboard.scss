@@ -15,7 +15,7 @@
             padding: 5px;
             border: 0;
             border-radius: 4px;
-            // background-color: #636e72;
+            background-color: #636e72;
             margin: 10px;
             height: 100px;
             width: 200px;
@@ -24,7 +24,7 @@
 
             .starred,
             .not-starred {
-                display: none;
+                visibility: hidden;
                 position: relative;
                 top: 50%;
                 left: 90%;
@@ -32,10 +32,10 @@
             }
 
             .menu-btn {
-                content: url(../../images/iconmonstr-menu.svg);
-                display: none;
-                width: 1rem;
+                visibility: hidden;
                 position: relative;
+                content: url(../../images/iconmonstr-menu.svg);
+                width: 1rem;
                 bottom: 45%;
                 left: 91%;
                 cursor: pointer;
@@ -45,6 +45,7 @@
                 .starred,
                 .not-starred,
                 .menu-btn {
+                    visibility: visible;
                     display: block;
                 }
             }

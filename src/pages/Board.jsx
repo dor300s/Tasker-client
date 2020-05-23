@@ -2,24 +2,16 @@ import React, { Component } from "react";
 import {CardDetails} from './CardDetails.jsx';
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import CardListPreview from '../cmps/CardListPreview.jsx'
+import { AddListForm } from '../cmps/AddListForm.jsx'
 import { connect } from 'react-redux';
 import uuid from "uuid/v4";
 import { setBoards, setBoard, saveBoard, removeBoard } from '../store/actions/boardActions.js'
 
 
-// work ofline with localData
-
-// const boards = getBoards()
-// const currBoard = boards[0].cardLists
-
-
 class Board extends Component {
 
-    // state = {
-    //     currBoard
-    // };
 
-    getNewCard = () => {
+    getNewCard = (txt) => {
         //TODO get the creator from somewere
 
         return {
@@ -38,7 +30,7 @@ class Board extends Component {
                 isShown: true
             },
             attachments: [],
-            text: "",
+            text: txt,
             checkList: {},
             labels: [],
             comments: []
@@ -46,11 +38,11 @@ class Board extends Component {
     }
 
 
-    getNewList = () => {
+    getNewList = (title) => {
         //TODO get the creator from somewere
         return {
             id: uuid(),
-            title: "",
+            title: title,
             createdAt: Date.now(),
             creator: {},
             cards: []
@@ -63,28 +55,27 @@ class Board extends Component {
         console.log(boardId)
     }
 
-    setcurrBoard = (currBoard) => {
-        this.setState({ currBoard })
-    }
-
-    onAddList = (currBoardState) => {
-        const currBoard = JSON.parse(JSON.stringify(currBoardState));
+    onAddList = (title = "") => {
+        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
         const { cardLists } = currBoard;
-        cardLists.push(this.getNewList());
+        cardLists.push(this.getNewList(title));
         this.props.saveBoard(currBoard);
     }
 
-    onAddCard = (currBoardState, listId) => {
-        const currBoard = JSON.parse(JSON.stringify(currBoardState));
+    onAddCard = (listId, txt = "") => {
+        console.log("listId", listId)
+        console.log("txt", txt)
+        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
         const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === listId);
-        list.cards.push(this.getNewCard())
+        list.cards.push(this.getNewCard(txt))
         this.props.saveBoard(currBoard);
     }
 
-    onDeleteCard = (cardId, cardListId, currBoardState) => {
-        const currBoard = JSON.parse(JSON.stringify(currBoardState))
-        const { cardLists } = currBoard
+    onDeleteCard = (cardId, cardListId, ev) => {
+        ev.stopPropagation()
+        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
+        const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === cardListId);
         const cardIdx = list.cards.findIndex(card => card.id === cardId);
 
@@ -92,11 +83,10 @@ class Board extends Component {
         this.props.saveBoard(currBoard);
     }
 
-    onDeleteList = (currBoardState, listId) => {
-        //TODO add toalk with service
-        const currBoard = JSON.parse(JSON.stringify(currBoardState))
-        console.log(currBoard)
-        const { cardLists } = currBoard
+    onDeleteList = (listId, ev) => {
+        ev.stopPropagation()
+        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
+        const { cardLists } = currBoard;
         console.log(cardLists)
         const listIdx = cardLists.findIndex(list => listId === list.id);
 
@@ -104,10 +94,10 @@ class Board extends Component {
         this.props.saveBoard(currBoard);
     }
 
-    onDragEnd = (result, currBoardState, setcurrBoard) => {
+    onDragEnd = (result) => {
         if (!result.destination) return;
 
-        const currBoard = JSON.parse(JSON.stringify(currBoardState))
+        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard))
         currBoard["chigiboom"] = 'chigiboom';
         const { cardLists } = currBoard
 
@@ -152,9 +142,9 @@ class Board extends Component {
         const { cardLists } = currBoard;
 
         return (
-            <div className="board-app-container"  style={this.getBackground(currBoard)} >
+            <div className="board-app-container" style={this.getBackground(currBoard)} >
                 <div className={`wrap-card-lists flex`}>
-                    <DragDropContext onDragEnd={result => onDragEnd(result, currBoard, setcurrBoard)} >
+                    <DragDropContext onDragEnd={result => onDragEnd(result)} >
                         <Droppable droppableId="all-lists" direction="horizontal" type="list">
                             {(provided, snapshot) => (
                                 <div className={`card-lists flex ${snapshot.isDraggingOver ? "light" : "light"}`}
@@ -169,10 +159,11 @@ class Board extends Component {
                             )}
                         </Droppable>
                     </DragDropContext>
+                    <AddListForm onAddList={onAddList} />
 
-                    <div onClick={() => { onAddList(currBoard) }} className="card-list add-list" >Add List</div>
+                    {/* <div onClick={() => { onAddList(currBoard) }} className="card-list-container add-list" >Add List</div> */}
                 </div >
-                {cardId && <CardDetails history={history} currBoard={currBoard} cardId={cardId} />}
+                {cardId && <CardDetails currBoard={currBoard} history={history} cardId={cardId} />}
             </div>
         );
     }
