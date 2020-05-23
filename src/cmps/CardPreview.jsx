@@ -24,7 +24,7 @@ export default function CardPreview(props) {
                             ...provided.draggableProps.style
                         }}
                     >
-                        <div className="trash" onClick={() => onDeleteCard(card.id, cardListId, currBoard)}>X</div>
+                        <div className="trash" onClick={(event) => onDeleteCard(card.id, cardListId, currBoard, event)}>X</div>
                         {Boolean(card.labels.length) && <CardLabelsPreview labels={card.labels} />}
                         {card.text}
                         <CardIconsPreview card={card} />
