@@ -5,7 +5,7 @@ import CardPreview from './CardPreview.jsx'
 
 export default function CardListPreview(props) {
 
-    const { cardListId, cardList, index, onDeleteList, onDeleteCard, onAddCard, currBoard } = props
+    const { cardListId, cardList, index, onDeleteList, onDeleteCard, onAddCard, currBoard, history } = props
 
     return (
         <Draggable key={cardListId} draggableId={cardListId} index={index} >
@@ -23,12 +23,12 @@ export default function CardListPreview(props) {
                                 >
                                     {cardList.cards.map((card, index) => {
                                         return (
-                                            <CardPreview key={card.id} cardListId={cardListId} currBoard={currBoard} onDeleteCard={onDeleteCard} card={card} index={index} />
+                                            <CardPreview key={card.id} cardListId={cardListId} currBoard={currBoard} onDeleteCard={onDeleteCard} card={card} index={index} history={history} />
                                         );
                                     })}
                                     {provided.placeholder}
                                 </div>
-                                <div onClick={() => {onAddCard(props.currBoard, cardListId)}} className={`card-preview`} >+add card+</div>
+                                <div onClick={() => { onAddCard(props.currBoard, cardListId) }} className={`card-preview`} >+add card+</div>
                             </div>
                         )}
                     </Droppable>

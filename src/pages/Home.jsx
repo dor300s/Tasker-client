@@ -6,6 +6,10 @@ import { connect } from 'react-redux'
 class Home extends React.Component {
 
     
+    componentDidMount(){
+        
+    }
+
     componentDidUpdate(){
         if(this.props.loggedUser) this.props.history.push('/board')
     }

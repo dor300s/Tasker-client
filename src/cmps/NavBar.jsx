@@ -23,6 +23,7 @@ class NavBar extends React.Component {
       let pathName =  this.props.location.pathname
       let boardId = pathName.split('/')[2]
       console.log('LOCATIONNNNNNNNNNNNN' ,  this.props);
+
         this.props.getUser()
         if (!this.props.boards.length) this.props.setBoards()
     }
@@ -32,11 +33,6 @@ class NavBar extends React.Component {
 
         // this.getLoggedUserDetails()
     }
-
-    /* getLoggedUserDetails = () => {
-        if (!this.props.loggedUser) return
-        this.props.getUser()
-    } */
 
     onMenuClick = () => {
         this.setState(prevState => ({ isMenuActive: !prevState.isMenuActive }))
@@ -49,7 +45,7 @@ class NavBar extends React.Component {
     onUserNotificationClick = () => {
         this.setState(prevState => ({ isNotificationMenuActive: !prevState.isNotificationMenuActive }))
     }
-    
+
     onInviteMember = () => {
         this.setState(prevState => ({ isInviteModalActive: !prevState.isInviteModalActive }))
     }
@@ -65,7 +61,7 @@ class NavBar extends React.Component {
                 <div className="flex align-center">
                     <button onClick={this.onMenuClick}>Hamurger</button>
                     {activeBoard && <BoardMembers onInvite={this.onInviteMember} history={history} board={activeBoard} />}
-                    {isInviteModalActive && <InviteMemberModal />}
+                    {activeBoard && <InviteMemberModal />}
                     {activeBoard && <input type="text" placeholder="Find card" />}
                 </div>
                 {isMenuActive && <NavMenu history={history} boards={boards} closeMenu={this.onCloseMenu} />}
