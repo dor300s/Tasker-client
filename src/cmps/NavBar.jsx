@@ -23,8 +23,7 @@ class NavBar extends React.Component {
     componentDidMount() {
       let pathName =  this.props.location.pathname
       let boardId = pathName.split('/')[2]
-      console.log('LOCATIONNNNNNNNNNNNN' ,  this.props);
-
+     
         this.props.getUser()
         if (!this.props.boards.length) this.props.setBoards()
     }
