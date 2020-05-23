@@ -14,16 +14,16 @@ import InviteMemberModal from './InviteMemberModal'
 class NavBar extends React.Component {
 
     state = {
-        // boards: null,
         isMenuActive: false,
         isBoardActive: false,
         isUserMenuActive: false,
-        // loggedUser: null
     }
 
     componentDidMount() {
+      let pathName =  this.props.location.pathname
+      let boardId = pathName.split('/')[2]
+      console.log('LOCATIONNNNNNNNNNNNN' ,  this.props);
         this.props.getUser()
-        // this.getLoggedUserDetails()
         if (!this.props.boards.length) this.props.setBoards()
     }
 
