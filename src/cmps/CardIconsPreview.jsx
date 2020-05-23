@@ -1,9 +1,10 @@
 import React from 'react'
 import { IconPreview } from './IconPreview.jsx'
+import { BoardMembers } from './BoardMembers.jsx'
 import moment from 'moment';
 
 export function CardIconsPreview(props) {
-    const { card } = props
+    const { card , history } = props
     // console.log("card", card);
 
 
@@ -18,7 +19,8 @@ export function CardIconsPreview(props) {
                 {card.isStared && <IconPreview icon={'star'} num={card.isStared} />}
                 {card.checkList.items && Boolean(card.checkList.items.length) && <IconPreview icon={'checkList'} num={card.checkList.items.length} />} */}
             </div>
-            {card.members.length && <div className="members"><img src="https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png" alt=""/></div>}
+            {card.members.length && <BoardMembers history={history} board={card} cardMemberMode={true} />}
+            {/* {card.members.length && <div className="members"><img src="https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png" alt=""/></div>} */}
         </div>
     )
 }

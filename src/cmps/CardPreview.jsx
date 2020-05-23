@@ -26,7 +26,7 @@ export default function CardPreview(props) {
                     >
                         <div className="card-text">
                             <div className="trash" onClick={(event) => onDeleteCard(card.id, cardListId, event)}>X</div>
-                            {Boolean(card.labels.length) && <CardLabelsPreview labels={card.labels} />}
+                            {Boolean(card.labels.length) && <CardLabelsPreview histoy={history} labels={card.labels} />}
                             {card.text}
                         </div>
                             <CardIconsPreview card={card} />
