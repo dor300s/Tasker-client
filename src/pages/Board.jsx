@@ -55,18 +55,16 @@ class Board extends Component {
         console.log(boardId)
     }
 
-    setcurrBoard = (currBoard) => {
-        this.setState({ currBoard })
-    }
-
-    onAddList = (currBoardState, title = "") => {
+    onAddList = (title = "") => {
         const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
         const { cardLists } = currBoard;
         cardLists.push(this.getNewList(title));
         this.props.saveBoard(currBoard);
     }
 
-    onAddCard = (currBoardState, listId, txt = "") => {
+    onAddCard = (listId, txt = "") => {
+        console.log("listId", listId)
+        console.log("txt", txt)
         const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
         const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === listId);
@@ -74,7 +72,7 @@ class Board extends Component {
         this.props.saveBoard(currBoard);
     }
 
-    onDeleteCard = (cardId, cardListId, currBoardState, ev) => {
+    onDeleteCard = (cardId, cardListId, ev) => {
         ev.stopPropagation()
         const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
         const { cardLists } = currBoard;
@@ -85,7 +83,7 @@ class Board extends Component {
         this.props.saveBoard(currBoard);
     }
 
-    onDeleteList = (currBoardState, listId, ev) => {
+    onDeleteList = (listId, ev) => {
         ev.stopPropagation()
         const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
         const { cardLists } = currBoard;
@@ -96,10 +94,10 @@ class Board extends Component {
         this.props.saveBoard(currBoard);
     }
 
-    onDragEnd = (result, currBoardState, setcurrBoard) => {
+    onDragEnd = (result) => {
         if (!result.destination) return;
 
-        const currBoard = JSON.parse(JSON.stringify(currBoardState))
+        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard))
         currBoard["chigiboom"] = 'chigiboom';
         const { cardLists } = currBoard
 
@@ -146,7 +144,7 @@ class Board extends Component {
         return (
             <div className="board-app-container" style={this.getBackground(currBoard)} >
                 <div className={`wrap-card-lists flex`}>
-                    <DragDropContext onDragEnd={result => onDragEnd(result, currBoard, setcurrBoard)} >
+                    <DragDropContext onDragEnd={result => onDragEnd(result)} >
                         <Droppable droppableId="all-lists" direction="horizontal" type="list">
                             {(provided, snapshot) => (
                                 <div className={`card-lists flex ${snapshot.isDraggingOver ? "light" : "light"}`}
@@ -161,11 +159,11 @@ class Board extends Component {
                             )}
                         </Droppable>
                     </DragDropContext>
-                    <AddListForm onAddList={onAddList} currBoard={currBoard}/>
+                    <AddListForm onAddList={onAddList} />
 
                     {/* <div onClick={() => { onAddList(currBoard) }} className="card-list-container add-list" >Add List</div> */}
                 </div >
-                {cardId && <CardDetails history={history} currBoard={currBoard} cardId={cardId} />}
+                {cardId && <CardDetails currBoard={currBoard} history={history} cardId={cardId} />}
             </div>
         );
     }

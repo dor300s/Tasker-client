@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import CardPreview from './CardPreview.jsx'
+import { AddCardForm } from "./AddCardForm.jsx";
 
 
 export default class CardListPreview extends Component {
@@ -53,7 +54,9 @@ export default class CardListPreview extends Component {
 
     render() {
         const { cardListId, cardList, index, onDeleteList, onDeleteCard, onAddCard, currBoard, history } = this.props
-        
+        console.log("cardList", cardList)
+
+
         return (
             <Draggable key={cardListId} draggableId={cardListId} index={index} >
                 {(provided, snapshot) => (
@@ -62,7 +65,7 @@ export default class CardListPreview extends Component {
                         <Droppable droppableId={cardListId} key={cardListId} type={"card"}>
                             {(provided, snapshot) => (
                                 <div className={`card-list-container flex column ${snapshot.isDraggingOver ? "lightblue" : ""}`} >
-                                    <h2 className="trash" onClick={(event) => onDeleteList(currBoard, cardListId, event)}></h2>
+                                    <h2 className="trash" onClick={(event) => onDeleteList(cardListId, event)}></h2>
                                     {/* TO REMOVE */}
                                     {cardList.title && <h2 className="list-title">{cardList.title}</h2>}
                                     <div className={"card-list"} {...provided.droppableprops} ref={provided.innerRef} >
@@ -73,7 +76,7 @@ export default class CardListPreview extends Component {
                                         })}
                                         {provided.placeholder}
                                     </div>
-                                    <div onClick={() => { onAddCard(this.props.currBoard, cardListId) }} className="card-preview add-card" >Add Card</div>
+                                    <AddCardForm onAddCard={onAddCard} cardListId={cardListId}/>
                                 </div>
                             )}
                         </Droppable>

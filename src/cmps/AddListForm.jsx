@@ -4,17 +4,11 @@ export class AddListForm extends Component {
     state = {
         addlistForm: false,
         newlistTitle: '',
-        currBoard: null,
     }
 
     componentDidMount() {
-        this.setState({ currBoard: this.props.currBoard })
         document.addEventListener("keydown", this.escFunction, false);
     }
-
-    // componentDidUpdate() {
-    //     this.setState({ currBoard: this.props.currBoard })
-    // }
 
 
     componentWillUnmount() {
@@ -49,7 +43,7 @@ export class AddListForm extends Component {
 
     createNewlist() {
         const title = { title: this.state.newlistTitle }
-        this.props.onAddList(this.state.currBoard , this.state.newlistTitle)
+        this.props.onAddList(this.state.newlistTitle)
         this.setState({ addlistForm: false, newlistTitle: ''})
 
 
@@ -61,7 +55,7 @@ export class AddListForm extends Component {
         return (
             <React.Fragment>
                 <div className="card-list-container add-list flex justify-center align-center" onClick={this.openForm} >
-                    {!addlistForm ? <div className="card-preview">Create new list</div> :
+                    {!addlistForm ? <div className="plus"></div> :
                         <form onSubmit={this.handleSubmit}>
                             <input placeholder="add list ..." value={newlistTitle} onChange={this.handleChange} autoFocus onBlur={this.handleBlur} />
                         </form>}
