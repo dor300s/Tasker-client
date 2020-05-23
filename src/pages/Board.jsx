@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CardDetails from './CardDetails.jsx';
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import CardListPreview from '../cmps/CardListPreview.jsx'
+import { AddListForm } from '../cmps/AddListForm.jsx'
 import { connect } from 'react-redux';
 import uuid from "uuid/v4";
 import { setBoards, setBoard, saveBoard, removeBoard } from '../store/actions/boardActions.js'
@@ -161,11 +162,12 @@ class Board extends Component {
                             )}
                         </Droppable>
                     </DragDropContext>
+                    <AddListForm onAddList={onAddList} currBoard={currBoard}/>
 
-                    <div onClick={() => { onAddList(currBoard) }} className="card-list" > +add list+  </div>
-                </div >
-                {cardId && <CardDetails history={history} currBoard={currBoard} cardId={cardId} />}
-            </div>
+                {/* <div onClick={() => { onAddList(currBoard) }} className="card-list" > +add list+  </div> */}
+            </div >
+                { cardId && <CardDetails history={history} currBoard={currBoard} cardId={cardId} /> }
+            </div >
         );
     }
 }

@@ -53,8 +53,6 @@ export default class CardListPreview extends Component {
 
     render() {
         const { cardListId, cardList, index, onDeleteList, onDeleteCard, onAddCard, currBoard, history } = this.props
-        const { addlistForm, newlistTitle } = this.state
-
 
         return (
             <Draggable key={cardListId} draggableId={cardListId} index={index} >
@@ -64,12 +62,7 @@ export default class CardListPreview extends Component {
                         <Droppable droppableId={cardListId} key={cardListId} type={"card"}>
                             {(provided, snapshot) => (
                                 <div className={`card-list flex column ${snapshot.isDraggingOver ? "lightblue" : ""}`} >
-                                    {/* <h2 className="trash" onClick={(event) => onDeleteList(currBoard, cardListId, event)}></h2> */}
-                                    {!addlistForm ? <h3>Create new list</h3> :
-                                        <form onSubmit={this.handleSubmit}>
-                                            <input placeholder="add list ..." value={newlistTitle} onChange={this.handleChange} autoFocus onBlur={this.handleBlur} />
-                                        </form>}
-                                    <h2 >{cardList.title}</h2>
+                                    <h2 className="trash" onClick={(event) => onDeleteList(currBoard, cardListId, event)}></h2>
                                     <div {...provided.droppableprops} ref={provided.innerRef} >
                                         {cardList.cards.map((card, index) => {
                                             return (

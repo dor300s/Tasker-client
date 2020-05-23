@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Component } from "react";
 
-export default class listList extends React.Component {
+export class AddListForm extends Component {
     state = {
         addlistForm: false,
         newlistTitle: '',
+        currBoard: null,
     }
 
     componentDidMount() {
+        this.setState({ currBoard: this.props.currBoard })
         document.addEventListener("keydown", this.escFunction, false);
     }
 
@@ -41,8 +43,8 @@ export default class listList extends React.Component {
     }
 
     createNewlist() {
-        const list = { title: this.state.newlistTitle }
-        this.props.onAddList(list)
+        const title = { title: this.state.newlistTitle }
+        this.props.onAddList(this.state.currBoard , title)
         this.setState({ addlistForm: false, newlistTitle: '' })
     }
 
@@ -51,11 +53,12 @@ export default class listList extends React.Component {
         const { addlistForm, newlistTitle } = this.state
         return (
             <React.Fragment>
-                {<div className="list add-list flex justify-center align-center" onClick={this.openForm} ></div>}
-                {!addlistForm ? <h3>Create new list</h3> :
-                    <form onSubmit={this.handleSubmit}>
-                        <input placeholder="add list ..." value={newlistTitle} onChange={this.handleChange} autoFocus onBlur={this.handleBlur} />
-                    </form>}
+                <div className="card-list add-list flex justify-center align-center" onClick={this.openForm} >
+                    {!addlistForm ? <h3>Create new list</h3> :
+                        <form onSubmit={this.handleSubmit}>
+                            <input placeholder="add list ..." value={newlistTitle} onChange={this.handleChange} autoFocus onBlur={this.handleBlur} />
+                        </form>}
+                </div>
             </React.Fragment>
         )
     }
