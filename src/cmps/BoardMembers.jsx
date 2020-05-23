@@ -1,11 +1,11 @@
 import React from 'react'
 
 export function BoardMembers(props) {
-    const { board, history } = props
+    const { board, history , cardMemberMode } = props
 
     return (
         <div className="nav-board-members flex align-center">
-            <button className="member-invite" onClick={()=>props.onInvite()}>Invite</button>
+            {!cardMemberMode && <button className="member-invite" onClick={()=>props.onInvite()}>Invite</button>}
 
             {board.members.map((member, idx) => {
                 if (member.imgUrl) {
