@@ -30,7 +30,7 @@ class DashBoard extends React.Component {
 
                 <h3 className="label">❒ All Boards</h3>
                 <div className="boards-container flex">
-                    <BoardList boards={boards} onBoardClicked={this.onBoardClicked} saveBoard={saveBoard} addBoard={true}/>
+                    <BoardList boards={boards} onBoardClicked={this.onBoardClicked} saveBoard={saveBoard} addBoardOption={true}/>
                 </div>
             </div >
         )

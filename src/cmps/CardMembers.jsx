@@ -22,13 +22,14 @@ class CardMembers extends Component {
     render() {
         const { card, history , board } = this.props
         const { isAddMemberActive } = this.state
+        
         return (
-            <div style={{marginBottom:"15px" , marginLeft:"50px"}} className="flex column">
+            <div style={{marginBottom:"30px" , marginLeft:"50px"}} className="flex column">
                 <h4 className="card-members-header">Card members</h4>
                 <div className="card-members flex align-center">
                     {isAddMemberActive && <CardMembersList board={board} history={history} addMember={this.addMember} />}
                     <button className="card-member-invite" onClick={this.onAddMember}>+</button>
-                    {card.members.userName && card.members.map((member, idx) => {
+                    { card.members.map((member, idx) => {
                         if (member.imgUrl) {
                             return <div key={idx} className="card-member" style={{
                                 backgroundImage: "url(" + `${member.imgUrl}` + ")",
@@ -43,7 +44,7 @@ class CardMembers extends Component {
 
                         }
                         else {
-                            return <h3 className="nav-user-profile flex justify-center align-center">{member.userName.charAt(0)}</h3>
+                            return <h3 className="card-user-profile flex justify-center align-center">{member.fullName.charAt(0)}</h3>
                         }
                     })}
                 </div>

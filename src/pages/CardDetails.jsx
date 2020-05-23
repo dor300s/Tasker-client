@@ -1,17 +1,25 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom';
 import { CardActions } from '../cmps/CardActions'
 import { CardComments } from '../cmps/CardComments'
 import CardDescription from '../cmps/CardDescription'
 import CardMembers from '../cmps/CardMembers'
 import CardCalendar from '../cmps/CardCalendar'
+import {DueDate} from '../cmps/DueDate'
 
 export class CardDetails extends Component {
 
+    
     state = {
         currCard: null,
         currList: null,
         isCalendarActive: false,
         dueDate: null
+    }
+  
+    eventsHandler = (ev) => {
+        console.log(ev);
+        ev.stopPropagation();
     }
 
     componentDidMount() {
@@ -30,7 +38,7 @@ export class CardDetails extends Component {
                 }
             })
         })
-        this.setState({ currCard, currList }, () => console.log('Card', this.state.currCard, currList))
+        this.setState({ currCard, currList })
     }
 
     openDatePicker = () => {
@@ -38,8 +46,12 @@ export class CardDetails extends Component {
     }
 
     onDatePicked = (date) => {
-        console.log(date);
         this.setState({dueDate: date , isCalendarActive:false})
+    }
+
+    onCloseCardDetails = () => {
+        const { currBoard } = this.props
+        this.props.history.push(`/board/${currBoard._id}`)
     }
 
     render() {
@@ -47,22 +59,22 @@ export class CardDetails extends Component {
         const { currBoard } = this.props
         if (!currCard) return ''
         return (
-            <div className="screen flex align-center justify-center">
-                <div className="card-details-modal">
+            <div className="screen flex align-center justify-center" onClick={this.onCloseCardDetails}>
+                <div onClick={this.eventsHandler} className="card-details-modal">
                     <div className="card-details-header flex space-between">
                         <div className="flex align-center">
                             <span className="card-icon"></span>
                             <p className="card-details-title">{currCard.text}</p>
                             {/* <p>In list: {currList.title}</p> */}
                         </div>
-                        <button className="card-details-close">X</button>
+                        <button className="card-details-close" onClick={this.onCloseCardDetails}>X</button>
                     </div>
 
                     <div className="card-details-content-wrapper flex">
                         <div className="card-details-content flex column">
                             < CardMembers history={this.props.history} card={currCard} board={currBoard} />
                             < CardDescription card={currCard} board={currBoard} />
-                            {/* < DueDate date={} /> Complete This Render */}
+                            < DueDate date={'MAY-24'} /> 
                             < CardComments />
                         </div>
                         < CardActions openDatePicker={this.openDatePicker} />

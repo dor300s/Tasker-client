@@ -18,26 +18,12 @@ export function CardMembersList(props) {
                                 <p>{member.fullName}</p>
                             </div>
                         </div>
-
                     }
                     else {
-                        return <h3 className="nav-user-profile flex justify-center align-center">{member.userName.charAt(0)}</h3>
+                        return <h3 onClick={() => props.addMember(member)} className="card-user-profile flex justify-center align-center">{member.userName.charAt(0)}</h3>
                     }
                 })}
             </div>
         </div>
     )
-
-
-
-
-
-
-
-
-    // return (
-    //     <div className="add-card-member-modal flex align-center">
-    //         <BoardMembers board={board} history={history} cardMemberMode={true} />
-    //     </div>
-    // )
 }

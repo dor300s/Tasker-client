@@ -132,6 +132,8 @@ class Board extends Component {
         } : { background: board.background.color }
     }
 
+ 
+
     render() {
 
         const { setcurrBoard, onDragEnd, onAddList, onAddCard, onDeleteList, onDeleteCard } = this;
