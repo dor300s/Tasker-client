@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-
+import {CardActions} from '../cmps/CardActions'
+import {CardComments} from '../cmps/CardComments'
+import CardDescription from '../cmps/CardDescription'
+import CardMembers from '../cmps/CardMembers'
 export class CardDetails extends Component {
 
     state = {
@@ -32,6 +35,7 @@ export class CardDetails extends Component {
 
     render() {
         const { currCard, currList } = this.state
+        const { currBoard } = this.props
         if (!currCard) return ''
         return (
             <div className="screen flex align-center justify-center">
@@ -46,12 +50,12 @@ export class CardDetails extends Component {
                     </div>
 
                 <div className="card-details-content-wrapper flex">
-                    <div className="card-details-content">
-                        
+                    <div className="card-details-content flex column">
+                    <CardMembers history={this.props.history} card={currCard} board={currBoard} />
+                    < CardDescription card={currCard} board={currBoard} />
+                    < CardComments />
                     </div>
-                    <div className="card-details-actions flex column align-center">
-                    <h3>ADD TO CARD</h3>
-                    </div>
+                    < CardActions />
                 </div>
 
                 </div>

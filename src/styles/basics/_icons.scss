@@ -1,14 +1,10 @@
-.wrap-icons, .card-preview, .card-list{
+.wrap-icons, .card-preview, .card-list , .screen{
     .dueDate{
         content: url(../../images/clock.png);
         width: 10px;
 
     }
-    .attachments{
-        content: url(../../images/attach.png);
-        width: 10px;
-
-    }
+    
     .comments{
         content: url(../../images/comment.png);
         width: 10px;
@@ -28,9 +24,9 @@
         content: url(../../images/check-box.png);
         width: 10px;
     }
-    .members  img{
-        width: 30px;
-        float: right;
+    .members {
+        content: url(../../images/user.svg);
+        width: 25px;
     }
     .trash {
         content: url(../../images/trash.png);
@@ -40,6 +36,29 @@
     .humburger {
         content: url(../../images/humburger.png);
         width: 10px;
+    }
+    .label {
+        content: url(../../images/tag.svg);
+        width: 25px;
+    }
+    .attachments {
+        content: url(../../images/documents.svg);
+        width: 25px;
+    }
+
+    .list {
+        content: url(../../images/list.svg);
+        width: 25px;
+    }
+
+    .clock {
+        content: url(../../images/clock.svg);
+        width: 25px;
+    }
+
+    .text {
+        content: url(../../images/text.svg);
+        width: 20px;
     }
 }
 
