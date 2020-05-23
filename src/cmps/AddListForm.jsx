@@ -4,17 +4,11 @@ export class AddListForm extends Component {
     state = {
         addlistForm: false,
         newlistTitle: '',
-        currBoard: null,
     }
 
     componentDidMount() {
-        this.setState({ currBoard: this.props.currBoard })
         document.addEventListener("keydown", this.escFunction, false);
     }
-
-    // componentDidUpdate() {
-    //     this.setState({ currBoard: this.props.currBoard })
-    // }
 
 
     componentWillUnmount() {
@@ -49,7 +43,7 @@ export class AddListForm extends Component {
 
     createNewlist() {
         const title = { title: this.state.newlistTitle }
-        this.props.onAddList(this.state.currBoard , this.state.newlistTitle)
+        this.props.onAddList(this.state.newlistTitle)
         this.setState({ addlistForm: false, newlistTitle: ''})
 
 

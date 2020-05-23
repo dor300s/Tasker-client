@@ -25,8 +25,8 @@ export default function CardPreview(props) {
                         }}
                     >
                         <div className="card-text">
-                            {/* <div className="trash" onClick={() => onDeleteCard(card.id, cardListId, currBoard)}>X</div> */}
-                            {/* {Boolean(card.labels.length) && <CardLabelsPreview labels={card.labels} />} */}
+                            <div className="trash" onClick={(event) => onDeleteCard(card.id, cardListId, event)}>X</div>
+                            {Boolean(card.labels.length) && <CardLabelsPreview labels={card.labels} />}
                             {card.text}
                         </div>
                             <CardIconsPreview card={card} />
