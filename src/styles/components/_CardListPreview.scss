@@ -1,16 +1,16 @@
 .board-app-container {
-    z-index: -1;
     position: fixed;
     width: 100vw;
     height: 100vh;
     margin: 0;
     padding: 50px 0 0;
+    overflow-x: scroll;
     .wrap-card-lists {
         padding: 20px 0 0 30px;
         .card-list {
+            height: fit-content;
             border-radius: 4px;
             padding: 4px;
-            height: fit-content;
             width: 250px;
             margin: 8px;
             min-height: 30px;
