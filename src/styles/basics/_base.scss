@@ -10,6 +10,9 @@ html {
 
 body {
     margin: 0;
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
 }
 
 h1,
@@ -18,7 +21,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'DM Mono';
+    font-family: "DM Mono";
     line-height: 1.2em;
     margin: 0;
 }
@@ -30,4 +33,3 @@ button {
     text-decoration: none;
     cursor: pointer;
 }
-

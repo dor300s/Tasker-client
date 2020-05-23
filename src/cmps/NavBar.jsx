@@ -14,32 +14,25 @@ import InviteMemberModal from './InviteMemberModal'
 class NavBar extends React.Component {
 
     state = {
-        // boards: null,
         isMenuActive: false,
         isBoardActive: false,
         isUserMenuActive: false,
-        // loggedUser: null
     }
 
     componentDidMount() {
-        console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', this.props);
+      let pathName =  this.props.location.pathname
+      let boardId = pathName.split('/')[2]
+      console.log('LOCATIONNNNNNNNNNNNN' ,  this.props);
 
         this.props.getUser()
-        // this.getLoggedUserDetails()
         if (!this.props.boards.length) this.props.setBoards()
     }
 
     componentDidUpdate() {
         // const { boardId } = this.props.match.params
-        // console.log('navbar propsssssssssssssss', this.props);
 
         // this.getLoggedUserDetails()
     }
-
-    /* getLoggedUserDetails = () => {
-        if (!this.props.loggedUser) return
-        this.props.getUser()
-    } */
 
     onMenuClick = () => {
         this.setState(prevState => ({ isMenuActive: !prevState.isMenuActive }))
@@ -58,12 +51,9 @@ class NavBar extends React.Component {
     }
 
     render() {
-        const { isMenuActive, isNotificationMenuActive, isBoardActive } = this.state
+        const { isMenuActive, isNotificationMenuActive, isBoardActive , isInviteModalActive } = this.state
         const { boards, activeBoard, history } = this.props
         const { loggedUser } = this.props
-        console.log('LOGEEDDD USERRRRRRRRR', loggedUser);
-        console.log('BOARDSSSSssssssssssssssssssss', boards);
-
 
         if (!loggedUser) return <></>
         return (

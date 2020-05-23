@@ -1,13 +1,14 @@
 .nav-menu-filter{
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     input{
         outline: none;
+        margin-left: 0px;
         width: 95%;
         height: 40px;
         padding-left: 5px;
         border: 1.3px solid rgb(236, 236, 236);
         border-radius: 5px;
-        background-color: rgb(243, 243, 243);
+        background-color: $clr6;
     &:focus{
         border: 1.3px solid rgb(44, 178, 240); 
     }

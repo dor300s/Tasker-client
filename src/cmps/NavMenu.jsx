@@ -19,11 +19,6 @@ class NavMenu extends React.Component {
         this.props.history.push(`/board/${id}`)
     }
 
-    addBoard() {
-        console.log('hii');
-
-    }
-
     onFilter = (filterBy) => {
         console.log(filterBy);
 
@@ -53,23 +48,24 @@ class NavMenu extends React.Component {
                 <div className="nav-boards-preview-wrapper flex column">
                     <div className="nav-board-preview-overlay"></div>
 
-
-
                     {filteredBoards && <h3 className="label searched-boards-header">Searched Boards</h3>}
-                    {filteredBoards && !filteredBoards.length && <h4 className="label no-match">- There is no matches</h4> }
+                    {filteredBoards && !filteredBoards.length && <h4 className="label no-match">- There is no matches</h4>}
                     {filteredBoards && <div className="boards-container flex column align-center">
-                         <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} />
+                        <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} />
                     </div>}
 
-                    <h3 className="label"><span>&#9734;</span> Starred</h3>
-                    <div className="boards-container flex column align-center">
-                        <BoardList boards={starredBoards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} />
-                    </div>
 
-                    <h3 className="label">All Boards</h3>
-                    <div className="boards-container flex column align-center">
-                        <BoardList boards={boards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} />
-                    </div>
+                    {!filteredBoards && <div>
+                        <h3 className="label"><span>&#9734;</span> Starred</h3>
+                        <div className="boards-container flex column align-center">
+                            <BoardList boards={starredBoards} onBoardClicked={this.onBoardClicked} />
+                        </div>
+
+                        <h3 className="label">❒ All Boards</h3>
+                        <div className="boards-container flex column align-center">
+                            <BoardList boards={boards} onBoardClicked={this.onBoardClicked} />
+                        </div>
+                    </div>}
                 </div>
             </div>
         )

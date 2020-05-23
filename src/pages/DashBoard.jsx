@@ -1,5 +1,4 @@
 import React from 'react';
-// import { getBoards } from '../tempSeviceData/tempBoardData.js';
 import { connect } from 'react-redux';
 import BoardList from '../cmps/BoardList.jsx';
 import { setBoards, saveBoard } from '../store/actions/boardActions.js'
@@ -26,12 +25,12 @@ class DashBoard extends React.Component {
             <div className="dashboard">
                 <h3 className="label">&#9734; Starred</h3>
                 <div className="boards-container flex">
-                    <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} saveBoard={saveBoard} />
+                    <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} saveBoard={saveBoard} />
                 </div>
 
                 <h3 className="label">❒ All Boards</h3>
                 <div className="boards-container flex">
-                    <BoardList boards={boards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} saveBoard={saveBoard} addBoard={true}/>
+                    <BoardList boards={boards} onBoardClicked={this.onBoardClicked} saveBoard={saveBoard} addBoard={true}/>
                 </div>
             </div >
         )

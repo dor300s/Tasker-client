@@ -2,7 +2,6 @@ import React from 'react'
 
 export function BoardMembers(props) {
     const { board, history } = props
-    console.log(history);
 
     return (
         <div className="nav-board-members flex align-center">
