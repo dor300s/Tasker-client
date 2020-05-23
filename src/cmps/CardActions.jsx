@@ -1,6 +1,6 @@
 import React from 'react'
 
-export  function CardActions() {
+export  function CardActions(props) {
     return (
         <div className="card-details-actions flex column align-center">
 
@@ -26,7 +26,7 @@ export  function CardActions() {
             <h5 className="action-title ">Todos</h5>
         </span>
 
-        <span className="card-action-wrapper flex align-center">
+        <span className="card-action-wrapper flex align-center" onClick={() => props.openDatePicker()}>
             <span className="clock " > </span>
             <h5 className="action-title ">Due Date</h5>
         </span>
