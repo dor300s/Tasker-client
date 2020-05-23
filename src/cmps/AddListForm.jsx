@@ -53,7 +53,7 @@ export class AddListForm extends Component {
         const { addlistForm, newlistTitle } = this.state
         return (
             <React.Fragment>
-                <div className="card-list add-list flex justify-center align-center" onClick={this.openForm} >
+                <div className="card-list-container add-list flex justify-center align-center" onClick={this.openForm} >
                     {!addlistForm ? <h3>Create new list</h3> :
                         <form onSubmit={this.handleSubmit}>
                             <input placeholder="add list ..." value={newlistTitle} onChange={this.handleChange} autoFocus onBlur={this.handleBlur} />

@@ -164,7 +164,7 @@ class Board extends Component {
                     </DragDropContext>
                     <AddListForm onAddList={onAddList} currBoard={currBoard}/>
 
-                    <div onClick={() => { onAddList(currBoard) }} className="card-list add-list" >Add List</div>
+                    {/* <div onClick={() => { onAddList(currBoard) }} className="card-list-container add-list" >Add List</div> */}
                 </div >
                 {cardId && <CardDetails history={history} currBoard={currBoard} cardId={cardId} />}
             </div>

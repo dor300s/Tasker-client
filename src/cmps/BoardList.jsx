@@ -54,7 +54,7 @@ export default class BoardList extends React.Component {
         const { addBoardForm, newBoardTitle } = this.state
         return (
             <React.Fragment>
-                {boards.map((board, idx) => <BoardPreview key={idx} board={board} onBoardClicked={onBoardClicked} saveBoard={saveBoard} />)}
+                {boards.map(board => <BoardPreview key={board._id} board={board} onBoardClicked={onBoardClicked} saveBoard={saveBoard} />)}
                 {addBoard && <div className="board add-board flex justify-center align-center" onClick={this.openForm} >
                     {!addBoardForm ? <h3>Create new board</h3> :
                         <form onSubmit={this.handleSubmit}>

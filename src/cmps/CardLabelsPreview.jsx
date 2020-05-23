@@ -7,9 +7,9 @@ export function CardLabelsPreview(props) {
 
     return (
         <div className="labels flex">
-            {labels.map(lable => {
+            {labels.map((lable, idx) => {
                 return(
-                    <div className="label" style={{background: lable.color}}>{lable.txt}</div>
+                    <div key={lable} className="label" style={{background: lable.color}}>{lable.txt}</div>
                 )
             })}
         </div>
