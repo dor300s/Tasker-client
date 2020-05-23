@@ -18,12 +18,10 @@
             min-width: 250px;
             min-height: 30px;
             background-color: transparent;
-            &:hover{
+            &:hover {
                 box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
             }
-
-
-            h2{
+            h2 {
                 color: $clr6;
                 margin-bottom: 5px;
             }
