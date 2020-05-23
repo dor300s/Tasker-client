@@ -55,7 +55,7 @@ export class AddListForm extends Component {
         return (
             <React.Fragment>
                 <div className="card-list-container add-list flex justify-center align-center" onClick={this.openForm} >
-                    {!addlistForm ? <div className="card-preview">Create new list</div> :
+                    {!addlistForm ? <div className="plus"></div> :
                         <form onSubmit={this.handleSubmit}>
                             <input placeholder="add list ..." value={newlistTitle} onChange={this.handleChange} autoFocus onBlur={this.handleBlur} />
                         </form>}

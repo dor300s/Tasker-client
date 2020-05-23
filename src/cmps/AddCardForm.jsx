@@ -55,8 +55,8 @@ export class AddCardForm extends Component {
         const { addCardForm, newCardTitle } = this.state
         return (
             <React.Fragment>
-                <div className="card-list-container add-card flex justify-center align-center" onClick={this.openForm} >
-                    {!addCardForm ? <div className="card-preview">Create new card</div> :
+                <div className="card-preview flex justify-center align-center" onClick={this.openForm} >
+                    {!addCardForm ? <div className="plus"></div> :
                         <form onSubmit={this.handleSubmit}>
                             <input placeholder="add card ..." value={newCardTitle} onChange={this.handleChange} autoFocus onBlur={this.handleBlur} />
                         </form>}

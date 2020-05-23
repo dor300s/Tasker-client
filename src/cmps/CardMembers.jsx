@@ -28,7 +28,7 @@ class CardMembers extends Component {
                 <div className="card-members flex align-center">
                     {isAddMemberActive && <CardMembersList board={board} history={history} addMember={this.addMember} />}
                     <button className="card-member-invite" onClick={this.onAddMember}>+</button>
-                    {card.members.map((member, idx) => {
+                    {card.members.userName && card.members.map((member, idx) => {
                         if (member.imgUrl) {
                             return <div key={idx} className="card-member" style={{
                                 backgroundImage: "url(" + `${member.imgUrl}` + ")",

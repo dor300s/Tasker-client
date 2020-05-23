@@ -163,7 +163,7 @@ class Board extends Component {
 
                     {/* <div onClick={() => { onAddList(currBoard) }} className="card-list-container add-list" >Add List</div> */}
                 </div >
-                {cardId && <CardDetails history={history} cardId={cardId} />}
+                {cardId && <CardDetails currBoard={currBoard} history={history} cardId={cardId} />}
             </div>
         );
     }
