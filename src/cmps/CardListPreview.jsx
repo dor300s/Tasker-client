@@ -28,7 +28,7 @@ export default function CardListPreview(props) {
                                     })}
                                     {provided.placeholder}
                                 </div>
-                                <div onClick={() => { onAddCard(props.currBoard, cardListId) }} className={`card-preview`} >+add card+</div>
+                                <div onClick={() => { onAddCard(props.currBoard, cardListId) }} className="card-preview add-card" >Add Card</div>
                             </div>
                         )}
                     </Droppable>
