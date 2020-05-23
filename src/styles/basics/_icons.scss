@@ -1,5 +1,5 @@
 
-.wrap-icons, .card-preview,.screen , .card-list-container{
+.wrap-icons, .card-preview,  .screen , .card-list-container{
     .dueDate{
         content: url(../../images/clock.png);
         width: 10px;
@@ -20,6 +20,10 @@
     }
     .attachments {
         content: url(../../images/documents.svg);
+        width: 25px;
+    }
+    .edit {
+        content: url(../../images/pen.png);
         width: 25px;
     }
 

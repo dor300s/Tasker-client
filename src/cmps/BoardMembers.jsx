@@ -22,7 +22,7 @@ export function BoardMembers(props) {
 
                 }
                 else {
-                    return <h3 className="nav-user-profile flex justify-center align-center">{member.userName.charAt(0)}</h3>
+                    return  <h3 className="nav-user-profile flex justify-center align-center">{member.fullName.charAt(0)}</h3>
                 }
             })}
         </div>

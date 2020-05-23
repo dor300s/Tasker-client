@@ -19,7 +19,7 @@ export function CardIconsPreview(props) {
                 {card.isStared && <IconPreview icon={'star'} num={card.isStared} />}
                 {card.checkList.items && Boolean(card.checkList.items.length) && <IconPreview icon={'checkList'} num={card.checkList.items.length} />} */}
             </div>
-            {card.members.length && <BoardMembers history={history} board={card} cardMemberMode={true} />}
+            { Boolean(card.members.length) && <BoardMembers history={history} board={card} cardMemberMode={true} />}
             {/* {card.members.length && <div className="members"><img src="https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png" alt=""/></div>} */}
         </div>
     )
