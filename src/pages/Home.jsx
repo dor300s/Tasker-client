@@ -5,28 +5,28 @@ import SignUp from '../cmps/SignUp.jsx'
 import { connect } from 'react-redux'
 class Home extends React.Component {
 
-    
-    componentDidMount(){
-        
+
+    componentDidMount() {
+
     }
 
-    componentDidUpdate(){
-        if(this.props.loggedUser) this.props.history.push('/board')
+    componentDidUpdate() {
+        if (this.props.loggedUser) this.props.history.push('/board')
     }
 
     render() {
 
         return (
             <div className="home-container">
-                <h1>LOGO</h1>
                 <div className="home-content-wrapper flex">
                     <div className="home-pitch flex column justify-center align-center">
+                        <h1 className="logo">LOGO</h1>
                         <h1>Taskerr lets you organize <br /> and track group tasks - Easy.</h1>
                         <h2>TaksHub’s tools
                         boards , lists , cards <br />
                         Improves and simplify the way you manage your projects.
                         </h2>
-                        <Link to="/board">Try Our Demo!</Link>
+                        <Link className="demo-btn" to="/board">Try Our Demo!</Link>
                     </div>
                     <div className="home-login-container flex justify-center align-center">
                         <Switch>
@@ -35,7 +35,7 @@ class Home extends React.Component {
                         </Switch>
                     </div>
                 </div>
-                
+
 
             </div>
         )
