@@ -1,7 +1,7 @@
 .dashboard {
     width: 80vw;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 100px;
     .label {
         margin: 0 40px;
     }
@@ -15,7 +15,7 @@
             padding: 5px;
             border: 0;
             border-radius: 4px;
-            background-color: rgba(255, 255, 255, 0.04);
+            // background-color: #636e72;
             margin: 10px;
             height: 100px;
             width: 200px;
@@ -43,7 +43,8 @@
 
             &:hover {
                 .starred,
-                .not-starred, .menu-btn {
+                .not-starred,
+                .menu-btn {
                     display: block;
                 }
             }
@@ -54,11 +55,12 @@
             .not-starred:before {
                 content: "\2606";
             }
-
-            
         }
 
         .add-board {
+            background-color: rgba(255, 255, 255, 0.04);
+            box-shadow: 0px 0px 1px black;
+
             h3 {
                 color: $clr2;
                 font-size: 1rem;
