@@ -11,7 +11,7 @@ export default function CardListPreview(props) {
         <Draggable key={cardListId} draggableId={cardListId} index={index} >
             {(provided, snapshot) => (
                 <div className={`wrap-card-list flex`} key={cardListId}
-                    ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                     <Droppable droppableId={cardListId} key={cardListId} type={"card"}>
                         {(provided, snapshot) => (
                             <div className={`card-list flex column ${snapshot.isDraggingOver ? "lightblue" : ""}`} >
