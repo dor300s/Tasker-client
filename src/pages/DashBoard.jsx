@@ -3,25 +3,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import BoardList from '../cmps/BoardList.jsx';
 import { setBoards, saveBoard } from '../store/actions/boardActions.js'
-import userService from '../services/userService.js'
+
 
 
 class DashBoard extends React.Component {
 
     componentDidMount() {
+        console.log('##############',this.props);
+        
         this.props.setBoards();
-        // userService.session();
     }
 
     onBoardClicked = (id) => {
         this.props.history.push(`/board/${id}`)
     }
-
-    addBoard() {
-        console.log('hii');
-
-    }
-
 
     render() {
         const { boards, saveBoard } = this.props;
@@ -36,7 +31,7 @@ class DashBoard extends React.Component {
 
                 <h3 className="label">❒ All Boards</h3>
                 <div className="boards-container flex">
-                    <BoardList boards={boards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} saveBoard={saveBoard} />
+                    <BoardList boards={boards} onBoardClicked={this.onBoardClicked} addBoard={this.addBoard} saveBoard={saveBoard} addBoard={true}/>
                 </div>
             </div >
         )

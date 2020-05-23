@@ -54,5 +54,10 @@
 
 
 .app-main-container{
-    padding: 15px 30px;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    position: fixed;
+    margin: 0;
+    // padding: 43px 0 0;
 }

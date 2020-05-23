@@ -1,0 +1,47 @@
+.nav-board-members{
+    
+.board-member{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-left: 10px;
+    &:hover{
+        cursor: pointer;
+        .board-member-tooltip{
+            display: block;
+        }
+    }
+}
+.member-invite{
+    height: 35px;
+    width: fit-content;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.226);
+    font-weight: 600;
+    border-radius: 5px;
+    margin-left: 10px;
+    color: $clr1;
+    &:hover{
+        background-color: rgba(136, 172, 250, 0.267);
+    }
+}
+.board-member-tooltip{
+  position: absolute;
+  bottom: 0;
+  overflow-wrap: normal;
+  transform: translateY(110%);
+  display: none;
+  width: fit-content !important;
+  background-color: rgba(0, 0, 0, 0.733);
+  color: #fff;
+  padding: 5px;
+  text-align: center;
+  border-radius: 6px;
+  z-index: 1;
+  p{
+      margin: 0;
+      padding: 0;
+  }
+}
+}

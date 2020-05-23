@@ -2,9 +2,17 @@ import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import Login from '../cmps/Login.jsx'
 import SignUp from '../cmps/SignUp.jsx'
+import { connect } from 'react-redux'
+class Home extends React.Component {
 
+    componentDidMount(){
+        console.log('Home mounted');
+        if(this.props.loggedUser) this.props.history.push('/board')
+    }
 
-export default class Home extends React.Component {
+    componentDidUpdate(){
+        if(this.props.loggedUser) this.props.history.push('/board')
+    }
 
 
     render() {
@@ -34,3 +42,10 @@ export default class Home extends React.Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        loggedUser: state.user.loggedInUser
+    }
+}
+
+export default connect(mapStateToProps, null)(Home)
