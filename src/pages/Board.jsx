@@ -60,14 +60,14 @@ class Board extends Component {
     }
 
     onAddList = (currBoardState, title = "") => {
-        const currBoard = JSON.parse(JSON.stringify(currBoardState));
+        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
         const { cardLists } = currBoard;
         cardLists.push(this.getNewList(title));
         this.props.saveBoard(currBoard);
     }
 
     onAddCard = (currBoardState, listId, txt = "") => {
-        const currBoard = JSON.parse(JSON.stringify(currBoardState));
+        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
         const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === listId);
         list.cards.push(this.getNewCard(txt))
@@ -76,8 +76,8 @@ class Board extends Component {
 
     onDeleteCard = (cardId, cardListId, currBoardState, ev) => {
         ev.stopPropagation()
-        const currBoard = JSON.parse(JSON.stringify(currBoardState))
-        const { cardLists } = currBoard
+        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
+        const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === cardListId);
         const cardIdx = list.cards.findIndex(card => card.id === cardId);
 
@@ -87,9 +87,8 @@ class Board extends Component {
 
     onDeleteList = (currBoardState, listId, ev) => {
         ev.stopPropagation()
-        const currBoard = JSON.parse(JSON.stringify(currBoardState))
-        console.log(currBoard)
-        const { cardLists } = currBoard
+        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
+        const { cardLists } = currBoard;
         console.log(cardLists)
         const listIdx = cardLists.findIndex(list => listId === list.id);
 
