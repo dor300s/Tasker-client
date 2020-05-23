@@ -72,7 +72,7 @@ export default class CardListPreview extends Component {
                                         {provided.placeholder}
                                     </div>
                                     
-                                    <div onClick={() => { onAddCard(this.props.currBoard, cardListId) }} className={`card-preview`} >+add card+</div>
+                                    <div onClick={() => { onAddCard(this.props.currBoard, cardListId) }} className="card-preview add-card" >Add Card</div>
                                 </div>
                             )}
                         </Droppable>

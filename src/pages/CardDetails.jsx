@@ -1,106 +1,65 @@
-import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Modal from '@material-ui/core/Modal';
+import React, { Component } from 'react'
+import {CardActions} from '../cmps/CardActions'
+import {CardComments} from '../cmps/CardComments'
+import CardDescription from '../cmps/CardDescription'
+import CardMembers from '../cmps/CardMembers'
+export class CardDetails extends Component {
 
-function rand() {
-    return Math.round(Math.random() * 20) - 10;
-}
+    state = {
+        currCard: null,
+        currList: null
+    }
 
-function getModalStyle() {
-    const top = 50 + rand();
-    const left = 50 + rand();
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-}
+    componentDidMount() {
+        this.getCurrCard()
+    }
 
-const useStyles = makeStyles(theme => ({
-    modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    paper: {
-        position: 'absolute',
-        width: 450,
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-    },
-}));
+    getCurrCard = () => {
 
-export default function SimpleModal({ history, currBoard, cardId }) {
-    const classes = useStyles();
-    const [modalStyle] = React.useState(getModalStyle);
-
-    let currCard;
-    currBoard.cardLists.forEach(cardList => {
-        cardList.cards.forEach(card => {
-            if (card.id === cardId) currCard = card;
-        })
-    })
-
-    const handleClose = () => {
-        history.goBack()
-    };
-
-    return (
-        <div>
-            <Modal aria-labelledby="simple-modal-title" aria-describedby="simple-modal-description"
-                open={true} onClose={handleClose}>
-                <div style={modalStyle} className={classes.paper}>
-
-                    <h2>Simple React Modal</h2>
-                    <h2>{currCard.id}</h2>
-                    <h2>{currCard.id}</h2>
-                    <h2>{currCard.id}</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan odio enim, non pharetra est ultrices et.
-                    </p>
-
-
-                </div>
-            </Modal>
-        </div>
-    );
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/* import React from 'react';
-import Modal from '@material-ui/core/Modal';
-
-export default class CardDetails extends React.Component {
-    render() {
-        const { currBoard, cardId } = this.props
-        console.log(currBoard.cardLists);
-
+        const { cardId, currBoard } = this.props
         let currCard;
+        let currList
+
         currBoard.cardLists.forEach(cardList => {
             cardList.cards.forEach(card => {
-                if (card.id === cardId) currCard = card;
+                if (card.id === cardId) {
+                    currCard = card;
+                    currList = cardList;
+
+                }
             })
         })
-        console.log(currCard);
 
+        this.setState({ currCard, currList }, () => console.log('Card', this.state.currCard, currList))
+    }
 
+    render() {
+        const { currCard, currList } = this.state
+        const { currBoard } = this.props
+        if (!currCard) return ''
         return (
-            <div>
-                <h2>CardDetails</h2>
-                <h2>{currCard.id}</h2>
+            <div className="screen flex align-center justify-center">
+                <div className="card-details-modal">
+                    <div className="card-details-header flex space-between">
+                        <div className="flex align-center">
+                            <span className="card-icon"></span>
+                            <p className="card-details-title">{currCard.text}</p>
+                            {/* <p>In list: {currList.title}</p> */}
+                        </div>
+                        <button className="card-details-close">X</button>
+                    </div>
+
+                <div className="card-details-content-wrapper flex">
+                    <div className="card-details-content flex column">
+                    <CardMembers history={this.props.history} card={currCard} board={currBoard} />
+                    < CardDescription card={currCard} board={currBoard} />
+                    < CardComments />
+                    </div>
+                    < CardActions />
+                </div>
+
+                </div>
             </div>
         )
     }
-} */
+}

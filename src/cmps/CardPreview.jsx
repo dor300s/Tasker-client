@@ -24,10 +24,12 @@ export default function CardPreview(props) {
                             ...provided.draggableProps.style
                         }}
                     >
-                        <div className="trash" onClick={(event) => onDeleteCard(card.id, cardListId, currBoard, event)}>X</div>
-                        {Boolean(card.labels.length) && <CardLabelsPreview labels={card.labels} />}
-                        {card.text}
-                        <CardIconsPreview card={card} />
+                        <div className="card-text">
+                            {/* <div className="trash" onClick={() => onDeleteCard(card.id, cardListId, currBoard)}>X</div> */}
+                            {/* {Boolean(card.labels.length) && <CardLabelsPreview labels={card.labels} />} */}
+                            {card.text}
+                        </div>
+                            <CardIconsPreview card={card} />
                     </div>
                 );
             }}
