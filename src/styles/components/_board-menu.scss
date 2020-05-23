@@ -1,0 +1,27 @@
+.board-menu-container {
+    background-color: #333;
+    position: relative;
+    width: fit-content;
+    height: 100px;
+    border-radius: 4px;
+    left: 191px;
+    bottom: 67px;
+    animation: board-menu-animation 0.2s alternate;
+
+    div {
+        padding:0 20px;
+        &:hover {
+            background-color: #424242;
+        }
+    }
+}
+
+@keyframes board-menu-animation {
+    0% {
+        left: 100px;
+    }
+
+    100% {
+        left: 191px;
+    }
+}
