@@ -12,6 +12,11 @@ export class AddListForm extends Component {
         document.addEventListener("keydown", this.escFunction, false);
     }
 
+    // componentDidUpdate() {
+    //     this.setState({ currBoard: this.props.currBoard })
+    // }
+
+
     componentWillUnmount() {
         document.removeEventListener("keydown", this.escFunction, false);
     }
@@ -45,7 +50,9 @@ export class AddListForm extends Component {
     createNewlist() {
         const title = { title: this.state.newlistTitle }
         this.props.onAddList(this.state.currBoard , this.state.newlistTitle)
-        this.setState({ addlistForm: false, newlistTitle: '' })
+        this.setState({ addlistForm: false, newlistTitle: ''})
+
+
     }
 
 
