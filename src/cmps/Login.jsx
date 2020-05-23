@@ -32,7 +32,8 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="login-container flex column space-between align-center">
+                <h2>Login</h2>
                 <form className="flex column" onSubmit={this.onSubmit}>
                     <input type="text" placeholder="username" name="username" onChange={this.inputHandler} />
                     <input type="password" placeholder="Password" name="password" onChange={this.inputHandler} />
