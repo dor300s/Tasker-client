@@ -9,7 +9,7 @@
     .card-details-modal {
         width: 70%;
         height: 80%;
-        background-color: #f4f5f7;
+        background-color: #ffffff;
         border-radius: 5px;
         padding: 15px 20px;
     }
@@ -52,14 +52,14 @@
                 height: 100px;
                 background-color: lightgreen;
             }
-            .card-details-description{
+            .card-details-description {
                 width: 95%;
                 height: fit-content;
-                h4{
+                margin-bottom: 30px;
+                h4 {
                     margin-left: 30px;
                 }
-                p{
-
+                p {
                     margin: 18px 0px 0px 50px;
                     max-width: 320px;
                     word-wrap: break-word;
@@ -67,10 +67,10 @@
                     font-size: 14px;
                     padding: 10px;
                     border-radius: 3px;
-                    background-color: #E0E0E0;
+                    background-color: #e0e0e0;
                     color: $clr1;
                 }
-                textarea{
+                textarea {
                     margin: 30px 0px 0px 50px;
                     outline: none;
                     border: none;
@@ -80,7 +80,7 @@
                     font-size: 14px;
                     padding: 10px;
                     border-radius: 3px;
-                    background-color: #E0E0E0;
+                    background-color: #e0e0e0;
                     color: $clr1;
                 }
             }
@@ -92,7 +92,7 @@
             // background-color: rgb(218, 218, 218);
             h4 {
                 margin-bottom: 30px;
-                font-weight: 600;
+                font-weight: 550;
             }
             .card-action-wrapper {
                 background-color: rgb(235, 235, 235);
@@ -109,6 +109,22 @@
         .action-title {
             margin-left: 15px;
             font-weight: 450;
+        }
+    }
+    .card-due-date-container {
+        h4 {
+            margin-left: 30px;
+        }
+        p {
+            margin: 18px 0px 0px 50px;
+            max-width: 320px;
+            word-wrap: break-word;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 3px;
+            background-color: #fabebe;
+            color: $clr1;
         }
     }
 }

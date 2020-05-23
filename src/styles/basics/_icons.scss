@@ -37,11 +37,11 @@
         content: url(../../images/text.svg);
         width: 20px;
     }
-    .attachments{
-        content: url(../../images/attach.png);
-        width: 10px;
+    // .attachments{
+    //     content: url(../../images/attach.png);
+    //     width: 10px;
 
-    }
+    // }
     .comments{
         content: url(../../images/comment.png);
         width: 10px;
@@ -64,10 +64,10 @@
         content: url(../../images/check-box.png);
         width: 10px;
     }
-    .members  img{
-        width: 30px;
-        float: right;
-    }
+    // .members  img{
+    //     width: 30px;
+    //     float: right;
+    // }
     .trash {
         content: url(../../images/trash.png);
         cursor: pointer;
@@ -76,6 +76,10 @@
     .humburger {
         content: url(../../images/humburger.png);
         width: 10px;
+    }
+    .members {
+        content: url(../../images/user.svg);
+        width: 25px;
     }
 }
 
