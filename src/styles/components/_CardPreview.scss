@@ -1,21 +1,22 @@
-.card-preview{
+.card-preview {
+    cursor: pointer !important;
     padding: 16px;
-    margin: 0 0 8px 0;
-    min-height: 50px;
+    border-radius: 3px;
+    margin-bottom: 8px;
     color: $clr2;
-    background-color: $clr5;
-
-    
-
-    &.drag.isDragging {
-        background-color: $clr4;
-        // transform: rotate(6deg);
-        }
+    background-color: $clr6;
+    &.drag.isDragging,
     &:hover {
         background-color: $clr4;
-    }
-    &.drag:active {
         // transform: rotate(6deg);
-    }  
+    }
+    .card-text {
+        margin-bottom: 10px;
+    }
 
+    &.add-card{
+        text-align: center;
+        padding: 5px;
+        height: 34px;
+    }
 }
