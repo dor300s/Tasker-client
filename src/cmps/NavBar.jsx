@@ -17,6 +17,7 @@ class NavBar extends React.Component {
         isMenuActive: false,
         isBoardActive: false,
         isUserMenuActive: false,
+        isInviteModalActive: null
     }
 
     componentDidMount() {
@@ -61,7 +62,7 @@ class NavBar extends React.Component {
                 <div className="flex align-center">
                     <button onClick={this.onMenuClick}>Hamurger</button>
                     {activeBoard && <BoardMembers onInvite={this.onInviteMember} history={history} board={activeBoard} />}
-                    {activeBoard && <InviteMemberModal />}
+                    {isInviteModalActive && <InviteMemberModal />}
                     {activeBoard && <input type="text" placeholder="Find card" />}
                 </div>
                 {isMenuActive && <NavMenu history={history} boards={boards} closeMenu={this.onCloseMenu} />}

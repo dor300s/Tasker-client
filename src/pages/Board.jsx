@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CardDetails from './CardDetails.jsx';
+import {CardDetails} from './CardDetails.jsx';
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import CardListPreview from '../cmps/CardListPreview.jsx'
 import { connect } from 'react-redux';
