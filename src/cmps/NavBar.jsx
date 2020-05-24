@@ -68,7 +68,7 @@ class NavBar extends React.Component {
                 <div className="flex align-center">
                     <button className="board-menu">Board Menu</button>
                     <span className="nav-notification-btn" onClick={this.onUserNotificationClick}></span>
-                    {/* {loggedUser.imgUrl ?
+                    {loggedUser.imgUrl ?
                         <div className="nav-user-profile" style={{
                             backgroundImage: "url(" + `${loggedUser.imgUrl}` + ")",
                             backgroundPosition: 'center',
@@ -78,7 +78,7 @@ class NavBar extends React.Component {
                         </div>
                         :
                         <h3 className="nav-user-profile flex justify-center align-center">{loggedUser.userName.charAt(0)}</h3>}
-                    {isNotificationMenuActive && <NavUserNotificationMenu history={history} user={loggedUser} />} */}
+                    {isNotificationMenuActive && <NavUserNotificationMenu history={history} user={loggedUser} />}
                 </div>
             </nav>
         )
