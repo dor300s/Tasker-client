@@ -18,6 +18,8 @@ class DashBoard extends React.Component {
     render() {
         const { boards, saveBoard } = this.props;
         let filteredBoards = boards.filter(board => board.isStarred);
+        
+        
 
         return (
             <div className="dashboard">

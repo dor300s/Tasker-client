@@ -21,18 +21,14 @@ class NavBar extends React.Component {
     }
 
     componentDidMount() {
-        if (!this.props.loggedUser) this.props.history.push('/');
         let pathName = this.props.location.pathname
         let boardId = pathName.split('/')[2]
-
         this.props.getUser()
-        if (!this.props.boards.length) this.props.setBoards()
-    }
+            .then(() => {
+                if (!this.props.loggedUser) this.props.history.push('/')
+                else this.props.setBoards()
+            })
 
-    componentDidUpdate() {
-        // const { boardId } = this.props.match.params
-
-        // this.getLoggedUserDetails()
     }
 
     onMenuClick = () => {
@@ -60,7 +56,7 @@ class NavBar extends React.Component {
         return (
             <nav className="nav-bar flex align-center space-between">
                 <div className="flex align-center">
-                    <button onClick={this.onMenuClick}>Hamurger</button>
+                    <div className="nav-menu-btn" onClick={this.onMenuClick}></div>
                     {activeBoard && <BoardMembers onInvite={this.onInviteMember} history={history} board={activeBoard} />}
                     {isInviteModalActive && <InviteMemberModal />}
                     {activeBoard && <input className="card-search" type="text" placeholder="Find card" />}
