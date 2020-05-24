@@ -1,7 +1,9 @@
-
-.wrap-icons, .card-preview,  .screen , .card-list-container{
-    
-    .dueDate{
+.wrap-icons,
+.card-preview,
+.add-list,
+.screen,
+.card-list-container {
+    .dueDate {
         content: url(../../images/clock.png);
         width: 10px;
     }
@@ -44,26 +46,24 @@
         content: url(../../images/text.svg);
         width: 25px;
     }
-   
-    .comments{
+
+    .comments {
         content: url(../../images/comment.png);
         width: 10px;
-
     }
-    .description{
+    .description {
         content: url(../../images/description.png);
         width: 10px;
-
     }
-    .star{
+    .star {
         content: url(../../images/star.png);
         width: 10px;
     }
-    .plus{
+    .plus {
         content: url(../../images/plus.png);
         width: 10px;
     }
-    .checkList{
+    .checkList {
         content: url(../../images/check-box.png);
         width: 10px;
     }
@@ -82,26 +82,23 @@
         color: black;
         width: 10px;
         cursor: pointer;
-    
     }
     .edit-regular {
         content: url(../../images/edit-regular.svg);
         width: 25px;
         fill: green;
         cursor: pointer;
-
     }
 
-    & .trash:hover, .edit:hover{
+    & .trash:hover,
+    .edit:hover {
         opacity: 0.5;
         background-color: $clr3;
         border-radius: 999px;
-
     }
 
-    & .trash, .edit{
+    & .trash,
+    .edit {
         padding: 5px;
     }
-
 }
-
