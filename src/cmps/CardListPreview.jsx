@@ -54,7 +54,7 @@ export default class CardListPreview extends Component {
 
     render() {
         const { cardListId, cardList, index, onDeleteList, onDeleteCard, onAddCard, currBoard, history } = this.props
-        console.log("cardList", cardList)
+        
 
 
         return (

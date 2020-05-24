@@ -7,8 +7,11 @@ export function CardMembersList(props) {
             <div className="nav-board-members flex align-center">
 
                 {board.members.map((member, idx) => {
+                    let dynamicClass = ''
+                    if(idx === 0) dynamicClass = 'first-member'
                     if (member.imgUrl) {
-                        return <div key={idx} className="board-member" style={{
+
+                        return <div key={idx} className={dynamicClass + " " +"board-member"} style={{
                             backgroundImage: "url(" + `${member.imgUrl}` + ")",
                             backgroundPosition: 'center',
                             backgroundSize: 'cover',

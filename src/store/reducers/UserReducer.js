@@ -15,7 +15,7 @@ export function userReducer(state = initialState, action = {}) {
         users: action.users
       };
     case 'SET_USER':
-      console.log('and the user isssssssssssssss:', action.user);
+      
 
       return {
         ...state,

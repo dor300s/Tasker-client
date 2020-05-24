@@ -12,7 +12,7 @@ export function boardReducer(state = initialState, action) {
                 boards: action.boards
             }
         case 'SET_BOARD':
-            console.log(action.board);
+            
             return {
                 ...state,
                 currBoard: action.board

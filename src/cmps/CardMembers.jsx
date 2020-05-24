@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { saveBoard } from '../store/actions/boardActions'
+import { saveBoard, setBoard } from '../store/actions/boardActions'
 import { CardMembersList } from './CardMembersList'
 
 class CardMembers extends Component {
 
-    state ={
+    state = {
         isAddMemberActive: false
     }
 
@@ -13,23 +13,32 @@ class CardMembers extends Component {
         this.setState(prevState => ({ isAddMemberActive: !prevState.isAddMemberActive }))
     }
 
-    addMember = (member) =>{
-        const { card , board } = this.props
+    componentDidUpdate() {
+        console.log('MEMBERS UPDATEDDDDDDDDDD');
+
+    }
+
+    addMember = (member) => {
+        const { card, board } = this.props
+        
         card.members.push(member)
+        
         this.props.saveBoard(board)
+        this.props.setBoard(board._id)
+        
     }
 
     render() {
-        const { card, history , board } = this.props
+        const { card, history, board } = this.props
         const { isAddMemberActive } = this.state
-        
+
         return (
-            <div style={{marginBottom:"30px" , marginLeft:"50px"}} className="flex column">
+            <div style={{ marginBottom: "30px", marginLeft: "50px" }} className="flex column">
                 <h4 className="card-members-header">Card members</h4>
                 <div className="card-members flex align-center">
                     {isAddMemberActive && <CardMembersList board={board} history={history} addMember={this.addMember} />}
                     <button className="card-member-invite" onClick={this.onAddMember}>+</button>
-                    { card.members.map((member, idx) => {
+                    {card.members.map((member, idx) => {
                         if (member.imgUrl) {
                             return <div key={idx} className="card-member" style={{
                                 backgroundImage: "url(" + `${member.imgUrl}` + ")",
@@ -53,8 +62,10 @@ class CardMembers extends Component {
         )
     }
 }
+
 const mapDispatchToProps = {
-    saveBoard
+    saveBoard,
+    setBoard
 }
 
 export default connect(null, mapDispatchToProps)(CardMembers)

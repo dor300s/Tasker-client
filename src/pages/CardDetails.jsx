@@ -1,29 +1,33 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom';
 import { CardActions } from '../cmps/CardActions'
 import { CardComments } from '../cmps/CardComments'
 import CardDescription from '../cmps/CardDescription'
 import CardMembers from '../cmps/CardMembers'
 import CardCalendar from '../cmps/CardCalendar'
-import {DueDate} from '../cmps/DueDate'
+import { DueDate } from '../cmps/DueDate'
+import { connect } from 'react-redux'
+import {saveBoard} from '../store/actions/boardActions'
 
-export class CardDetails extends Component {
+class CardDetails extends Component {
 
-    
+
     state = {
         currCard: null,
         currList: null,
         isCalendarActive: false,
         dueDate: null
     }
-  
+
     eventsHandler = (ev) => {
-        console.log(ev);
         ev.stopPropagation();
     }
 
     componentDidMount() {
         this.getCurrCard()
+    }
+
+    componentDidUpdate(){
+        console.log('CARD DETAILS');
     }
 
     getCurrCard = () => {
@@ -46,7 +50,11 @@ export class CardDetails extends Component {
     }
 
     onDatePicked = (date) => {
-        this.setState({dueDate: date , isCalendarActive:false})
+        const { currCard } = this.state
+        const { currBoard } = this.props
+        currCard.dueDate = date
+        this.props.saveBoard(currBoard)
+        this.setState({ dueDate: date, isCalendarActive: false })
     }
 
     onCloseCardDetails = () => {
@@ -55,7 +63,7 @@ export class CardDetails extends Component {
     }
 
     render() {
-        const { currCard, currList , isCalendarActive , dueDate} = this.state
+        const { currCard, currList, isCalendarActive, dueDate } = this.state
         const { currBoard } = this.props
         if (!currCard) return ''
         return (
@@ -65,7 +73,7 @@ export class CardDetails extends Component {
                         <div className="flex align-center">
                             <span className="card-icon"></span>
                             <p className="card-details-title">{currCard.text}</p>
-                            {/* <p>In list: {currList.title}</p> */}
+                            <p className="card-list-parent">In list: {currList.title}</p>
                         </div>
                         <button className="card-details-close" onClick={this.onCloseCardDetails}>X</button>
                     </div>
@@ -74,8 +82,8 @@ export class CardDetails extends Component {
                         <div className="card-details-content flex column">
                             < CardMembers history={this.props.history} card={currCard} board={currBoard} />
                             < CardDescription card={currCard} board={currBoard} />
-                            < DueDate date={'MAY-24'} /> 
-                            < CardComments />
+                            {currCard.dueDate && < DueDate card={currCard} />}
+                            {/* < CardComments /> */}
                         </div>
                         < CardActions openDatePicker={this.openDatePicker} />
                         {isCalendarActive && < CardCalendar card={currCard} onDatePicked={this.onDatePicked} />}
@@ -87,3 +95,9 @@ export class CardDetails extends Component {
         )
     }
 }
+
+const mapDispatchToProps = {
+    saveBoard
+}
+
+export default connect(null, mapDispatchToProps)(CardDetails)

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {CardDetails} from './CardDetails.jsx';
+import CardDetails from './CardDetails.jsx';
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import CardListPreview from '../cmps/CardListPreview.jsx'
 import { AddListForm } from '../cmps/AddListForm.jsx'
@@ -54,6 +54,7 @@ class Board extends Component {
         this.props.setBoard(boardId);
         console.log(boardId)
     }
+
 
     onAddList = (title = "") => {
         const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
@@ -132,13 +133,13 @@ class Board extends Component {
         } : { background: board.background.color }
     }
 
- 
+
 
     render() {
 
         const { setcurrBoard, onDragEnd, onAddList, onAddCard, onDeleteList, onDeleteCard } = this;
         const { currBoard, history } = this.props;
-        console.log('BOARD PROPS:', currBoard);
+
         const { cardId } = this.props.match.params;
         if (!currBoard) return <div>loading</div>;
         const { cardLists } = currBoard;
