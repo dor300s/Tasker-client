@@ -8,6 +8,11 @@
     // background-color: transparent;
     padding: 7px 40px 7px;
 
+    .nav-menu-btn{
+        content: url(../../images/icons8-menu.svg);
+        cursor: pointer;
+    }
+
     .board-menu {
         width: fit-content;
         height: 30px;
