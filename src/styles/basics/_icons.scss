@@ -87,6 +87,14 @@
         color: black;
         width: 10px;
         cursor: pointer;
+    
+    }
+    .edit-regular {
+        content: url(../../images/edit-regular.svg);
+        width: 25px;
+        fill: green;
+        cursor: pointer;
+
     }
 
     & .trash:hover, .edit:hover{
