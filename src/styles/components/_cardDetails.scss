@@ -25,6 +25,15 @@
         font-weight: 500;
         line-height: normal;
     }
+    .card-list-parent{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        letter-spacing: 1px;
+        font-weight: 500;
+        margin: 0px 0px 0px 15px;
+        padding: 2px 5px ;
+        color: rgb(172, 172, 172);
+    }
     .card-details-close {
         width: 25px;
         height: 25px;
@@ -125,6 +134,24 @@
             border-radius: 3px;
             background-color: #fabebe;
             color: $clr1;
+        }
+    }
+    .card-calendar-container{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        .date-confirm{
+            margin-top: 10px;
+            width: fit-content;
+            padding: 10px;
+            font-weight: 550;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(117, 255, 117, 0.836);
+            &:hover{
+                background-color: rgba(92, 250, 92, 0.836); 
+            }
         }
     }
 }

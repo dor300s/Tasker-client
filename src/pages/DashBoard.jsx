@@ -8,8 +8,8 @@ import { setBoards, saveBoard } from '../store/actions/boardActions.js'
 class DashBoard extends React.Component {
 
     componentDidMount() {
-        console.log('##############',this.props);
-        
+        console.log('##############', this.props);
+
         this.props.setBoards();
     }
 
@@ -23,14 +23,14 @@ class DashBoard extends React.Component {
 
         return (
             <div className="dashboard">
-                <h3 className="label">&#9734; Starred</h3>
+                {Boolean(filteredBoards.length) && <h3 className="label">&#9734; Starred</h3>}
                 <div className="boards-container flex">
                     <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} saveBoard={saveBoard} />
                 </div>
 
                 <h3 className="label">❒ All Boards</h3>
                 <div className="boards-container flex">
-                    <BoardList boards={boards} onBoardClicked={this.onBoardClicked} saveBoard={saveBoard} addBoardOption={true}/>
+                    <BoardList boards={boards} onBoardClicked={this.onBoardClicked} saveBoard={saveBoard} addBoardOption={true} />
                 </div>
             </div >
         )

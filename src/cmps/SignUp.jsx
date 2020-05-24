@@ -8,7 +8,6 @@ class SignUp extends React.Component {
 
     state = {
         fullName: null,
-        email: null,
         password: null,
         username: null
     }
@@ -21,9 +20,8 @@ class SignUp extends React.Component {
 
     onSubmit = (ev) => {
         ev.preventDefault()
-        const { fullName, email, password, username } = this.state
+        const { fullName, password, username } = this.state
         const credentials = {
-            email,
             password,
             fullName,
             username,
@@ -41,12 +39,11 @@ class SignUp extends React.Component {
                 <h2>Signup</h2>
                 <form className="flex column space-between" onSubmit={this.onSubmit}>
                     <input type="text" placeholder="Full name" name="fullName" onChange={this.inputHandler} required />
-                    <input type="text" placeholder="Email" name="email" onChange={this.inputHandler} required />
                     <input type="text" placeholder="username" name="username" onChange={this.inputHandler} required />
                     <input type="password" placeholder="Password" name="password" onChange={this.inputHandler} required />
                     <button>Signup</button>
                 </form>
-                <p>Already have an account?<Link to="/login">signup</Link></p>
+                <p>Already have an account?<Link to="/login">login</Link></p>
             </div>
         )
     }

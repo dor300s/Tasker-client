@@ -3,7 +3,7 @@ import React from 'react'
 export function CardLabelsPreview(props) {
 
     const {labels} = props;  
-    console.log('labels', labels)
+   
 
     return (
         <div className="labels flex">
