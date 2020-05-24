@@ -34,9 +34,10 @@
             font-weight: 700;
             border-radius: 2px;
 
-            a {
+            div {
                 height: 100%;
                 width: 100%;
+                cursor: pointer;
                 padding-top: 13px;
                 &:active {
                     color: $clr2;

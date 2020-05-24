@@ -61,10 +61,11 @@ class BoardMenu extends React.Component {
         uploadImg(ev)
             .then(res => {
                 console.log(res);
-                
+
                 board.background.content = res
                 this.props.saveBoard(board)
                 this.setState({ isImgLoading: false })
+                this.props.closeMenu();
             })
             .catch(() => this.setState({ isImgLoading: false }))
     }
@@ -74,18 +75,20 @@ class BoardMenu extends React.Component {
 
         return (
             <div ref={node => this.node = node} className="board-menu-container flex column space-around">
-                {!editTitleMode ? <div onClick={this.activeEditMode}>Edit title</div> :
-                    <form onSubmit={this.handleSubmit}>
-                        <input value={title} onChange={this.handleChange} onBlur={this.handleSubmit} onClick={(e) => e.stopPropagation()} autoFocus />
-                    </form>}
+                {isImgLoading ? <div className="loading">Loading...</div> :
+                    <>
+                        {!editTitleMode ? <div onClick={this.activeEditMode}>Edit title</div> :
+                            <form onSubmit={this.handleSubmit}>
+                                <input value={title} onChange={this.handleChange} onBlur={this.handleSubmit} onClick={(e) => e.stopPropagation()} autoFocus />
+                            </form>}
 
-                <label>
-                    <div onClick={(e) => e.stopPropagation()}>Update cover
+                        <label>
+                            <div onClick={(e) => e.stopPropagation()}>Update cover
                         <input onChange={this.onUploadImg} type="file" hidden />
-                    </div>
-                    {isImgLoading && <div>Loading...</div>}
-                </label>
-                <div onClick={this.onRemoveBoard}>Delete board</div>
+                            </div>
+                        </label>
+                        <div onClick={this.onRemoveBoard}>Delete board</div>
+                    </>}
             </div>
         )
     }

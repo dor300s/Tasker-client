@@ -3,6 +3,8 @@ import { Route, Switch, Link } from 'react-router-dom';
 import Login from '../cmps/Login.jsx'
 import SignUp from '../cmps/SignUp.jsx'
 import { connect } from 'react-redux'
+import { login } from '../store/actions/userActions.js'
+
 class Home extends React.Component {
 
 
@@ -12,6 +14,10 @@ class Home extends React.Component {
 
     componentDidUpdate() {
         if (this.props.loggedUser) this.props.history.push('/board')
+    }
+
+    onDemoClick = () => {
+        this.props.login({ username: 'guest', password: 'guest' })
     }
 
     render() {
@@ -27,7 +33,7 @@ class Home extends React.Component {
                         Improves and simplify the way you manage your projects.
                         </h2>
                         <div className="demo-btn flex align-center justify-center">
-                            <Link to="/board">Try Our Demo!</Link>
+                            <div onClick={this.onDemoClick}>Try Our Demo!</div>
                         </div>
                     </div>
                     <div className="home-login-container flex justify-center align-center">
@@ -43,10 +49,14 @@ class Home extends React.Component {
         )
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         loggedUser: state.user.loggedInUser
     }
 }
 
-export default connect(mapStateToProps, null)(Home)
+const mapDispatchToProps = {
+    login
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
