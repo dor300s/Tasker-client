@@ -77,6 +77,8 @@
         cursor: pointer;
         width: 20px;
     }
+
+    
     .humburger {
         content: url(../../images/humburger.png);
         width: 10px;
@@ -85,5 +87,16 @@
         content: url(../../images/user.svg);
         width: 25px;
     }
+
+    & .trash:hover, .edit:hover{
+        opacity: 0.5;
+        background-color: $clr3;
+        border-radius: 999px;
+    }
+
+    & .trash, .edit{
+        padding: 5px;
+    }
+
 }
 

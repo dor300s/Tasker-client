@@ -62,13 +62,14 @@ class Board extends Component {
         this.props.saveBoard(currBoard);
     }
 
-    onAddCard = (listId, txt = "") => {
-        console.log("listId", listId)
+    onAddCard = (ListId, txt = "") => {
+        console.log("listId", ListId)
         console.log("txt", txt)
         const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
         const { cardLists } = currBoard;
-        const list = cardLists.find(cardList => cardList.id === listId);
+        const list = cardLists.find(cardList => cardList.id === ListId);
         list.cards.push(this.getNewCard(txt))
+        console.log(currBoard)
         this.props.saveBoard(currBoard);
     }
 
@@ -138,7 +139,6 @@ class Board extends Component {
 
         const { setcurrBoard, onDragEnd, onAddList, onAddCard, onDeleteList, onDeleteCard } = this;
         const { currBoard, history } = this.props;
-        console.log('BOARD PROPS:', currBoard);
         const { cardId } = this.props.match.params;
         if (!currBoard) return <div>loading</div>;
         const { cardLists } = currBoard;

@@ -5,16 +5,29 @@
     margin-bottom: 8px;
     color: $clr2;
     background-color: $clr6;
-    &.drag.isDragging,
+    & .drag .isDragging,
     &:hover {
         background-color: $clr4;
         // transform: rotate(6deg);
     }
+
     .card-text {
         margin-bottom: 10px;
     }
 
-    &.add-card{
+    & .card-hidden{
+        visibility: hidden;
+    }
+    
+    &:hover .card-hidden{
+        visibility: visible;
+    }
+
+    & .card-opacity{
+        opacity: 0.2;
+    }
+
+    & .add-card{
         text-align: center;
         padding: 5px;
         height: 34px;

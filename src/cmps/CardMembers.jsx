@@ -44,7 +44,7 @@ class CardMembers extends Component {
 
                         }
                         else {
-                            return <h3 className="card-user-profile flex justify-center align-center">{member.fullName.charAt(0)}</h3>
+                            // return <h3 className="card-user-profile flex justify-center align-center">{member.fullName.charAt(0)}</h3>
                         }
                     })}
                 </div>

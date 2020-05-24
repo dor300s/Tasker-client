@@ -16,7 +16,7 @@ export class CardHeaderForm extends Component {
     }
 
     onSubmit = () => {
-        this.props.offEditCardHeader(this.state.cardTitle)
+        this.props.offEditCardHeader(this.props.cardId, this.props.ListId,this.state.cardTitle)
         this.setState({ cardTitle: "" })
     }
 
@@ -37,17 +37,7 @@ export class CardHeaderForm extends Component {
     }
 
     handleBlur = () => {
-        if (this.state.cardTitle) this.onSubmit()
-        else this.setState({ addCardForm: false });
-    }
-
-    createNewCard() {
-        const { title } = { title: this.state.cardTitle }
-        console.log('creatNewCard', title)
-        this.props.onAddCard(this.props.cardListId, title)
-        this.setState({ addCardForm: false, cardTitle: '' })
-
-
+       this.onSubmit()
     }
 
 
@@ -57,7 +47,7 @@ export class CardHeaderForm extends Component {
             <React.Fragment>
                 <form onSubmit={this.handleSubmit}>
                     <input placeholder="add card ..." value={cardTitle} onChange={this.handleChange} autoFocus onBlur={this.handleBlur} />
-                </form>}
+                </form>
             </React.Fragment>
         )
     }
