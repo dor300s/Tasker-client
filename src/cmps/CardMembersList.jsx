@@ -23,7 +23,7 @@ export function CardMembersList(props) {
                         </div>
                     }
                     else {
-                        // return <h3 onClick={() => props.addMember(member)} className="card-user-profile flex justify-center align-center">{member.userName.charAt(0)}</h3>
+                        return <h3 onClick={() => props.addMember(member)} className="card-user-profile flex justify-center align-center">{member.fullName.charAt(0)}</h3>
                     }
                 })}
             </div>
