@@ -44,12 +44,7 @@
         content: url(../../images/text.svg);
         width: 25px;
     }
-
-    .attachments{
-        content: url(../../images/attach.png);
-        width: 10px;
-    }
-    
+   
     .comments{
         content: url(../../images/comment.png);
         width: 10px;
@@ -87,6 +82,14 @@
         color: black;
         width: 10px;
         cursor: pointer;
+    
+    }
+    .edit-regular {
+        content: url(../../images/edit-regular.svg);
+        width: 25px;
+        fill: green;
+        cursor: pointer;
+
     }
 
     & .trash:hover, .edit:hover{

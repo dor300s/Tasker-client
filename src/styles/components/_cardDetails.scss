@@ -179,9 +179,9 @@
     }
     .attachment-delete-btn{
         width: fit-content;
-        padding: 5px;
         border: none;
-        background-color: $clr4;
-        border-radius: 5px;
+        color: rgb(230, 16, 16);
+       background-color: transparent;
+       font-weight: 550;
     }
 }
