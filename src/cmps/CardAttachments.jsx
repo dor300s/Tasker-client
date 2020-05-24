@@ -6,11 +6,12 @@ import { saveBoard } from '../store/actions/boardActions'
 class CardAttachments extends Component {
 
     state = {
-        uploadedFiles: this.props.card.attachments
+        uploadedFiles: this.props.card.attachments,
+        isLoading: false
     }
 
     onUpload = (ev) => {
-
+        this.setState({ isLoading: true })
         let uploadedFiles = []
         uploadImg(ev)
             .then(cdyImgs => {
@@ -30,18 +31,20 @@ class CardAttachments extends Component {
         const { board, card } = this.props
         card.attachments = this.state.uploadedFiles
         this.props.saveBoard(board)
+            .then(this.setState({ isLoading: false }))
     }
 
     onDelete = (idx) => {
         const { card } = this.props
         const { uploadedFiles } = this.state
         uploadedFiles.splice(idx, 1)
-        this.setState({uploadedFiles: card.attachments})
+        this.setState({ uploadedFiles: card.attachments })
         this.updateBoardInDB()
     }
 
     render() {
         const { card } = this.props // take from props
+        const { isLoading } = this.state
         const attachments = card.attachments
         return (
             <div className="card-details-attachments">
@@ -55,13 +58,16 @@ class CardAttachments extends Component {
 
                         return <div style={{ marginBottom: "15px" }} className="flex align-center space-between">
                             {file.url && <img src={file.url} width="80" height="80" />}
-                            <h4>"{file.fileName}".{file.format}</h4>
+                            <div className="attachment-file-name-wrapper flex align-center">
+                                <h4 className="attachment-file-name">"{file.fileName}".{file.format}</h4>
+                            </div>
                             <button className="attachment-delete-btn" onClick={() => this.onDelete(idx)}>Delete</button>
-                            
+
                         </div>
                     })}
                 </div>
-                <label style={{marginLeft:"55px"}}> Add file
+                {isLoading && <span style={{ marginLeft: "55px" }} className="loading" />}
+                <label style={{ marginLeft: "55px" }}> Add file
                     <input type="file" accept="image/png, image/jpeg" onChange={this.onUpload} hidden multiple />
                 </label>
             </div>
