@@ -65,8 +65,8 @@ export default class CardListPreview extends Component {
                         <Droppable droppableId={cardListId} key={cardListId} type={"card"}>
                             {(provided, snapshot) => (
                                 <div className={`card-list-container flex column ${snapshot.isDraggingOver ? "lightblue" : ""}`} >
-                                    <div className="flex space-between "> {/* TO REMOVE */}
-                                        {cardList.title && <h2 className="list-title">{cardList.title}</h2>}
+                                    <div className="flex space-between ">
+                                        <h2 className="list-title">{cardList.title}</h2>
                                         <h2 className="trash list-hidden list-opacity" onClick={(event) => onDeleteList(cardListId, event)}></h2>
                                     </div>
                                     <div className={"card-list"} {...provided.droppableprops} ref={provided.innerRef} >

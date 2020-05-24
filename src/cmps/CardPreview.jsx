@@ -1,28 +1,22 @@
 import React, { Component } from "react";
 import { Draggable } from "react-beautiful-dnd";
-import { connect } from 'react-redux';
 import { CardIconsPreview } from './CardIconsPreview.jsx'
 import { CardLabelsPreview } from './CardLabelsPreview.jsx'
 import { CardHeaderForm } from './CardHeaderForm.jsx'
-import { saveBoard } from '../store/actions/boardActions.js'
+import { CardMenu } from './CardMenu.jsx'
 
 
-class CardPreview extends Component {
-
+export default class CardPreview extends Component {
+    
     state = {
-        currCardId: this.props.card.id,
-        isFocus: false
+        isFocus: false,
     }
-
-    showCard = (cardId, history, currBoard) => {
-        history.push(`/board/${currBoard._id}/${cardId}`)
-    };
 
     onEditCardHeader = (ev) => {
         ev.stopPropagation();
         this.setState({ isFocus: true })
     }
-
+    
     offEditCardHeader = (cardId, listId, text) => {
         console.log("listId", listId)
         console.log("txt", text)
@@ -36,10 +30,15 @@ class CardPreview extends Component {
         this.props.saveBoard()
     }
 
+
+    showCard = (cardId, history, currBoard) => {
+        history.push(`/board/${currBoard._id}/${cardId}`)
+    };
+  
     render() {
 
-        const { index, card, onDeleteCard, currBoard, cardListId, history } = this.props
-        const { showCard, onEditCardHeader, offEditCardHeader } = this;
+        const { index, card, currBoard, cardListId, history } = this.props
+        const { showCard, offEditCardHeader, onEditCardHeader } = this;
         return (
             <Draggable key={card.id} draggableId={card.id} index={index} >
                 {(provided, snapshot) => {
@@ -55,10 +54,9 @@ class CardPreview extends Component {
                             >
                                 <div className="top-icons flex space-between">
                                     {Boolean(card.labels.length) && <CardLabelsPreview histoy={history} labels={card.labels} />}
-                                    {/* <div className="edit" onClick={(event) => onEditCardHeader(card.id, cardListId, event)}></div> */}
-                                    <div className="card-hidden flex">
-                                        <div className="trash card-opacity" onClick={(event) => onDeleteCard(card.id, cardListId, event)}></div>
-                                        <div className="edit card-opacity" onClick={(event) => onEditCardHeader(event)}></div>
+
+                                    <div className="menu-btn" onClick={this.openMenu}>
+                                     <CardMenu cardId={card.id} cardListId={cardListId} />
                                     </div>
                                 </div>
                                 {(this.state.isFocus) ? <CardHeaderForm cardListId={cardListId} cardId={card.id} offEditCardHeader={offEditCardHeader} /> : card.text}
@@ -71,14 +69,3 @@ class CardPreview extends Component {
         )
     }
 }
-
-const mapStateToProps = (state) => {
-    return {
-        currBoard: state.boardApp.currBoard
-    }
-}
-const mapDispatchToProps = {
-    saveBoard
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardPreview)
