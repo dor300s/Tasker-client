@@ -18,7 +18,7 @@ export  function CardActions(props) {
 
         <span className="card-action-wrapper flex align-center">
             <span className="attachments " > </span>
-            <h5 className="action-title ">Attachments</h5>
+            <h5 className="action-title ">Images</h5>
         </span>
 
         <span className="card-action-wrapper flex align-center">
