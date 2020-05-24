@@ -38,7 +38,6 @@ class CardPreview extends Component {
 
     openMenu = (ev) => {
         ev.stopPropagation();
-
         this.setState({isMenuOpen:true})
     }
 
