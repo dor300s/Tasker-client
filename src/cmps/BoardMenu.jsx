@@ -75,7 +75,7 @@ class BoardMenu extends React.Component {
 
         return (
             <div ref={node => this.node = node} className="board-menu-container flex column space-around">
-                {isImgLoading ? <div className="loading">Loading...</div> :
+                {isImgLoading ? <div className="loading">aaaaaaaa</div> :
                     <>
                         {!editTitleMode ? <div onClick={this.activeEditMode}>Edit title</div> :
                             <form onSubmit={this.handleSubmit}>

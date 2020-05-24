@@ -53,7 +53,7 @@ class CardAttachments extends Component {
                     {attachments && attachments.map((file, idx) => {
                         console.log(file);
 
-                        return <div style={{ marginBottom: "15px" }} className="flex align-center space-between">
+                        return <div key={idx} style={{ marginBottom: "15px" }} className="flex align-center space-between">
                             {file.url && <img src={file.url} width="80" height="80" />}
                             <h4>"{file.fileName}".{file.format}</h4>
                             <button className="attachment-delete-btn" onClick={() => this.onDelete(idx)}>Delete</button>

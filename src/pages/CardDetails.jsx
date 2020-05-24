@@ -6,7 +6,7 @@ import CardMembers from '../cmps/CardMembers'
 import CardCalendar from '../cmps/CardCalendar'
 import { DueDate } from '../cmps/DueDate'
 import { connect } from 'react-redux'
-import {saveBoard} from '../store/actions/boardActions'
+import { saveBoard } from '../store/actions/boardActions'
 import CardAttachments from '../cmps/CardAttachments'
 
 class CardDetails extends Component {
@@ -27,8 +27,9 @@ class CardDetails extends Component {
         this.getCurrCard()
     }
 
-    componentDidUpdate(){
-        console.log('CARD DETAILS');
+    componentDidUpdate(prevProps) {
+        if (this.props !== prevProps)
+            this.getCurrCard()
     }
 
     getCurrCard = () => {
@@ -64,6 +65,7 @@ class CardDetails extends Component {
     }
 
     render() {
+
         const { currCard, currList, isCalendarActive, dueDate } = this.state
         const { currBoard } = this.props
         if (!currCard) return ''
@@ -99,7 +101,7 @@ class CardDetails extends Component {
 }
 
 const mapDispatchToProps = {
-    saveBoard
+    saveBoard,
 }
 
 export default connect(null, mapDispatchToProps)(CardDetails)
