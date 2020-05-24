@@ -1,0 +1,60 @@
+.signup-container {
+    height: 430px;
+    width: 270px;
+    box-shadow: 0 0 3px $clr1;
+    border-radius: 4px;
+    padding: 30px;
+    background-color: $clr6;
+    letter-spacing: 4px;
+
+    h2 {
+        font-size: 3rem;
+        text-transform: uppercase;
+        flex: 2;
+    }
+
+    form {
+        flex: 3;
+        margin-bottom: 20px;
+        input {
+            height: 25px;
+            border: 0;
+            width: 200px !important;
+            border-bottom: 1px solid $clr3;
+            font-size: 1rem;
+            padding: 0;
+            padding-left: 5px;
+            opacity: 0.5;
+            transition: 0.25s;
+            overflow: hidden;
+
+            &:focus {
+                opacity: 1;
+            }
+        }
+        button {
+            height: 30px;
+            font-size: 1rem;
+            color: $clr2;
+            background-color: $clr6;
+            border: 1px solid $clr4;
+            transition: 0.25s;
+            &:hover {
+                color: $clr2;
+                border: 1px solid $clr2;
+                letter-spacing: 1px;
+            }
+        }
+    }
+    a,
+    p {
+        margin: 0;
+        letter-spacing: 1px;
+        display: inline-block;
+        text-align: center;
+    }
+    a {
+        text-decoration: underline;
+        color: $clr1;
+    }
+}

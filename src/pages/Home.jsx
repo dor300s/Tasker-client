@@ -7,7 +7,7 @@ class Home extends React.Component {
 
 
     componentDidMount() {
-
+        if (this.props.loggedUser) this.props.history.push('/board')
     }
 
     componentDidUpdate() {
@@ -26,7 +26,9 @@ class Home extends React.Component {
                         boards , lists , cards <br />
                         Improves and simplify the way you manage your projects.
                         </h2>
-                        <Link className="demo-btn" to="/board">Try Our Demo!</Link>
+                        <div className="demo-btn flex align-center justify-center">
+                            <Link to="/board">Try Our Demo!</Link>
+                        </div>
                     </div>
                     <div className="home-login-container flex justify-center align-center">
                         <Switch>
