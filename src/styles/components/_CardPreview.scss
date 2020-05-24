@@ -3,6 +3,7 @@
     padding: 16px;
     border-radius: 3px;
     margin-bottom: 8px;
+    min-height: 53px;
     color: $clr2;
     background-color: $clr6;
     & .drag .isDragging,
@@ -15,21 +16,47 @@
         margin-bottom: 10px;
     }
 
-    & .card-hidden{
-        visibility: hidden;
+    .menu-btn{
+        float: right;
+        width: 20px;
+        padding: 4px;
     }
-    
-    &:hover .card-hidden{
+
+    &.menu-btn{
         visibility: visible;
     }
 
-    & .card-opacity{
-        opacity: 0.2;
+    & .menu-btn{
+        background-color: lighten($color: $clr5, $amount: 20%) ;
+        border-radius: 999px; 
     }
 
-    & .add-card{
-        text-align: center;
-        padding: 5px;
-        height: 34px;
+    .card-text{
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
+
+    & .edit-card-options{
+        position: relative;
+        & > * {
+            position: absolute;
+            left: -50;
+             & > *{
+            background-color: yellow;; 
+            }
+             & > *:not(:last-child){
+                margin-bottom: 10px;
+            }
+
+
+        &:hover .hidden{
+            display: flex;;
+        }
+    }
+
+    // & .hidden{
+    //     display: none;
+    //     }
+    }
+    
 }

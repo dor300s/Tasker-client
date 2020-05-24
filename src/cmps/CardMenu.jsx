@@ -4,75 +4,30 @@ import { saveBoard } from '../store/actions/boardActions.js'
 
 
 
-export class CardMenu extends Component {
+class CardMenu extends Component {
 
-        
-    state = {
-        currCardId: this.props.cardId,
-        isFocus: false,
-        isModalOpen: false
-    }
-    
-    openMenu = (ev) => {
-        ev.stopPropagation();
-        this.setState({ isModalOpen: true });
-        
-    }
-    
-    closeMenu = () => {
-        this.setState({ isModalOpen: false })
-    }
+    onDeleteCard = (cardId, cardListId, ev) => {
+        ev.stopPropagation()
+        console.log(this.props.currBoard)
+        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
+        const { cardLists } = currBoard;
+        const list = cardLists.find(cardList => cardList.id === cardListId);
+        const cardIdx = list.cards.findIndex(card => card.id === cardId);
 
-
-    componentDidMount() {
-        document.addEventListener("mousedown", this.closeCardMenu, false);
-        document.addEventListener("keydown", this.closeCardMenu, false);
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener("mousedown", this.closeCardMenu, false);
-        document.removeEventListener("keydown", this.closeCardMenu, false);
-    }
-
-    closeCardMenu = (e) => {
-        if (e.keyCode === 27) {
-            this.props.closeMenu();
-        }
-    }
-
-    activeEditMode = (e) => {
-        e.stopPropagation()
-        this.setState({ editTitleMode: true })
-    }
-
-    handleChange = (e) => {
-        e.stopPropagation()
-        this.setState({ title: e.target.value })
-    }
-
-    handleSubmit = (e) => {
-        e.preventDefault()
-        let { card } = this.props
-        card.title = this.state.title;
-        this.props.saveCard(card);
-        this.setState({ editTitleMode: false })
-        this.props.closeMenu();
-    }
-
-    onRemoveCard = (e) => {
-        e.stopPropagation();
-        const { card, removeCard } = this.props;
-        removeCard(card._id);
+        list.cards.splice(cardIdx, 1);
+        this.props.saveBoard(currBoard);
     }
 
     render() {
         const { onDeleteCard, onEditCardHeader, cardId, cardListId } = this.props
 
         return (
-        <div className="card-hidden flex">
-            <div className="trash card-opacity" onClick={(event) => onDeleteCard(cardId, cardListId, event)}></div>
-            <div className="edit card-opacity" onClick={(event) => onEditCardHeader(event)}></div>
-        </div>
+            <div className="edit-card-options">
+                <div className="flex ">
+                    <div className="trash hidden" onClick={(event) => this.onDeleteCard(cardId, cardListId, event)}></div>
+                    <div className="edit hidden" onClick={(event) => onEditCardHeader(event)}></div>
+                </div>
+            </div>
         )
     }
 }
