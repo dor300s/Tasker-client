@@ -70,13 +70,13 @@ class CardDetails extends Component {
         return (
             <div className="screen flex align-center justify-center" onClick={this.onCloseCardDetails}>
                 <div onClick={this.eventsHandler} className="card-details-modal">
-                    <div className="card-details-header flex space-between">
+                    <div className="card-details-header flex space-between align-center">
                         <div className="flex align-center">
                             <span className="card-icon"></span>
                             <p className="card-details-title">{currCard.text}</p>
-                            <p className="card-list-parent">In list: {currList.title}</p>
+                            <p className="card-list-parent">In list: <span>{currList.title}</span></p>
                         </div>
-                        <button className="card-details-close" onClick={this.onCloseCardDetails}>X</button>
+                        <span className="cancel" onClick={this.onCloseCardDetails}></span>
                     </div>
 
                     <div className="card-details-content-wrapper flex">

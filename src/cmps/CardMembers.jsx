@@ -20,12 +20,12 @@ class CardMembers extends Component {
 
     addMember = (member) => {
         const { card, board } = this.props
-        
+
         card.members.push(member)
-        
+
         this.props.saveBoard(board)
         this.props.setBoard(board._id)
-        
+
     }
 
     render() {
@@ -33,11 +33,13 @@ class CardMembers extends Component {
         const { isAddMemberActive } = this.state
 
         return (
-            <div style={{ marginBottom: "30px", marginLeft: "50px" }} className="flex column">
+            <div style={{ marginBottom: "30px", marginLeft: "42px" }} className="flex column">
                 <h4 className="card-members-header">Card members</h4>
                 <div className="card-members flex align-center">
                     {isAddMemberActive && <CardMembersList board={board} history={history} addMember={this.addMember} />}
-                    <button className="card-member-invite" onClick={this.onAddMember}>+</button>
+                    <button className="card-member-invite" onClick={this.onAddMember} 
+                    style={{backgroundColor:`${isAddMemberActive ? "rgba(110, 253, 141, 0.432)" : "rgba(142, 176, 248, 0.267)"}` }}>
+                    {isAddMemberActive ? 'Done' : '+'}</button>
                     {card.members.map((member, idx) => {
                         if (member.imgUrl) {
                             return <div key={idx} className="card-member" style={{

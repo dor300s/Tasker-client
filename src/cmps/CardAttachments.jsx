@@ -49,27 +49,28 @@ class CardAttachments extends Component {
         return (
             <div className="card-details-attachments">
                 <div className="flex ">
-                    <span className="attachments"></span>
-                    <h4 className="attachments-header">Attachments</h4>
+                    <span className="photo"></span>
+                    <h4 className="attachments-header">Images</h4>
                 </div>
-                <div style={{ marginTop: "15px", marginLeft: "55px" }} className="attachments-files-container">
+                <label style={{ marginLeft: "42px" }}> Add Image
+                    <input type="file" accept="image/png, image/jpeg" onChange={this.onUpload} hidden multiple />
+                </label>
+                <div style={{ marginTop: "15px", marginLeft: "42px" }} className="attachments-files-container">
                     {attachments && attachments.map((file, idx) => {
                         console.log(file);
 
-                        return <div style={{ marginBottom: "15px" }} className="flex align-center space-between">
-                            {file.url && <img src={file.url} width="80" height="80" />}
+                        return <div style={{ marginBottom: "15px" }} className="flex column">
+                            {file.url && <img src={file.url} width="320" height="320" />}
                             <div className="attachment-file-name-wrapper flex align-center">
                                 <h4 className="attachment-file-name">"{file.fileName}".{file.format}</h4>
+                                <button className="attachment-delete-btn" onClick={() => this.onDelete(idx)}>Delete</button>
                             </div>
-                            <button className="attachment-delete-btn" onClick={() => this.onDelete(idx)}>Delete</button>
 
                         </div>
                     })}
                 </div>
                 {isLoading && <span style={{ marginLeft: "55px" }} className="loading" />}
-                <label style={{ marginLeft: "55px" }}> Add file
-                    <input type="file" accept="image/png, image/jpeg" onChange={this.onUpload} hidden multiple />
-                </label>
+                
             </div>
         )
     }

@@ -11,6 +11,7 @@
     .nav-menu-btn{
         content: url(../../images/icons8-menu.svg);
         cursor: pointer;
+        margin-right: 15px;
     }
 
     .board-menu {
@@ -60,7 +61,7 @@
     input {
         height: 35px;
         width: 200px;
-        margin-left: 15px;
+        margin-left: 30px;
         border-radius: 4px;
         border: 0;
         color: $clr2;
