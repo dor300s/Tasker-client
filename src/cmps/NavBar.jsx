@@ -21,18 +21,17 @@ class NavBar extends React.Component {
     }
 
     componentDidMount() {
-      let pathName =  this.props.location.pathname
-      let boardId = pathName.split('/')[2]
-     
+        let pathName = this.props.location.pathname
+        let boardId = pathName.split('/')[2]
         this.props.getUser()
-        if (!this.props.boards.length) this.props.setBoards()
+            .then(() => {
+                if (!this.props.loggedUser) this.props.history.push('/')
+                else this.props.setBoards()
+            })
+
     }
 
-    componentDidUpdate() {
-        // const { boardId } = this.props.match.params
 
-        // this.getLoggedUserDetails()
-    }
 
     onMenuClick = () => {
         this.setState(prevState => ({ isMenuActive: !prevState.isMenuActive }))
@@ -51,7 +50,7 @@ class NavBar extends React.Component {
     }
 
     render() {
-        const { isMenuActive, isNotificationMenuActive, isBoardActive , isInviteModalActive } = this.state
+        const { isMenuActive, isNotificationMenuActive, isBoardActive, isInviteModalActive } = this.state
         const { boards, activeBoard, history } = this.props
         const { loggedUser } = this.props
 
@@ -59,10 +58,10 @@ class NavBar extends React.Component {
         return (
             <nav className="nav-bar flex align-center space-between">
                 <div className="flex align-center">
-                    <button onClick={this.onMenuClick}>Hamurger</button>
+                    <div className="nav-menu-btn" onClick={this.onMenuClick}></div>
                     {activeBoard && <BoardMembers onInvite={this.onInviteMember} history={history} board={activeBoard} />}
                     {isInviteModalActive && <InviteMemberModal />}
-                    {activeBoard && <input type="text" placeholder="Find card" />}
+                    {activeBoard && <input className="card-search" type="text" placeholder="Find card" />}
                 </div>
                 {isMenuActive && <NavMenu history={history} boards={boards} closeMenu={this.onCloseMenu} />}
                 <div className="flex align-center">
@@ -77,7 +76,7 @@ class NavBar extends React.Component {
                         }}>
                         </div>
                         :
-                        <h3 className="nav-user-profile flex justify-center align-center">{loggedUser.userName.charAt(0)}</h3>}
+                        <h3 className="nav-user-profile flex justify-center align-center">{loggedUser.fullName.charAt(0)}</h3>}
                     {isNotificationMenuActive && <NavUserNotificationMenu history={history} user={loggedUser} />}
                 </div>
             </nav>

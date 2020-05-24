@@ -6,19 +6,23 @@ import axios from 'axios'
  */
 
 export function uploadImg(ev) {
-    const CLOUD_NAME = 'dcelvs5jv'; // find it in your cloudinary account (main page)
+    const CLOUD_NAME = 'dt3cfrjpr'; 
     const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
 
-    console.log(ev.target.files);
-    let file = ev.target.files[0]
-    console.log('file', file);
+    const dataImg = Object.values(ev.target.files)
 
+    const formDataImg = dataImg.map(img => {
+        const formData = new FormData();
+        formData.append('file', img);
+        formData.append('upload_preset', 'rvddiiry'); // second parameter is the upload preset (you can find it in cloudinary settings)
+        return axios.post(UPLOAD_URL, formData)
+            .then(res => res.data)
+            .then(res => {
+                return res;
+            })
+            .catch(err => console.log(err))
+    })
 
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', 'd3b1nly1'); // second parameter is the upload preset (you can find it in cloudinary settings)
-    return axios.post(UPLOAD_URL, formData)
-        .then(res => res.data.url)
-        .catch(err => console.log(err))
+    return Promise.all(formDataImg)
+
 }
-

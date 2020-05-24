@@ -62,7 +62,7 @@ class BoardMenu extends React.Component {
             .then(res => {
                 console.log(res);
 
-                board.background.content = res
+                board.background.content = res[0].url
                 this.props.saveBoard(board)
                 this.setState({ isImgLoading: false })
                 this.props.closeMenu();
@@ -84,7 +84,7 @@ class BoardMenu extends React.Component {
 
                         <label>
                             <div onClick={(e) => e.stopPropagation()}>Update cover
-                        <input onChange={this.onUploadImg} type="file" hidden />
+                        <input onChange={this.onUploadImg} type="file" hidden accept="image/png, image/jpeg" />
                             </div>
                         </label>
                         <div onClick={this.onRemoveBoard}>Delete board</div>
