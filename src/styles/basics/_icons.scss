@@ -1,5 +1,5 @@
 
-.wrap-icons, .card-preview,.screen , .card-list-container{
+.wrap-icons, .card-preview,  .screen , .card-list-container{
     .dueDate{
         content: url(../../images/clock.png);
         width: 10px;
@@ -20,6 +20,10 @@
     }
     .attachments {
         content: url(../../images/documents.svg);
+        width: 25px;
+    }
+    .edit {
+        content: url(../../images/pen.png);
         width: 25px;
     }
 
@@ -73,6 +77,8 @@
         cursor: pointer;
         width: 20px;
     }
+
+    
     .humburger {
         content: url(../../images/humburger.png);
         width: 10px;
@@ -81,5 +87,16 @@
         content: url(../../images/user.svg);
         width: 25px;
     }
+
+    & .trash:hover, .edit:hover{
+        opacity: 0.5;
+        background-color: $clr3;
+        border-radius: 999px;
+    }
+
+    & .trash, .edit{
+        padding: 5px;
+    }
+
 }
 

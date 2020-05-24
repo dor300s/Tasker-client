@@ -29,11 +29,15 @@ export default class BoardPreview extends React.Component {
 
     }
 
+    closeMenu = () => {
+        this.setState({ isModalOpen: false })
+    }
+
 
 
     render() {
         const { isModalOpen } = this.state
-        const { board, onBoardClicked } = this.props
+        const { board, onBoardClicked, saveBoard } = this.props
 
         return (
             < React.Fragment >
@@ -41,7 +45,7 @@ export default class BoardPreview extends React.Component {
                     <h3>{board.title}</h3>
                     <div className={`fs24 ${board.isStarred ? 'starred' : 'not-starred'}`} onClick={(ev) => this.starToggle(board, ev)} />
                     <div className="menu-btn" onClick={this.openMenu} />
-                    {isModalOpen && <BoardMenu isModalOpen={isModalOpen} board={board} />}
+                    {isModalOpen && <BoardMenu closeMenu={this.closeMenu} board={board} />}
                 </div>
             </React.Fragment >
         )

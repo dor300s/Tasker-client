@@ -63,13 +63,14 @@ class Board extends Component {
         this.props.saveBoard(currBoard);
     }
 
-    onAddCard = (listId, txt = "") => {
-        console.log("listId", listId)
+    onAddCard = (ListId, txt = "") => {
+        console.log("listId", ListId)
         console.log("txt", txt)
         const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
         const { cardLists } = currBoard;
-        const list = cardLists.find(cardList => cardList.id === listId);
+        const list = cardLists.find(cardList => cardList.id === ListId);
         list.cards.push(this.getNewCard(txt))
+        console.log(currBoard)
         this.props.saveBoard(currBoard);
     }
 
