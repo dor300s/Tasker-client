@@ -55,11 +55,12 @@ class NavMenu extends React.Component {
                     </div>}
 
 
-                    {!filteredBoards && <div>
-                        <h3 className="label"><span>&#9734;</span> Starred</h3>
-                        <div className="boards-container flex column align-center">
-                            <BoardList boards={starredBoards} onBoardClicked={this.onBoardClicked} />
-                        </div>
+                    {Boolean(boards.length) && <div>
+                        {Boolean(starredBoards.length) && <>
+                            <h3 className="label"><span>&#9734;</span> Starred</h3>
+                            <div className="boards-container flex column align-center">
+                                <BoardList boards={starredBoards} onBoardClicked={this.onBoardClicked} />
+                            </div> </>}
 
                         <h3 className="label">❒ All Boards</h3>
                         <div className="boards-container flex column align-center">

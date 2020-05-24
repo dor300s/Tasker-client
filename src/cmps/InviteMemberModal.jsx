@@ -30,7 +30,7 @@ class InviteMemberModal extends Component {
         return (
             <div className="invite-members-modal flex column align-center">
                 <div className="invite-header"><h3>Invite to collaborate</h3></div>
-                <p>Add board members</p>
+                {/* <p>Add board members</p> */}
                 <input type="text" placeholder="Enter userName to invite" onKeyUp={this.inputHandler} />
                 {filteredUsers && <div className="invite-users-list flex column align-center">
                     {filteredUsers.map((user, idx) => {

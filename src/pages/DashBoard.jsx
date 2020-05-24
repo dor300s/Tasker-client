@@ -8,8 +8,6 @@ import { setBoards, saveBoard } from '../store/actions/boardActions.js'
 class DashBoard extends React.Component {
 
     componentDidMount() {
-        console.log('##############', this.props);
-
         this.props.setBoards();
     }
 
@@ -39,12 +37,12 @@ class DashBoard extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        boards: state.boardApp.boards
+        boards: state.boardApp.boards,
     }
 }
 const mapDispatchToProps = {
     setBoards,
-    saveBoard
+    saveBoard,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard)

@@ -22,7 +22,6 @@ class Board extends Component {
             isStarred: false,
             dueDate: null,
             members: [
-                {}
             ],
             covers: {
                 id: "",
@@ -44,7 +43,7 @@ class Board extends Component {
             id: uuid(),
             title: title,
             createdAt: Date.now(),
-            creator: {},
+            creator: null,
             cards: []
         }
     }
