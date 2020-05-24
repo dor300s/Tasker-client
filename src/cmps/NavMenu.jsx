@@ -40,8 +40,8 @@ class NavMenu extends React.Component {
         return (
             <div className="nav-menu flex column">
                 <div className="nav-menu-header flex align-center space-between">
-                    <Link to={`/board`}>Home</Link>
-                    <button onClick={this.props.closeMenu}>X</button>
+                    <Link className="home-btn" to={`/board`}>Home</Link>
+                    <button className="close-btn" onClick={this.props.closeMenu}>X</button>
                 </div>
                 <NavMenuFilter onFilter={(filterBy) => this.onFilter(filterBy)} />
 

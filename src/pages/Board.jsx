@@ -12,7 +12,6 @@ class Board extends Component {
 
 
     getNewCard = (txt) => {
-        //TODO get the creator from somewere
 
         return {
             id: uuid(),
@@ -36,9 +35,7 @@ class Board extends Component {
         }
     }
 
-
     getNewList = (title) => {
-        //TODO get the creator from somewere
         return {
             id: uuid(),
             title: title,
@@ -54,9 +51,8 @@ class Board extends Component {
         console.log(boardId)
     }
 
-
     onAddList = (title = "") => {
-        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
+        const {currBoard} = this.props
         const { cardLists } = currBoard;
         cardLists.push(this.getNewList(title));
         this.props.saveBoard(currBoard);
@@ -65,7 +61,7 @@ class Board extends Component {
     onAddCard = (ListId, txt = "") => {
         console.log("listId", ListId)
         console.log("txt", txt)
-        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
+        const {currBoard} = this.props
         const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === ListId);
         list.cards.push(this.getNewCard(txt))
@@ -75,7 +71,7 @@ class Board extends Component {
 
     onDeleteCard = (cardId, cardListId, ev) => {
         ev.stopPropagation()
-        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
+        const {currBoard} = this.props
         const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === cardListId);
         const cardIdx = list.cards.findIndex(card => card.id === cardId);
@@ -86,7 +82,7 @@ class Board extends Component {
 
     onDeleteList = (listId, ev) => {
         ev.stopPropagation()
-        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
+        const {currBoard} = this.props
         const { cardLists } = currBoard;
         console.log(cardLists)
         const listIdx = cardLists.findIndex(list => listId === list.id);
@@ -97,9 +93,7 @@ class Board extends Component {
 
     onDragEnd = (result) => {
         if (!result.destination) return;
-
-        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard))
-        currBoard["chigiboom"] = 'chigiboom';
+        const {currBoard} = this.props
         const { cardLists } = currBoard
 
         const { source, destination, type } = result;
@@ -133,8 +127,6 @@ class Board extends Component {
         } : { background: board.background.color }
     }
 
-
-
     render() {
 
         const { setcurrBoard, onDragEnd, onAddList, onAddCard, onDeleteList, onDeleteCard } = this;
@@ -162,9 +154,9 @@ class Board extends Component {
                             )}
                         </Droppable>
                     </DragDropContext>
-                    <AddListForm onAddList={onAddList} />
 
                     {/* <div onClick={() => { onAddList(currBoard) }} className="card-list-container add-list" >Add List</div> */}
+                    <AddListForm onAddList={onAddList} />
                 </div >
                 {cardId && <CardDetails currBoard={currBoard} history={history} cardId={cardId} />}
             </div>
