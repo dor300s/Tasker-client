@@ -31,6 +31,8 @@ class NavBar extends React.Component {
 
     }
 
+
+
     onMenuClick = () => {
         this.setState(prevState => ({ isMenuActive: !prevState.isMenuActive }))
     }

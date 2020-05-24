@@ -7,6 +7,7 @@ import CardCalendar from '../cmps/CardCalendar'
 import { DueDate } from '../cmps/DueDate'
 import { connect } from 'react-redux'
 import {saveBoard} from '../store/actions/boardActions'
+import CardAttachments from '../cmps/CardAttachments'
 
 class CardDetails extends Component {
 
@@ -82,6 +83,7 @@ class CardDetails extends Component {
                         <div className="card-details-content flex column">
                             < CardMembers history={this.props.history} card={currCard} board={currBoard} />
                             < CardDescription card={currCard} board={currBoard} />
+                            < CardAttachments card={currCard} board={currBoard} />
                             {currCard.dueDate && < DueDate card={currCard} />}
                             {/* < CardComments /> */}
                         </div>
