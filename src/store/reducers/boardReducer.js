@@ -27,7 +27,7 @@ export function boardReducer(state = initialState, action) {
 
             return {
                 ...state,
-                currBoard: action.board,
+                // currBoard: action.board,
                 boards: state.boards.map(board => {
                     if (board._id === action.board._id) return action.board;
                     return board;
