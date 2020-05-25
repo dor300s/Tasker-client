@@ -10,13 +10,6 @@ import socketService from '../services/socketService'
 
 class Board extends Component {
 
-<<<<<<< HEAD
-    state = {
-        currBoard: null
-    }
-
-=======
->>>>>>> 3d557ee408f1b76f94b802aa482174d51abf4a43
     getNewCard = (txt) => {
 
         return {
@@ -56,11 +49,6 @@ class Board extends Component {
         this.props.setBoard(boardId)
     }
 
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 3d557ee408f1b76f94b802aa482174d51abf4a43
 
     onAddList = (title = "") => {
         const { currBoard } = this.props
