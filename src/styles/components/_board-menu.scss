@@ -14,6 +14,13 @@
             background-color: #424242;
         }
     }
+
+    .loading {
+        width: 200px;
+        height: 100px;
+        content: url(../../images/Eclipse-0.8s-217px.svg);
+        background-color: $clr6;
+    }
 }
 
 @keyframes board-menu-animation {

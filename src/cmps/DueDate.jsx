@@ -5,7 +5,7 @@ export function DueDate(props) {
     return (
         <div className="card-due-date-container">
             <div className="flex ">
-                <span className="clock"></span>
+                <span className="due-date"></span>
                 <h4>Due Date</h4>
             </div>
             <p>{card.dueDate}</p>

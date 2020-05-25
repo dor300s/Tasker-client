@@ -28,6 +28,21 @@
         content: url(../../images/tag.svg);
         width: 25px;
     }
+
+    .photo {
+        content: url(../../images/photo.svg);
+        width: 13px;
+    }
+
+    .cancel {
+        content: url(../../images/cancel.svg);
+        width: 10px;
+        transition: 0.2s;
+        &:hover{
+            cursor: pointer;
+            width: 15px;
+        }
+    }
     .attachments {
         content: url(../../images/documents.svg);
         width: 25px;
@@ -43,14 +58,14 @@
         width: 25px;
     }
 
-    .clock {
-        content: url(../../images/clock.svg);
-        width: 25px;
+    .due-date {
+        content: url(../../images/due-date.svg);
+        width: 15px;
     }
 
     .text {
         content: url(../../images/text.svg);
-        width: 25px;
+        width: 10px;
     }
 
     .comments {
@@ -83,6 +98,11 @@
         width: 25px;
     }
 
+    .loading {
+        content: url(../../images/30.gif);
+        width: 50px;
+    }
+
     .menu-btn {
         content: url(../../images/menu.svg);
         width: 10px;
@@ -91,7 +111,13 @@
     }
     .edit-regular {
         content: url(../../images/edit-regular.svg);
+<<<<<<< HEAD
         width: 25px;
+=======
+        width: 20px;
+        margin-right: 15px;
+        fill: green;
+>>>>>>> c92930299b413ce32278dc61cf389ee9b2421b1d
         cursor: pointer;
     }
 }

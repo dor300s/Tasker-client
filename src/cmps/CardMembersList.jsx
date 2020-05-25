@@ -8,10 +8,10 @@ export function CardMembersList(props) {
 
                 {board.members.map((member, idx) => {
                     let dynamicClass = ''
-                    if(idx === 0) dynamicClass = 'first-member'
+                    if (idx === 0) dynamicClass = 'first-member'
                     if (member.imgUrl) {
 
-                        return <div key={idx} className={dynamicClass + " " +"board-member"} style={{
+                        return <div key={idx} className={dynamicClass + " " + "board-member"} style={{
                             backgroundImage: "url(" + `${member.imgUrl}` + ")",
                             backgroundPosition: 'center',
                             backgroundSize: 'cover',

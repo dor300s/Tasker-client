@@ -6,7 +6,7 @@ import CardMembers from '../cmps/CardMembers'
 import CardCalendar from '../cmps/CardCalendar'
 import { DueDate } from '../cmps/DueDate'
 import { connect } from 'react-redux'
-import {saveBoard} from '../store/actions/boardActions'
+import { saveBoard } from '../store/actions/boardActions'
 import CardAttachments from '../cmps/CardAttachments'
 
 class CardDetails extends Component {
@@ -27,8 +27,9 @@ class CardDetails extends Component {
         this.getCurrCard()
     }
 
-    componentDidUpdate(){
-        console.log('CARD DETAILS');
+    componentDidUpdate(prevProps) {
+        if (this.props !== prevProps)
+            this.getCurrCard()
     }
 
     getCurrCard = () => {
@@ -64,19 +65,20 @@ class CardDetails extends Component {
     }
 
     render() {
+
         const { currCard, currList, isCalendarActive, dueDate } = this.state
         const { currBoard } = this.props
         if (!currCard) return ''
         return (
             <div className="screen flex align-center justify-center" onClick={this.onCloseCardDetails}>
                 <div onClick={this.eventsHandler} className="card-details-modal">
-                    <div className="card-details-header flex space-between">
+                    <div className="card-details-header flex space-between align-center">
                         <div className="flex align-center">
                             <span className="card-icon"></span>
                             <p className="card-details-title">{currCard.text}</p>
-                            <p className="card-list-parent">In list: {currList.title}</p>
+                            <p className="card-list-parent">In list: <span>{currList.title}</span></p>
                         </div>
-                        <button className="card-details-close" onClick={this.onCloseCardDetails}>X</button>
+                        <span className="cancel" onClick={this.onCloseCardDetails}></span>
                     </div>
 
                     <div className="card-details-content-wrapper flex">
@@ -99,7 +101,7 @@ class CardDetails extends Component {
 }
 
 const mapDispatchToProps = {
-    saveBoard
+    saveBoard,
 }
 
 export default connect(null, mapDispatchToProps)(CardDetails)

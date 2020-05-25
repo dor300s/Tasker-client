@@ -51,8 +51,9 @@ class Board extends Component {
         console.log(boardId)
     }
 
+
     onAddList = (title = "") => {
-        const {currBoard} = this.props
+        const { currBoard } = this.props
         const { cardLists } = currBoard;
         cardLists.push(this.getNewList(title));
         this.props.saveBoard(currBoard);
@@ -61,7 +62,7 @@ class Board extends Component {
     onAddCard = (ListId, txt = "") => {
         console.log("listId", ListId)
         console.log("txt", txt)
-        const {currBoard} = this.props
+        const { currBoard } = this.props
         const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === ListId);
         list.cards.push(this.getNewCard(txt))
@@ -71,7 +72,7 @@ class Board extends Component {
 
     onDeleteCard = (cardId, cardListId, ev) => {
         ev.stopPropagation()
-        const {currBoard} = this.props
+        const { currBoard } = this.props
         const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === cardListId);
         const cardIdx = list.cards.findIndex(card => card.id === cardId);
@@ -82,7 +83,7 @@ class Board extends Component {
 
     onDeleteList = (listId, ev) => {
         ev.stopPropagation()
-        const {currBoard} = this.props
+        const { currBoard } = this.props
         const { cardLists } = currBoard;
         console.log(cardLists)
         const listIdx = cardLists.findIndex(list => listId === list.id);
@@ -93,7 +94,7 @@ class Board extends Component {
 
     onDragEnd = (result) => {
         if (!result.destination) return;
-        const {currBoard} = this.props
+        const { currBoard } = this.props
         const { cardLists } = currBoard
 
         const { source, destination, type } = result;
