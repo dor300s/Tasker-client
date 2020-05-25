@@ -10,10 +10,6 @@ import socketService from '../services/socketService'
 
 class Board extends Component {
 
-    /* state = {
-        currBoard: null
-    } */
-
     getNewCard = (txt) => {
 
         return {
@@ -64,14 +60,6 @@ class Board extends Component {
     }
 
 
-
-    /*  componentDidUpdate(prevProps) {
-         const { currBoard } = this.props
-         if (prevProps.currBoard !== this.props.currBoard) {
-             socketService.emit('board updated', currBoard._id)
-             console.log('BOARD UPDATEDDDDDDDDDDDDDDDDD');
-         }
-     } */
 
     onAddList = (title = "") => {
         const { currBoard } = this.props
@@ -146,7 +134,7 @@ class Board extends Component {
                 break;
         }
     };
-
+ 
     getBackground(board) {
         return board.background.content ? {
             backgroundImage: "url(" + `${board.background.content}` + ")",
