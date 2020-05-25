@@ -59,8 +59,6 @@ class Board extends Component {
         socketService.off(`board-updated-${boardId}`)
     }
 
-
-
     onAddList = (title = "") => {
         const { currBoard } = this.props
         const { cardLists } = currBoard;
