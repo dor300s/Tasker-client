@@ -8,7 +8,7 @@ import { setBoards } from '../store/actions/boardActions.js'
 import { getUser } from '../store/actions/userActions.js'
 // import userService from '../services/userService.js'
 import { BoardMembers } from './BoardMembers'
-import InviteMemberModal from './InviteMemberModal'
+import InviteMemberModal from './InviteMemberModa
 
 
 class NavBar extends React.Component {
