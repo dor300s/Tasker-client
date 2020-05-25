@@ -132,6 +132,7 @@ class Board extends Component {
 
         const { setcurrBoard, onDragEnd, onAddList, onAddCard, onDeleteList, onDeleteCard } = this;
         const { currBoard, history } = this.props;
+        
 
         const { cardId } = this.props.match.params;
         if (!currBoard) return <div>loading</div>;
@@ -156,7 +157,6 @@ class Board extends Component {
                         </Droppable>
                     </DragDropContext>
 
-                    {/* <div onClick={() => { onAddList(currBoard) }} className="card-list-container add-list" >Add List</div> */}
                     <AddListForm onAddList={onAddList} />
                 </div >
                 {cardId && <CardDetails currBoard={currBoard} history={history} cardId={cardId} />}

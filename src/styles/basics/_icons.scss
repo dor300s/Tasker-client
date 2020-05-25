@@ -9,9 +9,15 @@
     }
 
     .trash {
-        content: url(../../images/trash.png);
+        content: url(../../images/trash.svg);
         cursor: pointer;
-        width: 20px;
+         width: 20px;
+    }
+
+    .white-trash {
+        content: url(../../images/white-trash.svg);
+        cursor: pointer;
+         width: 20px;
     }
     .humburger {
         content: url(../../images/humburger.png);
@@ -104,8 +110,8 @@
 
     .menu-btn {
         content: url(../../images/menu.svg);
-        color: black;
         width: 10px;
+        transform: rotate(90deg);
         cursor: pointer;
     }
     .edit-regular {
@@ -114,17 +120,5 @@
         margin-right: 15px;
         fill: green;
         cursor: pointer;
-    }
-
-    & .trash:hover,
-    .edit:hover {
-        opacity: 0.5;
-        background-color: $clr3;
-        border-radius: 999px;
-    }
-
-    & .trash,
-    .edit {
-        padding: 5px;
     }
 }
