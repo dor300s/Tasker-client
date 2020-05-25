@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import CardPreview from './CardPreview.jsx'
 import { AddCardForm } from "./AddCardForm.jsx";
+import ListMenu from "./ListMenu.jsx"
 
 
 export default class CardListPreview extends Component {
@@ -67,7 +68,8 @@ export default class CardListPreview extends Component {
                                 <div className={`card-list-container flex column ${snapshot.isDraggingOver ? "lightblue" : ""}`} >
                                     <div className="title-content flex space-between ">
                                         <h2 className="list-title">{cardList.title}</h2>
-                                        <div className="white-trash" onClick={(event) => onDeleteList(cardListId, event)}></div>
+                                        <ListMenu />
+                                        {/* <div className="white-trash" onClick={(event) => onDeleteList(cardListId, event)}></div> */}
                                     </div>
                                     <div className={"card-list"} {...provided.droppableprops} ref={provided.innerRef} >
                                         {cardList.cards.map((card, index) => {
