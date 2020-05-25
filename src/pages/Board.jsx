@@ -53,22 +53,7 @@ class Board extends Component {
         this.props.setBoard(boardId)
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.currBoard !== this.props.currBoard) {
-            console.log('BOBOOOOOOOOOOOOOO');
-            
-    }
     
-    // componentDidUpdate(prevProps, prevState) {
-    //     // only update chart if the data has changed
-    //     if (prevProps.data !== this.props.data) {
-    //         this.chart = c3.load({
-    //             data: this.props.data
-    //         });
-    //     }
-    // }
-    // socketService.emit('board updated', currBoard._id)
-
 
     onAddList = (title = "") => {
         const { currBoard } = this.props

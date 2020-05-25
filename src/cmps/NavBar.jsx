@@ -22,16 +22,6 @@ class NavBar extends React.Component {
 
     componentDidMount(prevProps) {
         socketService.setup()
-        // socketService.emit('nav mounted', 'Nav Log From SOCKETIO')
-        // socketService.on('nav mounted', (msg) => console.log(msg))
-
-       /*  socketService.on('board updated', (id) => {
-            console.log('SOCKETTTTTTTT');
-                this.props.setBoard(id)
-        }) */
-
-
-
         let pathName = this.props.location.pathname
         let boardId = pathName.split('/')[2]
         this.props.getUser()
