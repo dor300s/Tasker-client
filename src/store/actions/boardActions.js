@@ -1,10 +1,4 @@
 import boardService from '../../services/boardService.js';
-<<<<<<< HEAD
-import socketService from '../../services/socketService'
-=======
-import socketService from '../../services/socketService';
-
->>>>>>> 9646f2bf422e5ab4e544377bb4be95ec81d66066
 
 export function setBoards(filter = '') {
 
