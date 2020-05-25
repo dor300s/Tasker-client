@@ -3,12 +3,30 @@ import { connect } from 'react-redux';
 import { saveBoard } from '../store/actions/boardActions.js'
 
 
-
 class CardMenu extends Component {
 
-    state ={
+    state = {
         isMenuOpen: false
     }
+
+    componentWillMount() {
+        document.addEventListener("mousedown", this.closeBoardMenu, false);
+        document.addEventListener("keydown", this.closeBoardMenu, false);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("mousedown", this.closeBoardMenu, false);
+        document.removeEventListener("keydown", this.closeBoardMenu, false);
+    }
+
+    closeBoardMenu = (ev) => {
+        ev.stopPropagation();
+        if (!this.node.contains(ev.target) || ev.keyCode === 27) {
+            // setTimeout(() => this.setState({ isMenuOpen: false }), 200);
+            this.setState({ isMenuOpen: false })
+        }
+    }
+
 
     openMenu = (ev) => {
         ev.stopPropagation();
@@ -28,15 +46,16 @@ class CardMenu extends Component {
     }
 
     render() {
-        const { onDeleteCard, onEditCardHeader, cardId, cardListId } = this.props
+        const { onEditCardHeader, cardId, cardListId } = this.props
+        const { onDeleteCard } = this
         const { isMenuOpen } = this.state;
 
         return (
-            <div className="menu-container flex">
-                    <div className="menu-btn flex hidden" onClick={(event) => this.openMenu(event)}></div>
-                {isMenuOpen && <div className="option-modal flex">
-                    <div className="trash hidden" onClick={(event) => this.onDeleteCard(cardId, cardListId, event)}></div>
-                    <div className="edit hidden" onClick={(event) => onEditCardHeader(event)}></div>
+            <div ref={node => this.node = node} className="card-menu-container">
+                <div  className="menu-btn hidden" onClick={(event) => this.openMenu(event)}></div>
+                {isMenuOpen && <div className="card-menu-options">
+                    <div onClick={(event) => onEditCardHeader(event)}>Edit Title</div>
+                    <div onClick={(event) => onDeleteCard(cardId, cardListId, event)}>Delete Card</div>
                 </div>}
             </div>
         )

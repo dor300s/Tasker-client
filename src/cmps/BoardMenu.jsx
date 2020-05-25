@@ -8,7 +8,8 @@ class BoardMenu extends React.Component {
     state = {
         title: '',
         editTitleMode: false,
-        isImgLoading: false
+        isImgLoading: false,
+        updateCoverMode: false
     }
 
     componentWillMount() {
@@ -55,6 +56,14 @@ class BoardMenu extends React.Component {
         removeBoard(board._id);
     }
 
+    openCoverMode = () => {
+        this.setState({ coverMode: true })
+    }
+
+    closeCoverMode = () => {
+        this.setState({ coverMode: false })
+    }
+
     onUploadImg = (ev) => {
         this.setState({ isImgLoading: true })
         let { board } = this.props
@@ -70,24 +79,45 @@ class BoardMenu extends React.Component {
             .catch(() => this.setState({ isImgLoading: false }))
     }
 
+    onChangeColor = (color) => {
+        let { board } = this.props
+        board.background.color = color
+        board.background.content = '';
+        this.props.saveBoard(board)
+        this.props.closeMenu();
+    }
+
     render() {
-        const { editTitleMode, title, isImgLoading } = this.state
+        const { editTitleMode, title, isImgLoading, coverMode } = this.state
 
         return (
-            <div ref={node => this.node = node} className="board-menu-container flex column space-around">
+            <div ref={node => this.node = node} className={`board-menu-container flex column space-between ${isImgLoading && 'box-shadow-off'}`}>
                 {isImgLoading ? <div className="loading">aaaaaaaa</div> :
                     <>
-                        {!editTitleMode ? <div onClick={this.activeEditMode}>Edit title</div> :
-                            <form onSubmit={this.handleSubmit}>
-                                <input value={title} onChange={this.handleChange} onBlur={this.handleSubmit} onClick={(e) => e.stopPropagation()} autoFocus />
-                            </form>}
-
-                        <label>
-                            <div onClick={(e) => e.stopPropagation()}>Update cover
-                        <input onChange={this.onUploadImg} type="file" hidden accept="image/png, image/jpeg" />
+                        {!editTitleMode ? <>
+                            <div onClick={this.activeEditMode}>Edit title</div>
+                            <div className="update-cover-btn" onClick={(e) => e.stopPropagation()} onMouseOver={this.openCoverMode} onMouseLeave={this.closeCoverMode}>Update cover
+                            {coverMode && <div className="change-cover-wrap flex column">
+                                    <div className="color-palette flex">
+                                        <div onClick={() => this.onChangeColor('#e74c3c')}>⬤</div>
+                                        <div onClick={() => this.onChangeColor('#e67e22')}>⬤</div>
+                                        <div onClick={() => this.onChangeColor('#f1c40f')}>⬤</div>
+                                        <div onClick={() => this.onChangeColor('#27ae60')}>⬤</div>
+                                        <div onClick={() => this.onChangeColor('#2980b9')}>⬤</div>
+                                        <div onClick={() => this.onChangeColor('#8e44ad')}>⬤</div>
+                                    </div>
+                                    <label>
+                                        <div className="upload-pic-btn">Upload image
+                                         <input onChange={this.onUploadImg} type="file" hidden accept="image/png, image/jpeg" />
+                                        </div>
+                                    </label>
+                                </div>}
                             </div>
-                        </label>
-                        <div onClick={this.onRemoveBoard}>Delete board</div>
+                            <div onClick={this.onRemoveBoard}>Delete board</div>
+                        </> :
+                            <form className="flex" onSubmit={this.handleSubmit}>
+                                <input value={title} onChange={this.handleChange} onBlur={this.handleSubmit} onClick={(e) => e.stopPropagation()} autoFocus spellCheck="false" />
+                            </form>}
                     </>}
             </div>
         )

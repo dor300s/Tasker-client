@@ -7,9 +7,6 @@
     color: $clr2;
     background-color: $clr6;
     & .drag .isDragging,
-    // &:not(:last-child){
-    //     margin-bottom: 7px;
-    // }
     &:hover {
         background-color: lighten($color: $clr5, $amount: 0.5);
         // transform: rotate(6deg);
@@ -27,29 +24,37 @@
         border-radius: 2.5rem;
     }
 
+    .hidden {
+        display: none;
+    }
+
+    &:hover .hidden {
+        display: block;
+    }
+
     .card-text {
         text-overflow: ellipsis;
         overflow: hidden;
     }
 
-    .menu-container {
-        flex-direction: row-reverse;
-        > *:not(:last-child) {
-            margin-inline-start: 10px;
-        }
+    .card-menu-options {
+        background: white;
+        position: absolute;
+        margin-top: 20px;
+        margin-left: 200px;
+        z-index: 1;
+        width: max-content;
+        height: fit-content;
+        text-align: center;
+        box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.08);
+        border-radius: 4px;
 
-        .option-modal {
-            > * {
-                margin-inline-start: 10px;
-                border: 1px solid black;
-                // border-radius: 999px;
-                padding: 5px;
-                width: 20px;
-            }
+        > * {
+            padding: 10px;
+        }
+        > *:hover {
+            background-color: $clr5;
         }
     }
 
-    // & .hidden {
-    //     display: none;
-    // }
 }
