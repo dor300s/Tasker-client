@@ -6,20 +6,20 @@ export default class CardCalendar extends Component {
 
     state = {
         date: new Date(),
-        formattedDate: ''
+        timeStamp: ''
     }
 
     onChange = date => this.setState({ date }, this.formatDate)
 
     formatDate = () => {
         const { date } = this.state
-        const month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date)
-        const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date)
-        this.setState({ formattedDate: `${month}-${day}` })
+        let timeStamp = date.getTime()
+        this.setState({timeStamp})
+        
     }
 
     render() {
-        const { formattedDate } = this.state
+        const { timeStamp } = this.state
         return (
             <div className="card-calendar-container">
                 <Calendar
@@ -27,9 +27,9 @@ export default class CardCalendar extends Component {
                     value={this.state.date}
                     minDate={new Date()}
                 />
-                {formattedDate && <div className="flex justify-center">
+                {timeStamp && <div className="flex justify-center">
                     {/* <h4>Date picked: {formattedDate}</h4> */}
-                    <button className="date-confirm" onClick={() => this.props.onDatePicked(formattedDate)}>Confirm</button>
+                    <button className="date-confirm" onClick={() => this.props.onDatePicked(timeStamp)}>Confirm</button>
                 </div>}
             </div>
         );
