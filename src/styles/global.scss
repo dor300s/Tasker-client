@@ -19,15 +19,15 @@
 @import "components/nav-menu.scss";
 @import "components/board.scss";
 @import "components/nav-menu-filter.scss";
-@import "components/CardListPreview.scss";
-@import "components/CardPreview.scss";
-@import "components/CardIconPreview.scss";
-@import "components/cardLabelsPreview.scss";
+@import "components/card-list-preview.scss";
+@import "components/card-preview.scss";
+@import "components/card-icon-preview.scss";
+@import "components/card-labels-preview.scss";
 @import "components/nav-user-notifications-menu.scss";
-@import "components/navBoardMembers.scss";
-@import "components/inviteMembersModal.scss";
-@import "components/cardDetails.scss";
-@import "components/cardMembers.scss";
+@import "components/nav-board-members.scss";
+@import "components/invite-members-modal.scss";
+@import "components/card-details.scss";
+@import "components/card-members.scss";
 @import "components/board-menu.scss";
 @import "components/login.scss";
 @import "components/signup.scss";
@@ -35,5 +35,3 @@
 // Pages
 
 @import "views/home-page.scss";
-
-

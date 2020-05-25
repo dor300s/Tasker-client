@@ -12,7 +12,6 @@ class CardPreview extends Component {
 
     state = {
         isFocus: false,
-        isMenuOpen: false
     }
 
     onEditCardHeader = (ev) => {
@@ -36,11 +35,6 @@ class CardPreview extends Component {
         this.props.saveBoard(currBoard)
     }
 
-    openMenu = (ev) => {
-        ev.stopPropagation();
-        this.setState({isMenuOpen:true})
-    }
-
 
     showCard = (cardId, history, currBoard) => {
         history.push(`/board/${currBoard._id}/${cardId}`)
@@ -48,7 +42,6 @@ class CardPreview extends Component {
 
     render() {
 
-        const { isMenuOpen } = this.state;
         const { index, card, currBoard, cardListId, history } = this.props
         const { showCard, offEditCardHeader, onEditCardHeader } = this;
         return (
@@ -64,10 +57,7 @@ class CardPreview extends Component {
                                     ...provided.draggableProps.style
                                 }}
                             >
-                                <div className="top-icons flex space-between">
-                                    <div className="menu-btn hidenn" onClick={(event) => this.openMenu(event)}></div>
-                                    {isMenuOpen && <CardMenu cardId={card.id} onEditCardHeader={onEditCardHeader} cardListId={cardListId} />}
-                                </div>
+                                <CardMenu cardId={card.id} onEditCardHeader={onEditCardHeader} cardListId={cardListId} />
                                 {Boolean(card.labels.length) && <CardLabelsPreview histoy={history} labels={card.labels} />}
                                 {(this.state.isFocus) ? <CardHeaderForm cardHeader={card.text} cardListId={cardListId} cardId={card.id} offEditCardHeader={offEditCardHeader} /> : <div className="card-text">{card.text}</div>}
                                 <CardIconsPreview card={card} />
