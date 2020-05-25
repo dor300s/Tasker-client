@@ -33,29 +33,29 @@ class ListMenu extends Component {
         this.setState({ isMenuOpen: true })
     }
 
-    onDeleteCard = (cardId, cardListId, ev) => {
+    onDeleteList = (listId, listListId, ev) => {
         ev.stopPropagation()
         console.log(this.props.currBoard)
         const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
-        const { cardLists } = currBoard;
-        const list = cardLists.find(cardList => cardList.id === cardListId);
-        const cardIdx = list.cards.findIndex(card => card.id === cardId);
+        const { listLists } = currBoard;
+        const list = listLists.find(listList => listList.id === listListId);
+        const listIdx = list.lists.findIndex(list => list.id === listId);
 
-        list.cards.splice(cardIdx, 1);
+        list.lists.splice(listIdx, 1);
         this.props.saveBoard(currBoard);
     }
 
     render() {
-        const { onEditCardHeader, cardId, cardListId } = this.props
-        const { onDeleteCard } = this
+        const { onEditListHeader, listId, listListId } = this.props
+        const { onDeleteList } = this
         const { isMenuOpen } = this.state;
 
         return (
-            <div ref={node => this.node = node} className="card-menu-container">
+            <div ref={node => this.node = node} className="list-menu-container">
                 <div  className="menu-btn hidden" onClick={(event) => this.openMenu(event)}></div>
-                {isMenuOpen && <div className="card-menu-options">
-                    <div onClick={(event) => onEditCardHeader(event)}>Edit Title</div>
-                    <div onClick={(event) => onDeleteCard(cardId, cardListId, event)}>Delete Card</div>
+                {isMenuOpen && <div className="menu-options list-menu ">
+                    <div onClick={(event) => onEditListHeader(event)}>Edit Title</div>
+                    <div onClick={(event) => onDeleteList(listId, listListId, event)}>Delete List</div>
                 </div>}
             </div>
         )
