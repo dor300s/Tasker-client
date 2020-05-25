@@ -1,11 +1,18 @@
 .card-members-header {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 400;
     font-size: 14px;
     color: rgb(173, 173, 173);
     margin-bottom: 10px;
 }
 .card-members {
+    .profile-tooltip-wraper{
+        &:hover{
+            .card-member-tooltip {
+                display: block;
+            }
+        }
+    }
     .card-member {
         position: relative;
         width: 40px;
@@ -14,9 +21,7 @@
         margin-left: 10px;
         &:hover {
             cursor: pointer;
-            .card-member-tooltip {
-                display: block;
-            }
+            
         }
     }
     .card-member-invite {
@@ -31,18 +36,16 @@
     }
     .card-member-tooltip {
         position: absolute;
-        bottom: 0;
-        overflow-wrap: normal;
-        transform: translateY(110%);
         display: none;
-        width: fit-content !important;
+        transform: translate(-11px,5px);
         background-color: rgba(0, 0, 0, 0.733);
         color: #fff;
-        padding: 5px;
-        text-align: center;
+        padding: 3px;
         border-radius: 6px;
-        z-index: 1;
         p {
+            font-family: "Open Sans", sans-serif;
+            font-size: 12px;
+            line-height: normal;
             margin: 0;
             padding: 0;
         }
@@ -58,9 +61,19 @@
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.377);
     background-color: rgb(245, 245, 245);
     border-radius: 5px;
+    opacity: 0;
+    transition: 0.25s ease-in-out;
     .first-member {
         margin-left: 0px;
     }
+}
+.member-overlay {
+    position: absolute;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.521);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
 }
 .card-user-profile {
     border-radius: 50%;
@@ -76,13 +89,32 @@
         cursor: pointer;
     }
 }
-
-@keyframes rotate180d{
-    from{
-        
+.card-member-remove {
+    position: absolute;
+    z-index: 50;
+    width: 15px;
+    height: 15px;
+    font-size: 10px;
+    background-color: rgb(252, 118, 118);
+    background-image: url(../../images/cancel.svg);
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    top: -5px;
+    right: -5px;
+    transition: 0.2s ease;
+    &:hover {
+        width: 18px;
+        height: 18px;
+        background-color: rgb(250, 87, 87);
     }
-    to{
-        
+}
+
+@keyframes rotate180d {
+    from {
+    }
+    to {
         background-color: rgba(110, 253, 141, 0.432);
     }
 }

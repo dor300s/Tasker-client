@@ -6,17 +6,8 @@ import { CardMembersList } from './CardMembersList'
 class CardMembers extends Component {
 
     state = {
-        isAddMemberActive: false
-    }
-
-    componentDidMount() {
-        console.log('BOARDDDDDDDDDDDDDDDDDDDDDDD', this.props);
-
-    }
-
-    componentDidUpdate() {
-        console.log('MEMBERS UPDATEDDDDDDDDDD');
-
+        isAddMemberActive: false,
+        isMouseHoverUser: false
     }
 
 
@@ -27,42 +18,64 @@ class CardMembers extends Component {
 
     addMember = (member) => {
         const { card, board } = this.props
+        let idx = card.members.findIndex(user => user._id === member._id)
+        if (idx !== -1) return
 
         card.members.push(member)
-
         this.props.saveBoard(board)
         this.props.setBoard(board._id)
+    }
 
+    onMouseEnter = () => {
+        this.setState({ isMouseHoverUser: true })
+    }
+
+    onMouseLeave = () => {
+        this.setState({ isMouseHoverUser: false })
+    }
+
+    onRemoveCardUser = (idx, ev) => {
+        ev.stopPropagation()
+        const { card, board } = this.props
+        card.members.splice(idx, 1)
+        this.props.saveBoard(board)
     }
 
     render() {
         const { card, history, board } = this.props
-        const { isAddMemberActive } = this.state
+        const { isAddMemberActive, isMouseHoverUser } = this.state
 
         return (
             <div style={{ marginBottom: "30px", marginLeft: "42px" }} className="flex column">
                 <h4 className="card-members-header">Card members</h4>
                 <div className="card-members flex align-center">
-                    {isAddMemberActive && <CardMembersList board={board} history={history} addMember={this.addMember} />}
-                    <button className="card-member-invite" onClick={this.onAddMember} 
-                    style={{backgroundColor:`${isAddMemberActive ? "rgba(110, 253, 141, 0.432)" : "rgba(142, 176, 248, 0.267)"}` }}>
-                    {isAddMemberActive ? 'Done' : '+'}</button>
+                    {<CardMembersList opacity={isAddMemberActive ? 'opacity-one' : ''} card={card} board={board} history={history} addMember={this.addMember} />}
+                    <button className={`card-member-invite ${!isAddMemberActive && 'margin-right-26'}`} onClick={this.onAddMember}
+                        style={{ backgroundColor: `${isAddMemberActive ? "rgba(110, 253, 141, 0.432)" : "rgba(142, 176, 248, 0.267)"}` }}>
+                        {isAddMemberActive ? 'Done' : '+'}</button>
                     {card.members.map((member, idx) => {
                         if (member.imgUrl) {
-                            return <div key={idx} className="card-member" style={{
+                            return <div className="profile-tooltip-wraper" ><div key={idx} className="card-member" style={{
                                 backgroundImage: "url(" + `${member.imgUrl}` + ")",
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat'
-                            }} onClick={() => history.push(`/user/${member._id}`)}>
+                            }} onClick={() => history.push(`/user/${member._id}`)} onMouseEnter={this.onMouseEnter}
+                                onMouseLeave={this.onMouseLeave}>
+
+                                {isMouseHoverUser && <button onClick={(ev) => this.onRemoveCardUser(idx, ev)} className="card-member-remove"></button>}
+                            </div>
                                 <div className="card-member-tooltip">
                                     <p>{member.fullName}</p>
                                 </div>
                             </div>
-
                         }
                         else {
-                            return <h3 className="card-user-profile flex justify-center align-center">{member.fullName.charAt(0)}</h3>
+                            return <><h3 className="card-user-profile flex justify-center align-center">{member.fullName.charAt(0)}</h3>
+                                <div className="card-member-tooltip">
+                                    <p>{member.fullName}</p>
+                                </div>
+                            </>
                         }
                     })}
                 </div>

@@ -48,3 +48,11 @@
 .portrait-ratio {
     @include aspect-ratio(9, 16);
 }
+
+//Mrgins
+.margin-right-26{
+    margin-right: 25.5px;
+}
+.opacity-one{
+    opacity: 1 !important;
+}

@@ -4,14 +4,20 @@
 .screen,
 .card-list-container {
     .dueDate {
-        content: url(../../images/clock.png);
-        width: 10px;
+        content: url(../../images/clock.svg);
+        width: 15px;
+        margin-right: 7px;
     }
 
     .trash {
         content: url(../../images/trash.svg);
         cursor: pointer;
          width: 20px;
+    }
+
+    .comment {
+        content: url(../../images/comment.svg);
+         width: 15px;
     }
 
     .white-trash {
@@ -66,6 +72,12 @@
     .text {
         content: url(../../images/text.svg);
         width: 10px;
+    }
+
+    .checkmark {
+        content: url(../../images/checkmark.svg);
+        width: 20px;
+        margin-right: 5px;
     }
 
     .comments {

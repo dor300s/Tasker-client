@@ -6,10 +6,13 @@ import { AddListForm } from '../cmps/AddListForm.jsx'
 import { connect } from 'react-redux';
 import uuid from "uuid/v4";
 import { setBoards, setBoard, saveBoard, removeBoard } from '../store/actions/boardActions.js'
-
+import socketService from '../services/socketService'
 
 class Board extends Component {
 
+    state = {
+        currBoard: null
+    }
 
     getNewCard = (txt) => {
 
@@ -47,16 +50,23 @@ class Board extends Component {
 
     componentDidMount() {
         const { boardId } = this.props.match.params
-        this.props.setBoard(boardId);
-        console.log(boardId)
+        this.props.setBoard(boardId)
     }
 
+    componentDidUpdate (prevProps) {
+        const { currBoard } = this.props
+        // if (prevProps.currBoard !== this.props.currBoard) {
+            // this.setState({ currBoard: this.props.currBoard })
+            // socketService.emit('board updated', currBoard._id)
+            // console.log('BOARD UPDATEDDDDDDDDDDDDDDDDD');
+        // }
+    }
 
     onAddList = (title = "") => {
         const { currBoard } = this.props
         const { cardLists } = currBoard;
         cardLists.push(this.getNewList(title));
-        this.props.saveBoard(currBoard);
+        this.props.saveBoard(currBoard)
     }
 
     onAddCard = (ListId, txt = "") => {
@@ -132,7 +142,7 @@ class Board extends Component {
 
         const { setcurrBoard, onDragEnd, onAddList, onAddCard, onDeleteList, onDeleteCard } = this;
         const { currBoard, history } = this.props;
-        
+
 
         const { cardId } = this.props.match.params;
         if (!currBoard) return <div>loading</div>;

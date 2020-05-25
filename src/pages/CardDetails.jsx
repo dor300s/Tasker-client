@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { CardActions } from '../cmps/CardActions'
-import { CardComments } from '../cmps/CardComments'
+import  CardComments  from '../cmps/CardComments'
 import CardDescription from '../cmps/CardDescription'
 import CardMembers from '../cmps/CardMembers'
 import CardCalendar from '../cmps/CardCalendar'
@@ -16,7 +16,7 @@ class CardDetails extends Component {
         currCard: null,
         currList: null,
         isCalendarActive: false,
-        dueDate: null
+       
     }
 
     eventsHandler = (ev) => {
@@ -51,12 +51,12 @@ class CardDetails extends Component {
         this.setState(prevState => ({ isCalendarActive: !prevState.isCalendarActive }))
     }
 
-    onDatePicked = (date) => {
+    onDatePicked = (timeStamp) => {
         const { currCard } = this.state
         const { currBoard } = this.props
-        currCard.dueDate = date
+        currCard.dueDate = timeStamp
         this.props.saveBoard(currBoard)
-        this.setState({ dueDate: date, isCalendarActive: false })
+        this.setState({ isCalendarActive: false })
     }
 
     onCloseCardDetails = () => {
@@ -66,7 +66,7 @@ class CardDetails extends Component {
 
     render() {
 
-        const { currCard, currList, isCalendarActive, dueDate } = this.state
+        const { currCard, currList, isCalendarActive } = this.state
         const { currBoard } = this.props
         if (!currCard) return ''
         return (
@@ -84,10 +84,10 @@ class CardDetails extends Component {
                     <div className="card-details-content-wrapper flex">
                         <div className="card-details-content flex column">
                             < CardMembers history={this.props.history} card={currCard} board={currBoard} />
+                            {currCard.dueDate && < DueDate card={currCard} />}
                             < CardDescription card={currCard} board={currBoard} />
                             < CardAttachments card={currCard} board={currBoard} />
-                            {currCard.dueDate && < DueDate card={currCard} />}
-                            {/* < CardComments /> */}
+                            < CardComments card={currCard} board={currBoard} />
                         </div>
                         < CardActions openDatePicker={this.openDatePicker} />
                         {isCalendarActive && < CardCalendar card={currCard} onDatePicked={this.onDatePicked} />}
