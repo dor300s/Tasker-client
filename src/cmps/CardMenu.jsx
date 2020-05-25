@@ -6,6 +6,15 @@ import { saveBoard } from '../store/actions/boardActions.js'
 
 class CardMenu extends Component {
 
+    state ={
+        isMenuOpen: false
+    }
+
+    openMenu = (ev) => {
+        ev.stopPropagation();
+        this.setState({ isMenuOpen: true })
+    }
+
     onDeleteCard = (cardId, cardListId, ev) => {
         ev.stopPropagation()
         console.log(this.props.currBoard)
@@ -20,13 +29,15 @@ class CardMenu extends Component {
 
     render() {
         const { onDeleteCard, onEditCardHeader, cardId, cardListId } = this.props
+        const { isMenuOpen } = this.state;
 
         return (
-            <div className="edit-card-options">
-                <div className="flex ">
+            <div className="menu-container flex">
+                    <div className="menu-btn flex hidden" onClick={(event) => this.openMenu(event)}></div>
+                {isMenuOpen && <div className="option-modal flex">
                     <div className="trash hidden" onClick={(event) => this.onDeleteCard(cardId, cardListId, event)}></div>
                     <div className="edit hidden" onClick={(event) => onEditCardHeader(event)}></div>
-                </div>
+                </div>}
             </div>
         )
     }

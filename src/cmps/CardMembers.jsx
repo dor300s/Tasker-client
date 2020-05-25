@@ -9,14 +9,21 @@ class CardMembers extends Component {
         isAddMemberActive: false
     }
 
-    onAddMember = () => {
-        this.setState(prevState => ({ isAddMemberActive: !prevState.isAddMemberActive }))
+    componentDidMount() {
+        console.log('BOARDDDDDDDDDDDDDDDDDDDDDDD', this.props);
+
     }
 
     componentDidUpdate() {
         console.log('MEMBERS UPDATEDDDDDDDDDD');
 
     }
+
+
+    onAddMember = () => {
+        this.setState(prevState => ({ isAddMemberActive: !prevState.isAddMemberActive }))
+    }
+
 
     addMember = (member) => {
         const { card, board } = this.props

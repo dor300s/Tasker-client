@@ -3,10 +3,13 @@
     padding: 16px;
     border-radius: 3px;
     margin-bottom: 7px;
-    // min-height: 10px;
+
     color: $clr2;
     background-color: $clr6;
     & .drag .isDragging,
+    // &:not(:last-child){
+    //     margin-bottom: 7px;
+    // }
     &:hover {
         background-color: lighten($color: $clr5, $amount: 0.5);
         // transform: rotate(6deg);
@@ -20,36 +23,33 @@
         float: right;
         width: 20px;
         padding: 4px;
-        // visibility: hidden;
         background-color: lighten($color: $clr5, $amount: 20%);
         border-radius: 2.5rem;
     }
 
- 
     .card-text {
         text-overflow: ellipsis;
         overflow: hidden;
     }
 
-    & .edit-card-options {
-        position: relative;
-        & > * {
-            position: absolute;
-            left: -50;
-            & > * {
-                background-color: 0;
-            }
-            & > *:not(:last-child) {
-                margin-bottom: 10px;
-            }
-
-            &:hover .hidden {
-                display: flex;
-            }
+    .menu-container {
+        flex-direction: row-reverse;
+        > *:not(:last-child) {
+            margin-inline-start: 10px;
         }
 
-        // & .hidden{
-        //     display: none;
-        //     }
+        .option-modal {
+            > * {
+                margin-inline-start: 10px;
+                border: 1px solid black;
+                // border-radius: 999px;
+                padding: 5px;
+                width: 20px;
+            }
+        }
     }
+
+    // & .hidden {
+    //     display: none;
+    // }
 }

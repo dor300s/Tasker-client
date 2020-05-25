@@ -1,8 +1,6 @@
 .board-app-container {
-    // position: fixed;
     width: 100vw;
     height: 100vh;
-    // margin: 0;
     padding-top: 50px;
     overflow-x: scroll;
 
@@ -13,9 +11,7 @@
         ::-webkit-scrollbar {
             width: 0;
         }
-        // position: relative;
 
-        // margin-top:40px;
         .wrap-card-list {
             height: fit-content;
             .card-list-container {
@@ -26,7 +22,11 @@
                 width: 250px;
                 min-width: 250px;
                 position: relative;
-                // min-height: 50px;
+
+                .trash{
+                    width: 29px;
+                    padding: 3px;
+                }
 
                 .card-list {
                     padding-bottom: 1px;
@@ -46,10 +46,7 @@
                     margin-bottom: 7px;
                     min-height: 40px;
                     background-color: rgba(0, 0, 0, 0.2);
-                    // position: absolute;
-                    // top: 0;
                     width: 250px !important;
-                    // transform: translateY(-115%);
                 }
                 > :last-child {
                     height: 30px;
@@ -82,10 +79,10 @@
                     padding-top: 13px;
                     padding-bottom: 13px;
                     width: 250px !important;
-                    // top: 0;
-                    // width:   100%;
-                    // transform: translateY(-115%);
+
                 }
+
+            
             }
         }
     }
