@@ -4,12 +4,12 @@ import { withRouter } from "react-router-dom";
 import NavMenu from '../cmps/NavMenu'
 import NavUserNotificationMenu from './NavUserNotificationMenu'
 import { connect } from 'react-redux'
-import { setBoards, setBoard } from '../store/actions/boardActions.js'
+import { setBoards } from '../store/actions/boardActions.js'
 import { getUser } from '../store/actions/userActions.js'
 // import userService from '../services/userService.js'
 import { BoardMembers } from './BoardMembers'
 import InviteMemberModal from './InviteMemberModal'
-import socketService from '../services/socketService'
+
 
 class NavBar extends React.Component {
 
@@ -20,18 +20,8 @@ class NavBar extends React.Component {
         isInviteModalActive: null
     }
 
-    componentDidMount(prevProps) {
-        socketService.setup()
-        // socketService.emit('nav mounted', 'Nav Log From SOCKETIO')
-        // socketService.on('nav mounted', (msg) => console.log(msg))
-
-       /*  socketService.on('board updated', (id) => {
-            console.log('SOCKETTTTTTTT');
-                this.props.setBoard(id)
-        }) */
-
-
-
+    componentDidMount() {
+        
         let pathName = this.props.location.pathname
         let boardId = pathName.split('/')[2]
         this.props.getUser()
@@ -42,7 +32,7 @@ class NavBar extends React.Component {
 
     }
 
-    
+
 
     onMenuClick = () => {
         this.setState(prevState => ({ isMenuActive: !prevState.isMenuActive }))
@@ -104,7 +94,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     setBoards,
-    setBoard,
     getUser
 }
 
