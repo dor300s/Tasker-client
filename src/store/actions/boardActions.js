@@ -1,5 +1,5 @@
 import boardService from '../../services/boardService.js';
-
+import socketService from '../../services/socketService'
 
 export function setBoards(filter = '') {
 
@@ -28,6 +28,7 @@ export function saveBoard(board) {
         const type = board._id ? 'UPDATE_BOARD' : 'ADD_BOARD';
         return boardService.save(board)
             .then(savedBoard => dispatch({ type, board: savedBoard }))
+            
     }
 }
 
