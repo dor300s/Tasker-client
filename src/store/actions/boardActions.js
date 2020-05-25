@@ -1,5 +1,10 @@
 import boardService from '../../services/boardService.js';
+<<<<<<< HEAD
 import socketService from '../../services/socketService'
+=======
+import socketService from '../../services/socketService';
+
+>>>>>>> 9646f2bf422e5ab4e544377bb4be95ec81d66066
 
 export function setBoards(filter = '') {
 
@@ -24,6 +29,7 @@ export function removeBoard(boardId) {
 }
 
 export function saveBoard(board) {
+    
     return dispatch => {
         const type = board._id ? 'UPDATE_BOARD' : 'ADD_BOARD';
         return boardService.save(board)
