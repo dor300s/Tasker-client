@@ -47,8 +47,7 @@ class Board extends Component {
 
     componentDidMount() {
         const { boardId } = this.props.match.params
-        this.props.setBoard(boardId);
-        console.log(boardId)
+        this.props.setBoard(boardId)
     }
 
     onAddList = (title = "") => {

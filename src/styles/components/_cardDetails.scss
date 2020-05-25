@@ -1,4 +1,7 @@
 .screen {
+    h4{
+        color: #194251 !important;
+    }
     position: fixed;
     z-index: 1;
     left: 0;
@@ -131,10 +134,12 @@
         }
     }
     .card-due-date-container {
+        margin-bottom: 30px;
         h4 {
             margin-left: 25px;
             font-family: "Open Sans", sans-serif;
             font-weight: 500;
+            
         }
         p {
             margin: 18px 0px 0px 40px;
@@ -176,7 +181,7 @@
             margin-left: 27px;
             font-family: "Open Sans", sans-serif;
             font-weight: 500;
-            margin-bottom: 10px;
+            
         }
         label {
             &:hover {
