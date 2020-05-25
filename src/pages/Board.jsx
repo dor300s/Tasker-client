@@ -10,9 +10,9 @@ import socketService from '../services/socketService'
 
 class Board extends Component {
 
-    /* state = {
+    state = {
         currBoard: null
-    } */
+    }
 
     getNewCard = (txt) => {
 
@@ -51,25 +51,14 @@ class Board extends Component {
     componentDidMount() {
         const { boardId } = this.props.match.params
         this.props.setBoard(boardId)
-
-        socketService.on(`board-updated-${boardId}`, (id) => {
-            console.log('SOCKETTTTTTTT');
-            this.props.setBoard(id)
-        })
     }
 
-<<<<<<< HEAD
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.currBoard !== this.props.currBoard) {
             console.log('BOBOOOOOOOOOOOOOO');
-            // socketService.emit('board updated', this.props.currBoard._id)
-        }
-=======
-    componentWillUnmount() {
-        const { boardId } = this.props.match.params
-        socketService.off(`board-updated-${boardId}`)
->>>>>>> 9646f2bf422e5ab4e544377bb4be95ec81d66066
+            
     }
+    
     // componentDidUpdate(prevProps, prevState) {
     //     // only update chart if the data has changed
     //     if (prevProps.data !== this.props.data) {
@@ -81,22 +70,11 @@ class Board extends Component {
     // socketService.emit('board updated', currBoard._id)
 
 
-
-
-    /*  componentDidUpdate(prevProps) {
-         const { currBoard } = this.props
-         if (prevProps.currBoard !== this.props.currBoard) {
-             socketService.emit('board updated', currBoard._id)
-             console.log('BOARD UPDATEDDDDDDDDDDDDDDDDD');
-         }
-     } */
-
     onAddList = (title = "") => {
         const { currBoard } = this.props
         const { cardLists } = currBoard;
         cardLists.push(this.getNewList(title));
         this.props.saveBoard(currBoard)
-            .then(() => socketService.emit('board updated', currBoard._id));
     }
 
     onAddCard = (ListId, txt = "") => {
@@ -107,9 +85,7 @@ class Board extends Component {
         const list = cardLists.find(cardList => cardList.id === ListId);
         list.cards.push(this.getNewCard(txt))
         console.log(currBoard)
-        this.props.saveBoard(currBoard)
-            .then(() => socketService.emit('board updated', currBoard._id));
-
+        this.props.saveBoard(currBoard);
     }
 
     onDeleteCard = (cardId, cardListId, ev) => {
@@ -120,8 +96,7 @@ class Board extends Component {
         const cardIdx = list.cards.findIndex(card => card.id === cardId);
 
         list.cards.splice(cardIdx, 1);
-        this.props.saveBoard(currBoard)
-            .then(() => socketService.emit('board updated', currBoard._id));
+        this.props.saveBoard(currBoard);
     }
 
     onDeleteList = (listId, ev) => {
@@ -132,8 +107,7 @@ class Board extends Component {
         const listIdx = cardLists.findIndex(list => listId === list.id);
 
         cardLists.splice(listIdx, 1);
-        this.props.saveBoard(currBoard)
-            .then(() => socketService.emit('board updated', currBoard._id));
+        this.props.saveBoard(currBoard);
     }
 
     onDragEnd = (result) => {
@@ -152,15 +126,13 @@ class Board extends Component {
                 const destcards = destcardList.cards;
                 const [removed] = sourcecards.splice(source.index, 1);
                 destcards.splice(destination.index, 0, removed);
-                this.props.saveBoard(currBoard)
-                    .then(() => socketService.emit('board updated', currBoard._id));
+                this.props.saveBoard(currBoard);
                 break;
 
             case "list":
                 const [removedList] = cardLists.splice(source.index, 1);
                 cardLists.splice(destination.index, 0, removedList);
-                this.props.saveBoard(currBoard)
-                    .then(() => socketService.emit('board updated', currBoard._id));
+                this.props.saveBoard(currBoard);
                 break;
         }
     };
