@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { saveBoard } from '../store/actions/boardActions.js'
 
 
-class CardMenu extends Component {
+class ListMenu extends Component {
 
     state = {
         isMenuOpen: false
     }
 
-    componentWillMount() {
+    componentDidMount() {
         document.addEventListener("mousedown", this.closeBoardMenu, false);
         document.addEventListener("keydown", this.closeBoardMenu, false);
     }
@@ -19,41 +19,41 @@ class CardMenu extends Component {
         document.removeEventListener("keydown", this.closeBoardMenu, false);
     }
 
+
     closeBoardMenu = (ev) => {
         ev.stopPropagation();
         if (!this.node.contains(ev.target) || ev.keyCode === 27) {
-            // setTimeout(() => this.setState({ isMenuOpen: false }), 200);
             this.setState({ isMenuOpen: false })
         }
     }
+
 
     openMenu = (ev) => {
         ev.stopPropagation();
         this.setState({ isMenuOpen: true })
     }
 
-    onDeleteCard = (cardId, cardListId, ev) => {
+    onDeleteList = (cardlistId, ev) => {
         ev.stopPropagation()
-        const currBoard = this.props.currBoard;
+        const { currBoard } = this.props;
+        console.log(currBoard)
         const { cardLists } = currBoard;
-        const list = cardLists.find(cardList => cardList.id === cardListId);
-        const cardIdx = list.cards.findIndex(card => card.id === cardId);
+        cardLists.splice(cardlistId, 1);
 
-        list.cards.splice(cardIdx, 1);
         this.props.saveBoard(currBoard);
     }
 
     render() {
-        const { onEditCardHeader, cardId, cardListId } = this.props
-        const { onDeleteCard } = this
+        const { onEditListTitle, listId, cardlistId } = this.props
+        const { onDeleteList } = this
         const { isMenuOpen } = this.state;
 
         return (
-            <div ref={node => this.node = node} className="card-menu-container">
-                <div  className="menu-btn hidden" onClick={(event) => this.openMenu(event)}></div>
-                {isMenuOpen && <div className="menu-options card-menu">
-                    <div onClick={(event) => onEditCardHeader(event)}>Edit Title</div>
-                    <div onClick={(event) => onDeleteCard(cardId, cardListId, event)}>Delete Card</div>
+            <div ref={node => this.node = node} className="list-menu-container">
+                <div className="menu-btn hidden" onClick={(event) => this.openMenu(event)}></div>
+                {isMenuOpen && <div className="menu-options list-menu ">
+                    <div onClick={(event) => onEditListTitle(event)}>Edit Title</div>
+                    <div onClick={(event) => onDeleteList(cardlistId, event)}>Delete List</div>
                 </div>}
             </div>
         )
@@ -70,4 +70,4 @@ const mapDispatchToProps = {
     saveBoard
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardMenu)
+export default connect(mapStateToProps, mapDispatchToProps)(ListMenu)

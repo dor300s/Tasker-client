@@ -12,6 +12,11 @@
         padding: 79px 0 0 30px;
         width: fit-content;
 
+        .card-lists{
+            // overflow-x: scroll;
+            // overflow-y: auto;
+        }
+
         .wrap-card-list {
             height: fit-content;
             /*  ::-webkit-scrollbar {
@@ -33,7 +38,7 @@
                 }
 
                 .card-list {
-                    padding-bottom: 1px;
+                    padding-bottom: 2px;
                     max-height: calc(100vh - 250px);
                     height: fit-content;
                     overflow: auto;
