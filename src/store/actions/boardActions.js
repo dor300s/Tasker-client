@@ -1,5 +1,5 @@
 import boardService from '../../services/boardService.js';
-import socketService from '../../services/socketService';
+import socketService from '../../services/socketService.js'
 
 
 export function setBoards(filter = '') {
@@ -24,12 +24,25 @@ export function removeBoard(boardId) {
     }
 }
 
-export function saveBoard(board) {
-    
+/* export function saveBoard(board) {
+
     return dispatch => {
         const type = board._id ? 'UPDATE_BOARD' : 'ADD_BOARD';
         return boardService.save(board)
-            .then(savedBoard => dispatch({ type, board: savedBoard }))
+            .then(savedBoard => {
+                socketService.emit('board updated', board._id);
+                dispatch({ type, board: savedBoard })
+            })
+    }
+} */
+
+
+export function saveBoard(board) {
+
+    return async dispatch => {
+        const type = board._id ? 'UPDATE_BOARD' : 'ADD_BOARD';
+        const savedBoard = await boardService.save(board)
+        socketService.emit('board updated', board._id);
+        return dispatch({ type, board: savedBoard })
     }
 }
-
