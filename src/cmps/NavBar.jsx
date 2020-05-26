@@ -8,6 +8,7 @@ import { setBoards, setBoard } from '../store/actions/boardActions.js'
 import { getUser } from '../store/actions/userActions.js'
 // import userService from '../services/userService.js'
 import { BoardMembers } from './BoardMembers'
+import NavBarSearch from './NavBarSearch'
 import InviteMemberModal from './InviteMemberModal'
 import socketService from '../services/socketService'
 
@@ -62,7 +63,7 @@ class NavBar extends React.Component {
                     <div className="nav-menu-btn" onClick={this.onMenuClick}></div>
                     {activeBoard && <BoardMembers onInvite={this.onInviteMember} history={history} board={activeBoard} />}
                     {isInviteModalActive && <InviteMemberModal />}
-                    {activeBoard && <input className="card-search" type="text" placeholder="Find card" />}
+                    <NavBarSearch isBoardActive={isBoardActive}/>
                 </div>
                 {isMenuActive && <NavMenu history={history} boards={boards} closeMenu={this.onCloseMenu} />}
                 <div className="flex align-center">
