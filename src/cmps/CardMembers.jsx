@@ -55,16 +55,17 @@ class CardMembers extends Component {
                         {isAddMemberActive ? 'Done' : '+'}</button>
                     {card.members.map((member, idx) => {
                         if (member.imgUrl) {
-                            return <div className="profile-tooltip-wraper" ><div key={idx} className="card-member" style={{
-                                backgroundImage: "url(" + `${member.imgUrl}` + ")",
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover',
-                                backgroundRepeat: 'no-repeat'
-                            }} onClick={() => history.push(`/user/${member._id}`)} onMouseEnter={this.onMouseEnter}
-                                onMouseLeave={this.onMouseLeave}>
+                            return <div key={idx} className="profile-tooltip-wraper" >
+                                <div className="card-member" style={{
+                                    backgroundImage: "url(" + `${member.imgUrl}` + ")",
+                                    backgroundPosition: 'center',
+                                    backgroundSize: 'cover',
+                                    backgroundRepeat: 'no-repeat'
+                                }} onClick={() => history.push(`/user/${member._id}`)} onMouseEnter={this.onMouseEnter}
+                                    onMouseLeave={this.onMouseLeave}>
 
-                                {isMouseHoverUser && <button onClick={(ev) => this.onRemoveCardUser(idx, ev)} className="card-member-remove"></button>}
-                            </div>
+                                    {isMouseHoverUser && <button onClick={(ev) => this.onRemoveCardUser(idx, ev)} className="card-member-remove"></button>}
+                                </div>
                                 <div className="card-member-tooltip">
                                     <p>{member.fullName}</p>
                                 </div>

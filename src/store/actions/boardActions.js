@@ -1,35 +1,54 @@
 import boardService from '../../services/boardService.js';
-import socketService from '../../services/socketService';
+import socketService from '../../services/socketService.js'
 
 
 export function setBoards(filter = '') {
 
-    return dispatch => {
-        return boardService.query(filter)
-            .then(boards => dispatch({ type: 'SET_BOARDS', boards }))
+    return async dispatch => {
+        try {
+            const boards = await boardService.query(filter)
+            return dispatch({ type: 'SET_BOARDS', boards })
+        } catch (err) {
+            console.log('boardAction: error in setBoards:', err);
+
+        }
     }
 }
 
 export function setBoard(id) {
-    return dispatch => {
-        boardService.get(id)
-            .then(board => dispatch({ type: 'SET_BOARD', board }))
+    return async dispatch => {
+        try {
+            const board = await boardService.get(id)
+            return dispatch({ type: 'SET_BOARD', board })
+        } catch (err) {
+            console.log('boardAction: error in setBoard:', err);
+        }
     }
 }
 
 export function removeBoard(boardId) {
-    return dispatch => {
-        return boardService.remove(boardId)
-            .then(() => dispatch({ type: 'REMOVE_BOARD', boardId }))
+    return async dispatch => {
+        try {
+            await boardService.remove(boardId)
+            dispatch({ type: 'REMOVE_BOARD', boardId })
+
+        } catch (err) {
+            console.log('boardAction: error in removeBoard:', err);
+        }
     }
 }
+
 
 export function saveBoard(board) {
-    
-    return dispatch => {
-        const type = board._id ? 'UPDATE_BOARD' : 'ADD_BOARD';
-        return boardService.save(board)
-            .then(savedBoard => dispatch({ type, board: savedBoard }))
+
+    return async dispatch => {
+        try {
+            const type = board._id ? 'UPDATE_BOARD' : 'ADD_BOARD';
+            const savedBoard = await boardService.save(board)
+            socketService.emit('board updated', board._id);
+            return dispatch({ type, board: savedBoard })
+        } catch (err) {
+            console.log('boardAction: error in saveBoard:', err);
+        }
     }
 }
-

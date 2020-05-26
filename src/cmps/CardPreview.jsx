@@ -30,8 +30,11 @@ class CardPreview extends Component {
         const list = cardLists.find(cardList => cardList.id === cardListId);
         const card = list.cards.find(card => card.id === cardId)
         card.text = text
-        this.props.saveBoard(currBoard);
         this.setState({ isFocus: false })
+<<<<<<< HEAD
+=======
+        this.props.saveBoard(currBoard);
+>>>>>>> 25b51ef6aeaaa79fb86bf1220ba1eb63c75c0d2c
     }
 
 
