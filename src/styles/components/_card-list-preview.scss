@@ -1,18 +1,16 @@
 .board-app-container {
-    width: 100vw;
-    height: calc(100% - 49px);
-    // padding-top: 50px;
-    // overflow-x: scroll;
+    width: 100%;
+    height: 100%;
 
-    .wrap-card-lists {
+    .board-background {
+        z-index: -1;
         width: 100vw;
-        height: 100%;
-        padding: 30px 0 0 30px;
-        padding-right: 30px;
+        height: 100vh;
+        position: fixed;
+    }
+    .wrap-card-lists {
+        padding: 79px 0 0 30px;
         width: fit-content;
-        ::-webkit-scrollbar {
-            width: 0;
-        }
 
         .card-lists{
             // overflow-x: scroll;
@@ -21,6 +19,10 @@
 
         .wrap-card-list {
             height: fit-content;
+            /*  ::-webkit-scrollbar {
+                        width: 0px;
+                    } */
+
             .card-list-container {
                 height: fit-content;
                 cursor: pointer;
@@ -39,8 +41,13 @@
                     padding-bottom: 2px;
                     max-height: calc(100vh - 250px);
                     height: fit-content;
-                    overflow-y: scroll;
-                    overflow-x: hidden;
+                    overflow: auto;
+
+                    &::-webkit-scrollbar {
+                        width: 0px;
+                    }
+                    
+                    // overflow-x: hidden;
                 }
 
                 .list-title {

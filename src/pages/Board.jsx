@@ -148,7 +148,8 @@ class Board extends Component {
 
         return (
             <div className="board-app-container"  >
-                <div className={`wrap-card-lists flex`} style={this.getBackground(currBoard)}>
+                <div className="board-background" style={this.getBackground(currBoard)}></div>
+                <div className={`wrap-card-lists flex`} >
                     <DragDropContext onDragEnd={result => onDragEnd(result)} >
                         <Droppable droppableId="all-lists" direction="horizontal" type="list">
                             {(provided, snapshot) => (
