@@ -25,6 +25,7 @@ class CardDetails extends Component {
 
     componentDidMount() {
         this.getCurrCard()
+
     }
 
     componentDidUpdate(prevProps) {
@@ -87,7 +88,7 @@ class CardDetails extends Component {
                             {currCard.dueDate && < DueDate card={currCard} />}
                             < CardDescription card={currCard} board={currBoard} />
                             < CardAttachments card={currCard} board={currBoard} />
-                            < CardComments card={currCard} board={currBoard} />
+                            < CardComments card={currCard} board={currBoard} user={this.props.loggedUser} />
                         </div>
                         < CardActions openDatePicker={this.openDatePicker} />
                         {isCalendarActive && < CardCalendar card={currCard} onDatePicked={this.onDatePicked} />}
@@ -99,9 +100,14 @@ class CardDetails extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        loggedUser: state.user.loggedInUser,
+    }
+}
 
 const mapDispatchToProps = {
     saveBoard,
 }
 
-export default connect(null, mapDispatchToProps)(CardDetails)
+export default connect(mapStateToProps, mapDispatchToProps)(CardDetails)

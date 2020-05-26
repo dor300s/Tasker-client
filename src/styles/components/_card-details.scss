@@ -268,7 +268,7 @@
     }
     .user-text-input{
         height: 35px;
-        width: 300px;
+        width: 250px;
         padding-left: 5px;
         border: 1.5px solid #19425100;
         border-radius: 5px;
@@ -282,7 +282,7 @@
             border: 1.5px solid #194251;
             background-color: white;
             &::placeholder{
-                letter-spacing: 1.5px;
+                padding-left: 15px;
             }
         }
     }
