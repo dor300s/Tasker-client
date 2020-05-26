@@ -16,7 +16,7 @@ export function CardCommentsList(props) {
                     </div>
                     <p className="card-msg-txt">{comment.txt} </p>
                     <p className="card-msg-time">{moment(comment.createdAt).fromNow()} </p>
-                    <button className="card-msg-delete" onClick={(idx) => props.deleteComment(idx)}>Delete</button>
+                    <button className="card-msg-delete" onClick={() => props.deleteComment(idx)}>Delete</button>
                 </div>
             })}
 

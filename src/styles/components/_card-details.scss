@@ -10,12 +10,13 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.64);
     .card-details-modal {
-        width: 60%;
+        width: 700px;
         min-height: 60%;
         height: fit-content;
         background-color: #f6f7f7;
         border-radius: 3px;
         padding: 15px 30px;
+        transition: 0.25s ease;
     }
     .card-icon {
         content: url(../../images/layers.svg);
@@ -73,6 +74,7 @@
                 p {
                     margin: 18px 0px 0px 40px;
                     max-width: 320px;
+                    height: 59px;
                     word-wrap: break-word;
                     font-family: "Open Sans", sans-serif;
                     font-size: 14px;
@@ -274,25 +276,33 @@
     .user-text-input {
         height: 35px;
         width: 250px;
-        padding-left: 5px;
+        padding: 0px 0px 0px 5px;
+        line-height: normal;
         border: 1.5px solid #19425100;
         border-radius: 5px;
-        background-color: #e0e0e0;
-        transition: 0.35s;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 2px 0px rgba(0, 71, 179, 0.452);
+        transition: 0.45s ease-in;
         &::placeholder {
-            padding-left: 5px;
+            padding-left: 3px;
             transition: 0.35s;
+            color: rgb(138, 138, 138);
         }
         &:focus {
             border: 1.5px solid #194251;
             background-color: white;
             &::placeholder {
-                padding-left: 15px;
+                padding-left: 50px;
+                opacity: 0;
+
             }
         }
     }
     .card-msg-txt {
         position: relative;
+        max-width: 50%;
+        word-wrap: break-word;
+        line-height: normal;
         background-color: #ffffff;
         font-family: "Open Sans", sans-serif;
         font-size: 12px;
@@ -304,6 +314,7 @@
     }
     .card-msg-time {
         color: rgb(122, 122, 122);
+        line-height: normal;
         font-family: "Open Sans", sans-serif;
         font-size: 10px;
         font-weight: 600;

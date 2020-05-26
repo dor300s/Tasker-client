@@ -16,6 +16,8 @@ class CardDetails extends Component {
         currCard: null,
         currList: null,
         isCalendarActive: false,
+        isImagesShown: false,
+        isMembersModalShown: false
        
     }
 
@@ -52,6 +54,14 @@ class CardDetails extends Component {
         this.setState(prevState => ({ isCalendarActive: !prevState.isCalendarActive }))
     }
 
+    onImages = () => {
+        this.setState(prevState => ({ isImagesShown: !prevState.isImagesShown }))
+    }
+
+    onMembers = () => {
+        this.setState(prevState => ({ isMembersModalShown: !prevState.isMembersModalShown }))
+    }
+
     onDatePicked = (timeStamp) => {
         const { currCard } = this.state
         const { currBoard } = this.props
@@ -67,7 +77,7 @@ class CardDetails extends Component {
 
     render() {
 
-        const { currCard, currList, isCalendarActive } = this.state
+        const { currCard, currList, isCalendarActive , isImagesShown , isMembersModalShown } = this.state
         const { currBoard } = this.props
         if (!currCard) return ''
         return (
@@ -84,13 +94,14 @@ class CardDetails extends Component {
 
                     <div className="card-details-content-wrapper flex">
                         <div className="card-details-content flex column">
-                            < CardMembers history={this.props.history} card={currCard} board={currBoard} />
+                            < CardMembers history={this.props.history} card={currCard} board={currBoard} 
+                            showModal={isMembersModalShown} />
                             {currCard.dueDate && < DueDate card={currCard} />}
                             < CardDescription card={currCard} board={currBoard} />
-                            < CardAttachments card={currCard} board={currBoard} />
+                            {isImagesShown && < CardAttachments card={currCard} board={currBoard} />}
                             < CardComments card={currCard} board={currBoard} user={this.props.loggedUser} />
                         </div>
-                        < CardActions openDatePicker={this.openDatePicker} />
+                        < CardActions openDatePicker={this.openDatePicker} onImages={this.onImages} onMembers={this.onMembers} />
                         {isCalendarActive && < CardCalendar card={currCard} onDatePicked={this.onDatePicked} />}
 
                     </div>

@@ -29,6 +29,7 @@ class CardComments extends Component {
     }
 
     onUserType = ({target}) => {
+        
         const id = this.props.card.id
         this.setState({userMsg: target.value})
         clearInterval(typingInterval);
@@ -86,7 +87,7 @@ class CardComments extends Component {
                         <input className="user-text-input" type="text" placeholder={currUser.userName + ", whats on your mind?"}
                             onChange={this.onUserType} value={userMsg}  />
                     </form>
-                    {isTypeActive && <span className="loading" />}
+                    {isTypeActive && <span className="pulse" />}
                 </div>
                 < CardCommentsList card={card} board={board} deleteComment={this.deleteComment} />
             </div>
