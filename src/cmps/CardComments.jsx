@@ -36,14 +36,7 @@ class CardComments extends Component {
         typingInterval = setTimeout(()=>{
             socketService.emit('user typing' , {id , status: false} ) 
         },550)
-            
-        
 
-
-
-            // setTimeout(()=>{
-            //     socketService.emit('user typing' , {id , status: false} )
-            // },300)
     }
 
     onSubmit = (ev) => {
@@ -66,6 +59,12 @@ class CardComments extends Component {
         this.setState({userMsg: ''})
     }
 
+    deleteComment = (idx) => {
+        const { card, board } = this.props
+        card.comments.splice(idx,1)
+        this.props.saveBoard(board)
+    }
+
     render() {
         const { currUser, card, board } = this.props
         const {userMsg , isTypeActive} = this.state
@@ -76,7 +75,7 @@ class CardComments extends Component {
                     <h4>Comments</h4>
                 </div>
                 <div className="card-add-comment flex align-center" style={{ marginLeft: "40px", marginBottom: "15px" }}>
-                    <div className="user-profile-comment" style={{
+                    <div className="self-profile-comment" style={{
                         backgroundImage: "url(" + `${currUser.imgUrl}` + ")",
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
@@ -89,7 +88,7 @@ class CardComments extends Component {
                     </form>
                     {isTypeActive && <span className="loading" />}
                 </div>
-                < CardCommentsList card={card} board={board} />
+                < CardCommentsList card={card} board={board} deleteComment={this.deleteComment} />
             </div>
         )
     }
