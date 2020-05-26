@@ -7,6 +7,7 @@ import { setBoards, saveBoard } from '../store/actions/boardActions.js'
 
 class DashBoard extends React.Component {
 
+    
     componentDidMount() {
         this.props.setBoards();
     }

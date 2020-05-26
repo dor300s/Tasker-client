@@ -56,8 +56,8 @@ class CardDetails extends Component {
         const { currCard } = this.state
         const { currBoard } = this.props
         currCard.dueDate = timeStamp
-        this.props.saveBoard(currBoard)
         this.setState({ isCalendarActive: false })
+        this.props.saveBoard(currBoard)
     }
 
     onCloseCardDetails = () => {
