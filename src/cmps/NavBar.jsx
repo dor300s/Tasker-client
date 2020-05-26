@@ -33,7 +33,7 @@ class NavBar extends React.Component {
 
     }
 
-    
+
 
     onMenuClick = () => {
         this.setState(prevState => ({ isMenuActive: !prevState.isMenuActive }))
@@ -63,7 +63,7 @@ class NavBar extends React.Component {
                     <div className="nav-menu-btn" onClick={this.onMenuClick}></div>
                     {activeBoard && <BoardMembers onInvite={this.onInviteMember} history={history} board={activeBoard} />}
                     {isInviteModalActive && <InviteMemberModal />}
-                    <NavBarSearch isBoardActive={isBoardActive} boards={boards}/>
+                    {/* <NavBarSearch isBoardActive={isBoardActive} boards={boards} /> */}
                 </div>
                 {isMenuActive && <NavMenu history={history} boards={boards} closeMenu={this.onCloseMenu} />}
                 <div className="flex align-center">
