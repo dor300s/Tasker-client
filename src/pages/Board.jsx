@@ -73,6 +73,7 @@ class Board extends Component {
         const { currBoard } = this.props
         const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === ListId);
+        console.log('list',list)
         list.cards.push(this.getNewCard(txt))
         console.log(currBoard)
         this.props.saveBoard(currBoard)

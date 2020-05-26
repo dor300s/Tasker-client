@@ -9,7 +9,7 @@ class ListMenu extends Component {
         isMenuOpen: false
     }
 
-    componentWillMount() {
+    componentDidMount() {
         document.addEventListener("mousedown", this.closeBoardMenu, false);
         document.addEventListener("keydown", this.closeBoardMenu, false);
     }
@@ -19,10 +19,10 @@ class ListMenu extends Component {
         document.removeEventListener("keydown", this.closeBoardMenu, false);
     }
 
+
     closeBoardMenu = (ev) => {
         ev.stopPropagation();
         if (!this.node.contains(ev.target) || ev.keyCode === 27) {
-            // setTimeout(() => this.setState({ isMenuOpen: false }), 200);
             this.setState({ isMenuOpen: false })
         }
     }
@@ -33,29 +33,27 @@ class ListMenu extends Component {
         this.setState({ isMenuOpen: true })
     }
 
-    onDeleteList = (listId, listListId, ev) => {
+    onDeleteList = (cardlistId, ev) => {
         ev.stopPropagation()
-        console.log(this.props.currBoard)
-        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
-        const { listLists } = currBoard;
-        const list = listLists.find(listList => listList.id === listListId);
-        const listIdx = list.lists.findIndex(list => list.id === listId);
+        const { currBoard } = this.props;
+        console.log(currBoard)
+        const { cardLists } = currBoard;
+        cardLists.splice(cardlistId, 1);
 
-        list.lists.splice(listIdx, 1);
         this.props.saveBoard(currBoard);
     }
 
     render() {
-        const { onEditListHeader, listId, listListId } = this.props
+        const { onEditListTitle, listId, cardlistId } = this.props
         const { onDeleteList } = this
         const { isMenuOpen } = this.state;
 
         return (
             <div ref={node => this.node = node} className="list-menu-container">
-                <div  className="menu-btn hidden" onClick={(event) => this.openMenu(event)}></div>
+                <div className="menu-btn hidden" onClick={(event) => this.openMenu(event)}></div>
                 {isMenuOpen && <div className="menu-options list-menu ">
-                    <div onClick={(event) => onEditListHeader(event)}>Edit Title</div>
-                    <div onClick={(event) => onDeleteList(listId, listListId, event)}>Delete List</div>
+                    <div onClick={(event) => onEditListTitle(event)}>Edit Title</div>
+                    <div onClick={(event) => onDeleteList(cardlistId, event)}>Delete List</div>
                 </div>}
             </div>
         )

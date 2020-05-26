@@ -32,7 +32,6 @@ class CardPreview extends Component {
         card.text = text
         this.props.saveBoard(currBoard);
         this.setState({ isFocus: false })
-        this.props.saveBoard(currBoard)
     }
 
 

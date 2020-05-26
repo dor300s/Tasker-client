@@ -27,7 +27,6 @@ class CardMenu extends Component {
         }
     }
 
-
     openMenu = (ev) => {
         ev.stopPropagation();
         this.setState({ isMenuOpen: true })
@@ -35,8 +34,7 @@ class CardMenu extends Component {
 
     onDeleteCard = (cardId, cardListId, ev) => {
         ev.stopPropagation()
-        console.log(this.props.currBoard)
-        const currBoard = JSON.parse(JSON.stringify(this.props.currBoard));
+        const currBoard = this.props.currBoard;
         const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === cardListId);
         const cardIdx = list.cards.findIndex(card => card.id === cardId);
