@@ -91,13 +91,9 @@ const mapStateToProps = (state) => {
         activeBoard: state.boardApp.currBoard,
     }
 }
-
 const mapDispatchToProps = {
     setBoards,
     setBoard,
     getUser
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar))
-
-

@@ -73,6 +73,7 @@ class Board extends Component {
         const { currBoard } = this.props
         const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === ListId);
+        console.log('list',list)
         list.cards.push(this.getNewCard(txt))
         console.log(currBoard)
         this.props.saveBoard(currBoard)
@@ -147,7 +148,8 @@ class Board extends Component {
 
         return (
             <div className="board-app-container"  >
-                <div className={`wrap-card-lists flex`} style={this.getBackground(currBoard)}>
+                <div className="board-background" style={this.getBackground(currBoard)}></div>
+                <div className={`wrap-card-lists flex`} >
                     <DragDropContext onDragEnd={result => onDragEnd(result)} >
                         <Droppable droppableId="all-lists" direction="horizontal" type="list">
                             {(provided, snapshot) => (
