@@ -198,10 +198,15 @@
         }
         .card-calendar-container {
             position: absolute;
-            top: 63%;
-            left: 42.2%;
+            // top: 385px;
+            left: 40.2%;
+            top: 40.2%;
             transform: translate(-50%, -50%);
+            transition: 0.25s ease-out;
+            visibility: hidden;
+            opacity: 0;
             .date-confirm {
+                position: absolute;
                 margin-top: 10px;
                 width: fit-content;
                 padding: 10px;
@@ -240,8 +245,13 @@
             }
         }
         .attachments-files-container {
-            width: 95%;
+            width: 320px;
             height: fit-content;
+            flex-wrap: wrap;
+            overflow-y: auto;
+            max-height: 340px;
+            padding: 0px 5px;
+            // box-shadow: -1px 10px 5px -12px rgba(0,0,0,0.75);
         }
         .attachment-delete-btn {
             width: fit-content;
@@ -317,31 +327,32 @@
                 max-width: 50%;
                 word-wrap: break-word;
                 line-height: normal;
-                background-color: #ffffff;
                 font-family: "Open Sans", sans-serif;
                 font-size: 12px;
                 font-weight: 550;
                 border-radius: 3px;
                 color: rgb(102, 102, 102);
-                padding: 5px;
-                box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
+                margin: 0px 0px 5px 0px ;
             }
             .card-msg-time {
-                color: rgb(122, 122, 122);
+                color: rgb(160, 160, 160);
                 line-height: normal;
                 font-family: "Open Sans", sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-                margin-left: 10px;
+                margin: 0;
             }
             .card-msg-delete {
-                color: rgb(250, 120, 120);
+                color: rgb(102, 102, 102);
                 font-family: "Open Sans", sans-serif;
                 font-size: 10px;
                 font-weight: 600;
                 margin-left: 10px;
                 border: none;
                 background-color: transparent;
+                &:hover{
+                    color: rgb(252, 126, 126);
+                }
             }
         }
         .interactive-robot-container {
@@ -375,6 +386,7 @@
                 padding: 10px 5px;
             }
         }
+        
         .todo-item {
             // background-color: white;
             // border-radius: 5px;
@@ -405,20 +417,20 @@
                 line-height: normal;
             }
             .todo-checkbox {
-                width: 15px;
-                height: 15px;
+                width: 20px;
+                height: 20px;
                 background-color: white;
                 border: 1.5px solid rgba(187, 187, 187, 0.726);
-                border-radius: 5px;
+                border-radius: 0px;
                 &:hover {
                     cursor: pointer;
                     border: 1.5px solid #194251;
                 }
             }
             .todo-checkbox-complete {
-                width: 15px;
-                height: 15px;
-                background-color: #78f789;
+                width: 20px;
+                height: 20px;
+                background-color: #03BE57;
                 border-radius: 5px;
                 background-image: url(../../images/confirm.svg);
                 background-size: 80%;
@@ -476,6 +488,7 @@
             font-size: 12px;
             color: rgb(144, 255, 134);
         }
+        
         .card-details-labels-container{
             max-width: 320px;
             flex-wrap: wrap;
@@ -501,7 +514,29 @@
             
         }
     }
+    .todos-container{
+        max-height: 300px;
+        overflow-y: auto;
+        padding-right: 5px;
+    }
+    .todos-bar-wrapper{
+        position: relative;
+        width: 320px;
+        height: 10px;
+        margin: 0px 0px 5px 40px;
+        border-radius: 30px;
+        background-color: white;
+        .todos-bar-fill{
+            position: absolute;
+            height: 95%;
+            transition: 0.35s ease;
+            border-radius: 30px;
+            background-color: rgb(129, 248, 113);
+        }
+    }
+    
 }
+
 @keyframes textAreaFade {
     0% {
         background-color: rgba(247, 233, 141, 0.486);
