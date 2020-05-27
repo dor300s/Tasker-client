@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BoardList from '../cmps/BoardList.jsx';
-import { setBoards, saveBoard } from '../store/actions/boardActions.js'
+import { setBoards, saveBoard, clearCurrBoard } from '../store/actions/boardActions.js'
 
 
 
@@ -17,22 +17,26 @@ class DashBoard extends React.Component {
     }
 
     render() {
-        const { boards, saveBoard } = this.props;
+        const { boards, saveBoard, clearCurrBoard } = this.props;
         let filteredBoards = boards.filter(board => board.isStarred);
 
 
 
         return (
             <div className="dashboard">
-                {Boolean(filteredBoards.length) && <h3>Starred</h3>}
-                <div className="boards-container flex">
-                    <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} saveBoard={saveBoard} />
-                </div>
+                <section className="boards-main-container">
+                    {Boolean(filteredBoards.length) && <h3>Starred</h3>}
+                    <div className="boards-container flex">
+                        <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} saveBoard={saveBoard} clearCurrBoard={clearCurrBoard} />
+                    </div>
+                </section>
 
-                <h3>All Boards</h3>
-                <div className="boards-container flex">
-                    <BoardList boards={boards} onBoardClicked={this.onBoardClicked} saveBoard={saveBoard} addBoardOption={true} />
-                </div>
+                <section className="boards-main-container">
+                    <h3>All Boards</h3>
+                    <div className="boards-container flex">
+                        <BoardList boards={boards} onBoardClicked={this.onBoardClicked} saveBoard={saveBoard} clearCurrBoard={clearCurrBoard} addBoardOption={true} />
+                    </div>
+                </section>
             </div >
         )
     }
@@ -46,6 +50,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     setBoards,
     saveBoard,
+    clearCurrBoard
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard)

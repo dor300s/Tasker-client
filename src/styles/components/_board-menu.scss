@@ -1,13 +1,13 @@
 .board-menu-container {
     background-color: $clr6;
     color: $clr1;
-    box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.08);
+    // box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.08);
     position: relative;
     width: fit-content;
-    height: 100px;
+    height: 94px;
     border-radius: 4px;
-    left: -5px;
-    bottom: 67px;
+    left: -2px;
+    bottom: 64px;
     animation: board-menu-animation 0.2s alternate;
 
     > div {
@@ -21,6 +21,10 @@
         &:hover {
             background-color: #e8ecee;
         }
+    }
+
+    .delete-btn{
+        color: #eb4d4b;
     }
 
     .loading {
@@ -94,11 +98,6 @@
             }
         }
     }
-
-    /* input{
-        justify-self: center;
-        margin: 25px;
-    } */
 }
 
 .box-shadow-off {
