@@ -1,5 +1,6 @@
 .card-preview {
     cursor: pointer !important;
+    position: relative;
     padding: 5px 10px;
     border: 1px solid darken($color: $clr5, $amount: 7);
     border-radius: 4px;
@@ -31,22 +32,18 @@
         }
     }
 
-    .card-text {
+    /*  .card-text {
         padding-bottom: 10px;
     }
-
+ */
     .menu-btn {
-        float: right;
         width: 20px;
         padding: 4px;
         border-radius: 2.5rem;
         &:hover {
             content: url(../../images/menu.svg);
+            visibility: visible;
         }
-    }
-
-    .hidden {
-        visibility: hidden;
     }
 
     &:hover .menu-btn {
@@ -60,12 +57,12 @@
     .card-text {
         text-overflow: ellipsis;
         overflow: hidden;
+        width: 190px;
     }
 }
 .card-menu-container {
-    position: relative;
-    width: fit-content;
-    margin-left: 200px;
+    position: absolute;
+    left: 210px;
 }
 .menu-options {
     background: white;
@@ -76,7 +73,7 @@
     text-align: center;
     box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.08);
     border-radius: 4px;
-    transform: translateX(-90%);
+    transform: translateX(-100%);
 
     > * {
         padding: 10px;
@@ -87,9 +84,6 @@
 
     :last-child {
         color: #eb4d4b;
-    }
-    &.card-menu {
-        margin-top: 20px;
     }
 }
 

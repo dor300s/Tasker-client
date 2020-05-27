@@ -56,7 +56,7 @@ class ListMenu extends Component {
 
         return (
             <div ref={node => this.node = node} className="list-menu-container">
-                <div className="menu-btn hidden" onClick={(event) => this.openMenu(event)}></div>
+                <div className="menu-btn" onClick={(event) => this.openMenu(event)}></div>
                 {isMenuOpen && <div className="menu-options list-menu ">
                     <div onClick={(event) => this.onCloseMenu(event)}>Edit Title</div>
                     <div onClick={(event) => onDeleteList(cardListId, event)}>Delete List</div>
