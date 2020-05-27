@@ -77,33 +77,31 @@ class CardListPreview extends Component {
 
 
     render() {
-        const { cardListId, cardList, index, onDeleteList, onDeleteCard, onAddCard, currBoard, history } = this.props
+        const { cardList, index, onAddCard, currBoard, history } = this.props
         const { onEditListTitle, offEditListTitle } = this
 
-
-
         return (
-            <Draggable key={cardListId} draggableId={cardListId} index={index} >
+            <Draggable key={cardList.id} draggableId={cardList.id} index={index} >
                 {(provided, snapshot) => (
-                    <div className={`wrap-card-list flex`} key={cardListId}
+                    <div className={`wrap-card-list flex`} key={cardList.id}
                         ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                        <Droppable droppableId={cardListId} key={cardListId} type={"card"}>
+                        <Droppable droppableId={cardList.id} key={cardList.id} type={"card"}>
                             {(provided, snapshot) => (
                                 <div className={`card-list-container flex column ${snapshot.isDraggingOver ? "lightblue" : ""}`} >
                                     <div className="title-content flex space-between ">
                                         {(this.state.isFocus) ? <ListTitleForm listTitle={cardList.title} cardList={cardList} offEditListTitle={offEditListTitle} /> : <h2 className="list-title">{cardList.title}</h2>}
 
-                                        <ListMenu onEditListTitle={onEditListTitle} cardListId={cardListId} />
+                                        <ListMenu onEditListTitle={onEditListTitle} cardListId={cardList.id} />
                                     </div>
                                     <div className={"card-list"} {...provided.droppableprops} ref={provided.innerRef} >
                                         {cardList.cards.map((card, index) => {
                                             return (
-                                                <CardPreview key={card.id} cardListId={cardListId} currBoard={currBoard} onDeleteCard={onDeleteCard} card={card} index={index} history={history} />
+                                                <CardPreview key={card.id} cardListId={cardList.id} currBoard={currBoard} card={card} index={index} history={history} />
                                             );
                                         })}
                                         {provided.placeholder}
                                     </div>
-                                    <AddCardForm onAddCard={onAddCard} cardList={cardList} cardListId={cardListId} />
+                                    <AddCardForm onAddCard={onAddCard} cardList={cardList} cardListId={cardList.id} />
                                 </div>
                             )}
                         </Droppable>

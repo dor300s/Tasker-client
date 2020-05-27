@@ -9,7 +9,7 @@ class CardMenu extends Component {
         isMenuOpen: false
     }
 
-    componentWillMount() {
+    componentDidMount() {
         document.addEventListener("mousedown", this.closeBoardMenu, false);
         document.addEventListener("keydown", this.closeBoardMenu, false);
     }
@@ -22,7 +22,6 @@ class CardMenu extends Component {
     closeBoardMenu = (ev) => {
         ev.stopPropagation();
         if (!this.node.contains(ev.target) || ev.keyCode === 27) {
-            // setTimeout(() => this.setState({ isMenuOpen: false }), 200);
             this.setState({ isMenuOpen: false })
         }
     }
@@ -43,6 +42,11 @@ class CardMenu extends Component {
         this.props.saveBoard(currBoard);
     }
 
+    onCloseMenu = (ev) => {
+        this.setState({ isMenuOpen: false })
+        this.props.onEditCardHeader(ev)
+    }
+
     render() {
         const { onEditCardHeader, cardId, cardListId } = this.props
         const { onDeleteCard } = this
@@ -50,9 +54,9 @@ class CardMenu extends Component {
 
         return (
             <div ref={node => this.node = node} className="card-menu-container">
-                <div  className="menu-btn hidden" onClick={(event) => this.openMenu(event)}></div>
+                <div className="menu-btn hidden" onClick={(event) => this.openMenu(event)}></div>
                 {isMenuOpen && <div className="menu-options card-menu">
-                    <div onClick={(event) => onEditCardHeader(event)}>Edit Title</div>
+                    <div onClick={(event) => this.onCloseMenu(event)}>Edit Title</div>
                     <div onClick={(event) => onDeleteCard(cardId, cardListId, event)}>Delete Card</div>
                 </div>}
             </div>

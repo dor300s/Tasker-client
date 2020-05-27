@@ -9,11 +9,11 @@ class Home extends React.Component {
 
 
     componentDidMount() {
-        if (this.props.loggedUser) this.props.history.push('/board')
+        // if (this.props.loggedUser) this.props.history.push('/board')
     }
 
     componentDidUpdate() {
-        if (this.props.loggedUser) this.props.history.push('/board')
+        // if (this.props.loggedUser) this.props.history.push('/board')
     }
 
     onDemoClick = () => {

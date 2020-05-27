@@ -57,7 +57,7 @@ export class ListTitleForm extends Component {
         return (
             <React.Fragment>
                 <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Change list name..." value={cardListTitle} onChange={this.handleChange} autoFocus onBlur={this.onSubmit} />
+                    <input placeholder="Edit title..." value={cardListTitle} onChange={this.handleChange} autoFocus onBlur={this.onSubmit} />
                 </form>
             </React.Fragment>
         )

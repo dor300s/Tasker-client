@@ -23,7 +23,7 @@ export function boardReducer(state = initialState, action) {
                 boards: [...state.boards, action.board]
             }
         case 'UPDATE_BOARD':
-            console.log('updating.........', action.board);
+            // console.log('updating.........', action.board);
 
             return {
                 ...state,

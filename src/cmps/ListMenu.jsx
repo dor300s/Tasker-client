@@ -36,23 +36,29 @@ class ListMenu extends Component {
     onDeleteList = (cardlistId, ev) => {
         ev.stopPropagation()
         const { currBoard } = this.props;
-        console.log(currBoard)
         const { cardLists } = currBoard;
-        cardLists.splice(cardlistId, 1);
-
+        const listIdx = cardLists.findIndex(cardList => cardlistId === cardList.id);
+        cardLists.splice(listIdx, 1);
+        
         this.props.saveBoard(currBoard);
     }
 
+    onCloseMenu = (ev) => {
+        this.setState({ isMenuOpen: false })
+        this.props.onEditListTitle(ev)
+    }
+
     render() {
-        const { onEditListTitle, listId, cardlistId } = this.props
+        const { onEditListTitle, cardListId } = this.props
         const { onDeleteList } = this
         const { isMenuOpen } = this.state;
+
 
         return (
             <div ref={node => this.node = node} className="list-menu-container">
                 <div className="menu-btn hidden" onClick={(event) => this.openMenu(event)}></div>
                 {isMenuOpen && <div className="menu-options list-menu ">
-                    <div onClick={(event) => onEditListTitle(event)}>Edit Title</div>
+                    <div onClick={(event) => this.onCloseMenu(event)}>Edit Title</div>
                     <div onClick={(event) => onDeleteList(cardlistId, event)}>Delete List</div>
                 </div>}
             </div>
