@@ -12,15 +12,20 @@
         // transform: rotate(6deg);
     }
 
+    img {
+        width: 100%;
+        align-self: center;
+    }
+
     input {
         border: 0;
         word-wrap: break-word;
         width: 200px;
         height: 20px;
-        font-size: .9rem;
+        font-size: 0.9rem;
         padding-left: 40px;
-        transition: .25s;
-        &:focus{
+        transition: 0.25s;
+        &:focus {
             padding-left: 0;
         }
     }
@@ -38,10 +43,15 @@
         &:hover {
             content: url(../../images/menu.svg);
         }
+
+    }
+
+    &:hover .menu-btn {
+        visibility: visible;
     }
 
     .hidden {
-        display: none;
+        visibility: hidden;
     }
 
     &:hover .hidden {

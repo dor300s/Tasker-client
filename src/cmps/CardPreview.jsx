@@ -49,14 +49,17 @@ class CardPreview extends Component {
                     return (
                         <>
                             <div
-                                className={`card-preview drag ${snapshot.isDragging ? "isDragging" : ""}`} onClick={() => showCard(card.id, history, currBoard)}
+                                className={`card-preview drag flex column ${snapshot.isDragging ? "isDragging" : ""}`} onClick={() => showCard(card.id, history, currBoard)}
                                 ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
                                 style={{
                                     userSelect: "none",
                                     ...provided.draggableProps.style
                                 }}
                             >
-                                <CardMenu cardId={card.id} onEditCardHeader={onEditCardHeader} cardListId={cardListId} />
+                                <div className="img-and-menu" style={{ backgroundImage: `url(${card.covers.imgUrl})` }} >
+                                    <CardMenu cardId={card.id} onEditCardHeader={onEditCardHeader} cardListId={cardListId} />
+                                     <img src={card.covers.imgUrl} alt="" /> 
+                                </div>
                                 {Boolean(card.labels.length) && <CardLabelsPreview histoy={history} labels={card.labels} />}
                                 {(this.state.isFocus) ? <CardHeaderForm cardHeader={card.text} cardListId={cardListId} cardId={card.id} offEditCardHeader={offEditCardHeader} /> : <div className="card-text">{card.text}</div>}
                                 <CardIconsPreview card={card} />

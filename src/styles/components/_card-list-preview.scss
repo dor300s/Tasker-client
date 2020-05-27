@@ -13,7 +13,7 @@
         width: fit-content;
 
         // .card-lists {
-        //it may be usfull for scroll shadow
+
         // }
 
         .wrap-card-list {
@@ -31,6 +31,9 @@
                     max-height: calc(100vh - 250px);
                     overflow: auto;
 
+                    > :last-child {
+                    }
+
                     &::-webkit-scrollbar {
                         width: 0px;
                     }
@@ -39,7 +42,7 @@
                 .title-content {
                     padding: 32px 16px 16px;
 
-                    input{
+                    input {
                         height: 30px;
                         width: 200px;
                         border: 0;
@@ -123,4 +126,15 @@
             }
         }
     }
+}
+
+.scrollGradient {
+    background: linear-gradient(#ffffff 30%, rgba(255, 255, 255, 0)),
+        linear-gradient(rgba(255, 255, 255, 0), #ffffff 70%) 0 100%,
+        radial-gradient(farthest-side at 50% 0, rgba(34, 34, 34, 0.5), rgba(0, 0, 0, 0)),
+        radial-gradient(farthest-side at 50% 100%, rgba(34, 34, 34, 0.5), rgba(0, 0, 0, 0)) 0 100%;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-attachment: local, local, scroll, scroll;
+    background-size: 100% 68px, 100% 68px, 100% 34px, 100% 34px;
 }

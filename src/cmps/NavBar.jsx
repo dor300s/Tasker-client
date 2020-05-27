@@ -31,7 +31,6 @@ class NavBar extends React.Component {
                 if (!this.props.loggedUser) this.props.history.push('/')
                 else this.props.setBoards()
             })
-
     }
 
 
@@ -71,7 +70,7 @@ class NavBar extends React.Component {
                     <div className="nav-menu-btn" onClick={this.onMenuClick}></div>
                     {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                      {isInviteModalOpen && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
-                    {/* <NavBarSearch isBoardActive={isBoardActive} boards={boards} /> */}
+                    <NavBarSearch isBoardActive={isBoardActive} boards={boards} />
                 </div>
                 {isMenuActive && <NavMenu history={history} boards={boards} onCloseMenu={this.onCloseMenu} />}
                 <div className="flex align-center">
