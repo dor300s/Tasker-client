@@ -95,7 +95,7 @@ class BoardMenu extends React.Component {
                 {isImgLoading ? <div className="loading">aaaaaaaa</div> :
                     <>
                         {!editTitleMode ? <>
-                            <div onClick={this.activeEditMode}>Edit title</div>
+                            <div onClick={this.activeEditMode}>Edit Title</div>
                             <div className="update-cover-btn" onClick={(e) => e.stopPropagation()} onMouseOver={this.openCoverMode} onMouseLeave={this.closeCoverMode}>Update cover
                             {coverMode && <div className="change-cover-wrap flex column">
                                     <div className="color-palette flex">
@@ -107,13 +107,13 @@ class BoardMenu extends React.Component {
                                         <div onClick={() => this.onChangeColor('#8e44ad')}>⬤</div>
                                     </div>
                                     <label>
-                                        <div className="upload-pic-btn">Upload image
+                                        <div className="upload-pic-btn">Upload Image
                                          <input onChange={this.onUploadImg} type="file" hidden accept="image/png, image/jpeg" />
                                         </div>
                                     </label>
                                 </div>}
                             </div>
-                            <div onClick={this.onRemoveBoard}>Delete board</div>
+                            <div onClick={this.onRemoveBoard}>Delete Board</div>
                         </> :
                             <form className="flex" onSubmit={this.handleSubmit}>
                                 <input value={title} onChange={this.handleChange} onBlur={this.handleSubmit} onClick={(e) => e.stopPropagation()} autoFocus spellCheck="false" />

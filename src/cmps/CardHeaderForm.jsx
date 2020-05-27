@@ -5,7 +5,7 @@ export class CardHeaderForm extends Component {
     state = {
         cardTitle: this.props.cardHeader,
     }
-    
+
     componentDidMount() {
         document.addEventListener("mousedown", this.closeCardMenu, false);
         document.addEventListener("keydown", this.closeCardMenu, false);
@@ -72,7 +72,7 @@ export class CardHeaderForm extends Component {
     }
 
     handleBlur = () => {
-       this.onSubmit()
+        this.onSubmit()
     }
 
 
@@ -81,7 +81,7 @@ export class CardHeaderForm extends Component {
         return (
             <React.Fragment>
                 <form onSubmit={this.handleSubmit}>
-                    <input placeholder="add card ..." value={cardTitle} onChange={this.handleChange} autoFocus onBlur={this.handleBlur} />
+                    <input placeholder="Edit title" onClick={ev => ev.stopPropagation()} value={cardTitle} onChange={this.handleChange} autoFocus onBlur={this.handleBlur} />
                 </form>
             </React.Fragment>
         )

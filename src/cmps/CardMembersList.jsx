@@ -1,6 +1,6 @@
 import React from 'react'
 export function CardMembersList(props) {
-    const { board, card, opacity } = props
+    const { board, card, opacity  } = props
     return (
         <div className={`add-card-member-modal ${opacity} flex align-center`}>
             <div className="nav-board-members flex align-center">

@@ -43,6 +43,11 @@ class ListMenu extends Component {
         this.props.saveBoard(currBoard);
     }
 
+    onCloseMenu = (ev) => {
+        this.setState({ isMenuOpen: false })
+        this.props.onEditListTitle(ev)
+    }
+
     render() {
         const { onEditListTitle, cardListId } = this.props
         const { onDeleteList } = this
@@ -53,8 +58,8 @@ class ListMenu extends Component {
             <div ref={node => this.node = node} className="list-menu-container">
                 <div className="menu-btn hidden" onClick={(event) => this.openMenu(event)}></div>
                 {isMenuOpen && <div className="menu-options list-menu ">
-                    <div onClick={(event) => onEditListTitle(event)}>Edit Title</div>
-                    <div onClick={(event) => onDeleteList(cardListId, event)}>Delete List</div>
+                    <div onClick={(event) => this.onCloseMenu(event)}>Edit Title</div>
+                    <div onClick={(event) => onDeleteList(cardlistId, event)}>Delete List</div>
                 </div>}
             </div>
         )

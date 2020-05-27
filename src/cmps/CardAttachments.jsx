@@ -43,7 +43,7 @@ class CardAttachments extends Component {
     }
 
     render() {
-        const { card } = this.props // take from props
+        const { card, loggedUser } = this.props // take from props
         const { isLoading } = this.state
         const attachments = card.attachments
         return (
@@ -61,6 +61,7 @@ class CardAttachments extends Component {
                             {file.url && <img src={file.url} width="320" height="320" />}
                             <div className="attachment-file-name-wrapper flex align-center">
                                 <h4 className="attachment-file-name">"{file.fileName}".{file.format}</h4>
+                                {/* <p className="attachment-owner">Uploaded by - {loggedUser.userName}</p> */}
                                 <button className="attachment-delete-btn" onClick={() => this.onDelete(idx)}>Delete</button>
                             </div>
 
@@ -68,14 +69,15 @@ class CardAttachments extends Component {
                     })}
                 </div>
                 {isLoading && <span style={{ marginLeft: "55px" }} className="loading" />}
-                
+
             </div>
         )
     }
 }
 const mapStateToProps = (state) => {
     return {
-        activeBoard: state.boardApp.currBoard
+        activeBoard: state.boardApp.currBoard,
+        loggedUser: state.user.loggedInUser
     }
 }
 

@@ -9,65 +9,66 @@
         position: fixed;
     }
     .wrap-card-lists {
-        padding: 79px 0 0 30px;
+        padding: 94px 0 0 30px;
         width: fit-content;
 
-        .card-lists{
-            // overflow-x: scroll;
-            // overflow-y: auto;
-        }
+        // .card-lists {
+        //it may be usfull for scroll shadow
+        // }
 
         .wrap-card-list {
             height: fit-content;
-            /*  ::-webkit-scrollbar {
-                        width: 0px;
-                    } */
+            background-color: $clr6;
+            margin: 0 15px;
+            border-radius: 4px;
 
             .card-list-container {
                 height: fit-content;
-                cursor: pointer;
-                border-radius: 4px;
-                margin: 0 8px;
-                width: 250px;
-                min-width: 250px;
-                position: relative;
-
-                .trash {
-                    width: 29px;
-                    padding: 3px;
-                }
+                width: 270px;
 
                 .card-list {
                     padding-bottom: 2px;
                     max-height: calc(100vh - 250px);
-                    height: fit-content;
                     overflow: auto;
 
                     &::-webkit-scrollbar {
                         width: 0px;
                     }
-                    
-                    
-                    // overflow-x: hidden;
                 }
 
-                .list-title {
-                    color: $clr5;
-                    font-size: 1.3rem;
-                }
                 .title-content {
-                    padding: 10px 5px;
-                    border-radius: 3px;
-                    margin-bottom: 7px;
-                    min-height: 40px;
-                    background-color: rgba(0, 0, 0, 0.2);
-                    width: 250px !important;
-                }
-                > :last-child {
-                    height: 30px;
+                    padding: 32px 16px 16px;
+
+                    input{
+                        height: 30px;
+                        width: 200px;
+                        border: 0;
+                        font-family: Ubuntu;
+                        font-size: 1.4rem;
+                    }
+
+                    .list-title {
+                        color: $clr1;
+                        font-size: 1.3rem;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
                 }
 
-                & .list-hidden {
+                > :last-child {
+                    border: 0;
+                    height: 30px;
+                    padding: 0;
+                    margin: 0 0 16px;
+                    width: 100%;
+                    color: darken($color: $clr4, $amount: 15%);
+                    &:hover {
+                        color: #4886ff;
+                        background-color: $clr6;
+                    }
+                }
+
+                &.list-hidden {
                     visibility: hidden;
                 }
 
@@ -87,31 +88,39 @@
                 .top-icons {
                     float: right;
                 }
-
-                &.add-list {
-                    background-color: rgba(0, 0, 0, 0.1);
-                    color: $clr6;
-                    padding-top: 13px;
-                    padding-bottom: 13px;
-                    width: 250px !important;
+            }
+        }
+        .add-list {
+            .add-list-btn {
+                right: 60px;
+                bottom: 60px;
+                position: fixed;
+                box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.424);
+                border-radius: 50%;
+                padding: 15px;
+                background-color: #4886ff;
+                cursor: pointer;
+                width: 45px;
+                height: 45px;
+            }
+            input {
+                position: absolute;
+                width: 300px;
+                right: -100px;
+                opacity: 0;
+                transition: 0.25s;
+                bottom: 200px;
+                height: 50px;
+                padding-left: 20px;
+                font-size: 1.2rem;
+                border: 0;
+                border-radius: 4px;
+                box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.424);
+                &:focus {
+                    right: 40px;
+                    opacity: 1;
                 }
             }
         }
-    }
-}
-
-.add-list {
-    padding: 10px 5px;
-    margin-left: 5px;
-    border-radius: 3px;
-    color: $clr6;
-    margin-bottom: 7px;
-    height: 49px;
-    background-color: rgba(0, 0, 0, 0.2);
-    width: 250px !important;
-    font-size: 14px;
-    cursor: pointer;
-    h2 {
-        padding-left: 10px;
     }
 }

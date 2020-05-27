@@ -9,297 +9,447 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.64);
+}
+.card-details-content-wrapper {
+    // position: absolute;
+    // z-index: 2;
     .card-details-modal {
-        width: 760px;
-        height: 80%;
-        max-height: 90%;
+        position: absolute;
+        z-index: 2;
+        width: 700px;
+        min-height: 60%;
+        height: fit-content;
         background-color: #f6f7f7;
         border-radius: 3px;
         padding: 15px 30px;
-    }
-    .card-icon {
-        content: url(../../images/layers.svg);
-        width: 15px;
-    }
-    .card-details-title {
-        margin-left: 25px;
-        font-family: "Open Sans", sans-serif;
-        font-weight: 500;
-        line-height: normal;
-    }
-    .card-list-parent {
-        font-family: "Open Sans", sans-serif;
-        font-size: 11px;
-        letter-spacing: 1px;
-        font-weight: 500;
-        margin: 0px 0px 0px 15px;
-        // padding: 2px 5px ;
-        color: rgb(187, 187, 187);
-        & span {
-            color: rgb(135, 146, 167);
-            text-decoration: underline;
-        }
-    }
-    .card-details-close {
-        width: 25px;
-        height: 25px;
-        border: none;
-        border-radius: 5px;
-        background-color: rgba(2, 66, 109, 0.185);
-        &:hover {
-            background-color: rgba(2, 66, 109, 0.479);
-        }
-    }
-    .card-details-content-wrapper {
-        width: 100%;
-        height: 94%;
-        margin-top: 10px;
-        // background-color: brown;
-        .card-details-content {
-            width: 70%;
-            height: 95%;
-            padding: 10px 5px 10px 0px;
-            overflow-y: scroll;
-            position: relative;
+        transition: 0.25s ease;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 80px;
 
-            .card-details-description {
-                
+        .card-icon {
+            content: url(../../images/layers.svg);
+            width: 15px;
+        }
+        .card-details-title {
+            margin-left: 25px;
+            font-family: "Open Sans", sans-serif;
+            font-weight: 500;
+            line-height: normal;
+        }
+        .card-list-parent {
+            font-family: "Open Sans", sans-serif;
+            font-size: 11px;
+            letter-spacing: 1px;
+            font-weight: 500;
+            margin: 0px 0px 0px 15px;
+            // padding: 2px 5px ;
+            color: rgb(187, 187, 187);
+            & span {
+                color: rgb(135, 146, 167);
+                text-decoration: underline;
+            }
+        }
+        .card-details-close {
+            width: 25px;
+            height: 25px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(2, 66, 109, 0.185);
+            &:hover {
+                background-color: rgba(2, 66, 109, 0.479);
+            }
+        }
+        .card-details-content-wrapper {
+            width: 100%;
+            height: 94%;
+            margin-top: 10px;
+            // background-color: brown;
+            .card-details-content {
+                width: 70%;
                 height: fit-content;
-                margin-bottom: 30px;
-                h4 {
-                    margin-left: 30px;
-                    font-family: "Open Sans", sans-serif;
-                    font-weight: 500;
-                }
-                p {
-                    margin: 18px 0px 0px 40px;
-                    max-width: 320px;
-                    word-wrap: break-word;
-                    font-family: "Open Sans", sans-serif;
-                    font-size: 14px;
-                    padding: 10px;
-                    border-radius: 3px;
-                    background-color: #e0e0e0;
-                    color: $clr1;
-                    line-height: normal;
-                }
-                textarea {
-                    margin: 18px 0px 0px 40px;
-                    outline: none;
-                    border: none;
-                    width: 320px;
-                    word-wrap: break-word;
-                    font-family: "Open Sans", sans-serif;
-                    font-size: 14px;
-                    padding: 10px;
-                    border-radius: 3px;
-                    background-color: #cccaca;
-                    color: $clr1;
-                    line-height: normal;
-                    &:hover {
-                        cursor: text;
+                padding: 10px 5px 10px 0px;
+                // overflow-y: scroll;
+                position: relative;
+
+                .card-details-description {
+                    height: fit-content;
+                    margin-bottom: 30px;
+                    h4 {
+                        margin-left: 30px;
+                        font-family: "Open Sans", sans-serif;
+                        font-weight: 500;
+                    }
+                    p {
+                        margin: 18px 0px 0px 40px;
+                        max-width: 320px;
+                        height: 59px;
+                        word-wrap: break-word;
+                        font-family: "Open Sans", sans-serif;
+                        font-size: 14px;
+                        padding: 10px;
+                        border-radius: 3px;
+                        background-color: #e0e0e0;
+                        color: $clr1;
+                        line-height: normal;
+                    }
+                    textarea {
+                        margin: 18px 0px 0px 40px;
+                        outline: none;
+                        border: none;
+                        width: 320px;
+                        word-wrap: break-word;
+                        font-family: "Open Sans", sans-serif;
+                        font-size: 14px;
+                        padding: 10px;
+                        border-radius: 3px;
+                        background-color: #cccaca;
+                        color: $clr1;
+                        line-height: normal;
+                        &:hover {
+                            cursor: text;
+                        }
                     }
                 }
             }
-        }
-        .card-details-actions {
-            width: 30%;
-            height: 100%;
-            padding: 10px 5px;
-            // background-color: rgb(218, 218, 218);
-            h4 {
-                margin-bottom: 30px;
-                font-weight: 550;
+            .card-details-actions {
+                width: 30%;
+                height: 100%;
+                padding: 10px 5px;
+                // background-color: rgb(218, 218, 218);
+                h4 {
+                    margin-bottom: 30px;
+                    font-weight: 550;
+                }
+                .card-action-wrapper {
+                    background-color: rgb(235, 235, 235);
+                    padding: 10px;
+                    border-radius: 10px;
+                    margin-bottom: 15px;
+                    width: 100%;
+                    &:hover {
+                        background-color: rgb(224, 224, 224);
+                        cursor: pointer;
+                    }
+                }
             }
-            .card-action-wrapper {
-                background-color: rgb(235, 235, 235);
-                padding: 10px;
-                border-radius: 10px;
-                margin-bottom: 15px;
-                width: 100%;
+            .action-title {
+                margin-left: 15px;
+                font-weight: 450;
+            }
+        }
+        .card-due-date-container {
+            margin-bottom: 30px;
+            h4 {
+                margin-left: 27px;
+                font-family: "Open Sans", sans-serif;
+                font-weight: 500;
+            }
+            p {
+                margin: 0px 0px 0px 15px;
+                max-width: 320px;
+                word-wrap: break-word;
+                font-family: "Open Sans", sans-serif;
+                font-size: 12px;
+                padding: 5px;
+                border-radius: 3px;
+                background-color: #e2e4e9;
+                color: $clr1;
+            }
+            .due-date-checkbox {
+                width: 20px;
+                height: 20px;
+                background-color: white;
+                border: 1.5px solid rgba(187, 187, 187, 0.726);
+                border-radius: 5px;
                 &:hover {
-                    background-color: rgb(224, 224, 224);
                     cursor: pointer;
+                    border: 1.5px solid #194251;
+                }
+            }
+            .due-date-checkbox-complete {
+                width: 20px;
+                height: 20px;
+                background-color: #194251;
+                // border: 1px solid rgb(111, 248, 173);
+                border-radius: 5px;
+                background-image: url(../../images/confirm.svg);
+                background-size: 80%;
+                background-position: center;
+                background-repeat: no-repeat;
+                animation: checkBoxRotate 0.35s ease-in;
+                animation-fill-mode: forwards;
+                &:hover {
+                    cursor: pointer;
+                    // border: 1px solid rgb(36, 238, 127);
+                }
+            }
+            .due-date-complete {
+                margin: 0px 0px 0px 5px;
+                font-family: "Open Sans", sans-serif;
+                font-size: 12px;
+                padding: 5px 10px;
+                border-radius: 3px;
+                background-color: rgb(3, 190, 87);
+                color: white;
+                font-weight: 600;
+            }
+        }
+        .card-calendar-container {
+            position: absolute;
+            top: 63%;
+            left: 42.2%;
+            transform: translate(-50%, -50%);
+            .date-confirm {
+                margin-top: 10px;
+                width: fit-content;
+                padding: 10px;
+                font-weight: 550;
+                border: none;
+                border-radius: 5px;
+                background-color: rgba(117, 255, 117, 0.836);
+                &:hover {
+                    background-color: rgba(92, 250, 92, 0.836);
                 }
             }
         }
-        .action-title {
-            margin-left: 15px;
-            font-weight: 450;
-        }
-    }
-    .card-due-date-container {
-        margin-bottom: 30px;
-        h4 {
-            margin-left: 27px;
-            font-family: "Open Sans", sans-serif;
-            font-weight: 500;
-        }
-        p {
-            margin: 0px 0px 0px 15px;
-            max-width: 320px;
-            word-wrap: break-word;
-            font-family: "Open Sans", sans-serif;
-            font-size: 12px;
-            padding: 5px;
-            border-radius: 3px;
-            background-color: #e2e4e9;
-            color: $clr1;
-        }
-        .due-date-checkbox {
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border: 1.5px solid rgba(187, 187, 187, 0.726);
-            border-radius: 5px;
-            &:hover {
-                cursor: pointer;
-                border: 1.5px solid #194251;
+        .card-details-attachments {
+            width: 320px;
+            margin-bottom: 30px;
+            .card-add-file {
+                margin: 18px 0px 0px 55px;
+            }
+            .attachments-header {
+                margin-left: 27px;
+                font-family: "Open Sans", sans-serif;
+                font-weight: 500;
+            }
+            label {
+                font-size: 10px;
+                letter-spacing: 0.8px;
+                font-family: "Open Sans", sans-serif;
+                font-weight: 600;
+                color: $clr1;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            .attachment-owner {
+                font-size: 12px;
             }
         }
-        .due-date-checkbox-complete {
-            width: 20px;
-            height: 20px;
-            background-color: #194251;
-            // border: 1px solid rgb(111, 248, 173);
-            border-radius: 5px;
-            background-image: url(../../images/confirm.svg);
-            background-size: 80%;
-            background-position: center;
-            background-repeat: no-repeat;
-            animation: checkBoxRotate 0.35s ease-in;
-            animation-fill-mode: forwards;
-            &:hover {
-                cursor: pointer;
-                // border: 1px solid rgb(36, 238, 127);
-            }
+        .attachments-files-container {
+            width: 95%;
+            height: fit-content;
         }
-        .due-date-complete {
-            margin: 0px 0px 0px 5px;
-            font-family: "Open Sans", sans-serif;
-            font-size: 12px;
-            padding: 5px 10px;
-            border-radius: 3px;
-            background-color: rgb(3, 190, 87);
-            color: white;
-            font-weight: 600;
-        }
-    }
-    .card-calendar-container {
-        position: absolute;
-        top: 63%;
-        left: 42.2%;
-        transform: translate(-50%, -50%);
-        .date-confirm {
-            margin-top: 10px;
+        .attachment-delete-btn {
             width: fit-content;
-            padding: 10px;
-            font-weight: 550;
             border: none;
-            border-radius: 5px;
-            background-color: rgba(117, 255, 117, 0.836);
-            &:hover {
-                background-color: rgba(92, 250, 92, 0.836);
-            }
+            color: rgb(250, 95, 95);
+            background-color: transparent;
+            font-weight: 450;
+            font-size: 12px;
         }
-    }
-    .card-details-attachments {
-        width: 320px;
-        margin-bottom: 30px;
-        .card-add-file {
-            margin: 18px 0px 0px 55px;
-        }
-        .attachments-header {
-            margin-left: 27px;
+        .attachment-file-name {
+            font-size: 12px;
+            font-weight: 400;
+            margin-right: 20px;
             font-family: "Open Sans", sans-serif;
-            font-weight: 500;
         }
-        label {
-            &:hover {
-                cursor: pointer;
-                background-color: rgb(228, 228, 228);
-                padding: 5px 0px;
+        .attachment-file-name-wrapper {
+            width: fit-content;
+            text-align: center;
+            max-width: 200px;
+            word-wrap: break-word;
+            margin-top: 5px;
+        }
+
+        .text-area {
+            animation: textAreaFade 0.25s ease;
+            // animation-fill-mode: forwards;
+        }
+        .card-comments {
+            width: 100%;
+            h4 {
+                margin-left: 25px;
+                font-family: "Open Sans", sans-serif;
+                font-weight: 500;
+            }
+            .user-profile-comment {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                margin-right: 15px;
+            }
+            .self-profile-comment {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 20px;
+            }
+            .user-text-input {
+                height: 35px;
+                width: 250px;
+                padding: 0px 0px 0px 5px;
+                line-height: normal;
+                border: 1.5px solid #19425100;
+                border-radius: 5px;
+                background-color: #ffffff;
+                box-shadow: 0px 0px 2px 0px rgba(0, 71, 179, 0.452);
+                transition: 0.45s ease-in;
+                &::placeholder {
+                    padding-left: 3px;
+                    transition: 0.35s;
+                    color: rgb(138, 138, 138);
+                }
+                &:focus {
+                    border: 1.5px solid #194251;
+                    background-color: white;
+                    &::placeholder {
+                        padding-left: 50px;
+                        opacity: 0;
+                    }
+                }
+            }
+            .card-msg-txt {
+                position: relative;
+                max-width: 50%;
+                word-wrap: break-word;
+                line-height: normal;
+                background-color: #ffffff;
+                font-family: "Open Sans", sans-serif;
+                font-size: 12px;
+                font-weight: 550;
                 border-radius: 3px;
+                color: rgb(102, 102, 102);
+                padding: 5px;
+                box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
+            }
+            .card-msg-time {
+                color: rgb(122, 122, 122);
+                line-height: normal;
+                font-family: "Open Sans", sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+                margin-left: 10px;
+            }
+            .card-msg-delete {
+                color: rgb(250, 120, 120);
+                font-family: "Open Sans", sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+                margin-left: 10px;
+                border: none;
+                background-color: transparent;
             }
         }
-    }
-    .attachments-files-container {
-        width: 95%;
-        height: fit-content;
-    }
-    .attachment-delete-btn {
-        width: fit-content;
-        border: none;
-        color: rgb(250, 95, 95);
-        background-color: transparent;
-        font-weight: 450;
-        font-size: 12px;
-    }
-    .attachment-file-name {
-        font-size: 12px;
-        font-weight: 400;
-        margin-right: 20px;
-        font-family: "Open Sans", sans-serif;
-    }
-    .attachment-file-name-wrapper {
-        width: fit-content;
-        text-align: center;
-        max-width: 200px;
-        word-wrap: break-word;
-        margin-top: 5px;
-    }
-}
-.text-area {
-    animation: textAreaFade 0.25s ease;
-    // animation-fill-mode: forwards;
-}
-.card-comments{
-    width: 100%;
-    h4 {
-        margin-left: 25px;
-        font-family: "Open Sans", sans-serif;
-        font-weight: 500;
-    }
-    .user-profile-comment{
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 20px;
-    }
-    .user-text-input{
-        height: 35px;
-        width: 250px;
-        padding-left: 5px;
-        border: 1.5px solid #19425100;
-        border-radius: 5px;
-        background-color: #E0E0E0;
-        transition: 0.35s;
-        &::placeholder{
-            padding-left: 5px;
-            transition: 0.35s;
+        .interactive-robot-container {
+            position: absolute;
+            z-index: 50;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            transform: translate(65%, 10%);
+            transition: 0.6s ease;
+            opacity: 0;
+            animation: robotFloat 3s;
+            animation-iteration-count: infinite;
+            // animation-fill-mode: forwards;
         }
-        &:focus{
-            border: 1.5px solid #194251;
-            background-color: white;
-            &::placeholder{
-                padding-left: 15px;
+        .robot-txt-bubble {
+            margin-top: 20px;
+            text-align: center;
+            transform: translateX(70%);
+            position: absolute;
+            width: 200px;
+            height: fit-content;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
+            border-radius: 10px;
+
+            .first-speech {
+                font-family: "Open Sans", sans-serif;
+                font-weight: 550;
+                font-size: 17px;
+                padding: 10px 5px;
             }
         }
-    }
-    .card-msg-txt{
-        background-color: #82afc0;
-        font-family: "Open Sans", sans-serif;
-        font-size: 12px;
-        font-weight: 500;
-        border-radius: 5px;
-        color: rgb(63, 63, 63);
-        padding: 10px 5px;
-    }
-    .card-msg-time{
-        color: rgb(122, 122, 122);
-        font-family: "Open Sans", sans-serif;
-        font-size: 12px;
-        margin-left: 10px;
+        .todo-item {
+            // background-color: white;
+            // border-radius: 5px;
+            // box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
+            border-bottom: 1px solid black;
+            padding: 10px 10px;
+            margin-bottom: 5px;
+            width: 80%;
+            & overlay{
+                position: relative;
+                left: 0;
+                top: 0;
+                // right: 0;
+                width: 100%;
+                height: 100%;
+                background-color: black;
+            }
+            & h3 {
+                font-family: "Open Sans", sans-serif;
+                font-weight: 400;
+                margin-bottom: 5px;
+            }
+            & todoinfo {
+                font-family: "Open Sans", sans-serif;
+                font-weight: 600;
+                font-size: 10px;
+            }
+            .todo-checkbox {
+                width: 20px;
+                height: 20px;
+                background-color: white;
+                border: 1.5px solid rgba(187, 187, 187, 0.726);
+                border-radius: 5px;
+                &:hover {
+                    cursor: pointer;
+                    border: 1.5px solid #194251;
+                }
+            }
+            .todo-checkbox-complete {
+                width: 20px;
+                height: 20px;
+                background-color: #78f789;
+                border-radius: 5px;
+                background-image: url(../../images/confirm.svg);
+                background-size: 80%;
+                background-position: center;
+                background-repeat: no-repeat;
+                animation: checkBoxRotate 0.35s ease-in;
+                animation-fill-mode: forwards;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            .todo-complete {
+                color: rgb(230, 230, 230);
+            }
+            & tagcolor {
+                color: rgb(0, 36, 70);
+            }
+        }
+        .todos-input {
+            padding: 3px;
+            border: 1.3px solid $clr1;
+            border-radius: 3px;
+        }
+        .todos-delete{
+            border: none;
+            background-color: transparent;
+            color: rgb(253, 104, 104);
+            font-family: "Open Sans", sans-serif;
+                font-weight: 600;
+                font-size: 10px;
+                margin-left: 20px;
+                width: 20%;
+        }
     }
 }
 @keyframes textAreaFade {
@@ -313,12 +463,23 @@
         background-color: #cccaca;
     }
 }
-@keyframes checkBoxRotate{
-    from{
+@keyframes checkBoxRotate {
+    from {
         transform: rotate(0deg);
     }
 
-    to{
+    to {
         transform: rotate(360deg);
+    }
+}
+@keyframes robotFloat {
+    0% {
+        transform: translate(65%, 0%);
+    }
+    50% {
+        transform: translate(64%, 3%);
+    }
+    100% {
+        transform: translate(65%, 0%);
     }
 }

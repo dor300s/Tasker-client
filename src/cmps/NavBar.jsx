@@ -24,8 +24,8 @@ class NavBar extends React.Component {
 
     componentDidMount(prevProps) {
         socketService.setup()
-        let pathName = this.props.location.pathname
-        let boardId = pathName.split('/')[2]
+        // let pathName = this.props.location.pathname
+        // let boardId = pathName.split('/')[2] // todo get from global state
         this.props.getUser()
             .then(() => {
                 if (!this.props.loggedUser) this.props.history.push('/')
