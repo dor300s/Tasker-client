@@ -44,9 +44,9 @@ export class MemberPreview extends Component {
         const { isUserModalOpen } = this.state
 
         return (
-            <div ref={node => this.node = node} onClick={onUserClick}>
+            <div className="user-preview" ref={node => this.node = node} onClick={onUserClick}>
                 {user.imgUrl ?
-                    <div className="nav-user-profile" style={{
+                    <div className="board-member" style={{
                         backgroundImage: "url(" + `${user.imgUrl}` + ")",
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',

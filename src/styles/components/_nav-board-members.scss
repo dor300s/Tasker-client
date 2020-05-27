@@ -1,12 +1,10 @@
-.nav-board-members {
-    margin-left: 25px;
+.nav-board-members, .user-preview {
 
     .board-member {
         position: relative;
         width: 35px;
         height: 35px;
         border-radius: 50%;
-        margin-left: 10px;
         &:hover {
             cursor: pointer;
             .board-member-tooltip {
@@ -51,8 +49,11 @@
 .nav-bar {
     .nav-board-members {
         > * {
-            border: 2px solid $clr6;
+            border: 2px solid rgba($clr6, 0.8) !important;
             margin-left: -5px;
         }
+    }
+    .nav-board-members{
+        margin-left: 25px;
     }
 }

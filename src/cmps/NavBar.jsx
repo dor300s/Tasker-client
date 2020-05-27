@@ -65,24 +65,22 @@ class NavBar extends React.Component {
 
         if (!loggedUser) return <></>
         return (
-            <nav className="nav-bar flex align-center space-between">
+            <nav className="nav-bar flex align-center space-between" >
+                {!activeBoard && <img src="https://www.iconspng.com/images/logo-logo-black-on-white-background/logo-logo-black-on-white-background.jpg" width='60px' alt=""/>}
                 <div className="nav-left-section flex align-center">
                     {activeBoard &&
                         <div className="board-button flex align-center justiry-center space-between cursor" onClick={this.onMenuClick}>
                             <div className="board-btn"></div>
                             <div className="board-txt">Boards</div>
                         </div>}
-                    <Link className="home-button flex align-center justiry-center space-between cursor" onClick={this.onMenuClick}>
-                        {/* <div className="home-btn"></div> */}
-                        <div className="board-txt">Home</div>
-                    </Link>
+
                     {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                     {activeBoard && isInviteModalOpen && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
-                    {activeBoard && < NavBarSearch currBoard={activeBoard} />}
                 </div>
-                {isMenuActive && <NavMenu history={history} boards={boards} onCloseMenu={this.onCloseMenu} />}
+                {< NavBarSearch currBoard={activeBoard} history={history} />}
+                {isMenuActive && <NavMenu history={history} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                 <div className="nav-right-section flex align-center">
-                    <button className="board-menu">Board Menu</button>
+                    {/* <button className="board-menu" onClick={() => history.push(`/board`)}>Board Menu</button> */}
                     <span className="nav-notification-btn" onClick={this.onUserNotificationClick}></span>
                     <MemberPreview user={loggedUser} history={history} />
                     {isNotificationModalOpen && <NavUserNotificationMenu onCloseNotificationMenu={onCloseNotificationMenu} history={history} user={loggedUser} />}

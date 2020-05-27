@@ -47,16 +47,17 @@ class NavMenu extends React.Component {
     }
 
     render() {
-        const { boards } = this.props
+        const { currBoard, history, boards } = this.props
         const { filteredBoards } = this.state
         let starredBoards = boards.filter(board => board.isStarred);
 
         return (
             <div className="nav-menu flex column" ref={node => this.node = node}>
-                {/* <div className="nav-menu-header flex align-center space-between">
-                    <Link className="home-btn" to={`/board`}>Home</Link>
-                    <button className="close-btn" onClick={this.props.closeMenu}>X</button>
-                </div> */}
+                {currBoard &&
+                    <Link className="home-button flex align-center justify-center cursor" onClick={() => history.push(`/board`)} >
+                        <div className="dashboard-btn"></div>
+                        <div className="flex align-center justify-center">Dashboard</div>
+                    </Link>}
                 <NavMenuFilter onFilter={(filterBy) => this.onFilter(filterBy)} />
 
                 <div className="nav-boards-preview-wrapper flex column">
@@ -71,12 +72,14 @@ class NavMenu extends React.Component {
 
                     {Boolean(boards.length) && <div>
                         {Boolean(starredBoards.length) && <>
-                            <h3 className="label"><span>&#9734;</span> Starred</h3>
+                            <h3 className="list-header">Starred</h3>
                             <div className="boards-container flex column align-center">
                                 <BoardList boards={starredBoards} onBoardClicked={this.onBoardClicked} />
                             </div> </>}
-
-                        <h3 className="label">❒ All Boards</h3>
+                        <div>
+                            {/* <h3 className=""></h3> */}
+                            <h3 className="list-header">All Boards</h3>
+                        </div>
                         <div className="boards-container flex column align-center">
                             <BoardList boards={boards} onBoardClicked={this.onBoardClicked} />
                         </div>
