@@ -4,6 +4,7 @@
 .screen,
 .card-details-content-wrapper,
 .interactive-robot-container,
+.nav-bar,
 .card-list-container {
     .dueDate {
         content: url(../../images/clock.svg);
@@ -147,6 +148,12 @@
         transform: rotate(90deg);
         cursor: pointer;
     }
+
+    .board-btn {
+        content: url(../../images/board-btn.svg);
+        width: 15px;
+        cursor: pointer;
+    }
     .menu-white-btn {
         content: url(../../images/menu.svg);
         width: 15px;
@@ -159,5 +166,12 @@
         margin-right: 15px;
         fill: green;
         cursor: pointer;
+    }
+    .home-btn {
+        content: url(../../images/home-solid.svg);
+        width: 30px;
+    }
+    .close-btn {
+        background-color: transparent;
     }
 }

@@ -9,7 +9,6 @@
     & .drag .isDragging,
     &:hover {
         background-color: lighten($color: $clr5, $amount: 0.5);
-        // transform: rotate(6deg);
     }
 
     img {

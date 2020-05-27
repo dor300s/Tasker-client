@@ -1,11 +1,10 @@
 import React from 'react'
 
 export function BoardMembers(props) {
-    const { board, history , cardMemberMode } = props
+    const { board, history, cardMemberMode } = props
 
     return (
         <div className="nav-board-members flex align-center">
-            {!cardMemberMode && <button className="member-invite" onClick={()=>props.onInvite()}>Invite</button>}
 
             {board.members.map((member, idx) => {
                 if (member.imgUrl) {
@@ -22,9 +21,10 @@ export function BoardMembers(props) {
 
                 }
                 else {
-                    return  <h3 className="nav-user-profile flex justify-center align-center">{member.fullName.charAt(0)}</h3>
+                    return <h3 className="nav-user-profile flex justify-center align-center">{member.fullName.charAt(0)}</h3>
                 }
             })}
+            {!cardMemberMode && <button className="nav-user-profile index-1" onClick={() => props.onInvite()}>+</button>}
         </div>
     )
 }
