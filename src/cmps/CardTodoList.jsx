@@ -94,7 +94,7 @@ class CardTodoList extends Component {
                 </div>
                 <div style={{ marginBottom: "15px" }} className="flex align-center">
                     <button className="todo-add-btn" style={{ marginLeft: "40px", padding: "0px" }}
-                        onClick={this.onAddTodo}>+ todo item</button>
+                        onClick={this.onAddTodo}>+ item</button>
                     <form onSubmit={this.onSubmit}>
                         <input className={`todos-input ${isAddModalShown ? 'fade-input' : ''} `} value={newTodoVal} type="text" style={{ marginLeft: "20px" }}
                             onChange={this.inputHandler} />

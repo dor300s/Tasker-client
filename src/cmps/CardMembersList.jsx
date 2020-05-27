@@ -11,7 +11,7 @@ export function CardMembersList(props) {
                     let letUserIdx = card.members.findIndex(user => user._id === member._id)
                     if (member.imgUrl) {
                         return <div key={idx} className="flex column align-center">
-                            {letUserIdx !== -1 && <div style={{marginLeft: `${!idx? '' : '5px'}`}} className="member-overlay"> </div>}
+                            {letUserIdx !== -1 && <div style={{marginLeft: `${!idx? '' : '-2px'}`}} className="member-overlay"> </div>}
                             <div  className={dynamicClass + " " + "board-member"} style={{
                                 backgroundImage: "url(" + `${member.imgUrl}` + ")",
                                 backgroundPosition: 'center',

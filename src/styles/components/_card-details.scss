@@ -220,6 +220,7 @@
             }
         }
         .card-details-attachments {
+            position: relative;
             width: 320px;
             margin-bottom: 30px;
             .card-add-file {
@@ -234,10 +235,14 @@
                 font-size: 10px;
                 letter-spacing: 0.8px;
                 font-family: "Open Sans", sans-serif;
-                font-weight: 600;
+                font-weight: 500;
+                padding: 1px 3px;
+                border-radius: 3px;
                 color: $clr1;
+                background-color: rgb(184, 250, 184);
                 &:hover {
                     cursor: pointer;
+                    background-color: rgb(123, 248, 123);
                 }
             }
             .attachment-owner {
@@ -274,6 +279,7 @@
             word-wrap: break-word;
             margin-top: 5px;
         }
+        
 
         .text-area {
             animation: textAreaFade 0.25s ease;
@@ -391,8 +397,8 @@
             // background-color: white;
             // border-radius: 5px;
             // box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
-            border-bottom: 1px solid rgb(204, 204, 204);
-            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(204, 204, 204, 0.719);
+            padding-bottom: 10px;
             margin-bottom: 10px;
             width: 100%;
             & overlay{
@@ -412,7 +418,7 @@
             }
             & todoinfo {
                 font-family: "Open Sans", sans-serif;
-                font-weight: 400;
+                font-weight: 500;
                 font-size: 10px;
                 line-height: normal;
             }
@@ -443,7 +449,7 @@
                 }
             }
             .todo-complete {
-                color: rgb(230, 230, 230);
+                color: rgb(192, 192, 192);
             }
             & tagcolor {
                 color: rgb(0, 36, 70);
@@ -474,7 +480,7 @@
             font-family: "Open Sans", sans-serif;
             font-weight: 600;
             font-size: 12px;
-            color: $clr1;
+            color: rgb(160, 160, 160);
         }
         .open-todos-indicator{
             font-family: "Open Sans", sans-serif;
@@ -531,7 +537,7 @@
             height: 95%;
             transition: 0.35s ease;
             border-radius: 30px;
-            background-color: rgb(129, 248, 113);
+            background-color: #5BA4CF;
         }
     }
     
@@ -567,4 +573,13 @@
     100% {
         transform: translate(65%, 0%);
     }
+}
+
+.img-screen{
+    position: fixed;
+    z-index: 60;
+    // left: 0;
+    // top: 0;
+    width: 100%;
+    background-color: rgba(0, 174, 255, 0.432);
 }
