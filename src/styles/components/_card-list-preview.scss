@@ -9,7 +9,7 @@
         position: fixed;
     }
     .wrap-card-lists {
-        padding: 94px 0 0 30px;
+        padding: 79px 0 0 30px;
         width: fit-content;
 
         // .card-lists {
@@ -19,7 +19,7 @@
         .wrap-card-list {
             height: fit-content;
             background-color: $clr6;
-            margin: 0 15px;
+            margin-right: 20px;
             border-radius: 4px;
 
             .card-list-container {
@@ -29,18 +29,16 @@
                 .card-list {
                     padding-bottom: 2px;
                     max-height: calc(100vh - 250px);
-                    overflow: auto;
+                    margin-right: 2px;
+                    overflow-y: auto;
 
                     > :last-child {
-                    }
-
-                    &::-webkit-scrollbar {
-                        width: 0px;
                     }
                 }
 
                 .title-content {
-                    padding: 32px 16px 16px;
+                    // padding: 32px 16px 16px;
+                    padding: 16px 16px 0px;
 
                     input {
                         height: 30px;
@@ -62,7 +60,10 @@
                     border: 0;
                     height: 30px;
                     padding: 0;
-                    margin: 0 0 16px;
+                    // box-shadow: 0px -4px 10px -4px #4885ff7a;
+                    // box-shadow: 0px -6px 5px -8px rgba(0,0,0,0.75);
+                    z-index: 1;
+                    margin: 10px 0 10px;
                     width: 100%;
                     color: darken($color: $clr4, $amount: 15%);
                     &:hover {
@@ -128,13 +129,3 @@
     }
 }
 
-.scrollGradient {
-    background: linear-gradient(#ffffff 30%, rgba(255, 255, 255, 0)),
-        linear-gradient(rgba(255, 255, 255, 0), #ffffff 70%) 0 100%,
-        radial-gradient(farthest-side at 50% 0, rgba(34, 34, 34, 0.5), rgba(0, 0, 0, 0)),
-        radial-gradient(farthest-side at 50% 100%, rgba(34, 34, 34, 0.5), rgba(0, 0, 0, 0)) 0 100%;
-    background-color: #ffffff;
-    background-repeat: no-repeat;
-    background-attachment: local, local, scroll, scroll;
-    background-size: 100% 68px, 100% 68px, 100% 34px, 100% 34px;
-}

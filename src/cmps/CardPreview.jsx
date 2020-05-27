@@ -56,10 +56,8 @@ class CardPreview extends Component {
                                     ...provided.draggableProps.style
                                 }}
                             >
-                                <div className="img-and-menu" style={{ backgroundImage: `url(${card.covers.imgUrl})` }} >
-                                    <CardMenu cardId={card.id} onEditCardHeader={onEditCardHeader} cardListId={cardListId} />
-                                     <img src={card.covers.imgUrl} alt="" /> 
-                                </div>
+                                <CardMenu cardId={card.id} onEditCardHeader={onEditCardHeader} cardListId={cardListId} />
+                                <img src={card.covers.imgUrl} alt="" />
                                 {Boolean(card.labels.length) && <CardLabelsPreview histoy={history} labels={card.labels} />}
                                 {(this.state.isFocus) ? <CardHeaderForm cardHeader={card.text} cardListId={cardListId} cardId={card.id} offEditCardHeader={offEditCardHeader} /> : <div className="card-text">{card.text}</div>}
                                 <CardIconsPreview card={card} />

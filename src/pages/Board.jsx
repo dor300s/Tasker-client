@@ -133,11 +133,11 @@ class Board extends Component {
                     <DragDropContext onDragEnd={result => onDragEnd(result)} >
                         <Droppable droppableId="all-lists" direction="horizontal" type="list">
                             {(provided, snapshot) => (
-                                <div className={`card-lists flex ${snapshot.isDraggingOver ? "light" : "light"}`}
+                                <div className={`card-lists flex ${snapshot.isDraggingOver ? "light" : ""}`}
                                     {...provided.droppableProps} ref={provided.innerRef}
                                 >
                                     {cardLists.map((cardList, index) => {
-                                        return (<CardListPreview className="scrollGradient" currBoard={currBoard} onAddCard={onAddCard} /* cardListId={cardList.id} */ key={cardList.id} cardList={cardList} index={index} history={history} />
+                                        return (<CardListPreview currBoard={currBoard} onAddCard={onAddCard} key={cardList.id} cardList={cardList} index={index} history={history} />
                                         );
                                     })}
                                     {provided.placeholder}

@@ -87,7 +87,7 @@ class CardListPreview extends Component {
                         ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                         <Droppable droppableId={cardList.id} key={cardList.id} type={"card"}>
                             {(provided, snapshot) => (
-                                <div className={`card-list-container flex column ${snapshot.isDraggingOver ? "lightblue" : ""}`} >
+                                <div className={`card-list-container flex column ${snapshot.isDraggingOver ? "light" : ""}`} >
                                     <div className="title-content flex space-between ">
                                         {(this.state.isFocus) ? <ListTitleForm listTitle={cardList.title} cardList={cardList} offEditListTitle={offEditListTitle} /> : <h2 className="list-title">{cardList.title}</h2>}
 
