@@ -10,6 +10,7 @@ import { saveBoard } from '../store/actions/boardActions'
 import CardAttachments from '../cmps/CardAttachments'
 import InterActiveRobot from '../cmps/InterActiveRobot'
 import CardTodoList from '../cmps/CardTodoList'
+import CardLabels from '../cmps/CardLabels'
 
 class CardDetails extends Component {
 
@@ -100,6 +101,7 @@ class CardDetails extends Component {
 
                         <div className="card-details-content-wrapper flex">
                             <div className="card-details-content flex column">
+                                < CardLabels card={currCard} board={currBoard} />
                                 < CardMembers history={this.props.history} card={currCard} board={currBoard}
                                     showModal={isMembersModalShown} />
                                 {currCard.dueDate && < DueDate card={currCard} board={currBoard} />}

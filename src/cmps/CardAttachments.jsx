@@ -58,7 +58,7 @@ class CardAttachments extends Component {
                 <div style={{ marginTop: "15px", marginLeft: "42px" }} className="attachments-files-container">
                     {attachments && attachments.map((file, idx) => {
                         return <div key={idx} style={{ marginBottom: "15px" }} className="flex column">
-                            {file.url && <img src={file.url} width="320" height="320" />}
+                            {file.url && <img src={file.url} width="320"  />}
                             <div className="attachment-file-name-wrapper flex align-center">
                                 <h4 className="attachment-file-name">"{file.fileName}".{file.format}</h4>
                                 {/* <p className="attachment-owner">Uploaded by - {loggedUser.userName}</p> */}

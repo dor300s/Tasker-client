@@ -73,8 +73,8 @@ class CardTodoList extends Component {
                 <div className="flex align-center" style={{ marginBottom: "10px" }}>
                     <span className="list"></span>
                     <h4>Todos</h4>
-                    <span className="open-todos-indicator" style={{ marginLeft: "20px" }}>{openTodos.length}</span>
-                    <span className="complete-todos-indicator" style={{ marginLeft: "30px" }}>{completedTodos.length}</span>
+                    {/* <span className="open-todos-indicator" style={{ marginLeft: "20px" }}>{openTodos.length}</span> */}
+                    {/* <span className="complete-todos-indicator" style={{ marginLeft: "30px" }}>{completedTodos.length}</span> */}
                     <button style={{ marginLeft: "60px" }} onClick={this.onHideComplete}>Hide complete items</button>
                 </div>
                 <div style={{ marginBottom: "15px" }} className="flex align-center">
