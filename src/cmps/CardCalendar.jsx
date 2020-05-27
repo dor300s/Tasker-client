@@ -14,14 +14,15 @@ export default class CardCalendar extends Component {
     formatDate = () => {
         const { date } = this.state
         let timeStamp = date.getTime()
-        this.setState({timeStamp})
-        
+        this.setState({ timeStamp })
+
     }
 
     render() {
         const { timeStamp } = this.state
+        const { isShown } = this.props
         return (
-            <div className="card-calendar-container">
+            <div className={`card-calendar-container ${isShown? 'fade-input' : ''}`}>
                 <Calendar
                     onChange={this.onChange}
                     value={this.state.date}

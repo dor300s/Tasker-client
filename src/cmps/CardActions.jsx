@@ -6,10 +6,10 @@ export function CardActions(props) {
 
             <h4>ADD TO CARD</h4>
 
-            <span className="card-action-wrapper flex align-center" onClick={props.onMembers}>
+            {/* <span className="card-action-wrapper flex align-center" onClick={props.onMembers}>
                 <span className="members " > </span>
                 <h5 className="action-title ">Members</h5>
-            </span>
+            </span> */}
 
             <span className="card-action-wrapper flex align-center">
                 <span className="label " > </span>

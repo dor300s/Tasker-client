@@ -10,20 +10,31 @@ class CardTodoList extends Component {
         newTodoVal: '',
         isListFiltered: false,
         openTodos: null,
-        completedTodos: null
+        completedTodos: null,
+        barFillWidth: null
     }
 
     componentDidMount() {
         this.getTodosStatus()
+
     }
 
+    getBarWidth = () => {
+        const { openTodos, completedTodos } = this.state
+        let totalTodos = openTodos.length + completedTodos.length;
+        let barFillWidth = (completedTodos.length / totalTodos) * 100;
+        this.setState({ barFillWidth })
+    }
 
     getTodosStatus = () => {
         const { card, board } = this.props
         let openTodos = card.checkList.filter(item => !item.isDone)
         let completedTodos = card.checkList.filter(item => item.isDone)
-        this.setState({ openTodos, completedTodos })
-        this.props.saveBoard(board)
+        this.setState({ openTodos, completedTodos }, () => {
+            this.getBarWidth()
+            this.props.saveBoard(board)
+        })
+
     }
 
     onComplete = (todo) => {
@@ -62,6 +73,7 @@ class CardTodoList extends Component {
 
     render() {
         const { card, board, user } = this.props
+        const { barFillWidth } = this.state
         const { newTodoVal, isAddModalShown, isListFiltered, openTodos, completedTodos } = this.state
         let list = []
         if (isListFiltered) list = card.checkList.filter(item => !item.isDone)
@@ -73,9 +85,12 @@ class CardTodoList extends Component {
                 <div className="flex align-center" style={{ marginBottom: "10px" }}>
                     <span className="list"></span>
                     <h4>Todos</h4>
-                    {/* <span className="open-todos-indicator" style={{ marginLeft: "20px" }}>{openTodos.length}</span> */}
-                    {/* <span className="complete-todos-indicator" style={{ marginLeft: "30px" }}>{completedTodos.length}</span> */}
+                    <span className="open-todos-indicator" style={{ marginLeft: "20px" }}>{openTodos.length}</span>
+                    <span className="complete-todos-indicator" style={{ marginLeft: "30px" }}>{completedTodos.length}</span>
                     <button style={{ marginLeft: "60px" }} onClick={this.onHideComplete}>Hide complete items</button>
+                </div>
+                <div className="todos-bar-wrapper">
+                    <span className="todos-bar-fill" style={{ width: `${barFillWidth}%` }} />
                 </div>
                 <div style={{ marginBottom: "15px" }} className="flex align-center">
                     <button className="todo-add-btn" style={{ marginLeft: "40px", padding: "0px" }}

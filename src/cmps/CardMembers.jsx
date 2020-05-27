@@ -50,9 +50,10 @@ class CardMembers extends Component {
                 <h4 className="card-members-header">Card members</h4>
                 <div className="card-members flex align-center">
                     {<CardMembersList opacity={(isAddMemberActive || showModal) ? 'opacity-one' : ''} card={card} board={board} history={history} addMember={this.addMember} />}
-                    <button className={`card-member-invite ${!isAddMemberActive && 'margin-right-26'}`} onClick={this.onAddMember}
+                    <button className={`card-member-invite '}`} onClick={this.onAddMember}
+                    // ${!isAddMemberActive && 'margin-right-26
                         style={{ backgroundColor: `${isAddMemberActive ? "rgba(110, 253, 141, 0.432)" : "rgba(142, 176, 248, 0.267)"}` }}>
-                        {isAddMemberActive ? 'Done' : '+'}</button>
+                        {isAddMemberActive ? 'Done' : '+Add'}</button>
                     {card.members.map((member, idx) => {
                         if (member.imgUrl) {
                             return <div key={idx} className="profile-tooltip-wraper" >
