@@ -3,17 +3,20 @@ import { Route, Switch, Link } from 'react-router-dom';
 import Login from '../cmps/Login.jsx'
 import SignUp from '../cmps/SignUp.jsx'
 import { connect } from 'react-redux'
-import { login } from '../store/actions/userActions.js'
+import { login, getUser } from '../store/actions/userActions.js'
 
 class Home extends React.Component {
 
 
     componentDidMount() {
-        // if (this.props.loggedUser) this.props.history.push('/board')
+        this.props.getUser()
+            .then(() => {
+                if (this.props.loggedUser) this.props.history.push('/board')
+            })
     }
 
     componentDidUpdate() {
-        // if (this.props.loggedUser) this.props.history.push('/board')
+        if (this.props.loggedUser) this.props.history.push('/board')
     }
 
     onDemoClick = () => {
@@ -57,6 +60,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    login
+    login,
+    getUser
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -31,7 +31,6 @@ class NavBar extends React.Component {
                 if (!this.props.loggedUser) this.props.history.push('/')
                 else this.props.setBoards()
             })
-
     }
 
 

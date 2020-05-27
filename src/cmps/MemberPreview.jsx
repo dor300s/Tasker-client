@@ -30,12 +30,11 @@ export class MemberPreview extends Component {
         this.setState(prevState => ({ isUserModalOpen: !prevState.isUserModalOpen }))
     }
 
-    onUserLogOut = () => {
-        const {history} = this.props
-        userService.logout()
-            .then( history.push('/'))
-            // .catch(res => console.log(res))
-            
+    onUserLogOut = async() => {
+        const { history } = this.props
+        await userService.logout()
+        history.push('/')
+
     }
 
     render() {
