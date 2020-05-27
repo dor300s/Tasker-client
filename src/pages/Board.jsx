@@ -28,7 +28,7 @@ class Board extends Component {
             },
             attachments: [],
             text: txt,
-            checkList: {},
+            checkList: [],
             labels: [],
             comments: []
         }

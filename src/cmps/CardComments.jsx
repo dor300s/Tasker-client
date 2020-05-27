@@ -9,7 +9,7 @@ let typingInterval;
 class CardComments extends Component {
 
     state = {
-        userMsg: null,
+        userMsg: '',
         isTypeActive: false,
         
     }
