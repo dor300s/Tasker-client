@@ -43,6 +43,7 @@ class CardPreview extends Component {
 
         const { index, card, currBoard, cardListId, history } = this.props
         const { showCard, offEditCardHeader, onEditCardHeader } = this;
+        console.log(card.attachments)
         return (
             <Draggable key={card.id} draggableId={card.id} index={index} >
                 {(provided, snapshot) => {
@@ -57,7 +58,7 @@ class CardPreview extends Component {
                                 }}
                             >
                                 <CardMenu cardId={card.id} onEditCardHeader={onEditCardHeader} cardListId={cardListId} />
-                                <img src={card.covers.imgUrl} alt="" />
+                                {Boolean(card.attachments.length) && <img src={card.attachments[0].url} alt="" />}
                                 {Boolean(card.labels.length) && <CardLabelsPreview histoy={history} labels={card.labels} />}
                                 {(this.state.isFocus) ? <CardHeaderForm cardHeader={card.text} cardListId={cardListId} cardId={card.id} offEditCardHeader={offEditCardHeader} /> : <div className="card-text">{card.text}</div>}
                                 <CardIconsPreview card={card} />
