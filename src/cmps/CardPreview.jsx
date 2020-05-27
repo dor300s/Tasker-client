@@ -43,6 +43,7 @@ class CardPreview extends Component {
 
         const { index, card, currBoard, cardListId, history } = this.props
         const { showCard, offEditCardHeader, onEditCardHeader } = this;
+        console.log(card.attachments)
         return (
             <Draggable key={card.id} draggableId={card.id} index={index} >
                 {(provided, snapshot) => {
@@ -56,9 +57,10 @@ class CardPreview extends Component {
                                     ...provided.draggableProps.style
                                 }}
                             >
-                                <div className="img-and-menu" style={{ backgroundImage: `url(${card.covers.imgUrl})` }} >
+                                <div className="img-and-menu" /* style={{ backgroundImage: `url(${card.covers.imgUrl})` }} */ >
                                     <CardMenu cardId={card.id} onEditCardHeader={onEditCardHeader} cardListId={cardListId} />
-                                     <img src={card.covers.imgUrl} alt="" /> 
+                                    {/* {<img src="https://www.streetlightsoftware.com/wp-content/uploads/2016/03/background-img-7.jpg" alt="" />} */}
+                                    {Boolean(card.attachments.length) && <img src={card.attachments[0].url} alt="" />}
                                 </div>
                                 {Boolean(card.labels.length) && <CardLabelsPreview histoy={history} labels={card.labels} />}
                                 {(this.state.isFocus) ? <CardHeaderForm cardHeader={card.text} cardListId={cardListId} cardId={card.id} offEditCardHeader={offEditCardHeader} /> : <div className="card-text">{card.text}</div>}
