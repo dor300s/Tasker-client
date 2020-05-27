@@ -72,17 +72,18 @@ class NavBar extends React.Component {
                             <div className="board-btn"></div>
                             <div className="board-txt">Boards</div>
                         </div>}
-                    <Link className="home-button flex align-center justiry-center space-between cursor" onClick={this.onMenuClick}>
+                    <Link className="home-button flex align-center justiry-center space-between cursor" >
                         {/* <div className="home-btn"></div> */}
                         <div className="board-txt">Home</div>
                     </Link>
+
                     {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                     {activeBoard && isInviteModalOpen && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
                     {activeBoard && < NavBarSearch currBoard={activeBoard} />}
                 </div>
                 {isMenuActive && <NavMenu history={history} boards={boards} onCloseMenu={this.onCloseMenu} />}
                 <div className="nav-right-section flex align-center">
-                    <button className="board-menu">Board Menu</button>
+                    <button className="board-menu" onClick={() => history.push(`/board`)}>Board Menu</button>
                     <span className="nav-notification-btn" onClick={this.onUserNotificationClick}></span>
                     <MemberPreview user={loggedUser} history={history} />
                     {isNotificationModalOpen && <NavUserNotificationMenu onCloseNotificationMenu={onCloseNotificationMenu} history={history} user={loggedUser} />}

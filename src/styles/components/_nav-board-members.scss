@@ -1,4 +1,4 @@
-.nav-board-members {
+.nav-board-members, .user-preview {
     margin-left: 25px;
 
     .board-member {
@@ -6,7 +6,6 @@
         width: 35px;
         height: 35px;
         border-radius: 50%;
-        margin-left: 10px;
         &:hover {
             cursor: pointer;
             .board-member-tooltip {
