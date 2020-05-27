@@ -96,6 +96,10 @@
         content: url(../../images/plus.png);
         width: 10px;
     }
+    .plus-white {
+        content: url(../../images/plus-white.svg);
+        width: 10px;
+    }
     .checkList {
         content: url(../../images/check-box.png);
         width: 10px;
@@ -121,8 +125,14 @@
     }
 
     .menu-btn {
+        content: url(../../images/menu-white.svg);
+        width: 15px;
+        transform: rotate(90deg);
+        cursor: pointer;
+    }
+    .menu-white-btn {
         content: url(../../images/menu.svg);
-        width: 10px;
+        width: 15px;
         transform: rotate(90deg);
         cursor: pointer;
     }

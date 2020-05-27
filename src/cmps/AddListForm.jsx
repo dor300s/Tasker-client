@@ -44,7 +44,7 @@ export class AddListForm extends Component {
     createNewlist() {
         const title = { title: this.state.newlistTitle }
         this.props.onAddList(this.state.newlistTitle)
-        this.setState({ addlistForm: false, newlistTitle: ''})
+        this.setState({ addlistForm: false, newlistTitle: '' })
 
 
     }
@@ -55,10 +55,12 @@ export class AddListForm extends Component {
         return (
             <React.Fragment>
                 <div className="add-list" onClick={this.openForm} >
-                    {!addlistForm ? <div className="flex justify-center align-center"><div className="edit-regular"></div> <h2> New list</h2> </div>:
-                        <form onSubmit={this.handleSubmit}>
-                            <input placeholder="add list ..." value={newlistTitle} onChange={this.handleChange} autoFocus onBlur={this.handleBlur} />
-                        </form>}
+                    {!addlistForm ? <div className="add-list-btn flex justify-center align-center"><div className="plus-white"></div></div> :
+                        <div className="screen">
+                            <form onSubmit={this.handleSubmit}>
+                                <input placeholder="Add list ..." value={newlistTitle} onChange={this.handleChange} autoFocus onBlur={this.handleBlur} />
+                            </form>
+                        </div>}
                 </div>
             </React.Fragment>
         )

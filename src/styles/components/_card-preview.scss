@@ -1,15 +1,28 @@
 .card-preview {
     cursor: pointer !important;
     padding: 16px;
-    border-radius: 3px;
-    margin-bottom: 7px;
-
+    border: 1px solid $clr5;
+    border-radius: 4px;
+    margin: 16px;
     color: $clr2;
     background-color: $clr6;
     & .drag .isDragging,
     &:hover {
         background-color: lighten($color: $clr5, $amount: 0.5);
         // transform: rotate(6deg);
+    }
+
+    input {
+        border: 0;
+        word-wrap: break-word;
+        width: 200px;
+        height: 20px;
+        font-size: .9rem;
+        padding-left: 40px;
+        transition: .25s;
+        &:focus{
+            padding-left: 0;
+        }
     }
 
     .card-text {
@@ -20,8 +33,11 @@
         float: right;
         width: 20px;
         padding: 4px;
-        background-color: lighten($color: $clr5, $amount: 20%);
         border-radius: 2.5rem;
+        // background-color: $clr4;
+        &:hover {
+            content: url(../../images/menu.svg);
+        }
     }
 
     .hidden {
@@ -36,8 +52,6 @@
         text-overflow: ellipsis;
         overflow: hidden;
     }
-
- 
 }
 
 .menu-options {
@@ -49,6 +63,7 @@
     text-align: center;
     box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.08);
     border-radius: 4px;
+    transform: translateX(-90%);
 
     > * {
         padding: 10px;
@@ -56,12 +71,21 @@
     > *:hover {
         background-color: $clr5;
     }
-    &.card-menu{
-        margin-top: 20px;
-        margin-left: 200px;
+    :last-child {
+        color: #eb4d4b;
     }
-    &.list-menu{
-        margin-top: 3px;
+    &.card-menu {
+        margin-top: 20px;
+        margin-left: 190px;
     }
 }
 
+.list-menu-container {
+    .menu-btn {
+        width: 20px;
+        padding: 4px;
+        &:hover {
+            content: url(../../images/menu.svg);
+        }
+    }
+}

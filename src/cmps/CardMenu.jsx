@@ -43,6 +43,11 @@ class CardMenu extends Component {
         this.props.saveBoard(currBoard);
     }
 
+    onCloseMenu = (ev) => {
+        this.setState({ isMenuOpen: false })
+        this.props.onEditCardHeader(ev)
+    }
+
     render() {
         const { onEditCardHeader, cardId, cardListId } = this.props
         const { onDeleteCard } = this
@@ -50,9 +55,9 @@ class CardMenu extends Component {
 
         return (
             <div ref={node => this.node = node} className="card-menu-container">
-                <div  className="menu-btn hidden" onClick={(event) => this.openMenu(event)}></div>
+                <div className="menu-btn hidden" onClick={(event) => this.openMenu(event)}></div>
                 {isMenuOpen && <div className="menu-options card-menu">
-                    <div onClick={(event) => onEditCardHeader(event)}>Edit Title</div>
+                    <div onClick={(event) => this.onCloseMenu(event)}>Edit Title</div>
                     <div onClick={(event) => onDeleteCard(cardId, cardListId, event)}>Delete Card</div>
                 </div>}
             </div>
