@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 // import boardService from "../services/boardService.js"
 import NavMenu from '../cmps/NavMenu'
 import NavUserNotificationMenu from './NavUserNotificationMenu'
@@ -17,7 +17,6 @@ class NavBar extends React.Component {
 
     state = {
         isMenuActive: false,
-        isBoardActive: false,
         isInviteModalOpen: null,
         isNotificationModalOpen: false
     }
@@ -59,21 +58,30 @@ class NavBar extends React.Component {
     }
 
     render() {
-        const { isMenuActive, isNotificationModalOpen, isBoardActive, isInviteModalOpen } = this.state
+        const { isMenuActive, isNotificationModalOpen, isInviteModalOpen } = this.state
         const { boards, activeBoard, history, loggedUser } = this.props
         const { onCloseInviteMenu, onInviteMember, onCloseNotificationMenu } = this
+
 
         if (!loggedUser) return <></>
         return (
             <nav className="nav-bar flex align-center space-between">
-                <div className="flex align-center">
-                    <div className="nav-menu-btn" onClick={this.onMenuClick}></div>
+                <div className="nav-left-section flex align-center">
+                    {activeBoard &&
+                        <div className="board-button flex align-center justiry-center space-between cursor" onClick={this.onMenuClick}>
+                            <div className="board-btn"></div>
+                            <div className="board-txt">Boards</div>
+                        </div>}
+                    <Link className="home-button flex align-center justiry-center space-between cursor" onClick={this.onMenuClick}>
+                        {/* <div className="home-btn"></div> */}
+                        <div className="board-txt">Home</div>
+                    </Link>
                     {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
-                     {isInviteModalOpen && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
-                    <NavBarSearch isBoardActive={isBoardActive} boards={boards} />
+                    {activeBoard && isInviteModalOpen && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
+                    {activeBoard && < NavBarSearch currBoard={activeBoard} />}
                 </div>
                 {isMenuActive && <NavMenu history={history} boards={boards} onCloseMenu={this.onCloseMenu} />}
-                <div className="flex align-center">
+                <div className="nav-right-section flex align-center">
                     <button className="board-menu">Board Menu</button>
                     <span className="nav-notification-btn" onClick={this.onUserNotificationClick}></span>
                     <MemberPreview user={loggedUser} history={history} />

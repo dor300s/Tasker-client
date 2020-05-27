@@ -15,6 +15,18 @@ export function setBoards(filter = '') {
     }
 }
 
+
+
+export function clearCurrBoard() {
+    return async dispatch => {
+        try {
+            return dispatch({ type: 'RESET_BOARD' })
+        } catch (err) {
+            console.log('Dont earse currBoard', err);
+        }
+    }
+}
+
 export function setBoard(id) {
     return async dispatch => {
         try {

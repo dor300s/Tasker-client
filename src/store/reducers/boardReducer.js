@@ -12,11 +12,18 @@ export function boardReducer(state = initialState, action) {
                 boards: action.boards
             }
         case 'SET_BOARD':
-            
+
             return {
                 ...state,
                 currBoard: action.board
             }
+
+        case 'RESET_BOARD':
+            return {
+                ...state,
+                currBoard: null
+            }
+
         case 'ADD_BOARD':
             return {
                 ...state,

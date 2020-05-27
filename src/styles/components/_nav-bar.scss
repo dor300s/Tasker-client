@@ -6,7 +6,7 @@
     // height: 42.5px;
     background-color: $clr6;
     // background-color: transparent;
-    padding: 7px 40px 7px;
+    padding: 7px 15px 7px 15px;
 
     .nav-menu-btn{
         content: url(../../images/icons8-menu.svg);
@@ -26,6 +26,30 @@
         color: $clr1;
         &:hover {
             background-color: rgba(103, 149, 247, 0.267);
+        }
+    }
+    .nav-left-section{
+        > *:not(:last-child){
+            margin-right: 10px;
+        }
+    }
+
+    .nav-search-result{
+        .result-header{
+
+        }
+        .result-preview{
+
+        }
+        .empty-search-massage{
+            
+        }
+    }
+
+    .home-button , .board-button{
+        font-size: 10px;
+        > *:not(:last-child){
+            margin-right: 5px;
         }
     }
 

@@ -5,7 +5,7 @@ import CardListPreview from '../cmps/CardListPreview.jsx'
 import { AddListForm } from '../cmps/AddListForm.jsx'
 import { connect } from 'react-redux';
 import uuid from "uuid/v4";
-import { setBoards, setBoard, saveBoard, removeBoard } from '../store/actions/boardActions.js'
+import { clearCurrBoard, setBoards, setBoard, saveBoard, removeBoard } from '../store/actions/boardActions.js'
 import socketService from '../services/socketService'
 
 class Board extends Component {
@@ -58,6 +58,7 @@ class Board extends Component {
     componentWillUnmount() {
         const { boardId } = this.props.match.params
         socketService.off(`board-updated-${boardId}`)
+        this.props.clearCurrBoard()
     }
 
     onAddList = async (title = "") => {
@@ -164,6 +165,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     setBoards,
     setBoard,
+    clearCurrBoard,
     removeBoard,
     saveBoard
 }
