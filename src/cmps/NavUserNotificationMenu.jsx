@@ -41,14 +41,14 @@ class NavUserNotificationMenu extends Component {
     }
 
     render() {
-        const { user } = this.props
+        const { user, isNotificationModalOpen } = this.props
         const { isHistoryShown } = this.state
         let notifiToShow = user.notifications.filter(notifi => !notifi.isRead)
 
         if (isHistoryShown) return  <HistoryNotifications goBack={this.onNotificationsHistory} notifications={user.notifications} history={this.props.history} />
     
         return (
-            <div  ref={node => this.node = node} className="nav-user-notifications-container flex column align-center">
+            <div  ref={node => this.node = node} className={`nav-user-notifications-container ${(isNotificationModalOpen)? "modal-open": ""} flex column align-center`}>
                 <div className="notifications-header"><h3>Notifications</h3></div>
                 {!notifiToShow.length ?
                     

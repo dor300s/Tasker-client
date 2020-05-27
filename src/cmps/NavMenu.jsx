@@ -47,12 +47,12 @@ class NavMenu extends React.Component {
     }
 
     render() {
-        const { currBoard, history, boards } = this.props
+        const { currBoard, history, boards, isMenuActive } = this.props
         const { filteredBoards } = this.state
         let starredBoards = boards.filter(board => board.isStarred);
 
         return (
-            <div className="nav-menu flex column" ref={node => this.node = node}>
+            <div className={`nav-menu flex column ${(isMenuActive)? "nav-open": ""}`} ref={node => this.node = node}>
                 {currBoard &&
                     <Link className="home-button flex align-center justify-center cursor" onClick={() => history.push(`/board`)} >
                         <div className="dashboard-btn"></div>
