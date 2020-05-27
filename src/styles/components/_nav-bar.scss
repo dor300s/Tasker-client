@@ -43,6 +43,31 @@
             cursor: pointer;
         }
     }
+
+    .member-modal{
+        background: white;
+        position: absolute;
+        z-index: 1;
+        width: max-content;
+        height: fit-content;
+        text-align: center;
+        box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.08);
+        border-radius: 4px;
+        margin-top: 10px;
+        margin-left: -14px;
+    
+        > * {
+            padding: 10px;
+            cursor: pointer;
+        }
+        > *:hover {
+            background-color: $clr5;
+        }
+        &.list-menu{
+            margin-top: 3px;
+        }
+    }
+    
     .nav-notification-btn {
         margin-left: 10px;
         content: url(../../images/bell.svg);
@@ -55,32 +80,6 @@
         &:hover {
             cursor: pointer;
             background-color: rgba(90, 140, 248, 0.267);
-        }
-    }
-
-    input {
-        height: 35px;
-        width: 200px;
-        margin-left: 30px;
-        border-radius: 4px;
-        border: 0;
-        color: $clr2;
-        outline: none;
-        padding-left: 35px;
-        font-size: 16.5px;
-        font-family: "DM Mono";
-        background: url(../../images/search-solid.svg) center / contain no-repeat;
-        background-size: 20px;
-        background-position: 10px;
-        border: 1px solid $clr4;
-        transition: 0.25s;
-
-        &::placeholder {
-            padding-left: 5px;
-            font-size: 14px;
-        }
-        &.card-search:focus {
-            width: 250px;
         }
     }
 }

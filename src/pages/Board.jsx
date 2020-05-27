@@ -80,27 +80,6 @@ class Board extends Component {
         this.props.saveBoard(currBoard)
     }
 
-    onDeleteCard = (cardId, cardListId, ev) => {
-        ev.stopPropagation()
-        const { currBoard } = this.props
-        const { cardLists } = currBoard;
-        const list = cardLists.find(cardList => cardList.id === cardListId);
-        const cardIdx = list.cards.findIndex(card => card.id === cardId);
-        list.cards.splice(cardIdx, 1);
-        this.props.saveBoard(currBoard)
-    }
-
-    onDeleteList = (listId, ev) => {
-        ev.stopPropagation()
-        const { currBoard } = this.props
-        const { cardLists } = currBoard;
-        console.log(cardLists)
-        const listIdx = cardLists.findIndex(list => listId === list.id);
-
-        cardLists.splice(listIdx, 1);
-        this.props.saveBoard(currBoard)
-    }
-
     onDragEnd = (result) => {
         if (!result.destination) return;
         const { currBoard } = this.props
@@ -139,7 +118,7 @@ class Board extends Component {
 
     render() {
 
-        const { setcurrBoard, onDragEnd, onAddList, onAddCard, onDeleteList, onDeleteCard } = this;
+        const { setcurrBoard, onDragEnd, onAddList, onAddCard } = this;
         const { currBoard, history } = this.props;
 
 
@@ -158,7 +137,7 @@ class Board extends Component {
                                     {...provided.droppableProps} ref={provided.innerRef}
                                 >
                                     {cardLists.map((cardList, index) => {
-                                        return (<CardListPreview currBoard={currBoard} onAddCard={onAddCard} cardListId={cardList.id} key={cardList.id} onDeleteCard={onDeleteCard} onDeleteList={onDeleteList} cardList={cardList} index={index} history={history} />
+                                        return (<CardListPreview currBoard={currBoard} onAddCard={onAddCard} /* cardListId={cardList.id} */ key={cardList.id} cardList={cardList} index={index} history={history} />
                                         );
                                     })}
                                     {provided.placeholder}

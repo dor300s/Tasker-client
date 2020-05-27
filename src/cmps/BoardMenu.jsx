@@ -12,7 +12,7 @@ class BoardMenu extends React.Component {
         updateCoverMode: false
     }
 
-    componentWillMount() {
+    componentDidMount() {
         document.addEventListener("mousedown", this.closeBoardMenu, false);
         document.addEventListener("keydown", this.closeBoardMenu, false);
         const { board } = this.props;

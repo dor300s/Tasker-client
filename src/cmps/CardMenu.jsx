@@ -9,7 +9,7 @@ class CardMenu extends Component {
         isMenuOpen: false
     }
 
-    componentWillMount() {
+    componentDidMount() {
         document.addEventListener("mousedown", this.closeBoardMenu, false);
         document.addEventListener("keydown", this.closeBoardMenu, false);
     }
@@ -22,7 +22,6 @@ class CardMenu extends Component {
     closeBoardMenu = (ev) => {
         ev.stopPropagation();
         if (!this.node.contains(ev.target) || ev.keyCode === 27) {
-            // setTimeout(() => this.setState({ isMenuOpen: false }), 200);
             this.setState({ isMenuOpen: false })
         }
     }

@@ -38,8 +38,10 @@ async function signup(userCred) {
 }
 
 async function logout() {
-    await httpService.post('auth/logout');
-    sessionStorage.clear();
+   let res = await httpService.post('auth/logout');
+   sessionStorage.clear();
+    return res
+    
 }
 
 function _handleLogin(user) {

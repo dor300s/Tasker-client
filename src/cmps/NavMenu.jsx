@@ -8,11 +8,25 @@ import { NavMenuFilter } from '../cmps/NavMenuFilter'
 class NavMenu extends React.Component {
 
     state = {
-        filteredBoards: null
+        filteredBoards: null,
     }
 
     componentDidMount() {
+        document.addEventListener("mousedown", this.onCloseMenu, false);
+        document.addEventListener("keydown", this.onCloseMenu, false);
+    }
 
+    componentWillUnmount() {
+        document.removeEventListener("mousedown", this.onCloseMenu, false);
+        document.removeEventListener("keydown", this.onCloseMenu, false);
+    }
+
+    onCloseMenu = (ev) => {
+        ev.stopPropagation();
+        if (!this.node.contains(ev.target) || ev.keyCode === 27) {
+            // this.setState({ isMenuOpen: false })
+            this.props.onCloseMenu();
+        }
     }
 
     onBoardClicked = (id) => {
@@ -38,7 +52,7 @@ class NavMenu extends React.Component {
         let starredBoards = boards.filter(board => board.isStarred);
 
         return (
-            <div className="nav-menu flex column">
+            <div className="nav-menu flex column" ref={node => this.node = node}>
                 <div className="nav-menu-header flex align-center space-between">
                     <Link className="home-btn" to={`/board`}>Home</Link>
                     <button className="close-btn" onClick={this.props.closeMenu}>X</button>
