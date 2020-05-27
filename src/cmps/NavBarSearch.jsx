@@ -50,7 +50,11 @@ export default class NavBarSearch extends React.Component {
             <div className="nav-search-result-container flex column">
                 <input className="card-search" type="text" value={searchWord} name="keyword" placeholder="Search..." onChange={this.inputHandler} />
                 <div className="nav-search-result">
-                    {filterBoards && <div>board result</div>}
+                    {filterBoards && <div>board result
+                        filterBoards.map(board => (
+                            <div></div>
+                        ))
+                        </div>}
                     {filterLists && <div>list result</div>}
                     {filterCards && <div>cards result</div>}
                     {filterUsers && <div>user result</div>}

@@ -8,6 +8,7 @@ import { setBoards, setBoard } from '../store/actions/boardActions.js'
 import { getUser } from '../store/actions/userActions.js'
 // import userService from '../services/userService.js'
 import { BoardMembers } from './BoardMembers'
+import { MemberPreview } from './MemberPreview'
 import NavBarSearch from './NavBarSearch'
 import InviteMemberModal from './InviteMemberModal'
 import socketService from '../services/socketService'
@@ -17,8 +18,8 @@ class NavBar extends React.Component {
     state = {
         isMenuActive: false,
         isBoardActive: false,
-        isUserMenuActive: false,
-        isInviteModalActive: null
+        isInviteModalOpen: null,
+        isNotificationModalOpen: false
     }
 
     componentDidMount(prevProps) {
@@ -34,7 +35,6 @@ class NavBar extends React.Component {
     }
 
 
-
     onMenuClick = () => {
         this.setState(prevState => ({ isMenuActive: !prevState.isMenuActive }))
     }
@@ -43,48 +43,48 @@ class NavBar extends React.Component {
         this.setState({ isMenuActive: false })
     }
 
+    onCloseInviteMenu = () => {
+        this.setState({ isInviteModalOpen: false })
+    }
+
+    onCloseNotificationMenu = () => {
+        this.setState({ isNotificationModalOpen: false })
+    }
+
     onUserNotificationClick = () => {
-        this.setState(prevState => ({ isNotificationMenuActive: !prevState.isNotificationMenuActive }))
+        this.setState(prevState => ({ isNotificationModalOpen: !prevState.isNotificationModalOpen }))
     }
 
     onInviteMember = () => {
-        this.setState(prevState => ({ isInviteModalActive: !prevState.isInviteModalActive }))
+        this.setState(prevState => ({ isInviteModalOpen: !prevState.isInviteModalOpen }))
     }
 
     render() {
-        const { isMenuActive, isNotificationMenuActive, isBoardActive, isInviteModalActive } = this.state
-        const { boards, activeBoard, history } = this.props
-        const { loggedUser } = this.props
+        const { isMenuActive, isNotificationModalOpen, isBoardActive, isInviteModalOpen } = this.state
+        const { boards, activeBoard, history, loggedUser } = this.props
+        const { onCloseInviteMenu, onInviteMember, onCloseNotificationMenu } = this
 
         if (!loggedUser) return <></>
         return (
             <nav className="nav-bar flex align-center space-between">
                 <div className="flex align-center">
                     <div className="nav-menu-btn" onClick={this.onMenuClick}></div>
-                    {activeBoard && <BoardMembers onInvite={this.onInviteMember} history={history} board={activeBoard} />}
-                    {isInviteModalActive && <InviteMemberModal />}
+                    {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
+                     {isInviteModalOpen && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
                     {/* <NavBarSearch isBoardActive={isBoardActive} boards={boards} /> */}
                 </div>
-                {isMenuActive && <NavMenu history={history} boards={boards} closeMenu={this.onCloseMenu} />}
+                {isMenuActive && <NavMenu history={history} boards={boards} onCloseMenu={this.onCloseMenu} />}
                 <div className="flex align-center">
                     <button className="board-menu">Board Menu</button>
                     <span className="nav-notification-btn" onClick={this.onUserNotificationClick}></span>
-                    {loggedUser.imgUrl ?
-                        <div className="nav-user-profile" style={{
-                            backgroundImage: "url(" + `${loggedUser.imgUrl}` + ")",
-                            backgroundPosition: 'center',
-                            backgroundSize: 'cover',
-                            backgroundRepeat: 'no-repeat'
-                        }}>
-                        </div>
-                        :
-                        <h3 className="nav-user-profile flex justify-center align-center">{loggedUser.fullName.charAt(0)}</h3>}
-                    {isNotificationMenuActive && <NavUserNotificationMenu history={history} user={loggedUser} />}
+                    <MemberPreview user={loggedUser} history={history} />
+                    {isNotificationModalOpen && <NavUserNotificationMenu onCloseNotificationMenu={onCloseNotificationMenu} history={history} user={loggedUser} />}
                 </div>
             </nav>
         )
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         loggedUser: state.user.loggedInUser,

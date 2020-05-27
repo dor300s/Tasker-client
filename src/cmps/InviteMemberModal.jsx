@@ -7,9 +7,23 @@ class InviteMemberModal extends Component {
         filteredUsers: null
     }
 
-
     componentDidMount() {
         this.props.loadUsers()
+        document.addEventListener("mousedown", this.onCloseInviteMenu, false);
+        document.addEventListener("keydown", this.onCloseInviteMenu, false);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("mousedown", this.onCloseInviteMenu, false);
+        document.removeEventListener("keydown", this.onCloseInviteMenu, false);
+    }
+
+    onCloseInviteMenu = (ev) => {
+        ev.stopPropagation();
+        if (!this.node.contains(ev.target) || ev.keyCode === 27) {
+            // this.setState({ isMenuOpen: false })
+            this.props.onCloseInviteMenu();
+        }
     }
 
     inputHandler = ({ target }) => {
@@ -26,9 +40,11 @@ class InviteMemberModal extends Component {
 
     render() {
         const { filteredUsers } = this.state
+        const { isInviteModalOpen } = this.props
+        console.log(isInviteModalOpen)
 
         return (
-            <div className="invite-members-modal flex column align-center">
+            <div  ref={node => this.node = node} className={`invite-members-modal ${(isInviteModalOpen)? 'fade-in': 'fade-out'} flex column align-center`}>
                 <div className="invite-header"><h3>Invite to collaborate</h3></div>
                 {/* <p>Add board members</p> */}
                 <input type="text" placeholder="Enter userName to invite" onKeyUp={this.inputHandler} />
