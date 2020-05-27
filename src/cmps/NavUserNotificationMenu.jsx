@@ -4,6 +4,7 @@ import userService from '../services/userService'
 import {HistoryNotifications} from './HistoryNotifications'
 import {AllReadNotifications} from './AllReadNotifications';
 import {UnReadNotifications} from './UnReadNotifications';
+import { saveBoard } from '../store/actions/boardActions.js'
 
 class NavUserNotificationMenu extends Component {
 
@@ -24,16 +25,17 @@ class NavUserNotificationMenu extends Component {
 
     onCloseNotificationMenu = (ev) => {
         ev.stopPropagation();
-        if (!this.node.contains(ev.target) || ev.keyCode === 27) {
-            // this.setState({ isMenuOpen: false })
-            this.props.onCloseNotificationMenu();
-        }
+        // if (!this.node.contains(ev.target) || ev.keyCode === 27) {
+        //     // this.setState({ isMenuOpen: false })
+        //     this.props.onCloseNotificationMenu();
+        // }
     }
 
 
     onClearNotification = () => {
         const { user } = this.props
         userService.clearNotifications(user)
+
     }
 
     onNotificationsHistory = () => {
@@ -46,7 +48,7 @@ class NavUserNotificationMenu extends Component {
         let notifiToShow = user.notifications.filter(notifi => !notifi.isRead)
 
         if (isHistoryShown) return  <HistoryNotifications goBack={this.onNotificationsHistory} notifications={user.notifications} history={this.props.history} />
-    
+        
         return (
             <div  ref={node => this.node = node} className="nav-user-notifications-container flex column align-center">
                 <div className="notifications-header"><h3>Notifications</h3></div>
@@ -68,6 +70,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
+    saveBoard
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavUserNotificationMenu)
