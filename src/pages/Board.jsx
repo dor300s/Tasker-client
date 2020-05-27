@@ -68,7 +68,7 @@ class Board extends Component {
         window.scrollTo(100000, 0)
     }
 
-    onAddCard = (ListId, txt = "") => {
+    onAddCard = async(ListId, txt = "") => {
         console.log("listId", ListId)
         console.log("txt", txt)
         const { currBoard } = this.props
@@ -77,7 +77,7 @@ class Board extends Component {
         console.log('list', list)
         list.cards.push(this.getNewCard(txt))
         console.log(currBoard)
-        this.props.saveBoard(currBoard)
+        await this.props.saveBoard(currBoard)
     }
 
     onDragEnd = (result) => {
@@ -137,7 +137,7 @@ class Board extends Component {
                                     {...provided.droppableProps} ref={provided.innerRef}
                                 >
                                     {cardLists.map((cardList, index) => {
-                                        return (<CardListPreview currBoard={currBoard} onAddCard={onAddCard} /* cardListId={cardList.id} */ key={cardList.id} cardList={cardList} index={index} history={history} />
+                                        return (<CardListPreview className="scrollGradient" currBoard={currBoard} onAddCard={onAddCard} /* cardListId={cardList.id} */ key={cardList.id} cardList={cardList} index={index} history={history} />
                                         );
                                     })}
                                     {provided.placeholder}
