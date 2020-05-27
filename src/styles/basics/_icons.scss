@@ -5,6 +5,7 @@
 .card-details-content-wrapper,
 .interactive-robot-container,
 .nav-bar,
+.dashboard,
 .card-list-container {
     .dueDate {
         content: url(../../images/clock.svg);
@@ -28,12 +29,16 @@
         background-position: center;
         background-size: 100%;
         width: 120px;
-        height: 120px;
-        
+        height: 120px;   
     }
 
     .white-trash {
         content: url(../../images/white-trash.svg);
+        cursor: pointer;
+         width: 20px;
+    }
+    .dashboard-btn {
+        content: url(../../images/dashboard.svg);
         cursor: pointer;
          width: 20px;
     }

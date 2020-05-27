@@ -1,12 +1,17 @@
 .nav-bar {
+    color: $clr2;
     z-index: 1;
     position: fixed;
+    // opacity: 0.8;
+    font-size: 16.5px;
     top: 0;
     width: 100%;
-    // height: 42.5px;
-    background-color: $clr6;
-    // background-color: transparent;
-    padding: 7px 15px 7px 15px;
+    background-color: rgba($clr6, 0.8) ;
+    padding: 7px 30px 7px 30px;
+    box-shadow: 0px 14px 16px -20px rgba(0,0,0,0.75);
+    & > * {
+        opacity: 1 !important;
+    }
 
     .nav-menu-btn {
         content: url(../../images/icons8-menu.svg);
@@ -17,18 +22,21 @@
     .board-menu {
         width: fit-content;
         height: 30px;
-        // background-color: rgba(136, 172, 250, 0.267);
         background-color: transparent;
         box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
         font-weight: 600;
         border-radius: 5px;
         border: none;
-        color: $clr1;
         &:hover {
             background-color: rgba(103, 149, 247, 0.267);
         }
     }
     .nav-left-section {
+        > *:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+    .nav-right-section{
         > *:not(:last-child) {
             margin-right: 10px;
         }
@@ -50,15 +58,14 @@
             margin-right: 5px;
         }
     }
-    
+
     .board-left {
         margin-left: 10px;
     }
 
     .nav-user-profile {
         border-radius: 50%;
-        color: $clr5;
-        background-color: $clr2;
+        background-color: $clr3;
         width: 35px;
         height: 35px;
         margin-left: 10px;

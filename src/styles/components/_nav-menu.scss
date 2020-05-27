@@ -1,6 +1,6 @@
 .nav-menu {
     position: fixed;
-    z-index: 10;
+    z-index: 200;
     top: 0;
     left: 0;
     transform: translateX(-100%);
@@ -11,9 +11,16 @@
     animation: navMenuSlideIn 0.25s ease;
     animation-fill-mode: forwards;
     overflow-x: hidden;
+    padding: 0 20px;
     > div {
         overflow-x: hidden;
     }
+    .board-search {
+        background: url(../../images/search.svg) center / contain no-repeat;
+        background-size: 20px;
+        background-position: 10px;
+    }
+
     .close-menu {
         animation: navMenuSlideIn 0.25s ease;
         animation-fill-mode: forwards;
@@ -31,6 +38,43 @@
     .nav-menu-header {
         padding: 20px 20px;
         overflow: hidden;
+    }
+    > *:first-child{
+        margin-top: 20px;
+    }
+    > *:not(:last-child){
+        margin-bottom: 20px;
+    }
+
+    
+    .list-header{
+        font-size: 15px;
+    }
+
+    .nav-menu-filter {
+        opacity: 1 !important;
+        // margin-bottom: 20px;
+        // padding: 0 10px;
+        overflow: hidden;
+        input {
+            outline: none;
+            margin-left: 0px;
+            width: 95%;
+            height: 40px;
+            padding-left: 35px;
+            border: 1.3px solid rgb(236, 236, 236);
+            border-radius: 5px;
+            background-color: $clr6;
+            &:focus {
+                border: 1.3px solid rgb(44, 178, 240);
+            }
+            &::placeholder {
+                ::before {
+                    content: url(../../images/search.svg);
+                    visibility: visible;
+                }
+            }
+        }
     }
 
     .boards-container {
