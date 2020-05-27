@@ -17,10 +17,12 @@ export default class BoardPreview extends React.Component {
     }
 
     starToggle(board, ev) {
-        const { saveBoard } = this.props;
+        const { saveBoard, clearCurrBoard } = this.props;
+
         ev.stopPropagation()
         board.isStarred = !board.isStarred;
         saveBoard(board)
+            .then(() => clearCurrBoard())
     }
 
     openMenu = (ev) => {
@@ -37,7 +39,7 @@ export default class BoardPreview extends React.Component {
 
     render() {
         const { isModalOpen } = this.state
-        const { board, onBoardClicked, saveBoard } = this.props
+        const { board, onBoardClicked } = this.props
 
         return (
             < React.Fragment >

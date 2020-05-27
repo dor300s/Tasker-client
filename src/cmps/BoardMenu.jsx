@@ -92,7 +92,7 @@ class BoardMenu extends React.Component {
 
         return (
             <div ref={node => this.node = node} className={`board-menu-container flex column space-between ${isImgLoading && 'box-shadow-off'}`}>
-                {isImgLoading ? <div className="loading">aaaaaaaa</div> :
+                {isImgLoading ? <div className="loading"></div> :
                     <>
                         {!editTitleMode ? <>
                             <div onClick={this.activeEditMode}>Edit Title</div>
@@ -113,7 +113,7 @@ class BoardMenu extends React.Component {
                                     </label>
                                 </div>}
                             </div>
-                            <div onClick={this.onRemoveBoard}>Delete Board</div>
+                            <div className="delete-btn" onClick={this.onRemoveBoard}>Delete Board</div>
                         </> :
                             <form className="flex" onSubmit={this.handleSubmit}>
                                 <input value={title} onChange={this.handleChange} onBlur={this.handleSubmit} onClick={(e) => e.stopPropagation()} autoFocus spellCheck="false" />

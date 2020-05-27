@@ -15,8 +15,6 @@ export function setBoards(filter = '') {
     }
 }
 
-
-
 export function clearCurrBoard() {
     return async dispatch => {
         try {
