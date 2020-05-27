@@ -85,12 +85,13 @@ export default class NavBarSearch extends React.Component {
     }
 
     render() {
-        // const { boards } = this.props
         const { searchWord, filterLists, filterCards, isSearchOpenModal } = this.state
+        const { currBoard } = this.props
 
         return (
             <div ref={node => this.node = node} className="nav-search-result-container flex column">
-                <input onClick={() => this.openSearchModal()} onSubmit={() => this.onSearch} className="card-search" type="text" value={searchWord} name="keyword" placeholder="Search..." onChange={this.handleChange} />
+
+                <input onClick={() => this.openSearchModal()} onSubmit={() => this.onSearch} className="card-search" type="text" value={searchWord} name="keyword" placeholder={(currBoard) ? "Search list or card.." : "Search board..."} onChange={this.handleChange} />
                 {isSearchOpenModal &&
                     <div className="nav-search-result flex column">
                         {Boolean(filterLists.length) &&
