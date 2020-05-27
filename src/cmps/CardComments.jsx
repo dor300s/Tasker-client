@@ -29,6 +29,7 @@ class CardComments extends Component {
     }
 
     onUserType = ({target}) => {
+        
         const id = this.props.card.id
         this.setState({userMsg: target.value})
         clearInterval(typingInterval);
@@ -36,14 +37,7 @@ class CardComments extends Component {
         typingInterval = setTimeout(()=>{
             socketService.emit('user typing' , {id , status: false} ) 
         },550)
-            
-        
 
-
-
-            // setTimeout(()=>{
-            //     socketService.emit('user typing' , {id , status: false} )
-            // },300)
     }
 
     onSubmit = (ev) => {
@@ -66,6 +60,12 @@ class CardComments extends Component {
         this.setState({userMsg: ''})
     }
 
+    deleteComment = (idx) => {
+        const { card, board } = this.props
+        card.comments.splice(idx,1)
+        this.props.saveBoard(board)
+    }
+
     render() {
         const { currUser, card, board } = this.props
         const {userMsg , isTypeActive} = this.state
@@ -75,21 +75,22 @@ class CardComments extends Component {
                     <span className="comment" />
                     <h4>Comments</h4>
                 </div>
-                <div className="card-add-comment flex align-center" style={{ marginLeft: "40px", marginBottom: "15px" }}>
-                    <div className="user-profile-comment" style={{
+               <div className="card-add-comment flex align-center" style={{ marginLeft: "40px", marginBottom: "15px" }}>
+               {currUser.imgUrl &&   <div className="self-profile-comment" style={{
                         backgroundImage: "url(" + `${currUser.imgUrl}` + ")",
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat'
                     }} >
-                    </div>
+                    </div>}
+                    {!currUser.imgUrl && <h3 style={{marginLeft: "0px" , marginRight:"15px"}} className="card-user-profile flex justify-center align-center">{currUser.fullName.charAt(0)}</h3>}
                     <form onSubmit={this.onSubmit}>
                         <input className="user-text-input" type="text" placeholder={currUser.userName + ", whats on your mind?"}
                             onChange={this.onUserType} value={userMsg}  />
                     </form>
-                    {isTypeActive && <span className="loading" />}
+                    {isTypeActive && <span className="pulse" />}
                 </div>
-                < CardCommentsList card={card} board={board} />
+                < CardCommentsList card={card} user={currUser} board={board} deleteComment={this.deleteComment} />
             </div>
         )
     }

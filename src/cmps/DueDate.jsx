@@ -1,6 +1,8 @@
 import React from 'react'
 import moment from 'moment'
-export class DueDate extends React.Component {
+import { connect } from 'react-redux'
+import { saveBoard } from '../store/actions/boardActions'
+class DueDate extends React.Component {
 
     state = {
         isComplete: false,
@@ -27,7 +29,9 @@ export class DueDate extends React.Component {
     }
 
     onComplete = () => {
+        const { board } = this.props
         this.setState(prevState => ({ isComplete: !prevState.isComplete }), () => console.log(this.state.isComplete))
+        this.props.saveBoard(board)
     }
 
     render() {
@@ -53,7 +57,11 @@ export class DueDate extends React.Component {
         )
     }
 }
+const mapDispatchToProps = {
+    saveBoard,
+}
 
+export default connect(null, mapDispatchToProps)(DueDate)
 
 
 

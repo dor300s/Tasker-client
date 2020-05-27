@@ -42,14 +42,14 @@ class CardMembers extends Component {
     }
 
     render() {
-        const { card, history, board } = this.props
+        const { card, history, board , showModal} = this.props
         const { isAddMemberActive, isMouseHoverUser } = this.state
-
+        
         return (
             <div style={{ marginBottom: "30px", marginLeft: "42px" }} className="flex column">
                 <h4 className="card-members-header">Card members</h4>
                 <div className="card-members flex align-center">
-                    {<CardMembersList opacity={isAddMemberActive ? 'opacity-one' : ''} card={card} board={board} history={history} addMember={this.addMember} />}
+                    {<CardMembersList opacity={(isAddMemberActive || showModal) ? 'opacity-one' : ''} card={card} board={board} history={history} addMember={this.addMember} />}
                     <button className={`card-member-invite ${!isAddMemberActive && 'margin-right-26'}`} onClick={this.onAddMember}
                         style={{ backgroundColor: `${isAddMemberActive ? "rgba(110, 253, 141, 0.432)" : "rgba(142, 176, 248, 0.267)"}` }}>
                         {isAddMemberActive ? 'Done' : '+'}</button>
@@ -72,7 +72,9 @@ class CardMembers extends Component {
                             </div>
                         }
                         else {
-                            return <><h3 className="card-user-profile flex justify-center align-center">{member.fullName.charAt(0)}</h3>
+                            return <><h3 className="card-user-profile flex justify-center align-center"onMouseEnter={this.onMouseEnter}
+                            onMouseLeave={this.onMouseLeave}> {member.fullName.charAt(0)}</h3>
+                            {isMouseHoverUser && <button onClick={(ev) => this.onRemoveCardUser(idx, ev)} className="card-member-remove"></button>}
                                 <div className="card-member-tooltip">
                                     <p>{member.fullName}</p>
                                 </div>

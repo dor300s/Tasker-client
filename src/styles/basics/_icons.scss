@@ -2,6 +2,8 @@
 .card-preview,
 .add-list,
 .screen,
+.card-details-content-wrapper,
+.interactive-robot-container,
 .card-list-container {
     .dueDate {
         content: url(../../images/clock.svg);
@@ -18,6 +20,15 @@
     .comment {
         content: url(../../images/comment.svg);
          width: 15px;
+    }
+
+    .robot{
+        background-image: url(../../images/robot.png);
+        background-position: center;
+        background-size: 100%;
+        width: 120px;
+        height: 120px;
+        
     }
 
     .white-trash {
@@ -61,7 +72,7 @@
 
     .list {
         content: url(../../images/list.svg);
-        width: 25px;
+        width: 15px;
     }
 
     .due-date {
@@ -117,6 +128,12 @@
     .loading {
         content: url(../../images/30.gif);
         width: 50px;
+    }
+
+    .pulse {
+        content: url(../../images/pulse.svg);
+        width: 30px;
+        margin-left: 15px;
     }
 
     .next {
