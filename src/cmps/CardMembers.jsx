@@ -72,7 +72,9 @@ class CardMembers extends Component {
                             </div>
                         }
                         else {
-                            return <><h3 className="card-user-profile flex justify-center align-center">{member.fullName.charAt(0)}</h3>
+                            return <><h3 className="card-user-profile flex justify-center align-center"onMouseEnter={this.onMouseEnter}
+                            onMouseLeave={this.onMouseLeave}> {member.fullName.charAt(0)}</h3>
+                            {isMouseHoverUser && <button onClick={(ev) => this.onRemoveCardUser(idx, ev)} className="card-member-remove"></button>}
                                 <div className="card-member-tooltip">
                                     <p>{member.fullName}</p>
                                 </div>
