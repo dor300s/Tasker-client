@@ -10,8 +10,6 @@ export default class NavBarSearch extends React.Component {
     state = {
         users: null,
         searchWord: "",
-        filterBoards: [],
-        filterUsers: [],
         filterLists: [],
         filterCards: [],
         isSearchOpenModal: false
@@ -57,67 +55,51 @@ export default class NavBarSearch extends React.Component {
         console.log('searchWord', searchWord)
 
         if (!searchWord.length) {
-            this.setState({ filterBoards: [], filterLists: [] , filterCards: [], filterUsers: [] })
+            this.setState({ filterBoards: [], filterLists: [], filterCards: [], filterUsers: [] })
             return;
         }
-        const { boards } = this.props
-        const filterBoards = boards.filter(board => board.title.toLowerCase().includes(searchWord.toLowerCase()));
+        const { currBoard } = this.props
+        // const filterBoards = boards.filter(board => board.title.toLowerCase().includes(searchWord.toLowerCase()));
         let filterLists = []
-        boards.forEach(board => {
-            board.cardLists.forEach(cardList => {
-                if (cardList.title.toLowerCase().includes(searchWord.toLowerCase())) {
-                    cardList.boardId = board._id;
-                    cardList.boardTitle = board.title;
-                    filterLists.push(cardList)
-                }
-            })
+        currBoard.cardLists.forEach(cardList => {
+            if (cardList.title.toLowerCase().includes(searchWord.toLowerCase())) {
+                cardList.boardId = currBoard._id;
+                cardList.boardTitle = currBoard.title;
+                filterLists.push(cardList)
+            }
         });
 
         let filterCards = []
-        boards.forEach(board => {
-            board.cardLists.forEach(cardList => {
-                cardList.cards.forEach(card => {
-                    if (card.text.toLowerCase().includes(searchWord.toLowerCase())) {
-                        card.boardId = board._id;
-                        card.boardTitle = board.title;
-                        card.cardListId = cardList.id;
-                        card.cardListTitle = cardList.title;
-                        filterCards.push(card)
-                    }
-                })
+        currBoard.cardLists.forEach(cardList => {
+            cardList.cards.forEach(card => {
+                if (card.text.toLowerCase().includes(searchWord.toLowerCase())) {
+                    card.boardId = currBoard._id;
+                    card.boardTitle = currBoard.title;
+                    card.cardListId = cardList.id;
+                    card.cardListTitle = cardList.title;
+                    filterCards.push(card)
+                }
             })
         });
-        console.log(filterCards)
-        // const filterUsers = boards.filter(board => board.title.toLowerCase().includes(searchWord.toLowerCase()));
-
-        this.setState({ filterBoards, filterLists  /*, filterCards, filterUsers */ })
+        this.setState({ filterLists, filterCards })
     }
 
     render() {
         // const { boards } = this.props
-        const { searchWord, filterBoards, filterUsers, filterLists, filterCards, isSearchOpenModal } = this.state
+        const { searchWord, filterLists, filterCards, isSearchOpenModal } = this.state
 
         return (
             <div ref={node => this.node = node} className="nav-search-result-container flex column">
                 <input onClick={() => this.openSearchModal()} onSubmit={() => this.onSearch} className="card-search" type="text" value={searchWord} name="keyword" placeholder="Search..." onChange={this.handleChange} />
                 {isSearchOpenModal &&
-                    <div className="nav-search-result">
-                        {Boolean(filterBoards.length) &&
-                            <>
-                                <div className="result-header">Board results</div>
-                                {filterBoards.map(board => (
-                                    <div className="result-preview flex">
-                                        <div>{board.title}</div>
-                                    </div>
-                                ))}
-                            </>}
+                    <div className="nav-search-result flex column">
                         {Boolean(filterLists.length) &&
                             <>
                                 <div className="result-header" >List results</div>
                                 {filterLists.map(list => (
                                     <div className="result-preview flex space between">
                                         <div>{list.title} </div>
-                                        <div>&nbsp <span style={{color: "red"}} >from</span> {list.boardTitle} board</div>
+                                        <div> <span style={{ color: "red" }} >from</span> {list.boardTitle} board</div>
                                     </div>
                                 ))}
                             </>}
@@ -132,8 +114,7 @@ export default class NavBarSearch extends React.Component {
                                     </div>
                                 ))}
                             </>}
-                        {Boolean(filterUsers.length) && <div>user result</div>}
-                        {!Boolean(filterBoards.length) && !Boolean(filterLists.length) && !!Boolean(filterCards.length) && !Boolean(filterUsers.length) && <div>search for board task or user</div>}
+                        {!Boolean(filterLists.length) && !!Boolean(filterCards.length) && <div className='empty-search-massage'>search for board task or user</div>}
                     </div>}
             </div>
         )

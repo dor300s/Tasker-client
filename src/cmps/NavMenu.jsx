@@ -53,10 +53,10 @@ class NavMenu extends React.Component {
 
         return (
             <div className="nav-menu flex column" ref={node => this.node = node}>
-                <div className="nav-menu-header flex align-center space-between">
+                {/* <div className="nav-menu-header flex align-center space-between">
                     <Link className="home-btn" to={`/board`}>Home</Link>
                     <button className="close-btn" onClick={this.props.closeMenu}>X</button>
-                </div>
+                </div> */}
                 <NavMenuFilter onFilter={(filterBy) => this.onFilter(filterBy)} />
 
                 <div className="nav-boards-preview-wrapper flex column">
