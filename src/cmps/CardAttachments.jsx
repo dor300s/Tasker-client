@@ -62,9 +62,9 @@ class CardAttachments extends Component {
                         {attachments && attachments.map((file, idx) => {
                             return <div key={idx} style={{ marginBottom: "15px" }} className="flex column" onClick={() => this.onImgClick(file.url)}>
                                 {file.url && <img src={file.url} width="150" />}
-                                <div className="attachment-file-name-wrapper flex align-center">
-                                    <h4 className="attachment-file-name">{file.fileName}.{file.format}</h4>
-                                    {/* <p className="attachment-owner">Uploaded by - {loggedUser.userName}</p> */}
+                                <div className="attachment-file-name-wrapper flex align-center space-between">
+                                    {/* <h4 className="attachment-file-name">{file.fileName}.{file.format}</h4> */}
+                                    <p className="attachment-owner">Upload by - {loggedUser.userName}</p>
                                     <button className="attachment-delete-btn" onClick={() => this.onDelete(idx)}>Delete</button>
                                 </div>
 

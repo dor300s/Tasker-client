@@ -49,7 +49,6 @@ class Board extends Component {
         this.props.setBoard(boardId)
 
         socketService.on(`board-updated-${boardId}`, (id) => {
-            console.log('SOCKETTTTTTTT');
             this.props.setBoard(id)
         })
     }

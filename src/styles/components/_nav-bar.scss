@@ -90,9 +90,9 @@
         margin-top: 10px;
         margin-left: -23px;
         transition: .25s;
-        transform: translateX(-8%);
+        transform: translateX(100%);
         &.modal-open{
-            transform: translateX(100%);
+            transform: translateX(-8%);
         }
 
         > * {
