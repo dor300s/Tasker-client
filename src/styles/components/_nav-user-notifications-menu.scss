@@ -4,14 +4,12 @@
     top: 51px;
     z-index: 15;
     width: 350px;
-    // height: 500px;
     padding-bottom: 10px;
-    transform: translateY(-115%);
+    transform: translateY(-120%);
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.397);
     border-radius: 7px;
     background-color: white;
     transition: .25s;
-    // opacity: 0.5;
 
     &.modal-open{
         transform: translateY(0%);

@@ -61,11 +61,16 @@
     opacity: 1 !important;
     height: 60px !important;
 }
+.calendar-fade{
+    visibility: visible !important;
+    opacity: 1 !important;
+    top: 13.2% !important;
+}
 .opacity-robot{
     opacity: 1 !important;
 }
 .fade-input{
-    visibility: visible !important;
+    display: block !important;
     opacity: 1 !important;
 }
 

@@ -55,6 +55,7 @@ class CardDetails extends Component {
     }
 
     openDatePicker = () => {
+        
         this.setState(prevState => ({ isCalendarActive: !prevState.isCalendarActive }))
     }
 
@@ -67,6 +68,8 @@ class CardDetails extends Component {
     }
 
     onDatePicked = (timeStamp) => {
+        console.log('OPEN CALENDAR');
+        
         const { currCard } = this.state
         const { currBoard } = this.props
         currCard.dueDate = timeStamp

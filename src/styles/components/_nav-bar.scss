@@ -7,7 +7,7 @@
     top: 0;
     width: 100%;
     background-color: rgba($clr6, 0.8) ;
-    padding: 7px 30px 7px 30px;
+    padding: 7px 30px 7px 32px;
     box-shadow: 0px 14px 16px -20px rgba(0,0,0,0.75);
     & > * {
         opacity: 1 !important;
@@ -89,11 +89,10 @@
         border-radius: 4px;
         margin-top: 10px;
         margin-left: -23px;
-        transform: translateY(-170%);
         transition: .25s;
-
+        transform: translateX(-8%);
         &.modal-open{
-            transform: translateY(-2%);
+            transform: translateX(100%);
         }
 
         > * {
@@ -120,6 +119,13 @@
         &:hover {
             cursor: pointer;
             background-color: rgba(90, 140, 248, 0.267);
+        }
+    }
+    .board-txt{
+        font-size: 14px;
+        font-weight: 600;
+        &:hover{
+            color: #4886FF;
         }
     }
 }
