@@ -11,7 +11,7 @@ export function CardActions(props) {
                 <h5 className="action-title ">Members</h5>
             </span> */}
 
-            <span className="card-action-wrapper flex align-center">
+            <span className="card-action-wrapper flex align-center" onClick={props.onLabels}>
                 <span className="label " > </span>
                 <h5 className="action-title ">Lables</h5>
             </span>

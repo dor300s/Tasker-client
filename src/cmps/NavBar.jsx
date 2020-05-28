@@ -23,8 +23,11 @@ class NavBar extends React.Component {
 
     componentDidMount(prevProps) {
         socketService.setup()
-        // let pathName = this.props.location.pathname
-        // let boardId = pathName.split('/')[2] // todo get from global state
+        
+        socketService.on('user invite', (id) => {
+            console.log('Yay got an ivite!');
+        })
+
         this.props.getUser()
             .then(() => {
                 if (!this.props.loggedUser) this.props.history.push('/')
