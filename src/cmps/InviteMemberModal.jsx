@@ -43,12 +43,12 @@ class InviteMemberModal extends Component {
     onInvite = (userId) => {
         
         let data = {
-            userId,
-            sender: this.props.loggedUser,
+            invitedUserId: userId,
+            sender: this.props.loggedUser.userName,
+            collabBoardId: this.props.activeBoard._id,
             createdAt: Date.now()
         }
         socketService.emit('user invite', data);
-        
     }
 
     render() {
@@ -95,7 +95,8 @@ class InviteMemberModal extends Component {
 const mapStateToProps = (state) => {
     return {
         users: state.user.users,
-        loggedUser: state.user.loggedInUser
+        loggedUser: state.user.loggedInUser,
+        activeBoard: state.boardApp.currBoard
     }
 }
 
