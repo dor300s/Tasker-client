@@ -100,3 +100,8 @@
 .isDragging {
     background-color: $clr5 !important;
 }
+
+[data-rdb-placeholder-context-id] {
+    background-color: $clr2 !important;
+    width: 4999px;
+  }

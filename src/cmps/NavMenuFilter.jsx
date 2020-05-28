@@ -9,7 +9,7 @@ export class NavMenuFilter extends React.Component {
     render() {
         return (
             <div className="nav-menu-filter flex justify-center align-center">
-                <input className="board-search" autocomplete="off" type="text" name="keyword" placeholder="Search a board" onChange={this.inputHandler} />
+                <input className="board-search" autoComplete="off" type="text" name="keyword" placeholder="Search a board" onChange={this.inputHandler} />
             </div>
         )
     }

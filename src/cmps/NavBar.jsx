@@ -66,7 +66,7 @@ class NavBar extends React.Component {
         if (!loggedUser) return <></>
         return (
             <nav className="nav-bar flex align-center space-between" >
-                {!activeBoard && <img src="https://www.iconspng.com/images/logo-logo-black-on-white-background/logo-logo-black-on-white-background.jpg" width='60px' alt=""/>}
+                {!activeBoard && <img src="https://www.iconspng.com/images/logo-logo-black-on-white-background/logo-logo-black-on-white-background.jpg" width='60px' alt="" />}
                 <div className="nav-left-section flex align-center">
                     {activeBoard &&
                         <div className="board-button flex align-center justiry-center space-between cursor" onClick={this.onMenuClick}>
@@ -75,7 +75,7 @@ class NavBar extends React.Component {
                         </div>}
 
                     {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
-                    {activeBoard && isInviteModalOpen && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
+                    {activeBoard && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
                 </div>
                 {< NavBarSearch currBoard={activeBoard} history={history} />}
                 {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
