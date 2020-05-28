@@ -12,6 +12,7 @@ import { MemberPreview } from './MemberPreview'
 import NavBarSearch from './NavBarSearch'
 import InviteMemberModal from './InviteMemberModal'
 import socketService from '../services/socketService'
+import moment from 'moment'
 
 class NavBar extends React.Component {
 
@@ -23,16 +24,20 @@ class NavBar extends React.Component {
 
     componentDidMount(prevProps) {
         socketService.setup()
-        
-        socketService.on('user invite', (id) => {
-            console.log('Yay got an ivite!');
-        })
 
         this.props.getUser()
             .then(() => {
                 if (!this.props.loggedUser) this.props.history.push('/')
-                else this.props.setBoards()
+                else {
+                    console.log(this.props.loggedUser._id);
+                    
+                    socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
+                        console.log(`${invData.sender.userName} Invited you to collaborate! ${moment(invData.createdAt).fromNow()}`);
+                    })
+                    this.props.setBoards()
+                }
             })
+
     }
 
 
@@ -73,7 +78,7 @@ class NavBar extends React.Component {
                 <div className="nav-left-section flex align-center">
                     {activeBoard &&
                         <div className="board-button flex align-center justiry-center space-between cursor" onClick={this.onMenuClick}>
-                            <div style={{marginRight:"5px"}} className="board-btn"></div>
+                            <div style={{ marginRight: "5px" }} className="board-btn"></div>
                             <div className="board-txt">Boards</div>
                         </div>}
 
