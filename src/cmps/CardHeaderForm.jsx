@@ -56,7 +56,7 @@ export class CardHeaderForm extends Component {
     }
 
     escFunction = (event) => {
-        if (event.keyCode === 27) {
+        if(event.keyCode === 13){
             this.onSubmit()
         }
     }
@@ -75,13 +75,20 @@ export class CardHeaderForm extends Component {
         this.onSubmit()
     }
 
+    moveCaretAtEnd(e) {
+        var temp_value = e.target.value
+        e.target.value = ''
+        e.target.value = temp_value
+      }
+
 
     render() {
         const { cardTitle } = this.state
         return (
             <React.Fragment>
                 <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Edit title" onClick={ev => ev.stopPropagation()} value={cardTitle} onChange={this.handleChange} autoFocus onBlur={this.handleBlur} />
+                    <textarea placeholder="Edit title" onClick={ev => ev.stopPropagation()}
+                    value={cardTitle} onChange={this.handleChange} autoFocus onFocus={this.moveCaretAtEnd} onBlur={this.handleBlur} spellCheck="false" />
                 </form>
             </React.Fragment>
         )

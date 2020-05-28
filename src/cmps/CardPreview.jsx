@@ -41,7 +41,7 @@ class CardPreview extends Component {
 
     render() {
 
-        const { index, card, currBoard, cardListId, history } = this.props
+        const { index, card, currBoard, cardListId, history, animation } = this.props
         const { showCard, offEditCardHeader, onEditCardHeader } = this;
         console.log(card.attachments)
         return (
@@ -50,7 +50,7 @@ class CardPreview extends Component {
                     return (
                         <>
                             <div
-                                className={`card-preview drag flex column ${snapshot.isDragging ? "isDragging" : ""}`} onClick={() => showCard(card.id, history, currBoard)}
+                                className={`card-preview drag flex column ${snapshot.isDragging ? "isDragging" : ""} ${animation}`} onClick={() => showCard(card.id, history, currBoard)}
                                 ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
                                 style={{
                                     userSelect: "none",
