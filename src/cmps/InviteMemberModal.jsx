@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { loadUsers } from '../store/actions/userActions'
 import { connect } from 'react-redux'
+import socketService from '../services/socketService'
+
 class InviteMemberModal extends Component {
 
     state = {
@@ -38,13 +40,24 @@ class InviteMemberModal extends Component {
         this.setState({ filteredUsers })
     }
 
+    onInvite = (userId) => {
+        
+        let data = {
+            userId,
+            sender: this.props.loggedUser,
+            createdAt: Date.now()
+        }
+        socketService.emit('user invite', data);
+        
+    }
+
     render() {
         const { filteredUsers } = this.state
         const { isInviteModalOpen } = this.props
         console.log(isInviteModalOpen)
 
         return (
-            <div  ref={node => this.node = node} className={`invite-members-modal ${(isInviteModalOpen)? 'modal-open': ''} flex column align-center`}>
+            <div ref={node => this.node = node} className={`invite-members-modal ${(isInviteModalOpen) ? 'modal-open' : ''} flex column align-center`}>
                 <div className="invite-header"><h3>Invite to collaborate</h3></div>
                 {/* <p>Add board members</p> */}
                 <input type="text" placeholder="Enter userName to invite" onKeyUp={this.inputHandler} />
@@ -59,7 +72,7 @@ class InviteMemberModal extends Component {
                             }}>
                             </span>
                             <h4>{user.fullName}</h4>
-                            <button className="user-invite-btn">Invite</button>
+                            <button className="user-invite-btn" onClick={() => this.onInvite(user._id)}>Invite</button>
                             {user.isLogIn &&
                                 <div className="user-status flex column align-center">
                                     <span className="user-online"></span>
@@ -71,7 +84,7 @@ class InviteMemberModal extends Component {
                                     <span className="user-offline"></span>
                                     <h5>Offline</h5>
                                 </div>}
-                            
+
                         </div>
                     })}
                 </div>}
@@ -81,7 +94,8 @@ class InviteMemberModal extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        users: state.user.users
+        users: state.user.users,
+        loggedUser: state.user.loggedInUser
     }
 }
 

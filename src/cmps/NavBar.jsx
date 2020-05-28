@@ -12,6 +12,7 @@ import { MemberPreview } from './MemberPreview'
 import NavBarSearch from './NavBarSearch'
 import InviteMemberModal from './InviteMemberModal'
 import socketService from '../services/socketService'
+import moment from 'moment'
 
 class NavBar extends React.Component {
 
@@ -23,16 +24,20 @@ class NavBar extends React.Component {
 
     componentDidMount(prevProps) {
         socketService.setup()
-        // let pathName = this.props.location.pathname
-        // let boardId = pathName.split('/')[2] // todo get from global state
+
         this.props.getUser()
             .then(() => {
                 if (!this.props.loggedUser) this.props.history.push('/')
                 else {
-                    console.log(this.props.loggedUser);
+                    console.log(this.props.loggedUser._id);
+                    
+                    socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
+                        console.log(`${invData.sender.userName} Invited you to collaborate! ${moment(invData.createdAt).fromNow()}`);
+                    })
                     this.props.setBoards()
                 }
             })
+
     }
 
 

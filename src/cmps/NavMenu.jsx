@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { withRouter } from "react-router-dom";
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import BoardList from '../cmps/BoardList';
-import { NavMenuFilter } from '../cmps/NavMenuFilter'
+import { NavMenuFilter } from '../cmps/NavMenuFilter';
+import { connect } from 'react-redux';
+import { setBoards, setBoard } from '../store/actions/boardActions.js';
 
 class NavMenu extends React.Component {
 
@@ -31,6 +32,7 @@ class NavMenu extends React.Component {
 
     onBoardClicked = (id) => {
         this.props.history.push(`/board/${id}`)
+        this.props.setBoard(id)
     }
 
     onFilter = (filterBy) => {
@@ -95,7 +97,11 @@ class NavMenu extends React.Component {
     }
 }
 
-export default withRouter(NavMenu);
-
+// export default withRouter(NavMenu);
+const mapDispatchToProps = {
+    setBoards,
+    setBoard
+}
+export default connect(null, mapDispatchToProps)(withRouter(NavMenu))
 
 // export default connect(mapStateToProps, mapDispatchToProps)(withRouter(DashBoard))

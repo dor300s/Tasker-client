@@ -247,7 +247,7 @@
                 }
             }
             .attachment-owner {
-                font-size: 12px;
+                font-size: 10px;
             }
         }
         .attachments-files-container {
@@ -262,19 +262,23 @@
         .attachment-delete-btn {
             width: fit-content;
             border: none;
-            color: rgb(250, 95, 95);
+            color: rgb(100, 100, 100);
             background-color: transparent;
             font-weight: 450;
-            font-size: 12px;
+            font-size: 10px;
+            padding: 0px !important;
+            &:hover{
+                color: rgb(216, 83, 83);
+            }
         }
         .attachment-file-name {
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 400;
-            margin-right: 20px;
+            // margin-right: 20px;
             font-family: "Open Sans", sans-serif;
         }
         .attachment-file-name-wrapper {
-            width: fit-content;
+            width: 100%;
             text-align: center;
             max-width: 200px;
             word-wrap: break-word;

@@ -28,6 +28,12 @@ class CardLabels extends Component {
         this.setState({ isDeleteBtnShow: false })
     }
 
+    onRemovelabel = (idx) =>{
+        const { card , board } = this.props
+        card.labels.splice(idx,1)
+        this.props.saveBoard(board)
+    }
+
     render() {
         const { card, board, isShown } = this.props
         const { isDeleteBtnShow } = this.state
@@ -39,7 +45,7 @@ class CardLabels extends Component {
                         style={{ backgroundColor: `${label.color}`, minWidth: "50px", minHeight: "15px", marginRight: "10px", borderRadius: "5px", marginTop: "10px", padding: "2px", color: "white", fontSize: "12px", textAlign: "center", position:"relative" }}>
                         <h4 onBlur={this.onBlur} contentEditable={true} spellCheck={false} onKeyUp={(ev) => this.onKeyUp(idx, ev)}
                          >{label.title}</h4>
-                        {isDeleteBtnShow && <button onClick={(ev) => this.onRemoveCardUser(idx, ev)} className="lable-remove"></button>}
+                        {isDeleteBtnShow && <button onClick={() => this.onRemovelabel(idx)} className="lable-remove"></button>}
                     </div>
                 })}
                 {isShown && < LabelsModal card={this.props.card} board={this.props.board} />}

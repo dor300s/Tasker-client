@@ -65,6 +65,14 @@ class Board extends Component {
         }
     }
 
+    componentDidMount() {
+        const { boardId } = this.props.match.params
+        this.props.setBoard(boardId)
+
+        socketService.on(`board-updated-${boardId}`, (id) => {
+            this.props.setBoard(id)
+        })
+    }
 
 
     onAddList = async (title = "") => {
