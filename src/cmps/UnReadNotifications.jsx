@@ -4,7 +4,7 @@ export function UnReadNotifications(props) {
 const {notifications} = props
     return (
         <div className="nav-notifications-wrapper flex column align-center">
-            <button onClick={props.markAsRead}>Clear All</button>
+            <button onClick={() => props.markAsRead()}>Clear All</button>
             {notifications.map((notifi, idx) => {
                 return <div className="user-notification flex align-center space-between" key={idx}>
                     <p>{notifi.content}</p>

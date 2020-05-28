@@ -3,7 +3,8 @@ import React from 'react'
 export function HistoryNotifications(props) {
     const { notifications , history , isShown  } = props
     return (
-        <div className={`nav-user-notifications-container ${isShown? 'open-moadl' : ''} flex column align-center`}>
+        //  <div className={`nav-user-notifications-container ${isShown? 'open-moadl' : ''} flex column align-center`}>
+        <>
             <div className="notifications-header flex align-center justify-center">
                 <div className="history-back-btn" onClick={()=>props.goBack()}></div>
                 <h3>History</h3>
@@ -21,6 +22,7 @@ export function HistoryNotifications(props) {
 
                 })}
             </div>
-        </div>
+        </>
+        // </div>
     )
 }
