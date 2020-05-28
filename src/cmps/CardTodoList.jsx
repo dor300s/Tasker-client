@@ -97,7 +97,7 @@ class CardTodoList extends Component {
                         onClick={this.onAddTodo}>+ item</button>
                     <form onSubmit={this.onSubmit}>
                         <input className={`todos-input ${isAddModalShown ? 'fade-input' : ''} `} value={newTodoVal} type="text" style={{ marginLeft: "20px" }}
-                            onChange={this.inputHandler} />
+                            onChange={this.inputHandler} autoFocus />
                     </form>
 
                 </div>
