@@ -1,7 +1,11 @@
 .nav-user-notifications-container {
     position: fixed;
     right: 20px;
+<<<<<<< HEAD
     top: 48px;
+=======
+    top: 51px;
+>>>>>>> 6274b192b929108efb22178069a2a6282d4a46e0
     z-index: 15;
     width: 350px;
     // height: 500px;
@@ -9,9 +13,9 @@
     transform: translateY(-115%);
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.397);
     border-radius: 7px;
-    opacity: 0.5;
-    background-color: rgb(255, 255, 255);
+    background-color: white;
     transition: .25s;
+    // opacity: 0.5;
 
     &.modal-open{
         transform: translateY(0%);

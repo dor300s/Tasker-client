@@ -43,11 +43,13 @@ class BoardMenu extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        const { saveBoard, closeMenu, clearCurrBoard } = this.props;
         let { board } = this.props
         board.title = this.state.title;
-        this.props.saveBoard(board);
+        saveBoard(board)
+            .then(() => clearCurrBoard())
         this.setState({ editTitleMode: false })
-        this.props.closeMenu();
+        closeMenu();
     }
 
     onRemoveBoard = (e) => {
@@ -65,26 +67,28 @@ class BoardMenu extends React.Component {
     }
 
     onUploadImg = (ev) => {
+        const { saveBoard, closeMenu, clearCurrBoard } = this.props;
         this.setState({ isImgLoading: true })
         let { board } = this.props
         uploadImg(ev)
             .then(res => {
-                console.log(res);
-
                 board.background.content = res[0].url
-                this.props.saveBoard(board)
+                saveBoard(board)
+                    .then(() => clearCurrBoard())
                 this.setState({ isImgLoading: false })
-                this.props.closeMenu();
+                closeMenu();
             })
             .catch(() => this.setState({ isImgLoading: false }))
     }
 
     onChangeColor = (color) => {
+        const { saveBoard, closeMenu, clearCurrBoard } = this.props;
         let { board } = this.props
         board.background.color = color
         board.background.content = '';
-        this.props.saveBoard(board)
-        this.props.closeMenu();
+        saveBoard(board)
+            .then(() => clearCurrBoard())
+        closeMenu();
     }
 
     render() {

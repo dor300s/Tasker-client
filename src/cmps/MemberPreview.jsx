@@ -56,7 +56,7 @@ export class MemberPreview extends Component {
                     :
                     <h3 className="nav-user-profile flex justify-center align-center">{user.fullName.charAt(0)}</h3>}
 
-                {isUserModalOpen && <div className="member-modal">
+                {<div className={`member-modal ${isUserModalOpen? "modal-open": ""}`}>
                     <div onClick={() => history.push(`/user/${user._id}`)}> My details </div>
                     <div onClick={() => onUserLogOut()}>Log Out</div>
                 </div>}
