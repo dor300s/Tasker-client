@@ -53,14 +53,13 @@ export default class NavBarSearch extends React.Component {
     onSearch = () => {
         const { searchWord } = this.state
         const { currBoard, boards } = this.props
-        console.log('searchWord', searchWord)
 
         if (!searchWord.length) {
             this.setState({ filterBoards: [], filterLists: [], filterCards: [], filterUsers: [] })
             return;
         }
         if (boards) {
-            const filterBoards = boards.filter(board => board.title.toLowerCase().includes(searchWord.toLowerCase()));
+            let filterBoards = boards.filter(board => board.title.toLowerCase().includes(searchWord.toLowerCase()));
             if (!filterBoards.length) filterBoards = boards;
             this.setState({ filterBoards })
             return
@@ -92,9 +91,9 @@ export default class NavBarSearch extends React.Component {
 
     render() {
         const { searchWord, filterLists, filterCards, filterBoards, isSearchOpenModal } = this.state
-        const { currBoard } = this.props
+        const { currBoard, history } = this.props
         let starredBoards
-        if(filterBoards)  starredBoards = filterBoards.filter(board => board.isStarred)
+        if (filterBoards) starredBoards = filterBoards.filter(board => board.isStarred)
 
 
         return (
@@ -102,32 +101,20 @@ export default class NavBarSearch extends React.Component {
 
                 <input onClick={() => this.openSearchModal()} autoComplete="off" onSubmit={() => this.onSearch} className="card-search" type="text" value={searchWord} name="keyword" placeholder={(currBoard) ? "Search list or card.." : "Search board..."} onChange={this.handleChange} />
                 <div className={`nav-search-result ${(isSearchOpenModal) ? "open-modal" : ""} flex column`}>
-                    {/* {filterBoards && Boolean(filterBoards.length) &&
+                    {filterBoards && Boolean(filterBoards.length) &&
 
-                        <div className="nav-boards-preview-wrapper flex column">
-                            <div className="nav-board-preview-overlay"></div>
-
-                            {filterBoards && <h3 className="label searched-boards-header">Searched Boards</h3>}
-                            {filterBoards && !filterBoards.length && <h4 className="label no-match">- There is no matches</h4>}
-                            {filterBoards && <div className="boards-container flex column align-center">
-                                <BoardList boards={filterBoards} onBoardClicked={this.onBoardClicked} />
-                            </div>}
-
-                            {Boolean(starredBoards.length) &&
-                                <>
-                                    <h3 className="list-header">Starred</h3>
-                                    <div className="boards-container flex column align-center">
-                                        <BoardList boards={starredBoards} onBoardClicked={this.onBoardClicked} />
+                        <div>
+                            <h3 className="result-header">Board result</h3>
+                            <div className="search-results">
+                                {filterBoards.map(board =>
+                                    <div className="result-preview" onClick={() => history.push(`/board/${board._id}`)}>
+                                        <div className="board-btn"></div>
+                                        <div className="header">{board.title}</div>
                                     </div>
-                                </>}
-                            <div>
-                                <h3 className="list-header">All Boards</h3>
+                                )}
                             </div>
-                            <div className="boards-container flex column align-center">
-                                <BoardList boards={filterBoards} onBoardClicked={this.onBoardClicked} />
-                            </div>
-                        </div>} */}
-                    {!Boolean(filterLists.length) && !Boolean(filterCards.length) &&
+                        </div>}
+                    {!Boolean(filterLists.length) && !Boolean(filterCards.length) && !filterBoards &&
                         <div className='empty-search-massage'>
                             <div className="search"></div>
                             <div>Search for a task or a list</div>
@@ -154,7 +141,7 @@ export default class NavBarSearch extends React.Component {
                             <div className="result-header">Card results</div>
                             <div className="search-results">
                                 {filterCards.map(card => (
-                                    <div className="result-preview" >
+                                    <div className="result-preview" onClick={() => history.push(`/board/${currBoard._id}/${card.id}`)}>
                                         <div className="card result-icon" ></div>
                                         <div className="text-result">
                                             <div className="header">{card.text}</div>

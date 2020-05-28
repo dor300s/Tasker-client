@@ -65,6 +65,7 @@
             & > *:first-child {
                 margin-right: 10px;
             }
+           
             .result-icon {
                 align-self: start;
                 padding-top: 3px;
@@ -79,9 +80,10 @@
             .card {
                 // transform: translateX(-100);
             }
-            // > *:not(:last-child) {
-            //     margin-right: 3px;
-            // }
+            
+            .header, .conjunction{
+                margin-right: 10px;
+            }
         }
         .empty-search-massage {
             width: 100%;
