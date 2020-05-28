@@ -11,6 +11,21 @@
             margin-bottom: 51px;
         }
 
+        > h3 {
+            margin-left: 30px;
+            padding-left: 30px;
+            height: 20px;
+            
+            &.all-board-title {
+                background-image: url(../../images/board-btn.svg);
+                background-repeat: no-repeat;
+            }
+            &.starred-title {
+                background-image: url(../../images/Linecons_big-star.svg);
+                background-repeat: no-repeat;
+            }
+        }
+
         .boards-container {
             flex-wrap: wrap;
             padding: 20px;

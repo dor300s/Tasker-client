@@ -70,7 +70,7 @@ class NavBar extends React.Component {
                 <div className="nav-left-section flex align-center">
                     {activeBoard &&
                         <div className="board-button flex align-center justiry-center space-between cursor" onClick={this.onMenuClick}>
-                            <div className="board-btn"></div>
+                            <div style={{marginRight:"5px"}} className="board-btn"></div>
                             <div className="board-txt">Boards</div>
                         </div>}
 
