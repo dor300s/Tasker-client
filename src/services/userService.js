@@ -8,7 +8,8 @@ export default {
     getById,
     remove,
     update,
-    getUserFromSession
+    getUserFromSession,
+    clearNotifications
 }
 
 function getUsers() {
@@ -42,6 +43,11 @@ async function logout() {
    sessionStorage.clear();
     return res
     
+}
+
+function clearNotifications(user) {
+    user.notifications.map(notifi => notifi.isRead = true)
+    update(user)
 }
 
 function _handleLogin(user) {

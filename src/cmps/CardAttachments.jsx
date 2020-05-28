@@ -2,15 +2,17 @@ import React, { Component } from 'react'
 import { uploadImg } from '../services/cloudinaryService'
 import { connect } from 'react-redux'
 import { saveBoard } from '../store/actions/boardActions'
+import ImgModal from './ImgModal'
 
 class CardAttachments extends Component {
 
     state = {
-        uploadedFiles: this.props.card.attachments,
-        isLoading: false
+        isLoading: false,
+        activeImg: ''
     }
 
     onUpload = (ev) => {
+        const { board, card } = this.props
         this.setState({ isLoading: true })
         let uploadedFiles = []
         uploadImg(ev)
@@ -23,54 +25,56 @@ class CardAttachments extends Component {
                     }
                     uploadedFiles.push(data)
                 })
-                this.setState(({ uploadedFiles }), this.updateBoardInDB)
+                uploadedFiles.map(file => {
+                    card.attachments.unshift(file)
+                    this.props.saveBoard(board)
+                        .then(this.setState({ isLoading: false }))
+                })
+
             })
     }
 
-    updateBoardInDB() {
-        const { board, card } = this.props
-        card.attachments = this.state.uploadedFiles
+    onDelete = (idx) => {
+        const { card, board } = this.props
+        card.attachments.splice(idx, 1)
         this.props.saveBoard(board)
-            .then(this.setState({ isLoading: false }))
     }
 
-    onDelete = (idx) => {
-        const { card } = this.props
-        const { uploadedFiles } = this.state
-        uploadedFiles.splice(idx, 1)
-        this.setState({ uploadedFiles: card.attachments })
-        this.updateBoardInDB()
+    onImgClick = (imgUrl) => {
+        this.setState({ activeImg: imgUrl })
     }
 
     render() {
         const { card, loggedUser } = this.props // take from props
-        const { isLoading } = this.state
+        const { isLoading, activeImg } = this.state
         const attachments = card.attachments
         return (
-            <div className="card-details-attachments">
-                <div className="flex ">
-                    <span className="photo"></span>
-                    <h4 className="attachments-header">Images</h4>
-                </div>
-                <label style={{ marginLeft: "42px" }}> Add Image
+            <>
+                <div className="card-details-attachments">
+                    <div className="flex ">
+                        <span className="photo"></span>
+                        <h4 className="attachments-header">Images</h4>
+                    </div>
+                    <label style={{ marginLeft: "42px" }}> Add
                     <input type="file" accept="image/png, image/jpeg" onChange={this.onUpload} hidden multiple />
-                </label>
-                <div style={{ marginTop: "15px", marginLeft: "42px" }} className="attachments-files-container">
-                    {attachments && attachments.map((file, idx) => {
-                        return <div key={idx} style={{ marginBottom: "15px" }} className="flex column">
-                            {file.url && <img src={file.url} width="320" height="320" />}
-                            <div className="attachment-file-name-wrapper flex align-center">
-                                <h4 className="attachment-file-name">"{file.fileName}".{file.format}</h4>
-                                {/* <p className="attachment-owner">Uploaded by - {loggedUser.userName}</p> */}
-                                <button className="attachment-delete-btn" onClick={() => this.onDelete(idx)}>Delete</button>
+                    </label>
+                    <div style={{ marginTop: "15px", marginLeft: "42px" }} className="attachments-files-container flex align-center space-between">
+                        {attachments && attachments.map((file, idx) => {
+                            return <div key={idx} style={{ marginBottom: "15px" }} className="flex column" onClick={() => this.onImgClick(file.url)}>
+                                {file.url && <img src={file.url} width="150" />}
+                                <div className="attachment-file-name-wrapper flex align-center">
+                                    <h4 className="attachment-file-name">{file.fileName}.{file.format}</h4>
+                                    {/* <p className="attachment-owner">Uploaded by - {loggedUser.userName}</p> */}
+                                    <button className="attachment-delete-btn" onClick={() => this.onDelete(idx)}>Delete</button>
+                                </div>
+
                             </div>
-
-                        </div>
-                    })}
+                        })}
+                    </div>
+                    {isLoading && <span style={{ marginLeft: "55px" }} className="loading" />}
                 </div>
-                {isLoading && <span style={{ marginLeft: "55px" }} className="loading" />}
-
-            </div>
+                {/* {activeImg && <ImgModal url={activeImg} />} */}
+            </>
         )
     }
 }

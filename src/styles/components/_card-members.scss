@@ -36,6 +36,7 @@
     }
     .card-member-tooltip {
         position: absolute;
+        z-index: 50;
         display: none;
         transform: translate(-11px,5px);
         background-color: rgba(0, 0, 0, 0.733);
@@ -72,9 +73,10 @@
     position: absolute;
     z-index: 100;
     background-color: rgba(255, 255, 255, 0.521);
-    width: 35px;
-    height: 35px;
+    width: 33.5px;
+    height: 33.5px;
     border-radius: 50%;
+    
 }
 .card-user-profile {
     border-radius: 50%;
@@ -97,13 +99,13 @@
     height: 15px;
     font-size: 10px;
     background-color: rgb(252, 118, 118);
-    background-image: url(../../images/cancel.svg);
-    background-size: 40%;
+    background-image: url(../../images/minus.svg);
+    background-size: 50%;
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 50%;
-    top: -5px;
-    right: -5px;
+    top: -2px;
+    right: -4px;
     transition: 0.2s ease;
     &:hover {
         width: 18px;

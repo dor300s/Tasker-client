@@ -19,7 +19,7 @@
         width: 700px;
         min-height: 60%;
         height: fit-content;
-        background-color: #f6f7f7;
+        background-color: rgb(243, 243, 243);
         border-radius: 3px;
         padding: 15px 30px;
         transition: 0.25s ease;
@@ -62,10 +62,10 @@
             }
         }
         .card-details-content-wrapper {
+            position: relative;
             width: 100%;
             height: 94%;
             margin-top: 10px;
-            // background-color: brown;
             .card-details-content {
                 width: 70%;
                 height: fit-content;
@@ -198,10 +198,16 @@
         }
         .card-calendar-container {
             position: absolute;
-            top: 63%;
-            left: 42.2%;
+            // top: 385px;
+            left: 54.2%;
+            // top: 15.2%;
+            top: -100%;
             transform: translate(-50%, -50%);
+            transition: 0.35s ease-in;
+            visibility: hidden;
+            opacity: 0;
             .date-confirm {
+                position: absolute;
                 margin-top: 10px;
                 width: fit-content;
                 padding: 10px;
@@ -215,6 +221,7 @@
             }
         }
         .card-details-attachments {
+            position: relative;
             width: 320px;
             margin-bottom: 30px;
             .card-add-file {
@@ -229,10 +236,14 @@
                 font-size: 10px;
                 letter-spacing: 0.8px;
                 font-family: "Open Sans", sans-serif;
-                font-weight: 600;
+                font-weight: 500;
+                padding: 1px 3px;
+                border-radius: 3px;
                 color: $clr1;
+                background-color: rgb(184, 250, 184);
                 &:hover {
                     cursor: pointer;
+                    background-color: rgb(123, 248, 123);
                 }
             }
             .attachment-owner {
@@ -240,8 +251,13 @@
             }
         }
         .attachments-files-container {
-            width: 95%;
+            width: 320px;
             height: fit-content;
+            flex-wrap: wrap;
+            overflow-y: auto;
+            max-height: 340px;
+            padding: 0px 5px;
+            // box-shadow: -1px 10px 5px -12px rgba(0,0,0,0.75);
         }
         .attachment-delete-btn {
             width: fit-content;
@@ -317,31 +333,32 @@
                 max-width: 50%;
                 word-wrap: break-word;
                 line-height: normal;
-                background-color: #ffffff;
                 font-family: "Open Sans", sans-serif;
                 font-size: 12px;
                 font-weight: 550;
                 border-radius: 3px;
                 color: rgb(102, 102, 102);
-                padding: 5px;
-                box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
+                margin: 0px 0px 5px 0px;
             }
             .card-msg-time {
-                color: rgb(122, 122, 122);
+                color: rgb(160, 160, 160);
                 line-height: normal;
                 font-family: "Open Sans", sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-                margin-left: 10px;
+                margin: 0;
             }
             .card-msg-delete {
-                color: rgb(250, 120, 120);
+                color: rgb(102, 102, 102);
                 font-family: "Open Sans", sans-serif;
                 font-size: 10px;
                 font-weight: 600;
                 margin-left: 10px;
                 border: none;
                 background-color: transparent;
+                &:hover {
+                    color: rgb(252, 126, 126);
+                }
             }
         }
         .interactive-robot-container {
@@ -375,15 +392,16 @@
                 padding: 10px 5px;
             }
         }
+
         .todo-item {
             // background-color: white;
             // border-radius: 5px;
             // box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
-            border-bottom: 1px solid rgb(204, 204, 204);
-            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(204, 204, 204, 0.719);
+            padding-bottom: 10px;
             margin-bottom: 10px;
             width: 100%;
-            & overlay{
+            & overlay {
                 position: relative;
                 left: 0;
                 top: 0;
@@ -400,25 +418,25 @@
             }
             & todoinfo {
                 font-family: "Open Sans", sans-serif;
-                font-weight: 400;
+                font-weight: 500;
                 font-size: 10px;
                 line-height: normal;
             }
             .todo-checkbox {
-                width: 15px;
-                height: 15px;
+                width: 20px;
+                height: 20px;
                 background-color: white;
                 border: 1.5px solid rgba(187, 187, 187, 0.726);
-                border-radius: 5px;
+                border-radius: 0px;
                 &:hover {
                     cursor: pointer;
                     border: 1.5px solid #194251;
                 }
             }
             .todo-checkbox-complete {
-                width: 15px;
-                height: 15px;
-                background-color: #78f789;
+                width: 20px;
+                height: 20px;
+                background-color: #03be57;
                 border-radius: 5px;
                 background-image: url(../../images/confirm.svg);
                 background-size: 80%;
@@ -431,53 +449,164 @@
                 }
             }
             .todo-complete {
-                color: rgb(230, 230, 230);
+                color: rgb(192, 192, 192);
             }
             & tagcolor {
                 color: rgb(0, 36, 70);
             }
-            
         }
         .todos-input {
             padding: 3px;
             border: 1.3px solid $clr1;
             border-radius: 3px;
-            visibility: hidden;
-            opacity: 0;
             transition: 0.25s;
+            width: 263px;
         }
-        .todos-delete{
+        .todos-delete {
             border: none;
             background-color: transparent;
             color: rgb(253, 104, 104);
             font-family: "Open Sans", sans-serif;
-                font-weight: 600;
-                font-size: 10px;
-                margin-left: 20px;
-                width: 20%;
+            font-weight: 600;
+            font-size: 10px;
+            margin-left: 20px;
+            width: 20%;
         }
-        .todo-add-btn{
+        .todo-add-btn {
             background-color: transparent;
             border: none;
             font-family: "Open Sans", sans-serif;
             font-weight: 600;
             font-size: 12px;
-            color: $clr1;
+            color: rgb(83, 83, 83);
+            background-color: rgb(184, 250, 184);
+            border-radius: 3px;
         }
-        .open-todos-indicator{
+        .todos-hide-complete-btn {
+            margin-left: 125px;
+            font-size: 12px;
+            font-weight: 550;
+            color: $clr1;
+            &:hover {
+                color: rgb(133, 133, 133);
+            }
+        }
+        .open-todos-indicator {
             font-family: "Open Sans", sans-serif;
             font-weight: 600;
             font-size: 12px;
             color: rgb(252, 109, 109);
         }
-        .complete-todos-indicator{
+        .complete-todos-indicator {
             font-family: "Open Sans", sans-serif;
             font-weight: 600;
             font-size: 12px;
             color: rgb(144, 255, 134);
         }
+
+        .card-details-labels-container {
+            max-width: 320px;
+            flex-wrap: wrap;
+            margin: 0px 0px 15px 40px;
+            .lable-remove{
+                position: absolute;
+                z-index: 50;
+                width: 15px;
+                height: 15px;
+                background-color: rgb(252, 118, 118);
+                background-image: url(../../images/minus.svg);
+                background-size: 50%;
+                background-repeat: no-repeat;
+                background-position: center;
+                border-radius: 50%;
+                top: -6px;
+                right: -6px;
+                transition: 0.2s ease;
+                &:hover {
+                    width: 18px;
+                    height: 18px;
+                    background-color: rgb(250, 87, 87);
+                }
+            }
+            .card-label {
+                margin-bottom: 10px;
+                border-radius: 15px;
+                width: 1000px;
+                height: 35px;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+        .card-labels-modal {
+            position: absolute;
+            z-index: 100;
+            width: 200px;
+            transform: translate(205%, 83%);
+            background-color: rgb(255, 255, 255);
+            border-radius: 5px;
+            padding-top: 15px;
+            box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.445);
+            & h5 {
+                font-size: 12px;
+                font-family: "Open Sans", sans-serif;
+                font-weight: 600;
+                color: rgb(250, 90, 90);
+                margin-bottom: 10px;
+            }
+            & h3 {
+                font-family: "Open Sans", sans-serif;
+                font-weight: 400;
+                border-bottom: 1px solid rgba(46, 46, 46, 0.425);
+                margin-bottom: 10px;
+                padding-bottom: 5px;
+            }
+            .card-label {
+                margin-bottom: 0px;
+                & input {
+                    width: 150px;
+                    height: 15px;
+                    background-color: transparent;
+                    border: none;
+                    padding-left: 15px;
+                    font-weight: 600;
+                    color: rgb(255, 255, 255);
+                    &::placeholder {
+                        color: rgba(255, 255, 255, 0.63);
+                    }
+                }
+            }
+        }
+        .label-del-btn {
+            border: none;
+            background-color: transparent;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgb(82, 82, 82);
+        }
+    }
+    .todos-container {
+        max-height: 300px;
+        overflow-y: auto;
+        padding-right: 5px;
+    }
+    .todos-bar-wrapper {
+        position: relative;
+        width: 320px;
+        height: 10px;
+        margin: 0px 0px 5px 40px;
+        border-radius: 30px;
+        background-color: white;
+        .todos-bar-fill {
+            position: absolute;
+            height: 95%;
+            transition: 0.35s ease;
+            border-radius: 30px;
+            background-color: #5ba4cf;
+        }
     }
 }
+
 @keyframes textAreaFade {
     0% {
         background-color: rgba(247, 233, 141, 0.486);
@@ -508,4 +637,13 @@
     100% {
         transform: translate(65%, 0%);
     }
+}
+
+.img-screen {
+    position: fixed;
+    z-index: 60;
+    // left: 0;
+    // top: 0;
+    width: 100%;
+    background-color: rgba(0, 174, 255, 0.432);
 }

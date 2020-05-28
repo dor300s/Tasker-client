@@ -69,6 +69,7 @@ class CardComments extends Component {
     render() {
         const { currUser, card, board } = this.props
         const {userMsg , isTypeActive} = this.state
+        if(!currUser) return ''
         return (
             <div className="card-comments">
                 <div className="flex align-center" style={{ marginBottom: "15px" }}>

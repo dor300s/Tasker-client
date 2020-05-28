@@ -10,6 +10,7 @@ import { saveBoard } from '../store/actions/boardActions'
 import CardAttachments from '../cmps/CardAttachments'
 import InterActiveRobot from '../cmps/InterActiveRobot'
 import CardTodoList from '../cmps/CardTodoList'
+import CardLabels from '../cmps/CardLabels'
 
 class CardDetails extends Component {
 
@@ -19,7 +20,8 @@ class CardDetails extends Component {
         currList: null,
         isCalendarActive: false,
         isImagesShown: false,
-        isMembersModalShown: false
+        isMembersModalShown: false,
+        isLabelsModalShown:false
 
     }
 
@@ -54,6 +56,7 @@ class CardDetails extends Component {
     }
 
     openDatePicker = () => {
+        
         this.setState(prevState => ({ isCalendarActive: !prevState.isCalendarActive }))
     }
 
@@ -66,6 +69,8 @@ class CardDetails extends Component {
     }
 
     onDatePicked = (timeStamp) => {
+        console.log('OPEN CALENDAR');
+        
         const { currCard } = this.state
         const { currBoard } = this.props
         currCard.dueDate = timeStamp
@@ -78,9 +83,24 @@ class CardDetails extends Component {
         this.props.history.push(`/board/${currBoard._id}`)
     }
 
+    onCardTitle = ({target}) => {
+        const {currCard} = this.state
+        currCard.text = target.innerText
+    }
+
+    onTitleBlur = () =>{
+        console.log('LUREDED');
+        
+        const { currBoard } = this.props
+        this.props.saveBoard(currBoard)
+    }
+    onLabels = () => {
+        this.setState(prevState => ({ isLabelsModalShown: !prevState.isLabelsModalShown }))
+    }
+
     render() {
 
-        const { currCard, currList, isCalendarActive, isImagesShown, isMembersModalShown } = this.state
+        const { currCard, currList, isCalendarActive, isImagesShown, isMembersModalShown , isLabelsModalShown } = this.state
         const { currBoard } = this.props
         if (!currCard) return ''
         return (
@@ -92,7 +112,7 @@ class CardDetails extends Component {
                         <div className="card-details-header flex space-between align-center">
                             <div className="flex align-center">
                                 <span className="card-icon"></span>
-                                <p className="card-details-title">{currCard.text}</p>
+                                <p spellCheck={false} contentEditable={true} className="card-details-title" onBlur={this.onTitleBlur} onKeyUp={this.onCardTitle}>{currCard.text}</p>
                                 <p className="card-list-parent">In list: <span>{currList.title}</span></p>
                             </div>
                             <span className="cancel" onClick={this.onCloseCardDetails}></span>
@@ -100,6 +120,7 @@ class CardDetails extends Component {
 
                         <div className="card-details-content-wrapper flex">
                             <div className="card-details-content flex column">
+                                < CardLabels card={currCard} board={currBoard} isShown={isLabelsModalShown} />
                                 < CardMembers history={this.props.history} card={currCard} board={currBoard}
                                     showModal={isMembersModalShown} />
                                 {currCard.dueDate && < DueDate card={currCard} board={currBoard} />}
@@ -108,8 +129,8 @@ class CardDetails extends Component {
                                 {isImagesShown &&  < CardAttachments card={currCard} board={currBoard} />}
                                 < CardComments card={currCard} board={currBoard} user={this.props.loggedUser} />
                             </div>
-                            < CardActions openDatePicker={this.openDatePicker} onImages={this.onImages} onMembers={this.onMembers} />
-                            {isCalendarActive && < CardCalendar card={currCard} onDatePicked={this.onDatePicked} />}
+                            < CardActions onLabels={this.onLabels} openDatePicker={this.openDatePicker} onImages={this.onImages} onMembers={this.onMembers} />
+                            < CardCalendar card={currCard} onDatePicked={this.onDatePicked} isShown={isCalendarActive} />
                             {/* < InterActiveRobot user={this.props.loggedUser} /> */}
 
                         </div>
