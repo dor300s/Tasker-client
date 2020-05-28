@@ -44,7 +44,7 @@ class InviteMemberModal extends Component {
         console.log(isInviteModalOpen)
 
         return (
-            <div  ref={node => this.node = node} className={`invite-members-modal ${(isInviteModalOpen)? 'fade-in': 'fade-out'} flex column align-center`}>
+            <div  ref={node => this.node = node} className={`invite-members-modal ${(isInviteModalOpen)? 'modal-open': ''} flex column align-center`}>
                 <div className="invite-header"><h3>Invite to collaborate</h3></div>
                 {/* <p>Add board members</p> */}
                 <input type="text" placeholder="Enter userName to invite" onKeyUp={this.inputHandler} />
