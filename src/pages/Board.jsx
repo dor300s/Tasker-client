@@ -10,6 +10,27 @@ import socketService from '../services/socketService'
 
 class Board extends Component {
 
+    state = {
+        animation: ''
+    }
+
+    componentDidMount() {
+        const { boardId } = this.props.match.params
+        this.props.setBoard(boardId)
+
+        socketService.on(`board-updated-${boardId}`, (id) => {
+            this.setState({ animation: 'animation' })
+            this.props.setBoard(id)
+        })
+    }
+
+
+    componentWillUnmount() {
+        const { boardId } = this.props.match.params
+        socketService.off(`board-updated-${boardId}`)
+        this.props.clearCurrBoard()
+    }
+
     getNewCard = (txt) => {
 
         return {
@@ -54,12 +75,6 @@ class Board extends Component {
     }
 
 
-    componentWillUnmount() {
-        const { boardId } = this.props.match.params
-        socketService.off(`board-updated-${boardId}`)
-        this.props.clearCurrBoard()
-    }
-
     onAddList = async (title = "") => {
         const { currBoard } = this.props
         const { cardLists } = currBoard;
@@ -68,7 +83,7 @@ class Board extends Component {
         window.scrollTo(100000, 0)
     }
 
-    onAddCard = async(ListId, txt = "") => {
+    onAddCard = async (ListId, txt = "") => {
         console.log("listId", ListId)
         console.log("txt", txt)
         const { currBoard } = this.props
@@ -81,10 +96,10 @@ class Board extends Component {
     }
 
     onDragEnd = (result) => {
+        this.setState({ animation: '' })
         if (!result.destination) return;
         const { currBoard } = this.props
         const { cardLists } = currBoard
-
         const { source, destination, type } = result;
 
         switch (type) {
@@ -120,7 +135,7 @@ class Board extends Component {
 
         const { setcurrBoard, onDragEnd, onAddList, onAddCard } = this;
         const { currBoard, history } = this.props;
-
+        const { animation } = this.state;
 
         const { cardId } = this.props.match.params;
         if (!currBoard) return <div>loading</div>;
@@ -137,7 +152,7 @@ class Board extends Component {
                                     {...provided.droppableProps} ref={provided.innerRef}
                                 >
                                     {cardLists.map((cardList, index) => {
-                                        return (<CardListPreview currBoard={currBoard} onAddCard={onAddCard} key={cardList.id} cardList={cardList} index={index} history={history} />
+                                        return (<CardListPreview currBoard={currBoard} onAddCard={onAddCard} key={cardList.id} cardList={cardList} index={index} history={history} animation={animation} />
                                         );
                                     })}
                                     {provided.placeholder}

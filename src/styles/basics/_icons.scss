@@ -12,6 +12,11 @@
         width: 15px;
         margin-right: 7px;
     }
+    .clock-blue{
+        content: url(../../images/clock-blue.svg);
+        width: 15px;
+        margin-right: 7px;
+    }
 
     .trash {
         content: url(../../images/trash.svg);
@@ -19,8 +24,18 @@
          width: 20px;
     }
 
+    .conversation-blue {
+        content: url(../../images/conversation-blue.svg);
+         width: 15px;
+    }
+
     .comment {
         content: url(../../images/comment.svg);
+         width: 15px;
+    }
+
+    .checklist-blue {
+        content: url(../../images/checkbox-blue.svg);
          width: 15px;
     }
 
@@ -78,6 +93,10 @@
 
     .list {
         content: url(../../images/list.svg);
+        width: 15px;
+    }
+    .list-blue {
+        content: url(../../images/list-blue.svg);
         width: 15px;
     }
 

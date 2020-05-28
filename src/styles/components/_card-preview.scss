@@ -1,41 +1,70 @@
 .card-preview {
     cursor: pointer !important;
     position: relative;
-    padding: 5px 10px;
-    border: 1px solid darken($color: $clr5, $amount: 7);
+    padding: 5px;
+    border: 1px solid darken($color: $clr5, $amount: 6);
     border-radius: 4px;
     margin: 10px;
     color: $clr2;
     background-color: $clr6;
+    &.animation {
+        animation: card-animation 0.5s;
+    }
     & .drag .isDragging,
     &:hover {
         background-color: lighten($color: $clr5, $amount: 0.5);
     }
 
     img {
+        margin-bottom: 8px;
         width: 100%;
         align-self: center;
         border-radius: 4px;
-        // padding: 5px;
+    }
+
+    .card-labels{
+        .card-label-style{
+            height: 4px;
+            width: 30px;
+            margin: 0 5px 5px 0;
+            line-height: 1em;
+        }
+    }
+
+    textarea {
+        overflow: hidden;
+        overflow-wrap: break-word;
+        resize: none;
+        height: 100px;
+        outline: none;
+        background: transparent;
+        border: 0;
+        width: 233px;
+        font-size: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        
     }
 
     input {
         border: 0;
-        word-wrap: break-word;
-        width: 200px;
-        height: 20px;
+        width: 233px;
+        height: 30px;
         font-size: 0.9rem;
-        padding-left: 40px;
-        transition: 0.25s;
+        padding-left: 85px;
+        transition: .25s;
         &:focus {
-            padding-left: 0;
+            padding-left: 0px;
         }
     }
 
-    /*  .card-text {
-        padding-bottom: 10px;
+    .card-text {
+        width: 200px;
+        word-break: break-word;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        height: fit-content;
     }
- */
+
     .menu-btn {
         width: 20px;
         padding: 4px;
@@ -54,26 +83,60 @@
         display: block;
     }
 
-    .card-text {
-        text-overflow: ellipsis;
-        overflow: hidden;
-        width: 190px;
+    .wrap-icons{
+        // border: 1px solid $clr2;
+        color: darken($color: $clr3, $amount: 20);
+        font-size: .8rem;
+        .card-icons:first-child{
+            height: 30px;
+            :last-child{
+                width: inherit;
+            }
+        }
+
+        .icon {
+            width: max-content;
+        }
+        .icon div:first-child{
+            margin-right: 5px;
+        }
+        
+        .items-wrap{
+            >*{
+                margin-left: 10px;
+            }
+            
+            justify-content: flex-end;
+            width: 100%;
+            flex: 1;
+
+        }
+
+        .members-placeholder{
+            min-height: 27px;
+        }
+       
     }
 }
 .card-menu-container {
+    transform: translate(-10px , -10px);
     position: absolute;
-    left: 210px;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 .menu-options {
     background: white;
     position: absolute;
+    margin-right: 10px;
     z-index: 2;
     width: max-content;
     height: fit-content;
     text-align: center;
     box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.08);
     border-radius: 4px;
-    transform: translateX(-100%);
 
     > * {
         padding: 10px;
@@ -84,6 +147,10 @@
 
     :last-child {
         color: #eb4d4b;
+    }
+
+    &.list-menu {
+        transform: translate(-80%, -15%);
     }
 }
 
@@ -104,4 +171,14 @@
 [data-rdb-placeholder-context-id] {
     background-color: $clr2 !important;
     width: 4999px;
-  }
+}
+
+@keyframes card-animation {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
