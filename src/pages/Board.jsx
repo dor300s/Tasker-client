@@ -18,14 +18,9 @@ class Board extends Component {
         const { boardId } = this.props.match.params
         this.props.setBoard(boardId)
 
-        console.log('WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW');
-        
-
         socketService.on(`board-updated-${boardId}`, (id) => {
-            console.log('sssssssssssssssssssssssssssssssssssssssss');
-            
-            this.setState({ animation: 'animation' }, () => this.props.setBoard(id))
-            // this.props.setBoard(id)
+            this.setState({ animation: 'animation' })
+            this.props.setBoard(id)
         })
     }
 
@@ -69,16 +64,6 @@ class Board extends Component {
             cards: []
         }
     }
-
-    componentDidMount() {
-        const { boardId } = this.props.match.params
-        this.props.setBoard(boardId)
-
-        socketService.on(`board-updated-${boardId}`, (id) => {
-            this.props.setBoard(id)
-        })
-    }
-
 
     onAddList = async (title = "") => {
         const { currBoard } = this.props
@@ -141,8 +126,6 @@ class Board extends Component {
         const { setcurrBoard, onDragEnd, onAddList, onAddCard } = this;
         const { currBoard, history } = this.props;
         const { animation } = this.state;
-        console.log(animation);
-
 
         const { cardId } = this.props.match.params;
         if (!currBoard) return <div>loading</div>;
