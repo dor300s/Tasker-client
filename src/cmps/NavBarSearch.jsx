@@ -89,50 +89,54 @@ export default class NavBarSearch extends React.Component {
         const { currBoard } = this.props
 
         return (
-            <div ref={node => this.node = node} className="nav-search-result-container flex column">
+            <div ref={node => this.node = node} className=" nav-search-result-container flex column">
 
                 <input onClick={() => this.openSearchModal()} autoComplete="off" onSubmit={() => this.onSearch} className="card-search" type="text" value={searchWord} name="keyword" placeholder={(currBoard) ? "Search list or card.." : "Search board..."} onChange={this.handleChange} />
-                {isSearchOpenModal &&
-                    <div className="nav-search-result flex column">
-                        {Boolean(filterLists.length) &&
-                            <>
-                                <div className="result-header" >List results</div>
-                                <div className="search-results">
-                                    {filterLists.map(list => (
-                                        <div className="result-preview">
-                                            <div className="list-pic"></div>
-                                            <div className="header">{list.title}</div>
-                                            {/* <div className="conjunction">(list)</div> */}
-                                            {/* <div className="conjunction">from</div>
+                <div className={`nav-search-result ${(isSearchOpenModal) ? "open-modal" : ""} flex column`}>
+                    {!Boolean(filterLists.length) && !Boolean(filterCards.length) &&
+                        <div className='empty-search-massage'>
+                            <div className="search"></div>
+                            <div>Search for board task or list</div>
+                        </div>}
+                    {Boolean(filterLists.length) && Boolean(filterCards.length)}
+                    {Boolean(filterLists.length) &&
+                        <>
+                            <div className="result-header" >List results</div>
+                            <div className="search-results">
+                                {filterLists.map(list => (
+                                    <div className="result-preview">
+                                        <div className="list-pic"></div>
+                                        <div className="header">{list.title}</div>
+                                        {/* <div className="conjunction">(list)</div> */}
+                                        {/* <div className="conjunction">from</div>
                                             <div className="header">{list.boardTitle}</div>
                                             <div className="conjunction">(board)</div> */}
-                                        </div>
-                                    ))}
-                                </div>
-                            </>}
-                        {Boolean(filterCards.length) &&
-                            <>
-                                <div className="result-header">card results</div>
-                                <div className="search-results">
-                                    {filterCards.map(card => (
-                                        <div className="result-preview" >
-                                            <div className="card result-icon" ></div>
-                                            <div className="text-result">
-                                                <div className="header">{card.text}</div>
-                                                {/* <div className="conjunction">(card)</div> */}
-                                                <div className="conjunction">in</div>
-                                                <div className="header">{card.cardListTitle}</div>
-                                                {/* <div className="conjunction">(list)</div> */}
-                                                {/* <div className="conjunction">from</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </>}
+                    {Boolean(filterCards.length) &&
+                        <>
+                            <div className="result-header">card results</div>
+                            <div className="search-results">
+                                {filterCards.map(card => (
+                                    <div className="result-preview" >
+                                        <div className="card result-icon" ></div>
+                                        <div className="text-result">
+                                            <div className="header">{card.text}</div>
+                                            {/* <div className="conjunction">(card)</div> */}
+                                            <div className="conjunction">in</div>
+                                            <div className="header">{card.cardListTitle}</div>
+                                            {/* <div className="conjunction">(list)</div> */}
+                                            {/* <div className="conjunction">from</div>
                                             <div className="header">{card.boardTitle}</div>
                                             <div className="conjunction">(board)</div> */}
-                                            </div>
                                         </div>
-                                    ))}
-                                </div>
-                            </>}
-                        {!Boolean(filterLists.length) && !!Boolean(filterCards.length) && <div className='empty-search-massage'>search for board task or user</div>}
-                    </div>}
+                                    </div>
+                                ))}
+                            </div>
+                        </>}
+                </div>
             </div>
         )
     }
