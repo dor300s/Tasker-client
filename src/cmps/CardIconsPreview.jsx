@@ -5,22 +5,40 @@ import moment from 'moment';
 
 export function CardIconsPreview(props) {
     const { card, history } = props
-    // console.log("card", card);
 
+    function getTime(val) {
+        if (Math.floor((val - Date.now()) / (24 * 60 * 60 * 1000)) < 0) return 'Today';
+        else if (Math.ceil((val - Date.now()) / (24 * 60 * 60 * 1000)) <= 1) return 'Tomorrow';
+        else if (Math.floor((val - Date.now()) / (24 * 60 * 60 * 1000)) < 7) return moment(val).format("dddd");
+        else return moment(val).format("MMM DD");
+    }
+
+    function getColor(val) {
+        if ((val - Date.now()) <= (24 * 60 * 60 * 1000)) return '#e74c3c';
+        else if ((val - Date.now()) <= (4 * 24 * 60 * 60 * 1000)) return '#e67e22';
+        else return '#2ecc71';
+    }
+
+    function getDoneTodos(checkList) {
+        let done = checkList.reduce((acc, todo) => todo.isDone ? acc + 1 : acc, 0)
+        return done;
+
+    }
 
     if (!card) return 'loading'
     return (
         <div className="wrap-icons">
-            <div className="card-icons flex space-between ">
-                {card.dueDate && <IconPreview className="due-date" icon={'dueDate-dark'} num={moment(card.dueDate).format("Do MMM").replace(" ", "").replace('th', '')} />}
-                {Boolean(card.attachments.length) && <IconPreview icon={'attachments'} num={card.attachments.length} />}
-                {Boolean(card.comments.length) && <IconPreview icon={'comments'} num={card.comments.length} />}
-                {Boolean(card.description.length) && <IconPreview icon={'description'} num={card.description.length} />}
-                {card.isStared && <IconPreview icon={'star'} num={card.isStared} />}
-                {card.checkList.items && Boolean(card.checkList.items.length) && <IconPreview icon={'checkList'} num={card.checkList.items.length} />}
+            <div className="card-icons flex space-between align-center">
+                {card.dueDate && <IconPreview color={getColor(card.dueDate)} icon={'clock-blue'} num={getTime(card.dueDate)} />}
+                <div className="items-wrap flex">
+                    {/* {Boolean(card.attachments.length) && <IconPreview icon={'attachments'} num={card.attachments.length} />} */}
+                    {Boolean(card.comments.length) && <IconPreview icon={'conversation-blue'} num={card.comments.length} />}
+                    {Boolean(card.checkList.length) && <IconPreview icon={'checklist-blue'} num={card.checkList.length} isDone={getDoneTodos(card.checkList)} />}
+                </div>
             </div>
-            {Boolean(card.members.length) && <BoardMembers history={history} board={card} cardMemberMode={true} />}
-            {/* {card.members.length && <div className="members"><img src="https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png" alt=""/></div>} */}
+            <div className="members-placeholder">
+                {Boolean(card.members.length) && <BoardMembers history={history} board={card} cardMemberMode={true} />}
+            </div>
         </div>
     )
 }

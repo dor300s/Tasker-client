@@ -16,10 +16,19 @@
     }
 
     img {
-        margin: 20px 0 5px;
+        margin-bottom: 8px;
         width: 100%;
         align-self: center;
         border-radius: 4px;
+    }
+
+    .card-labels{
+        .card-label-style{
+            height: 4px;
+            width: 30px;
+            margin: 0 5px 5px 0;
+            line-height: 1em;
+        }
     }
 
     textarea {
@@ -75,15 +84,45 @@
     }
 
     .wrap-icons{
-        border: 1px solid $clr2;
+        // border: 1px solid $clr2;
         color: darken($color: $clr3, $amount: 20);
-        font-size: .9rem;
+        font-size: .8rem;
+        .card-icons:first-child{
+            height: 30px;
+            :last-child{
+                width: inherit;
+            }
+        }
+
+        .icon {
+            width: max-content;
+        }
+        .icon div:first-child{
+            margin-right: 5px;
+        }
+        
+        .items-wrap{
+            >*{
+                margin-left: 10px;
+            }
+            
+            justify-content: flex-end;
+            width: 100%;
+            flex: 1;
+
+        }
+
+        .members-placeholder{
+            min-height: 27px;
+        }
+       
     }
 }
 .card-menu-container {
-    transform: translateX(-10px);
+    transform: translate(-10px , -10px);
     position: absolute;
     right: 0;
+    bottom: 0;
     z-index: 1;
     display: flex;
     justify-content: flex-end;
