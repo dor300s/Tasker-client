@@ -51,17 +51,21 @@ class NavUserNotificationMenu extends Component {
 
         return (
             <div ref={node => this.node = node}>
-                {isHistoryShown && <HistoryNotifications isShown={isNotificationModalOpen} goBack={this.onNotificationsHistory} notifications={user.notifications} history={this.props.history} />}
 
-                {!isHistoryShown && <div className={`nav-user-notifications-container ${(isNotificationModalOpen) ? "modal-open" : ""} flex column align-center`}>
-                    <div className="notifications-header"><h3>Notifications</h3></div>
-                    {!notifiToShow.length ?
+                {<div className={`nav-user-notifications-container ${(isNotificationModalOpen) ? "modal-open" : ""} flex column align-center`}>
+                    {isHistoryShown && <HistoryNotifications isShown={isNotificationModalOpen} goBack={this.onNotificationsHistory} notifications={user.notifications} history={this.props.history} />}
+                    {!isHistoryShown &&
+                        <>
+                            <div className="notifications-header"><h3>Notifications</h3></div>
+                            {!notifiToShow.length ?
 
-                        <AllReadNotifications showHistory={this.onNotificationsHistory} />
-                        :
-                        <UnReadNotifications markAsRead={this.onClearNotification} notifications={notifiToShow} />
-                    }
-                </div>}
+                                <AllReadNotifications showHistory={this.onNotificationsHistory} />
+                                :
+                                <UnReadNotifications markAsRead={this.onClearNotification} notifications={notifiToShow} />
+                            }
+                        </>}
+                </div>
+                }
             </div>
         )
     }

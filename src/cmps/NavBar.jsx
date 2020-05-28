@@ -30,7 +30,7 @@ class NavBar extends React.Component {
                 if (!this.props.loggedUser) this.props.history.push('/')
                 else {
                     console.log(this.props.loggedUser._id);
-                    
+
                     socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
                         console.log(`${invData.sender.userName} Invited you to collaborate! ${moment(invData.createdAt).fromNow()}`);
                     })
@@ -85,7 +85,7 @@ class NavBar extends React.Component {
                     {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                     {activeBoard && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
                 </div>
-                {< NavBarSearch currBoard={activeBoard} history={history} />}
+                {< NavBarSearch boards={boards} history={history} currBoard={activeBoard} history={history} />}
                 {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                 <div className="nav-right-section flex align-center">
                     {/* <button className="board-menu" onClick={() => history.push(`/board`)}>Board Menu</button> */}
