@@ -112,7 +112,7 @@ class CardDetails extends Component {
                         <div className="card-details-header flex space-between align-center">
                             <div className="flex align-center">
                                 <span className="card-icon"></span>
-                                <p spellCheck={false} contentEditable={true} className="card-details-title" onBlur={this.onTitleBlur} onKeyUp={this.onCardTitle}>{currCard.text}</p>
+                                <p spellCheck={false} contentEditable={true} suppressContentEditableWarning={true} className="card-details-title" onBlur={this.onTitleBlur} onKeyUp={this.onCardTitle}>{currCard.text}</p>
                                 <p className="card-list-parent">In list: <span>{currList.title}</span></p>
                             </div>
                             <span className="cancel" onClick={this.onCloseCardDetails}></span>

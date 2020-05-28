@@ -88,7 +88,7 @@
         color: darken($color: $clr3, $amount: 20);
         font-size: .8rem;
         .card-icons:first-child{
-            height: 30px;
+            max-height: 30px;
             :last-child{
                 width: inherit;
             }
@@ -114,6 +114,9 @@
 
         .members-placeholder{
             min-height: 27px;
+            .board-member{
+                margin-left: 0;
+            }
         }
        
     }

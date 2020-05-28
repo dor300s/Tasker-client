@@ -43,7 +43,7 @@ class CardLabels extends Component {
                 {card.labels.map((label, idx) => {
                     return <div onMouseEnter={this.onEnter} onMouseLeave={this.onLeave} key={idx}
                         style={{ backgroundColor: `${label.color}`, minWidth: "50px", minHeight: "15px", marginRight: "10px", borderRadius: "5px", marginTop: "10px", padding: "2px", color: "white", fontSize: "12px", textAlign: "center", position:"relative" }}>
-                        <h4 onBlur={this.onBlur} contentEditable={true} spellCheck={false} onKeyUp={(ev) => this.onKeyUp(idx, ev)}
+                        <h4 onBlur={this.onBlur} contentEditable={true} suppressContentEditableWarning={true} spellCheck={false} onKeyUp={(ev) => this.onKeyUp(idx, ev)}
                          >{label.title}</h4>
                         {isDeleteBtnShow && <button onClick={() => this.onRemovelabel(idx)} className="lable-remove"></button>}
                     </div>
