@@ -78,6 +78,8 @@ class CardListPreview extends Component {
 
     render() {
         const { cardList, index, onAddCard, currBoard, history, animation } = this.props
+        console.log(animation);
+
         const { onEditListTitle, offEditListTitle } = this
 
         return (
