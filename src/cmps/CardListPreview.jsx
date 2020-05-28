@@ -31,7 +31,7 @@ class CardListPreview extends Component {
     }
 
     offEditListTitle = (cardListId, title) => {
-        if (!cardListId ) {
+        if (!cardListId) {
             this.setState({ isFocus: false })
             return
         };
@@ -77,13 +77,13 @@ class CardListPreview extends Component {
 
 
     render() {
-        const { cardList, index, onAddCard, currBoard, history } = this.props
+        const { cardList, index, onAddCard, currBoard, history, animation } = this.props
         const { onEditListTitle, offEditListTitle } = this
 
         return (
             <Draggable key={cardList.id} draggableId={cardList.id} index={index} >
                 {(provided, snapshot) => (
-                    <div className={`wrap-card-list flex`} key={cardList.id}
+                    <div className={`wrap-card-list flex ${animation}`} key={cardList.id}
                         ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                         <Droppable droppableId={cardList.id} key={cardList.id} type={"card"}>
                             {(provided, snapshot) => (
@@ -96,7 +96,7 @@ class CardListPreview extends Component {
                                     <div className={"card-list"} {...provided.droppableprops} ref={provided.innerRef} >
                                         {cardList.cards.map((card, index) => {
                                             return (
-                                                <CardPreview key={card.id} cardListId={cardList.id} currBoard={currBoard} card={card} index={index} history={history} />
+                                                <CardPreview key={card.id} cardListId={cardList.id} currBoard={currBoard} card={card} index={index} history={history} animation={animation} />
                                             );
                                         })}
                                         {provided.placeholder}
