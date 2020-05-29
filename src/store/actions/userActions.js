@@ -1,14 +1,12 @@
 import userService from '../../services/userService'
 
-
-
 export function loadUsers() {
   return async dispatch => {
     try {
       const users = await userService.getUsers();
       dispatch(setUsers(users));
     } catch (err) {
-      console.log('UserActions: err in loadUsers', err);
+
     }
   }
 }
@@ -55,8 +53,6 @@ export function getUser() {
 export function update(userData) {
   return async dispatch => {
     const user = await userService.update(userData);
-    console.log('action Userrrr', user);
-    
     dispatch(setUser(user));
   }
 }

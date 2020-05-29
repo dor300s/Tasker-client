@@ -39,7 +39,6 @@ class NavBar extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.loggedUser !== prevProps.loggedUser) {
-            console.log(this.props.loggedUser);
             socketService.off(`user-invite-${this.props.loggedUser._id}`)
 
             socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
