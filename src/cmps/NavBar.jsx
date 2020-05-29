@@ -13,6 +13,8 @@ import NavBarSearch from './NavBarSearch'
 import InviteMemberModal from './InviteMemberModal'
 import socketService from '../services/socketService'
 import moment from 'moment'
+import ChartModal from './ChartModal';
+
 
 class NavBar extends React.Component {
 
@@ -81,6 +83,7 @@ class NavBar extends React.Component {
                             <div style={{ marginRight: "5px" }} className="board-btn"></div>
                             <div className="board-txt">Boards</div>
                         </div>}
+                    {activeBoard && <ChartModal />}
 
                     {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                     {activeBoard && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}

@@ -8,6 +8,7 @@ import uuid from "uuid/v4";
 import { clearCurrBoard, setBoards, setBoard, saveBoard, removeBoard } from '../store/actions/boardActions.js'
 import socketService from '../services/socketService'
 
+
 class Board extends Component {
 
     state = {

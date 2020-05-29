@@ -18,6 +18,11 @@
         margin-right: 7px;
     }
 
+    .chart {
+        content: url(../../images/chart.svg);
+        cursor: pointer;
+         width: 20px;
+    }
     .trash {
         content: url(../../images/trash.svg);
         cursor: pointer;

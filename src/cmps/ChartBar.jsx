@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react'
 import {Bar} from 'react-chartjs-2';
 
 const data = {
@@ -16,8 +16,8 @@ const data = {
   ]
 };
 
-export default React.createClass({
-  displayName: 'BarExample',
+
+export default class ChartBar extends Component {
 
   render() {
     return (
@@ -34,4 +34,4 @@ export default React.createClass({
       </div>
     );
   }
-});
+}
