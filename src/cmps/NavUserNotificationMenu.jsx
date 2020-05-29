@@ -5,7 +5,7 @@ import { HistoryNotifications } from './HistoryNotifications'
 import { AllReadNotifications } from './AllReadNotifications';
 import { UnReadNotifications } from './UnReadNotifications';
 import { saveBoard } from '../store/actions/boardActions.js'
-import {getUser} from '../store/actions/userActions'
+import {getUser , update} from '../store/actions/userActions'
 
 class NavUserNotificationMenu extends Component {
 
@@ -15,9 +15,17 @@ class NavUserNotificationMenu extends Component {
     }
 
     componentDidMount() {
+        const { user } = this.props
+        console.log(user);
+        
         this.props.getUser()
         document.addEventListener("mousedown", this.onCloseNotificationMenu, false);
         document.addEventListener("keydown", this.onCloseNotificationMenu, false);
+    }
+
+    componentDidUpdate(prevProps){
+        const { user } = this.props
+        console.log(user)
     }
 
     componentWillUnmount() {
@@ -28,7 +36,6 @@ class NavUserNotificationMenu extends Component {
     onCloseNotificationMenu = (ev) => {
         ev.stopPropagation();
         if (!this.node.contains(ev.target) || ev.keyCode === 27) {
-            // this.setState({ isHistoryShown: false })
             this.props.onCloseNotificationMenu();
         }
     }
@@ -37,7 +44,7 @@ class NavUserNotificationMenu extends Component {
     onClearNotification = () => {
         const { user } = this.props
         userService.clearNotifications(user)
-
+        this.props.update(user)
     }
 
     onNotificationsHistory = () => {
@@ -48,8 +55,6 @@ class NavUserNotificationMenu extends Component {
         const { user, isNotificationModalOpen } = this.props
         const { isHistoryShown } = this.state
         let notifiToShow = user.notifications.filter(notifi => !notifi.isRead)
-
-        // if (isHistoryShown) return <HistoryNotifications goBack={this.onNotificationsHistory} notifications={user.notifications} history={this.props.history} />
 
         return (
             <div ref={node => this.node = node}>
@@ -81,7 +86,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     saveBoard,
-    getUser
+    getUser,
+    update
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavUserNotificationMenu)

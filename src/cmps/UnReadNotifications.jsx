@@ -8,10 +8,13 @@ export function UnReadNotifications(props) {
             <button onClick={() => props.markAsRead()}>Clear All</button>
             {notifications.map((notifi, idx) => {
                 if (notifi.type === 'board-collab') {
-                    return <div className="user-notification flex align-center space-between" key={idx}>
+                    return <div className="user-notification flex column align-center" key={idx}>
                         <p>{notifi.data}</p>
-                        <button>Accept</button>
-                         </div>
+                        <div className="board-collab-btns flex space-around">
+                            <button>Join</button>
+                            <button>Decline</button>
+                        </div>
+                    </div>
                 }
                 else {
                     return <div className="user-notification flex align-center space-between" key={idx}>
