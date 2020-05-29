@@ -79,7 +79,6 @@ class NavBar extends React.Component {
                             <div style={{ marginRight: "5px" }} className="board-btn"></div>
                             <div className="board-txt">Boards</div>
                         </div>}
-                    {activeBoard && <ChartModal />}
 
                     {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                     {activeBoard && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
@@ -88,9 +87,10 @@ class NavBar extends React.Component {
                 {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                 <div className="nav-right-section flex align-center">
                     {/* <button className="board-menu" onClick={() => history.push(`/board`)}>Board Menu</button> */}
+                    {activeBoard && <ChartModal />}
                     <span className="nav-notification-btn" onClick={this.onUserNotificationClick}></span>
-                    <MemberPreview user={loggedUser} history={history} />
                     {<NavUserNotificationMenu onCloseNotificationMenu={onCloseNotificationMenu} isNotificationModalOpen={isNotificationModalOpen} history={history} user={loggedUser} />}
+                    <MemberPreview user={loggedUser} history={history} />
                 </div>
             </nav>
         )

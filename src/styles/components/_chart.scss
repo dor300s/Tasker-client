@@ -1,21 +1,31 @@
-.chart-container{
-    position: relative;
-
-    .nav-chart-btn{
-
+.chart-container {
+    .nav-chart-btn {
     }
-    .chart-modal{
-        position: absolute;
-        transform: translate(-200%, 13%);
-        width: 80vw;
-        height: 80vh;
-        background-color: $clr6;
-        transition: 0.25s;
-        right: 0;
-    }
-    
-    .modal-open{
-        transform: translate(18%, 13%);
-    
+    .screen {
+        align-items: center;
+        justify-content: center;
+        transform: translateX(-100%);
+
+        .chart-modal {
+            position: absolute;
+            width: 90vw;
+            height: 85vh;
+            background-color: $clr6;
+            padding: 15px;
+            transform: translateX(-100%);
+            transition: 0.25s;
+
+
+            
+        }
+
+        &.modal-open {
+            display: flex;
+            transform: translateX(0%);
+
+            .chart-modal{
+            transform: translateX(0%);
+            }
+        }
     }
 }
