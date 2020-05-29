@@ -6,13 +6,19 @@ import socketService from '../services/socketService'
 class InviteMemberModal extends Component {
 
     state = {
-        filteredUsers: null
+        filteredUsers: null,
+        isAlreadyInvitesShown: false
     }
 
     componentDidMount() {
         this.props.loadUsers()
         document.addEventListener("mousedown", this.onCloseInviteMenu, false);
         document.addEventListener("keydown", this.onCloseInviteMenu, false);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.loggedUser !== this.props.loggedUser)
+            this.props.loadUsers()
     }
 
     componentWillUnmount() {
@@ -41,7 +47,14 @@ class InviteMemberModal extends Component {
     }
 
     onInvite = (userId) => {
-        
+      let userIdxInBoard = this.props.activeBoard.members.findIndex(user => user._id === userId)
+      if(userIdxInBoard !== -1){
+       this.setState({isAlreadyInvitesShown: true})
+       setTimeout(()=>{
+        this.setState({isAlreadyInvitesShown: false})
+       },1500)
+        return
+      }
         let data = {
             invitedUserId: userId,
             sender: this.props.loggedUser.userName,
@@ -52,14 +65,14 @@ class InviteMemberModal extends Component {
     }
 
     render() {
-        const { filteredUsers } = this.state
+        const { filteredUsers , isAlreadyInvitesShown } = this.state
         const { isInviteModalOpen } = this.props
         console.log(isInviteModalOpen)
 
         return (
             <div ref={node => this.node = node} className={`invite-members-modal ${(isInviteModalOpen) ? 'modal-open' : ''} flex column align-center`}>
                 <div className="invite-header"><h3>Invite to collaborate</h3></div>
-                {/* <p>Add board members</p> */}
+                {isAlreadyInvitesShown && <p>User already a member!</p>}
                 <input type="text" placeholder="Enter userName to invite" onKeyUp={this.inputHandler} />
                 {filteredUsers && <div className="invite-users-list flex column align-center">
                     {filteredUsers.map((user, idx) => {

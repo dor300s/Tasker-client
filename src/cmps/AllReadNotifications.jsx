@@ -5,7 +5,7 @@ export function AllReadNotifications(props) {
         <div className="notifications-all-read flex column align-center">
             <img className="notification-nodata" />
             <h3>All set! No Unread Notifications</h3>
-            <span className="notifi-history-btn" onClick={()=>props.showHistory()}>notifications history</span>
+            <span className="notifi-history-btn" onClick={()=>props.showHistory()}>View history</span>
         </div>
     )
 }

@@ -10,29 +10,10 @@ class DashBoard extends React.Component {
 
 
     componentDidMount() {
-        this.props.setBoards();
+        this.props.setBoards()
         this.props.getUser()
-            .then(() => {
-                socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
-                    console.log(invData);
-                    this.props.loggedUser.notifications.push({
-                        data: `Exciting news! ${invData.sender} invited you to collaborate in a board.`,
-                        createdAt: moment(invData.createdAt).fromNow(),
-                        collabBoardId: invData.collabBoardId,
-                        isRead: false,
-                        type: 'board-collab'
-                    })
-                    this.props.update(this.props.loggedUser)
-                })
-            })
-
-
-
     }
 
-    // componentDidUpdate(){
-    //     console.log(this.props.loggedUser);
-    // }
 
     onBoardClicked = (id) => {
         this.props.history.push(`/board/${id}`)
