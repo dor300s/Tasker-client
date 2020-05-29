@@ -1,18 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 export function UnReadNotifications(props) {
-    const { notifications } = props
+
+    let notifiToShow = props.user.notifications.filter(notifi => !notifi.isRead)
 
     return (
         <div className="nav-notifications-wrapper flex column align-center">
             <button onClick={() => props.markAsRead()}>Clear All</button>
-            {notifications.map((notifi, idx) => {
+            {notifiToShow.map((notifi, idx) => {
                 if (notifi.type === 'board-collab') {
                     return <div className="user-notification flex align-start" key={idx}>
                         <p>{notifi.data}</p>
                         <div className="board-collab-btns flex column space-around">
-                            <button onClick={()=> props.onBoardCollab(notifi)}>Join</button>
-                            <button>Decline</button>
+                            <button onClick={()=> props.onBoardCollab(notifi , idx)}>Join</button>
+                            <button onClick={()=> props.onInviteDecline(idx)}>Decline</button>
                         </div>
                     </div>
                 }
