@@ -52,6 +52,13 @@ export function getUser() {
   }
 }
 
+export function update(userData) {
+  return async dispatch => {
+    const user = await userService.update(userData);
+    dispatch(setUser(user));
+  }
+}
+
 export function setUser(user) {
   return { type: 'SET_USER', user }
 }

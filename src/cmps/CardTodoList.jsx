@@ -51,9 +51,9 @@ class CardTodoList extends Component {
 
     onHideComplete = () => {
         let toggleMode = ''
-        if(this.state.toggleMode === 'Hide') toggleMode = 'Show'
+        if (this.state.toggleMode === 'Hide') toggleMode = 'Show'
         else toggleMode = 'Hide'
-        this.setState(prevState => ({ isListFiltered: !prevState.isListFiltered , toggleMode }))
+        this.setState(prevState => ({ isListFiltered: !prevState.isListFiltered, toggleMode }))
     }
 
     inputHandler = ({ target }) => {
@@ -77,7 +77,7 @@ class CardTodoList extends Component {
 
     render() {
         const { card, board, user } = this.props
-        const { barFillWidth , toggleMode } = this.state
+        const { barFillWidth, toggleMode } = this.state
         const { newTodoVal, isAddModalShown, isListFiltered, openTodos, completedTodos } = this.state
         let list = []
         if (isListFiltered) list = card.checkList.filter(item => !item.isDone)
@@ -96,13 +96,15 @@ class CardTodoList extends Component {
                 <div className="todos-bar-wrapper">
                     <span className="todos-bar-fill" style={{ width: `${barFillWidth}%` }} />
                 </div>
-                <div style={{ marginBottom: "15px" }} className="flex align-center">
+                <div style={{ marginBottom: "15px" }} className="todo-add-wrapper flex align-center">
                     <button className="todo-add-btn" style={{ marginLeft: "40px", padding: "0px" }}
                         onClick={this.onAddTodo}>+ item</button>
-                   {isAddModalShown && <form onSubmit={this.onSubmit}>
-                        <input className="todos-input" value={newTodoVal} type="text" style={{ marginLeft: "20px" }}
-                            onChange={this.inputHandler} autoFocus />
-                    </form>}
+                    {isAddModalShown && <div className="screen" onClick={()=> this.setState({isAddModalShown: false})}>
+                        <form onSubmit={this.onSubmit}>
+                            <input className="todos-input" value={newTodoVal} type="text" style={{ marginLeft: "20px" }}
+                                onChange={this.inputHandler} autoFocus placeholder="Add an item" />
+                        </form>
+                    </div>}
                     {/* className={`todos-input ${isAddModalShown ? 'fade-input' : ''} `} */}
                 </div>
 
