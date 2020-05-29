@@ -5,16 +5,15 @@ import NavMenu from '../cmps/NavMenu'
 import NavUserNotificationMenu from './NavUserNotificationMenu'
 import { connect } from 'react-redux'
 import { setBoards, setBoard } from '../store/actions/boardActions.js'
-import { getUser } from '../store/actions/userActions.js'
-// import userService from '../services/userService.js'
+import { getUser, update } from '../store/actions/userActions.js'
 import { BoardMembers } from './BoardMembers'
 import { MemberPreview } from './MemberPreview'
 import NavBarSearch from './NavBarSearch'
 import InviteMemberModal from './InviteMemberModal'
 import socketService from '../services/socketService'
-import moment from 'moment'
 import ChartModal from './ChartModal';
-
+import moment from 'moment'
+import soundService from '../services/soundService'
 
 class NavBar extends React.Component {
 
@@ -31,16 +30,29 @@ class NavBar extends React.Component {
             .then(() => {
                 if (!this.props.loggedUser) this.props.history.push('/')
                 else this.props.setBoards()
-            // }, () => {
-                // socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
-                //     console.log(`${invData.sender.userName} Invited you to collaborate! ${moment(invData.createdAt).fromNow()}`);
-                // })
             })
     }
 
-    componentDidUpdate(prevProps){
-        console.log('NAV' , prevProps.loggedUser , this.props.loggedUser);
-        
+    componentWillUnmount() {
+        socketService.off(`user-invite-${this.props.loggedUser._id}`)
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.loggedUser !== prevProps.loggedUser) {
+            socketService.off(`user-invite-${this.props.loggedUser._id}`)
+
+            socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
+                this.props.loggedUser.notifications.unshift({
+                    data: `Exciting news! ${invData.sender} invited you to collaborate in a board.`,
+                    createdAt: moment(invData.createdAt).fromNow(),
+                    collabBoardId: invData.collabBoardId,
+                    isRead: false,
+                    type: 'board-collab'
+                })
+                this.props.update(this.props.loggedUser)
+                soundService.notification()
+            })
+        }
     }
 
     onMenuClick = () => {
@@ -71,7 +83,10 @@ class NavBar extends React.Component {
         const { isMenuActive, isNotificationModalOpen, isInviteModalOpen } = this.state
         const { boards, activeBoard, history, loggedUser } = this.props
         const { onCloseInviteMenu, onInviteMember, onCloseNotificationMenu } = this
-
+        let notifiToShow;
+        if (loggedUser) {
+            notifiToShow = loggedUser.notifications.filter(notifi => !notifi.isRead)
+        }
 
         if (!loggedUser) return <></>
         return (
@@ -92,9 +107,9 @@ class NavBar extends React.Component {
                 {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                 <div className="nav-right-section flex align-center">
                     {/* <button className="board-menu" onClick={() => history.push(`/board`)}>Board Menu</button> */}
-                    <span className="nav-notification-btn" onClick={this.onUserNotificationClick}></span>
+                    <span style={{ backgroundColor: `${notifiToShow.length ? "rgb(252, 115, 126)" : ""} ` }} className="nav-notification-btn" onClick={this.onUserNotificationClick}></span>
                     <MemberPreview user={loggedUser} history={history} />
-                    {<NavUserNotificationMenu onCloseNotificationMenu={onCloseNotificationMenu} isNotificationModalOpen={isNotificationModalOpen} history={history} user={loggedUser} />}
+                    {<NavUserNotificationMenu onCloseNotificationMenu={onCloseNotificationMenu} isNotificationModalOpen={isNotificationModalOpen} history={history} />}
                 </div>
             </nav>
         )
@@ -111,6 +126,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     setBoards,
     setBoard,
-    getUser
+    getUser,
+    update
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar))

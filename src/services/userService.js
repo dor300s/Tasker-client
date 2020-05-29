@@ -56,10 +56,10 @@ function _handleLogin(user) {
 }
 
 async function getUserFromSession() {
-    console.log('sesssion');
+    
 
     const session = await httpService.get('auth/session');
-    console.log(session);
+    
     return session;
 }
 

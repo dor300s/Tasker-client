@@ -6,28 +6,20 @@ import { HistoryNotifications } from './HistoryNotifications'
 import { AllReadNotifications } from './AllReadNotifications';
 import { UnReadNotifications } from './UnReadNotifications';
 import { saveBoard } from '../store/actions/boardActions.js'
-import {getUser , update} from '../store/actions/userActions'
+import {getUser , update , setUser} from '../store/actions/userActions'
 
 
 class NavUserNotificationMenu extends Component {
 
     state = {
-        user: null,
+        // user: null,
         isHistoryShown: false
     }
 
     componentDidMount() {
-        const { user } = this.props
-        console.log(user);
-        
         this.props.getUser()
         document.addEventListener("mousedown", this.onCloseNotificationMenu, false);
         document.addEventListener("keydown", this.onCloseNotificationMenu, false);
-    }
-
-    componentDidUpdate(prevProps){
-        const { user } = this.props
-        console.log(user)
     }
 
     componentWillUnmount() {
@@ -44,16 +36,16 @@ class NavUserNotificationMenu extends Component {
 
 
     onClearNotification = () => {
-        const { user } = this.props
-        userService.clearNotifications(user)
-        this.props.update(user)
+        const { loggedUser } = this.props
+        userService.clearNotifications(loggedUser)
+        this.props.update(loggedUser)
     }
 
     onNotificationsHistory = () => {
         this.setState(prevState => ({ isHistoryShown: !prevState.isHistoryShown }))
     }
 
-    onBoardCollab = (notifi) => {
+    onBoardCollab = (notifi , idx) => {
         const {loggedUser} = this.props
         boardService.get(notifi.collabBoardId)
             .then(res => {
@@ -63,21 +55,31 @@ class NavUserNotificationMenu extends Component {
                     userName: loggedUser.userName,
                     fullName: loggedUser.fullName
                 })
+                loggedUser.notifications.splice(idx , 1)
+                this.props.update(loggedUser)
                 this.props.saveBoard(res)
-            })
+                this.props.history.push(`/board/${res._id}`)
+                
+            },this.props.onCloseNotificationMenu())
         
     }
 
+    onInviteDecline = (idx) =>{
+        const {loggedUser} = this.props
+        loggedUser.notifications.splice(idx , 1)
+        this.props.update(loggedUser)
+    }
+
     render() {
-        const { user, isNotificationModalOpen } = this.props
+        const { loggedUser, isNotificationModalOpen } = this.props
         const { isHistoryShown } = this.state
-        let notifiToShow = user.notifications.filter(notifi => !notifi.isRead)
+        let notifiToShow = loggedUser.notifications.filter(notifi => !notifi.isRead)
 
         return (
             <div ref={node => this.node = node}>
 
                 {<div className={`nav-user-notifications-container ${(isNotificationModalOpen) ? "modal-open" : ""} flex column align-center`}>
-                    {isHistoryShown && <HistoryNotifications isShown={isNotificationModalOpen} goBack={this.onNotificationsHistory} notifications={user.notifications} history={this.props.history} />}
+                    {isHistoryShown && <HistoryNotifications isShown={isNotificationModalOpen} goBack={this.onNotificationsHistory} notifications={loggedUser.notifications} history={this.props.history} />}
                     {!isHistoryShown &&
                         <>
                             <div className="notifications-header"><h3>Notifications</h3></div>
@@ -85,7 +87,7 @@ class NavUserNotificationMenu extends Component {
 
                                 <AllReadNotifications showHistory={this.onNotificationsHistory} />
                                 :
-                                <UnReadNotifications markAsRead={this.onClearNotification} notifications={notifiToShow} onBoardCollab={this.onBoardCollab} />
+                                <UnReadNotifications onInviteDecline={this.onInviteDecline} markAsRead={this.onClearNotification} notifications={notifiToShow} onBoardCollab={this.onBoardCollab} user={loggedUser} />
                             }
                         </>}
                 </div>
@@ -104,7 +106,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     saveBoard,
     getUser,
-    update
+    update,
+    setUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavUserNotificationMenu)
