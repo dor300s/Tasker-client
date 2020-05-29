@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import BoardList from '../cmps/BoardList';
 import { NavMenuFilter } from '../cmps/NavMenuFilter';
@@ -61,10 +60,10 @@ class NavMenu extends React.Component {
         return (
             <div className={`nav-menu flex column ${(isMenuActive)? "nav-open": ""}`} ref={node => this.node = node}>
                 {currBoard &&
-                    <Link className="home-button flex align-center justify-center cursor" onClick={() => this.onHomeBtnClick()} >
+                    <div className="home-button flex align-center justify-center cursor" onClick={() => this.onHomeBtnClick()} >
                         <div className="dashboard-btn"></div>
                         <div className="flex align-center justify-center">Dashboard</div>
-                    </Link>}
+                    </div>}
                 <NavMenuFilter onFilter={(filterBy) => this.onFilter(filterBy)} />
 
                 <div className="nav-boards-preview-wrapper flex column">
