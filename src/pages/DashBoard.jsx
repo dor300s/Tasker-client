@@ -10,7 +10,7 @@ class DashBoard extends React.Component {
 
 
     componentDidMount() {
-        this.props.setBoards();
+        this.props.setBoards()
         this.props.getUser()
             .then(() => {
                 socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {

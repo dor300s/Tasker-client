@@ -31,7 +31,7 @@ class NavBar extends React.Component {
             .then(() => {
                 if (!this.props.loggedUser) this.props.history.push('/')
                 else this.props.setBoards()
-            }, () => {
+            // }, () => {
                 // socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
                 //     console.log(`${invData.sender.userName} Invited you to collaborate! ${moment(invData.createdAt).fromNow()}`);
                 // })

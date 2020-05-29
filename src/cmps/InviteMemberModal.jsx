@@ -15,6 +15,11 @@ class InviteMemberModal extends Component {
         document.addEventListener("keydown", this.onCloseInviteMenu, false);
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.loggedUser !== this.props.loggedUser)
+            this.props.loadUsers()
+    }
+
     componentWillUnmount() {
         document.removeEventListener("mousedown", this.onCloseInviteMenu, false);
         document.removeEventListener("keydown", this.onCloseInviteMenu, false);
@@ -41,7 +46,7 @@ class InviteMemberModal extends Component {
     }
 
     onInvite = (userId) => {
-        
+
         let data = {
             invitedUserId: userId,
             sender: this.props.loggedUser.userName,
