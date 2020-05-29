@@ -6,7 +6,7 @@ import { HistoryNotifications } from './HistoryNotifications'
 import { AllReadNotifications } from './AllReadNotifications';
 import { UnReadNotifications } from './UnReadNotifications';
 import { saveBoard } from '../store/actions/boardActions.js'
-import {getUser , update} from '../store/actions/userActions'
+import {getUser , update , setUser} from '../store/actions/userActions'
 
 
 class NavUserNotificationMenu extends Component {
@@ -17,17 +17,9 @@ class NavUserNotificationMenu extends Component {
     }
 
     componentDidMount() {
-        const { user } = this.props
-        console.log(user);
-        
         this.props.getUser()
         document.addEventListener("mousedown", this.onCloseNotificationMenu, false);
         document.addEventListener("keydown", this.onCloseNotificationMenu, false);
-    }
-
-    componentDidUpdate(prevProps){
-        const { user } = this.props
-        console.log(user)
     }
 
     componentWillUnmount() {
@@ -104,7 +96,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     saveBoard,
     getUser,
-    update
+    update,
+    setUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavUserNotificationMenu)
