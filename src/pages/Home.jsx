@@ -34,9 +34,7 @@ class Home extends React.Component {
                         <h3 className="line-a">Taskerr</h3>
                         <h3 className="line-b">Like Trello,</h3>
                         <h3 className="line-c">Just better.</h3>
-                        <div className="demo-btn flex align-center justify-center">
-                            <div onClick={this.onDemoClick}>Guest mode</div>
-                        </div>
+                        <div className="demo-btn flex align-center justify-center" onClick={this.onDemoClick}>Guest mode</div>
                     </div>
                     <div className="home-login-container flex justify-center align-center">
                         <Switch>

@@ -140,7 +140,7 @@ export default class NavBarSearch extends React.Component {
                     }
                     {filterCards && Boolean(filterCards.length) &&
                         <>
-                            <div className="result-header">Card results</div>
+                            <div className="result-header">{/* Card results */}</div>
                             <div className="search-results">
                                 {filterCards.map(card => (
                                     <div className="result-preview" onClick={() => history.push(`/board/${currBoard._id}/${card.id}`)}>

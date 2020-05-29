@@ -5,7 +5,7 @@
     transform: translate(-50%, -50%);
     .card-search {
         height: 35px;
-        width: 300px;
+        width: 350px;
         border: 0;
         outline: none;
         padding-left: 35px;
@@ -14,14 +14,20 @@
         background-position: 10px;
         // border-bottom: 1px solid $clr4;
         // border: 1px solid $clr4;
-        transition: 0.25s;
+        transition: .4s;
 
         &::placeholder {
             padding-left: 5px;
             font-size: 14px;
+            transition: .4s;
         }
-        &:focus::placeholder {
-            visibility: hidden;
+        &:focus {
+            padding-left: 45px;
+            z-index: 1;
+            &::placeholder {
+                padding-left: 50px;
+                opacity: 0;
+            }
         }
     }
     .header {
@@ -34,17 +40,17 @@
     .nav-search-result {
         position: absolute;
         margin-top: 45px;
-        padding: 20px;
+        padding: 47px 20px 20px;
         width: 350px;
         height: 500px;
         transform: translateY(-113%);
         box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.397);
         border-radius: 7px;
         background-color: rgb(255, 255, 255);
-        transition: .25s;
+        transition: 0.25s;
 
-        &.open-modal{
-            transform: translateY(0%);
+        &.open-modal {
+            transform: translateY(-10%);
         }
 
         > * {
@@ -69,7 +75,7 @@
             & > *:first-child {
                 margin-right: 10px;
             }
-           
+
             .result-icon {
                 align-self: start;
                 padding-top: 3px;
@@ -84,8 +90,9 @@
             .card {
                 // transform: translateX(-100);
             }
-            
-            .header, .conjunction{
+
+            .header,
+            .conjunction {
                 margin-right: 10px;
             }
         }

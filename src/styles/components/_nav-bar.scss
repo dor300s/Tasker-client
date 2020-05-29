@@ -89,7 +89,7 @@
         transition: .25s;
         transform: translateX(100%);
         &.modal-open{
-            transform: translateX(-8%);
+            transform: translateX(-20%);
         }
 
         > * {
