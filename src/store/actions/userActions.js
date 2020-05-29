@@ -55,6 +55,8 @@ export function getUser() {
 export function update(userData) {
   return async dispatch => {
     const user = await userService.update(userData);
+    console.log('action Userrrr', user);
+    
     dispatch(setUser(user));
   }
 }
