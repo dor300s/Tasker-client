@@ -43,7 +43,7 @@ class SignUp extends React.Component {
                     <input type="password" placeholder="Password" name="password" onChange={this.inputHandler} required />
                     <button>Signup</button>
                 </form>
-                <p>Already have an account?<Link to="/login">login</Link></p>
+                <p>Already have an account? <Link to="/login">login</Link></p>
             </div>
         )
     }

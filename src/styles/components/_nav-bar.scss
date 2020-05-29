@@ -13,6 +13,12 @@
         opacity: 1 !important;
     }
 
+    .logo{
+        content: url(../../images/taskker-logo-black.svg);
+        position: absolute;
+        width: 160px;
+    }
+
     .nav-menu-btn {
         content: url(../../images/icons8-menu.svg);
         cursor: pointer;

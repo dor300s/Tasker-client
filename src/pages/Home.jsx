@@ -27,16 +27,15 @@ class Home extends React.Component {
 
         return (
             <div className="home-container">
+                <div className="wallpaper" />
                 <div className="home-content-wrapper flex">
                     <div className="home-pitch flex column justify-center align-center">
-                        <h1 className="logo">LOGO</h1>
-                        <h1>Taskerr lets you organize <br /> and track group tasks - Easy.</h1>
-                        <h2>TaksHub’s tools
-                        boards , lists , cards <br />
-                        Improves and simplify the way you manage your projects.
-                        </h2>
+                        <h2 className="logo"></h2>
+                        <h3 className="line-a">Taskerr</h3>
+                        <h3 className="line-b">Like Trello,</h3>
+                        <h3 className="line-c">Just better.</h3>
                         <div className="demo-btn flex align-center justify-center">
-                            <div onClick={this.onDemoClick}>Try Our Demo!</div>
+                            <div onClick={this.onDemoClick}>Guest mode</div>
                         </div>
                     </div>
                     <div className="home-login-container flex justify-center align-center">
