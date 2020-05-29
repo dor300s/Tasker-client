@@ -39,14 +39,14 @@ export default class BoardPreview extends React.Component {
 
     render() {
         const { isModalOpen } = this.state
-        const { board, onBoardClicked, clearCurrBoard } = this.props
+        const { board, onBoardClicked, clearCurrBoard, editable } = this.props
 
         return (
             < React.Fragment >
                 <div className="board" onClick={() => onBoardClicked(board._id)} style={this.getBackground(board)}>
                     <h3>{board.title}</h3>
-                    <div className={`fs24 ${board.isStarred ? 'starred' : 'not-starred'}`} onClick={(ev) => this.starToggle(board, ev)} />
-                    <div className="menu-btn" onClick={this.openMenu} />
+                    {editable && <div className={`fs24 ${board.isStarred ? 'starred' : 'not-starred'}`} onClick={(ev) => this.starToggle(board, ev)} />}
+                    {editable && <div className="menu-btn" onClick={this.openMenu} />}
                     {isModalOpen && <BoardMenu closeMenu={this.closeMenu} board={board} clearCurrBoard={clearCurrBoard} />}
                 </div>
             </React.Fragment >

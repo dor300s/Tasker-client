@@ -69,13 +69,18 @@
             top: -50px;
             left: -30px;
             animation: demo-btn-animation 1.5s;
-            // animation-delay: 1s;
+            transition: 0.25s;
+            &:hover {
+                width: 220px;
+                
+            }
 
             div {
                 height: 100%;
                 width: 100%;
                 cursor: pointer;
                 padding-top: 13px;
+                
             }
         }
     }
@@ -109,7 +114,7 @@
     0% {
         opacity: 0;
     }
-    50%{
+    50% {
         top: -80px;
         opacity: 0;
     }
