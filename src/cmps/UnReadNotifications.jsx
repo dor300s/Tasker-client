@@ -11,7 +11,7 @@ export function UnReadNotifications(props) {
                     return <div className="user-notification flex column align-center" key={idx}>
                         <p>{notifi.data}</p>
                         <div className="board-collab-btns flex space-around">
-                            <button>Join</button>
+                            <button onClick={()=> props.onBoardCollab(notifi)}>Join</button>
                             <button>Decline</button>
                         </div>
                     </div>

@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import userService from '../services/userService'
+import boardService from '../services/boardService'
 import { HistoryNotifications } from './HistoryNotifications'
 import { AllReadNotifications } from './AllReadNotifications';
 import { UnReadNotifications } from './UnReadNotifications';
 import { saveBoard } from '../store/actions/boardActions.js'
 import {getUser , update} from '../store/actions/userActions'
+
 
 class NavUserNotificationMenu extends Component {
 
@@ -51,6 +53,21 @@ class NavUserNotificationMenu extends Component {
         this.setState(prevState => ({ isHistoryShown: !prevState.isHistoryShown }))
     }
 
+    onBoardCollab = (notifi) => {
+        const {loggedUser} = this.props
+        boardService.get(notifi.collabBoardId)
+            .then(res => {
+                res.members.push({
+                    _id: loggedUser._id ,
+                    imgUrl: loggedUser.imgUrl,
+                    userName: loggedUser.userName,
+                    fullName: loggedUser.fullName
+                })
+                this.props.saveBoard(res)
+            })
+        
+    }
+
     render() {
         const { user, isNotificationModalOpen } = this.props
         const { isHistoryShown } = this.state
@@ -68,7 +85,7 @@ class NavUserNotificationMenu extends Component {
 
                                 <AllReadNotifications showHistory={this.onNotificationsHistory} />
                                 :
-                                <UnReadNotifications markAsRead={this.onClearNotification} notifications={notifiToShow} />
+                                <UnReadNotifications markAsRead={this.onClearNotification} notifications={notifiToShow} onBoardCollab={this.onBoardCollab} />
                             }
                         </>}
                 </div>

@@ -39,6 +39,7 @@ class NavBar extends React.Component {
     }
 
     componentDidUpdate(prevProps){
+        console.log('NAV' , prevProps.loggedUser , this.props.loggedUser);
         
     }
 
