@@ -12,7 +12,7 @@ import socketService from '../services/socketService'
 class Board extends Component {
 
     state = {
-        animation: ''
+        animation: 'animation'
     }
 
     componentDidMount() {
@@ -66,17 +66,8 @@ class Board extends Component {
         }
     }
 
-    componentDidMount() {
-        const { boardId } = this.props.match.params
-        this.props.setBoard(boardId)
-
-        socketService.on(`board-updated-${boardId}`, (id) => {
-            this.props.setBoard(id)
-        })
-    }
-
-
     onAddList = async (title = "") => {
+        this.setState({ animation: 'animation' })
         const { currBoard } = this.props
         const { cardLists } = currBoard;
         cardLists.push(this.getNewList(title));
@@ -85,6 +76,7 @@ class Board extends Component {
     }
 
     onAddCard = async (ListId, txt = "") => {
+        this.setState({ animation: 'animation' })
         console.log("listId", ListId)
         console.log("txt", txt)
         const { currBoard } = this.props
@@ -120,6 +112,10 @@ class Board extends Component {
                 cardLists.splice(destination.index, 0, removedList);
                 this.props.saveBoard(currBoard)
                 break;
+
+            default:
+                break;
+
         }
     };
 
@@ -134,13 +130,14 @@ class Board extends Component {
 
     render() {
 
-        const { setcurrBoard, onDragEnd, onAddList, onAddCard } = this;
+        const { onDragEnd, onAddList, onAddCard } = this;
         const { currBoard, history } = this.props;
         const { animation } = this.state;
 
         const { cardId } = this.props.match.params;
         if (!currBoard) return <div>loading</div>;
         const { cardLists } = currBoard;
+
 
         return (
             <div className="board-app-container"  >

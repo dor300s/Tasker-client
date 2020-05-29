@@ -24,22 +24,18 @@ class NavBar extends React.Component {
         isNotificationModalOpen: false
     }
 
-    componentDidMount(prevProps) {
+    componentDidMount() {
         socketService.setup()
 
         this.props.getUser()
             .then(() => {
                 if (!this.props.loggedUser) this.props.history.push('/')
-                else {
-                    console.log(this.props.loggedUser._id);
-
-                    socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
-                        console.log(`${invData.sender.userName} Invited you to collaborate! ${moment(invData.createdAt).fromNow()}`);
-                    })
-                    this.props.setBoards()
-                }
+                else this.props.setBoards()
+            }, () => {
+                // socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
+                //     console.log(`${invData.sender.userName} Invited you to collaborate! ${moment(invData.createdAt).fromNow()}`);
+                // })
             })
-
     }
 
 

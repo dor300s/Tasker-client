@@ -15,7 +15,7 @@
             margin-left: 30px;
             padding-left: 30px;
             height: 20px;
-            
+
             &.all-board-title {
                 background-image: url(../../images/board-btn.svg);
                 background-repeat: no-repeat;
@@ -96,6 +96,13 @@
                     h3 {
                         font-size: 1.1rem;
                     }
+                }
+
+                form input {
+                    border: 0;
+                    border-bottom: 1px solid $clr3;
+                    height: 30px;
+                    border-radius: 3px;
                 }
             }
         }

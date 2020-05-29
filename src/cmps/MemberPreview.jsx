@@ -30,7 +30,8 @@ export class MemberPreview extends Component {
         this.setState(prevState => ({ isUserModalOpen: !prevState.isUserModalOpen }))
     }
 
-    onUserLogOut = async() => {
+    onUserLogOut = async(ev) => {
+        ev.stopPropagation()
         const { history } = this.props
         await userService.logout()
         history.push('/')
@@ -58,7 +59,7 @@ export class MemberPreview extends Component {
 
                 {<div className={`member-modal ${isUserModalOpen? "modal-open": ""}`}>
                     <div onClick={() => history.push(`/user/${user._id}`)}> My details </div>
-                    <div onClick={() => onUserLogOut()}>Log Out</div>
+                    <div onClick={(ev) => onUserLogOut(ev)}>Log Out</div>
                 </div>}
             </div>
         )
