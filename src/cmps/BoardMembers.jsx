@@ -24,7 +24,7 @@ export function BoardMembers(props) {
                     return <h3 className="nav-user-profile flex justify-center align-center">{member.fullName.charAt(0)}</h3>
                 }
             })}
-            {!cardMemberMode && <button className="nav-user-profile flex align-center justify-center index-1" onClick={() => props.onInvite()}><div className="plus-white flex align-center justify-center"></div></button>}
+            {!cardMemberMode && <button className="nav-user-profile invite flex align-center justify-center index-1" onClick={() => props.onInvite()}><div className="plus-white flex align-center justify-center"></div></button>}
         </div>
     )
 }
