@@ -13,6 +13,7 @@
         transform: translateX(-100%);
 
         .chart-modal {
+            overflow: overlay;
             position: absolute;
             width: 90vw;
             height: 85vh;
