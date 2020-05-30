@@ -6,7 +6,7 @@ export function UnReadNotifications(props) {
 
     return (
         <div className="nav-notifications-wrapper flex column align-center">
-            <button onClick={() => props.markAsRead()}>Clear All</button>
+            <span className="card-notification-clear" onClick={() => props.markAsRead()}></span>
             {notifiToShow.map((notifi, idx) => {
                 if (notifi.type === 'board-collab') {
                     return <div className="user-notification flex align-start" key={idx}>
@@ -15,6 +15,12 @@ export function UnReadNotifications(props) {
                             <button onClick={()=> props.onBoardCollab(notifi , idx)}>Join</button>
                             <button onClick={()=> props.onInviteDecline(idx)}>Decline</button>
                         </div>
+                    </div>
+                }
+                else if(notifi.type === 'card-assign'){
+                    return <div className="user-notification flex column" key={idx}>
+                        <p className="card-assign-content">{notifi.data}</p>
+                        <Link className="notification-card-link" to={`/board/${notifi.boardId}/${notifi.cardId}`}>View Card</Link>
                     </div>
                 }
                 else {

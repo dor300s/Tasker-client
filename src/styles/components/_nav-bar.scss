@@ -6,17 +6,27 @@
     font-size: 16.5px;
     top: 0;
     width: 100%;
-    background-color: rgba($clr6, 0.8) ;
+    background-color: rgba($clr6, 0.8);
     padding: 7px 30px 7px 32px;
-    box-shadow: 0px 14px 16px -20px rgba(0,0,0,0.75);
+    box-shadow: 0px 14px 16px -20px rgba(0, 0, 0, 0.75);
     & > * {
         opacity: 1 !important;
     }
 
-    .logo{
-        content: url(../../images/taskker-logo-black.svg);
-        position: absolute;
-        width: 160px;
+    .img-wrapper {
+        display: flex;
+        overflow: hidden;
+        height: 35px;
+        width: 120px;
+        padding: 0;
+        margin: 0;
+        .logo {
+            content: url(../../images/taskker-logo-black.svg);
+            position: relative;
+            width: 100%;
+            transform: scale(5);
+            cursor: pointer;
+        }
     }
 
     .nav-menu-btn {
@@ -42,13 +52,13 @@
             margin-right: 10px;
         }
     }
-    .nav-right-section{
+    .nav-right-section {
         > *:not(:last-child) {
             margin-right: 10px;
         }
     }
 
- .home-button,
+    .home-button,
     .board-button {
         font-size: 10px;
         > *:not(:last-child) {
@@ -86,10 +96,10 @@
         border-radius: 4px;
         margin-top: 10px;
         margin-left: -23px;
-        transition: .25s;
+        transition: 0.25s;
         transform: translateX(100%);
-        &.modal-open{
-            transform: translateX(-8%);
+        &.modal-open {
+            transform: translateX(-20%);
         }
 
         > * {
@@ -118,11 +128,11 @@
             background-color: rgba(90, 140, 248, 0.267);
         }
     }
-    .board-txt{
+    .board-txt {
         font-size: 14px;
         font-weight: 600;
-        &:hover{
-            color: #4886FF;
+        &:hover {
+            color: #4886ff;
         }
     }
 }

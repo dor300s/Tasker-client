@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { saveBoard, setBoard } from '../store/actions/boardActions'
 import { CardMembersList } from './CardMembersList'
+import socketService from '../services/socketService'
 
 class CardMembers extends Component {
 
@@ -17,13 +18,22 @@ class CardMembers extends Component {
 
 
     addMember = (member) => {
-        const { card, board } = this.props
+        
+        const { card, board , user } = this.props
+        console.log(card.id , board._id);
         let idx = card.members.findIndex(user => user._id === member._id)
         if (idx !== -1) return
 
         card.members.push(member)
         this.props.saveBoard(board)
         this.props.setBoard(board._id)
+        let data = {
+            assignedUserId: member._id,
+            assingedBy: user.userName,
+            cardId: card.id,
+            boardId: board._id
+        }
+        socketService.emit('user card assign', data);
     }
 
     onMouseEnter = () => {

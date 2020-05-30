@@ -2,11 +2,12 @@
     position: absolute;
     left: 50%;
     top: 50%;
+    // width: fit-content;
     transform: translate(-50%, -50%);
     .card-search {
         height: 35px;
-        width: 300px;
         border: 0;
+        width: 100px;
         outline: none;
         padding-left: 35px;
         background: url(../../images/search.svg) center / contain no-repeat;
@@ -14,14 +15,21 @@
         background-position: 10px;
         // border-bottom: 1px solid $clr4;
         // border: 1px solid $clr4;
-        transition: 0.25s;
-
+        transition: .5s;
+        transition-delay: .1s;
         &::placeholder {
             padding-left: 5px;
             font-size: 14px;
+            transition: .5s;
         }
-        &:focus::placeholder {
-            visibility: hidden;
+        &:focus {
+            width: 350px;
+            padding-left: 45px;
+            z-index: 1;
+            &::placeholder {
+                // padding-left: 100px;
+                opacity: 0;
+            }
         }
     }
     .header {
@@ -34,17 +42,20 @@
     .nav-search-result {
         position: absolute;
         margin-top: 45px;
-        padding: 20px;
-        width: 350px;
+        padding: 47px 20px 20px;
         height: 500px;
         transform: translateY(-113%);
         box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.397);
         border-radius: 7px;
         background-color: rgb(255, 255, 255);
-        transition: .25s;
-
-        &.open-modal{
-            transform: translateY(0%);
+        transition: .2s;
+        opacity: 0;
+        width: 350px;
+        &.open-modal {
+            transition-delay: .5s;
+            transform: translateY(-10%);
+            width: 350px;
+            opacity: 1;
         }
 
         > * {
@@ -69,7 +80,7 @@
             & > *:first-child {
                 margin-right: 10px;
             }
-           
+
             .result-icon {
                 align-self: start;
                 padding-top: 3px;
@@ -81,11 +92,12 @@
             &:hover {
                 background-color: $clr4;
             }
-            .card {
+            // .card {
                 // transform: translateX(-100);
-            }
-            
-            .header, .conjunction{
+            // }
+
+            .header,
+            .conjunction {
                 margin-right: 10px;
             }
         }

@@ -49,6 +49,13 @@ class NavUserNotificationMenu extends Component {
         const {loggedUser} = this.props
         boardService.get(notifi.collabBoardId)
             .then(res => {
+                let userIdxOnBoard = res.members.findIndex(user => user._id === loggedUser._id)
+                console.log(userIdxOnBoard);
+                
+                if(userIdxOnBoard !== -1) {
+                    loggedUser.notifications.splice(idx , 1)
+                    return
+                }
                 res.members.push({
                     _id: loggedUser._id ,
                     imgUrl: loggedUser.imgUrl,
@@ -59,10 +66,25 @@ class NavUserNotificationMenu extends Component {
                 this.props.update(loggedUser)
                 this.props.saveBoard(res)
                 this.props.history.push(`/board/${res._id}`)
-                
             },this.props.onCloseNotificationMenu())
-        
-    }
+            
+
+        // boardService.get(notifi.collabBoardId)
+        //     .then(res => {
+        //         res.members.push({
+        //             _id: loggedUser._id ,
+        //             imgUrl: loggedUser.imgUrl,
+        //             userName: loggedUser.userName,
+        //             fullName: loggedUser.fullName
+        //         })
+        //         loggedUser.notifications.splice(idx , 1)
+        //         this.props.update(loggedUser)
+        //         this.props.saveBoard(res)
+        //         this.props.history.push(`/board/${res._id}`)
+                
+        //     },this.props.onCloseNotificationMenu())
+    
+}
 
     onInviteDecline = (idx) =>{
         const {loggedUser} = this.props

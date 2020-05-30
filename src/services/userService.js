@@ -51,6 +51,8 @@ function clearNotifications(user) {
 }
 
 function _handleLogin(user) {
+    user.isLogIn = true ;
+    update(user)
     sessionStorage.setItem('user', JSON.stringify(user))
     return user;
 }
