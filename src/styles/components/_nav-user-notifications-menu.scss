@@ -45,6 +45,7 @@
             padding: 3px 5px;
             border-radius: 3px;
             transition: 0.25s;
+            text-align: center;
             &:hover {
                 cursor: pointer;
                 color: rgb(255, 255, 255);
@@ -52,6 +53,9 @@
                 padding: 3px 75px;
             }
         }
+        // .notifi-history-btn{
+        //     text-align: center;
+        // }
     }
     .nav-notifications-wrapper {
         padding-top: 5px;

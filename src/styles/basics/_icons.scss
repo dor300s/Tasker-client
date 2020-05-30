@@ -223,4 +223,23 @@
         content: url(../../images/clear.svg);
         width: 100%;
     }
+
+    .action-label {
+        content: url(../../images/action-label.svg);
+        width: 30px;
+    }
+    .action-image {
+        content: url(../../images/action-image.svg);
+        width: 25px;
+    }
+
+    .action-todos {
+        content: url(../../images/action-todos.svg);
+        width: 30px;
+    }
+
+    .action-calendar {
+        content: url(../../images/action-calendar.svg);
+        width: 28px;
+    }
 }

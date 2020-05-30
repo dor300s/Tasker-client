@@ -16,15 +16,19 @@ class InviteMemberModal extends Component {
         document.addEventListener("keydown", this.onCloseInviteMenu, false);
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.loggedUser !== this.props.loggedUser)
-            this.props.loadUsers()
-    }
-
+    // componentDidUpdate(prevProps){
+    //     if(this.state.users !== this.props.users){
+    //         console.log('USERS CHANGED @@@@@@@@@@@@@@@');
+    //         this.setState({users: this.props.users})
+    //         // this.props.loadUsers()
+    //     }
+    // }
+    
     componentWillUnmount() {
         document.removeEventListener("mousedown", this.onCloseInviteMenu, false);
         document.removeEventListener("keydown", this.onCloseInviteMenu, false);
     }
+
 
     onCloseInviteMenu = (ev) => {
         ev.stopPropagation();
@@ -35,6 +39,7 @@ class InviteMemberModal extends Component {
     }
 
     inputHandler = ({ target }) => {
+        this.props.loadUsers()
         if (!target.value) {
             this.setState({ filteredUsers: null })
             return

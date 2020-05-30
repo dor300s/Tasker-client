@@ -21,7 +21,8 @@ class CardDetails extends Component {
         isCalendarActive: false,
         isImagesShown: false,
         isMembersModalShown: false,
-        isLabelsModalShown:false
+        isLabelsModalShown:false,
+        isActionTodoActive: false
 
     }
 
@@ -98,9 +99,16 @@ class CardDetails extends Component {
         this.setState(prevState => ({ isLabelsModalShown: !prevState.isLabelsModalShown }))
     }
 
+    onTodoAction = () => {
+        this.setState({ isActionTodoActive: true })
+    }
+    onAddTodo = () => {
+        this.setState({ isActionTodoActive: false })
+    }
+
     render() {
 
-        const { currCard, currList, isCalendarActive, isImagesShown, isMembersModalShown , isLabelsModalShown } = this.state
+        const { currCard, currList, isCalendarActive, isImagesShown, isMembersModalShown , isLabelsModalShown , isActionTodoActive} = this.state
         const { currBoard , loggedUser } = this.props
         if (!currCard) return ''
         return (
@@ -125,11 +133,11 @@ class CardDetails extends Component {
                                     showModal={isMembersModalShown} />
                                 {currCard.dueDate && < DueDate card={currCard} board={currBoard} />}
                                 < CardDescription card={currCard} board={currBoard} />
-                                < CardTodoList card={currCard} board={currBoard} user={this.props.loggedUser} />
+                                {(currCard.checkList.length > 0 || isActionTodoActive) && < CardTodoList onAddTodo={this.onAddTodo} onActionTodo={isActionTodoActive} card={currCard} board={currBoard} user={this.props.loggedUser} />}
                                 {isImagesShown &&  < CardAttachments card={currCard} board={currBoard} />}
                                 < CardComments card={currCard} board={currBoard} user={this.props.loggedUser} />
                             </div>
-                            < CardActions onLabels={this.onLabels} openDatePicker={this.openDatePicker} onImages={this.onImages} onMembers={this.onMembers} />
+                            < CardActions onTodoAction={this.onTodoAction} onLabels={this.onLabels} openDatePicker={this.openDatePicker} onImages={this.onImages} onMembers={this.onMembers} />
                             < CardCalendar card={currCard} onDatePicked={this.onDatePicked} isShown={isCalendarActive} />
                             {/* < InterActiveRobot user={this.props.loggedUser} /> */}
 

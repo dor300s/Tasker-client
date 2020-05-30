@@ -8,7 +8,7 @@ class CardAttachments extends Component {
 
     state = {
         isLoading: false,
-        activeImg: ''
+        activeImg: null
     }
 
     onUpload = (ev) => {
@@ -44,6 +44,10 @@ class CardAttachments extends Component {
         this.setState({ activeImg: imgUrl })
     }
 
+    onCloseImgModal = () => {
+        this.setState({ activeImg: null })
+    }
+
     render() {
         const { card, loggedUser } = this.props // take from props
         const { isLoading, activeImg } = this.state
@@ -60,8 +64,8 @@ class CardAttachments extends Component {
                     </label>
                     <div style={{ marginTop: "15px", marginLeft: "42px" }} className="attachments-files-container flex align-center space-between">
                         {attachments && attachments.map((file, idx) => {
-                            return <div key={idx} style={{ marginBottom: "15px" }} className="flex column" onClick={() => this.onImgClick(file.url)}>
-                                {file.url && <img src={file.url} width="150" />}
+                            return <div key={idx} style={{ marginBottom: "15px" }} className="flex column" >
+                                {file.url && <img src={file.url} width="150" onClick={() => this.onImgClick(file.url)} />}
                                 <div className="attachment-file-name-wrapper flex align-center space-between">
                                     {/* <h4 className="attachment-file-name">{file.fileName}.{file.format}</h4> */}
                                     <p className="attachment-owner">Upload by - {loggedUser.userName}</p>
@@ -73,7 +77,7 @@ class CardAttachments extends Component {
                     </div>
                     {isLoading && <span style={{ marginLeft: "55px" }} className="loading" />}
                 </div>
-                {/* {activeImg && <ImgModal url={activeImg} />} */}
+                {activeImg && <ImgModal onCloseImgModal={this.onCloseImgModal} url={activeImg} />}
             </>
         )
     }
