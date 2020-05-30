@@ -69,7 +69,7 @@ class NavMenu extends React.Component {
                 <div className="nav-boards-preview-wrapper flex column">
                     <div className="nav-board-preview-overlay"></div>
 
-                    {filteredBoards && <h3 className="label searched-boards-header">Searched Boards</h3>}
+                    {filteredBoards && <h3 className="list-header">Searched Boards</h3>}
                     {filteredBoards && !filteredBoards.length && <h4 className="label no-match">- There is no matches</h4>}
                     {filteredBoards && <div className="boards-container flex column align-center">
                         <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} />

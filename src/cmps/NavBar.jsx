@@ -50,13 +50,8 @@ class NavBar extends React.Component {
             })
     }
 
-    closingCode = () =>{
-        this.props.loggedUser.isLogIn = false
-        socketService.emit('user logged-out')
-        this.props.update(this.props.loggedUser)
-        .then(() => {
-                return null
-            })
+    componentWillUnmount() {
+
     }
 
     notifiBoardCollab = (invData) => {
@@ -122,6 +117,7 @@ class NavBar extends React.Component {
                 {!activeBoard && <div className="img-wrapper" onClick={() => this.props.history.push('/board')}>
                     <img className="logo" width='60px' alt="" />
                 </div>}
+
                 <div className="nav-left-section flex align-center">
                     {activeBoard &&
                         <div className="board-button flex align-center justiry-center space-between cursor" onClick={this.onMenuClick}>
@@ -131,9 +127,9 @@ class NavBar extends React.Component {
 
                     {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                     {activeBoard && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
+                    {< NavBarSearch /* boards={boards} */ history={history} currBoard={activeBoard} history={history} />}
+                    {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                 </div>
-                {< NavBarSearch /* boards={boards} */ history={history} currBoard={activeBoard} history={history} />}
-                {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                 <div className="nav-right-section flex align-center">
                     {/* <button className="board-menu" onClick={() => history.push(`/board`)}>Board Menu</button> */}
                     {activeBoard && <ChartModal />}

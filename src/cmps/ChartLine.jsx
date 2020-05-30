@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Line } from 'react-chartjs-2';
+import cssVar from '../styles/setup/variable.js'
+
 
 const data = {
     labels: ['23/5', '24/5', '25/5', '26/5', '27/5', '28/5', '29/5'],
@@ -7,19 +9,19 @@ const data = {
         {
             label: 'Todo',
             fill: false,
-            lineTension: 0.1,
-            backgroundColor: 'rgba($clrChart8,0.4)',
-            borderColor: 'rgba($clrChart8,1)',
+            lineTension: 0.5,
+            backgroundColor: cssVar.$clrChart1,
+            borderColor: cssVar.$clrChart1,
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: 'rgba($clrChart8,1)',
-            pointBackgroundColor: '#fff',
+            pointBorderColor: cssVar.$clrChart1,
+            pointBackgroundColor: cssVar.$clrChart1,
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'rgba($clrChart8,1)',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBackgroundColor: cssVar.$clrChart1,
+            pointHoverBorderColor: cssVar.$clrChart1,
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
@@ -27,19 +29,19 @@ const data = {
         }, {
             label: 'In progress',
             fill: false,
-            lineTension: 0.1,
-            backgroundColor: 'rgba($clrChart7,0.4)',
-            borderColor: 'rgba($clrChart7,1)',
+            lineTension: 0.5,
+            backgroundColor: cssVar.$clrChart2,
+            borderColor: cssVar.$clrChart2,
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: 'rgba($clrChart7,1)',
-            pointBackgroundColor: '#fff',
+            pointBorderColor: cssVar.$clrChart2,
+            pointBackgroundColor: cssVar.$clrChart2,
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'rgba($clrChart7,1)',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBackgroundColor: cssVar.$clrChart2,
+            pointHoverBorderColor: cssVar.$clrChart2,
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
@@ -47,19 +49,19 @@ const data = {
         }, {
             label: 'Done',
             fill: false,
-            lineTension: 0.1,
-            backgroundColor: 'rgba($clrChart6,0.4)',
-            borderColor: 'rgba($clrChart6,1)',
+            lineTension: 0.5,
+            backgroundColor: cssVar.$clrChart3,
+            borderColor: cssVar.$clrChart3,
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: 'rgba($clrChart6,1)',
-            pointBackgroundColor: '#fff',
+            pointBorderColor: cssVar.$clrChart3,
+            pointBackgroundColor: cssVar.$clrChart3,
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'rgba($clrChart6, 1)',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBackgroundColor: cssVar.$clrChart3,
+            pointHoverBorderColor: cssVar.$clrChart3,
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
@@ -75,7 +77,7 @@ export default class ChartLine extends Component {
     render() {
         return (
             <div className="chart-line">
-                <h2>Line Example</h2>
+                <h2>Task amount to day</h2>
                 <Line data={data} />
             </div>
         );

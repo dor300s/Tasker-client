@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import moment from 'moment'
+// import moment from 'moment'
 import { Bar } from 'react-chartjs-2';
+import cssVar from '../styles/setup/variable.js'
+
 
 let data = {
     labels: ['23/5', '24/5', '25/5', '26/5', '27/5', '28/5', '29/5'],
@@ -93,14 +95,12 @@ class ChartBar extends Component {
     // }
 
 
-
-
     render() {
         const { usersData } = this.state;
 
         return (
             <div className="chart-bar">
-                <h2>Bar Example (custom size)</h2>
+                <h2>Done tasks by user</h2>
                 <Bar
                     data={usersData}
                     width={10}

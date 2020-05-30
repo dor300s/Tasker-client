@@ -7,7 +7,6 @@
         background-color: lighten($color: $clr4, $amount: 10);
         padding-top: 20px;
         border-radius: 4px;
-        // animation: boards-main-container-animation 1s;
         &:first-child {
             margin-bottom: 51px;
         }
@@ -86,8 +85,7 @@
 
             .add-board {
                 background-color: $clr6;
-                border: 1px dashed $clr3;
-                // box-shadow: 0 5px 20px 0 rgba(21, 27, 38, 0.08);
+                border: 1px dashed darken($color: $clr5, $amount: 15);
 
                 h3 {
                     color: $clr2;
@@ -111,14 +109,7 @@
     }
 }
 
-@keyframes boards-main-container-animation {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(0%);
-    }
-}
+
 @keyframes board-animation {
     0% {
         width: 0;

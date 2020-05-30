@@ -2,7 +2,7 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    
+
     .wallpaper {
         background-image: url(../../images/Pattern-BG.png);
         background-position: center;
@@ -14,40 +14,35 @@
         z-index: -1;
         transform: translate(-30%, -38%) rotate(-220deg);
         animation: wallpaper-animation 1s;
-        
+        @include for-wide-layout {
+            // 1440px
+            transform: translate(-40%, -28%) rotate(-230deg);
+            width: 150%;
+        }
+        @include for-normal-layout {
+            // 1080px
+            transform: translate(-45%, -25%) rotate(-235deg);
+            width: 170%;
+        }
+        @include for-narrow-layout {
+            // 860px
+            transform: translate(-50%, -25%) rotate(-243deg);
+            width: 195%;
+        }
+        @include for-w-mobile-layout {
+            // 650px
+            transform: translate(-55%, -35%) rotate(-243deg);
+            width: 195%;
+        }
     }
     .home-content-wrapper {
         width: 100%;
         height: 100%;
-        
     }
     .home-pitch {
         width: 50%;
         height: 100%;
         text-align: center;
-        h2 {
-            margin-bottom: 30px;
-            font-size: 2rem;
-            color: $clr6;
-        }
-        h3 {
-            margin-bottom: 50px;
-            font-size: 4rem;
-            color: $clr6;
-            position: relative;
-            &.line-a {
-                font-size: 7rem;
-                top: -70px;
-                left: -30px;
-            }
-            &.line-b {
-                top: -56px;
-            }
-            &.line-c {
-                top: -97px;
-                left: 74px;
-            }
-        }
 
         .logo {
             content: url(../../images/tasker-logo-white.svg);
@@ -58,29 +53,99 @@
             left: 30px;
             transform: translate(-10%, -40%);
         }
-
-        .demo-btn {
-            cursor: pointer;
+        .home-description-wrapper {
             position: relative;
-            background-color: $clr6;
-            height: 50px;
-            width: 200px;
-            text-align: center;
-            padding: 0;
-            color: #8c30d3 !important;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border-radius: 2.5rem;
-            top: -50px;
-            left: -30px;
-            animation: demo-btn-animation 1.5s;
-            transition: 0.25s;
-            &:hover {
-                width: 220px;
-                height: 60px;
-                font-size: 1.3rem;
-                top: -45px;
-                margin-top: -10px;
+
+            h3 {
+                margin-bottom: 50px;
+                font-size: 4em;
+                color: $clr6;
+                position: relative;
+                &.line-a {
+                    font-size: 7em;
+                    top: -70px;
+                    left: -30px;
+                }
+                &.line-b {
+                    top: -56px;
+                }
+                &.line-c {
+                    top: -97px;
+                    left: 74px;
+                }
+            }
+
+            .demo-btn {
+                cursor: pointer;
+                position: relative;
+                background-color: $clr6;
+                height: 50px;
+                width: 200px;
+                text-align: center;
+                padding: 0;
+                color: #8c30d3 !important;
+                font-size: 1.2em;
+                font-weight: 700;
+                border-radius: 2.5em;
+                top: -50px;
+                left: 74px;
+                animation: demo-btn-animation 1.5s;
+                transition: 0.25s;
+                &:hover {
+                    width: 220px;
+                    height: 60px;
+                    font-size: 1.3em;
+                    top: -45px;
+                    left: 64px;
+                    margin-top: -10px;
+                }
+            }
+            @include for-normal-layout {
+                // 1080px
+                font-size: 12px;
+            }
+            @include for-narrow-layout {
+                // 860px
+                position: absolute;
+                font-size: 8px;
+                top: 0;
+                margin-top: 150px;
+                left: 50%;
+                transform: translateX(-50%);
+                -webkit-text-stroke: 1px #8c30d3;
+                h3 {
+                    margin-bottom: 10px;
+                    &.line-a {
+                        font-size: 7em;
+                        top: -70px;
+                        left: -30px;
+                    }
+                    &.line-b {
+                        top: -56px;
+                    }
+                    &.line-c {
+                        top: -65px;
+                        left: 74px;
+                    }
+                }
+                .demo-btn {
+                    top: 50vh;
+                    left: 0;
+                    margin: 0 auto;
+                    font-size: 2em;
+                    background-color: #8c30d3;
+                    color: $clr6 !important;
+                    -webkit-text-stroke: 0;
+
+                    &:hover {
+                        top: 50vh;
+                        left: 0;
+                        margin-top: 0;
+                        height: 50px;
+                        width: 200px;
+                        font-size: 2em;
+                    }
+                }
             }
         }
     }
@@ -89,6 +154,14 @@
         height: 100%;
         animation: login-container-animation 1s;
         // background-color: rgb(140, 240, 240);
+        @include for-narrow-layout {
+            // 860px
+            height: fit-content;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
 }
 
@@ -122,4 +195,7 @@
         top: -50px;
         opacity: 1;
     }
+}
+
+@media (max-width: 1400px) {
 }
