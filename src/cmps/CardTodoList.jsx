@@ -64,6 +64,11 @@ class CardTodoList extends Component {
         this.setState({ newTodoVal: target.value })
     }
 
+    onTodosScreen = () =>{
+        this.setState({isAddModalShown: false})
+        this.props.onAddTodo()
+    }
+
     onSubmit = (ev) => {
         ev.preventDefault();
         const { card, board, user } = this.props
@@ -77,10 +82,11 @@ class CardTodoList extends Component {
         this.props.saveBoard(board)
         this.setState({ isAddModalShown: false, newTodoVal: '' })
         this.getTodosStatus()
+        this.props.onAddTodo()
     }
 
     render() {
-        const { card, board, user } = this.props
+        const { card, board, user , onActionTodo } = this.props
         const { barFillWidth, toggleMode } = this.state
         const { newTodoVal, isAddModalShown, isListFiltered, openTodos, completedTodos } = this.state
         let list = []
@@ -103,7 +109,7 @@ class CardTodoList extends Component {
                 <div style={{ marginBottom: "15px" }} className="todo-add-wrapper flex align-center">
                     <button className="todo-add-btn" style={{ marginLeft: "40px", padding: "0px" }}
                         onClick={this.onAddTodo}>+ item</button>
-                    {isAddModalShown && <div className="screen" onClick={()=> this.setState({isAddModalShown: false})}>
+                    {onActionTodo && <div className="screen" onClick={this.onTodosScreen}>
                         <form onSubmit={this.onSubmit}>
                             <input className="todos-input" value={newTodoVal} type="text" style={{ marginLeft: "20px" }}
                                 onChange={this.inputHandler} autoFocus placeholder="Add an item" />

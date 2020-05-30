@@ -7,6 +7,7 @@ export function BoardMembers(props) {
         <div className="nav-board-members flex align-center">
 
             {board.members.map((member, idx) => {
+                
                 if (member.imgUrl) {
                     return <div key={idx} className="board-member" style={{
                         backgroundImage: "url(" + `${member.imgUrl}` + ")",

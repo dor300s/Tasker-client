@@ -5,7 +5,7 @@ import NavMenu from '../cmps/NavMenu'
 import NavUserNotificationMenu from './NavUserNotificationMenu'
 import { connect } from 'react-redux'
 import { setBoards, setBoard } from '../store/actions/boardActions.js'
-import { getUser, update } from '../store/actions/userActions.js'
+import { getUser, update , loadUsers } from '../store/actions/userActions.js'
 import { BoardMembers } from './BoardMembers'
 import { MemberPreview } from './MemberPreview'
 import NavBarSearch from './NavBarSearch'
@@ -24,12 +24,21 @@ class NavBar extends React.Component {
     }
 
     componentDidMount() {
+        window.onbeforeunload = this.closingCode
+
         socketService.setup()
         this.props.getUser()
             .then(() => {
+                socketService.on(`newuserconnect`, () => {
+                    this.props.loadUsers()
+                })
                 if (this.props.loggedUser) {
                     socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
                         this.notifiBoardCollab(invData);
+                    })
+
+                    socketService.on(`user-disconnected`, () => {
+                        this.props.loadUsers()
                     })
 
                     socketService.on(`user-card-assign-${this.props.loggedUser._id}`, (assignData) => {
@@ -41,8 +50,13 @@ class NavBar extends React.Component {
             })
     }
 
-    componentWillUnmount() {
-       
+    closingCode = () =>{
+        this.props.loggedUser.isLogIn = false
+        socketService.emit('user logged-out')
+        this.props.update(this.props.loggedUser)
+        .then(() => {
+                return null
+            })
     }
 
     notifiBoardCollab = (invData) => {
@@ -105,7 +119,7 @@ class NavBar extends React.Component {
         if (!loggedUser) return <></>
         return (
             <nav className="nav-bar flex align-center space-between" >
-                {!activeBoard && <div className="img-wrapper"onClick={() => this.props.history.push('/board')}>
+                {!activeBoard && <div className="img-wrapper" onClick={() => this.props.history.push('/board')}>
                     <img className="logo" width='60px' alt="" />
                 </div>}
                 <div className="nav-left-section flex align-center">
@@ -143,6 +157,7 @@ const mapDispatchToProps = {
     setBoards,
     setBoard,
     getUser,
-    update
+    update,
+    loadUsers
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar))
