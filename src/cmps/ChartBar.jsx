@@ -100,7 +100,7 @@ class ChartBar extends Component {
 
         return (
             <div className="chart-bar">
-                <h2>Bar Example (custom size)</h2>
+                <h2>Done tasks by user</h2>
                 <Bar
                     data={usersData}
                     width={10}

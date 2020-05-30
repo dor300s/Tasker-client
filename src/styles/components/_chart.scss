@@ -26,6 +26,11 @@
            
         }
 
+        .chart-bar{
+            justify-self: center;
+            align-self: center;
+        }
+
         &.modal-open {
             display: flex;
             transform: translateX(0%);
