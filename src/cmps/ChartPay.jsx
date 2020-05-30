@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {Pie} from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
+import cssVar from '../styles/setup/variable.js'
 
 const data = {
 	labels: [
@@ -8,16 +9,17 @@ const data = {
 		'Done'
 	],
 	datasets: [{
-		data: [300, 50, 100],
+		data: [10, 5, 2],
 		backgroundColor: [
-		'#FF6384',
-		'#36A2EB',
-		'#FFCE56'
+			cssVar.$clrChart8,
+			cssVar.$clrChart7,
+			cssVar.$clrChart6
+
 		],
 		hoverBackgroundColor: [
-		'#FF6384',
-		'#36A2EB',
-		'#FFCE56'
+			`darken($color: ${cssVar.$clrChart8}, $amount: 15%)`,
+			`darken($color: ${cssVar.$clrChart7}, $amount: 15%)`,
+			`darken($color: ${cssVar.$clrChart6}, $amount: 15%)`
 		]
 	}]
 };
@@ -26,12 +28,12 @@ const data = {
 
 export default class ChartPay extends Component {
 
-  render() {
-    return (
-      <div className="chart-pay">
-        <h2>Pie Example</h2>
-        <Pie data={data} />
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className="chart-pay">
+				<h2>Card popularipopularity</h2>
+				<Pie data={data} />
+			</div>
+		);
+	}
 };

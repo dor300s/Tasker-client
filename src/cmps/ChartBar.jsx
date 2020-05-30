@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import moment from 'moment'
+// import moment from 'moment'
 import { Bar } from 'react-chartjs-2';
+import cssVar from '../styles/setup/variable.js'
+
 
 let data = {
     labels: ['23/5', '24/5', '25/5', '26/5', '27/5', '28/5', '29/5'],
@@ -91,8 +93,6 @@ class ChartBar extends Component {
     //         return acc
     //     }, {})
     // }
-
-
 
 
     render() {
