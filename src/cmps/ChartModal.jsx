@@ -41,6 +41,8 @@ export default class ChartModal extends Component {
                     <div ref={node => this.node = node} className="chart-modal flex wrap">
                         <ChartPay />
                         <ChartLine />
+                        <ChartLine />
+                        <ChartLine />
                         {/* <ChartBar /> */}
                     </div>
                 </div>
