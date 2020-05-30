@@ -1,130 +1,125 @@
 .home-container {
     width: 100%;
     height: 100vh;
-    // background-image: url(../../images/Artboard.png);
+    overflow: hidden;
+    
+    .wallpaper {
+        background-image: url(../../images/Pattern-BG.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        width: 130%;
+        height: 130%;
+        position: fixed;
+        z-index: -1;
+        transform: translate(-30%, -38%) rotate(-220deg);
+        animation: wallpaper-animation 1s;
+        
+    }
     .home-content-wrapper {
         width: 100%;
         height: 100%;
+        
     }
     .home-pitch {
         width: 50%;
         height: 100%;
-        background-color: khaki;
         text-align: center;
-        h1 {
-            margin-bottom: 30px;
-        }
         h2 {
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: $clr6;
+        }
+        h3 {
             margin-bottom: 50px;
+            font-size: 4rem;
+            color: $clr6;
+            position: relative;
+            &.line-a {
+                font-size: 7rem;
+                top: -70px;
+                left: -30px;
+            }
+            &.line-b {
+                top: -56px;
+            }
+            &.line-c {
+                top: -97px;
+                left: 74px;
+            }
         }
 
         .logo {
+            content: url(../../images/tasker-logo-white.svg);
             position: absolute;
+            color: $clr6;
+            width: 230px;
             top: 20px;
             left: 30px;
+            transform: translate(-10%, -40%);
         }
 
         .demo-btn {
-            background-color: white;
+            cursor: pointer;
+            position: relative;
+            background-color: $clr6;
             height: 50px;
             width: 200px;
             text-align: center;
             padding: 0;
-            color: $clr2 !important;
+            color: #8c30d3 !important;
             font-size: 1.2rem;
             font-weight: 700;
-            border-radius: 2px;
-
-            div {
-                height: 100%;
-                width: 100%;
-                cursor: pointer;
-                padding-top: 13px;
-                &:active {
-                    color: $clr2;
-                }
+            border-radius: 2.5rem;
+            top: -50px;
+            left: -30px;
+            animation: demo-btn-animation 1.5s;
+            transition: 0.25s;
+            &:hover {
+                width: 220px;
+                height: 60px;
+                font-size: 1.3rem;
+                top: -45px;
+                margin-top: -10px;
             }
         }
     }
     .home-login-container {
-        width: 50%;
+        width: 45%;
         height: 100%;
-        background-color: rgb(140, 240, 240);
+        animation: login-container-animation 1s;
+        // background-color: rgb(140, 240, 240);
     }
 }
 
-// @keyframes move_wave {
-//     0% {
-//         transform: translateX(0) translateZ(0) scaleY(1)
-//     }
-//     50% {
-//         transform: translateX(-25%) translateZ(0) scaleY(0.55)
-//     }
-//     100% {
-//         transform: translateX(-50%) translateZ(0) scaleY(1)
-//     }
-// }
-// .waveWrapper {
-//     overflow: hidden;
-//     position: absolute;
-//     left: 0;
-//     right: 0;
-//     bottom: 0;
-//     top: 0;
-//     margin: auto;
-// }
-// .waveWrapperInner {
-//     position: absolute;
-//     width: 100%;
-//     overflow: hidden;
-//     height: 100%;
-//     bottom: -1px;
-//     background-image: linear-gradient(to top, #0d0024 20%, #27273c 80%);
-// }
-// .bgTop {
-//     z-index: 15;
-//     opacity: 0.5;
-// }
-// .bgMiddle {
-//     z-index: 10;
-//     opacity: 0.75;
-// }
-// .bgBottom {
-//     z-index: 5;
-// }
-// .wave {
-//     position: absolute;
-//     left: 0;
-//     width: 200%;
-//     height: 100%;
-//     background-repeat: repeat no-repeat;
-//     background-position: 0 bottom;
-//     transform-origin: center bottom;
-// }
-// .waveTop {
-//     background-size: 50% 100px;
-// }
-// .waveAnimation .waveTop {
-//     background-image: url(http://front-end-noobs.com/jecko/img/wave-top.png);
-//     background-size: 100%;
-//     animation: move_wave 5s linear infinite;
-//     -webkit-animation: move_wave 5s linear infinite;
-//     -webkit-animation-delay: 1s;
-//     animation-delay: 1s;
-// }
-// .waveMiddle {
-//     background-image: url(http://front-end-noobs.com/jecko/img/wave-mid.png);
-//     background-size: 100%;
-//     background-size: 50% 120px;
-// }
-// .waveAnimation .waveMiddle {
-//     animation: move_wave 10s linear infinite;
-// }
-// .waveBottom {
-//     background-image: url(http://front-end-noobs.com/jecko/img/wave-bot.png);
-//     background-size: 100%;
-//     background-size: 50% 100px;
-// }
-// .waveAnimation .waveBottom {
-//     animation: move_wave 15s linear infinite;
-// }
+@keyframes wallpaper-animation {
+    0% {
+        transform: translate(-130%, -38%) rotate(-220deg);
+    }
+    100% {
+        transform: translate(-30%, -38%) rotate(-220deg);
+    }
+}
+
+@keyframes login-container-animation {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes demo-btn-animation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        top: -80px;
+        opacity: 0;
+    }
+    100% {
+        top: -50px;
+        opacity: 1;
+    }
+}

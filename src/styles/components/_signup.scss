@@ -1,7 +1,7 @@
 .signup-container {
     height: 430px;
     width: 270px;
-    box-shadow: 0 0 3px $clr1;
+    box-shadow: 0 0 4px #783dd7b9;
     border-radius: 4px;
     padding: 30px;
     background-color: $clr6;
@@ -9,6 +9,7 @@
 
     h2 {
         font-size: 3rem;
+        color: lighten($color: $clr2, $amount: 10);
         text-transform: uppercase;
         flex: 2;
     }
@@ -35,13 +36,14 @@
         button {
             height: 30px;
             font-size: 1rem;
-            color: $clr2;
+            color: lighten($color: $clr2, $amount: 10);
             background-color: $clr6;
             border: 1px solid $clr4;
+            border-radius: 2.5rem;
             transition: 0.25s;
             &:hover {
-                color: $clr2;
-                border: 1px solid $clr2;
+                border: 1px solid #783dd7b9;
+                color: #783dd7b9;
                 letter-spacing: 1px;
             }
         }

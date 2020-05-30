@@ -1,37 +1,128 @@
 import React, { Component } from 'react'
-import {Bar} from 'react-chartjs-2';
+import { connect } from 'react-redux'
+import moment from 'moment'
+import { Bar } from 'react-chartjs-2';
 
-const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [
-    {
-      label: 'My First dataset',
-      backgroundColor: 'rgba(255,99,132,0.2)',
-      borderColor: 'rgba(255,99,132,1)',
-      borderWidth: 1,
-      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-      hoverBorderColor: 'rgba(255,99,132,1)',
-      data: [65, 59, 80, 81, 56, 55, 40]
-    }
-  ]
+let data = {
+    labels: ['23/5', '24/5', '25/5', '26/5', '27/5', '28/5', '29/5'],
+    datasets: [
+        {
+            label: 'Eliyahu Dayan',
+            backgroundColor: 'rgba(255,99,132,0.2)',
+            borderColor: 'rgba(255,99,132,1)',
+            borderWidth: 1,
+            hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+            hoverBorderColor: 'rgba(255,99,132,1)',
+            data: [3, 4, 1, 3, 4, 5, 6]
+        },
+        {
+            label: 'Dor Ben Itzhak',
+            backgroundColor: 'rgba(111,11,11,0.2)',
+            borderColor: 'rgba(111,11,11,1)',
+            borderWidth: 1,
+            hoverBackgroundColor: 'rgba(111,11,11,0.4)',
+            hoverBorderColor: 'rgba(111,11,11,1)',
+            data: [1, 2, 3, 2, 1, 1, 3]
+        },
+        {
+            label: 'Reem Alon',
+            backgroundColor: 'rgba(222,22,22,0.2)',
+            borderColor: 'rgba(222,22,22,1)',
+            borderWidth: 1,
+            hoverBackgroundColor: 'rgba(222,22,22,0.4)',
+            hoverBorderColor: 'rgba(222,22,22,2)',
+            data: [3, 2, 5, 1, 6, 5, 2]
+        }
+    ]
 };
 
 
-export default class ChartBar extends Component {
+class ChartBar extends Component {
 
-  render() {
-    return (
-      <div>
-        <h2>Bar Example (custom size)</h2>
-        <Bar
-          data={data}
-          width={100}
-          height={50}
-          options={{
-            maintainAspectRatio: false
-          }}
-        />
-      </div>
-    );
-  }
+    state = {
+        usersData: null
+    }
+
+    componentDidMount() {
+        this.setState({ usersData: data })
+    }
+
+    // usersDataGenerator = () => {
+    //     let data = {};
+    //     const dateNow = Date.now()
+    //     data.labels = []
+    //     for (let step = 5; step > 0; step--) {
+    //         const day = 1000 * 60 * 60 * 24;
+    //         data.labels.push(moment(dateNow - (day * step)).format("MMM Do"))
+    //     }
+    //     ;
+    //     let usersDoneCard = this.reducerJoinTaskByUser();
+    //     for (const userId in usersDoneCard) {
+    //         data.datasets.push({
+    //             label: usersDoneCard[userId].doneBy.name,
+    //             backgroundColor: 'rgba(111,11,11,0.2)',
+    //             borderColor: 'rgba(111,11,11,1)',
+    //             borderWidth: 1,
+    //             hoverBackgroundColor: 'rgba(111,11,11,0.4)',
+    //             hoverBorderColor: 'rgba(111,11,11,1)',
+    //             data: [65, 59, 80, 81, 56, 55, 40]
+    //         })
+    //     }
+
+    // }
+
+    // reducerJoinTaskByUser = () => {
+    //     const currBoard = this.state;
+
+    //     return currBoard.cardLists.reducer((acc, cardList) => {
+    //         cardList.cards.forEach(card => {
+    //             card.checkList.forEach(checkBox => {
+    //                 if (checkBox.isDone && checkBox.doneBy) {
+    //                     if (!acc[checkBox.doneBy.id]) {
+    //                         acc[checkBox.doneBy.id] = []
+    //                         acc[checkBox.doneBy.id].push(checkBox);
+    //                     } else {
+    //                         acc[checkBox.doneBy.id].push(checkBox);
+    //                     }
+    //                 }
+
+    //             })
+    //         })
+    //         return acc
+    //     }, {})
+    // }
+
+
+
+
+    render() {
+        const { usersData } = this.state;
+
+        return (
+            <div className="chart-bar">
+                <h2>Bar Example (custom size)</h2>
+                <Bar
+                    data={usersData}
+                    width={10}
+                    height={5}
+                    options={{
+                        maintainAspectRatio: false,
+                    }
+                    }
+                />
+            </div>
+        );
+    }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        currBoard: state.boardApp.currBoard,
+    }
+}
+
+const mapDispatchToProps = {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChartBar)
