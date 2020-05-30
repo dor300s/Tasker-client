@@ -101,7 +101,7 @@ class CardDetails extends Component {
     render() {
 
         const { currCard, currList, isCalendarActive, isImagesShown, isMembersModalShown , isLabelsModalShown } = this.state
-        const { currBoard } = this.props
+        const { currBoard , loggedUser } = this.props
         if (!currCard) return ''
         return (
             <React.Fragment>
@@ -121,7 +121,7 @@ class CardDetails extends Component {
                         <div className="card-details-content-wrapper flex">
                             <div className="card-details-content flex column">
                                 < CardLabels card={currCard} board={currBoard} isShown={isLabelsModalShown} />
-                                < CardMembers history={this.props.history} card={currCard} board={currBoard}
+                                < CardMembers user={loggedUser} history={this.props.history} card={currCard} board={currBoard}
                                     showModal={isMembersModalShown} />
                                 {currCard.dueDate && < DueDate card={currCard} board={currBoard} />}
                                 < CardDescription card={currCard} board={currBoard} />

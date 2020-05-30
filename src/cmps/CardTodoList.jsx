@@ -21,10 +21,14 @@ class CardTodoList extends Component {
     }
 
     getBarWidth = () => {
+        const { card, board } = this.props
         const { openTodos, completedTodos } = this.state
         let totalTodos = openTodos.length + completedTodos.length;
         let barFillWidth = (completedTodos.length / totalTodos) * 100;
-        this.setState({ barFillWidth })
+        this.setState({ barFillWidth },()=>{
+            card.todosBarWidth = barFillWidth
+            this.props.saveBoard(board)
+        })
     }
 
     getTodosStatus = () => {
@@ -33,7 +37,6 @@ class CardTodoList extends Component {
         let completedTodos = card.checkList.filter(item => item.isDone)
         this.setState({ openTodos, completedTodos }, () => {
             this.getBarWidth()
-            this.props.saveBoard(board)
         })
 
     }
@@ -42,7 +45,7 @@ class CardTodoList extends Component {
         const { board , user } = this.props
         todo.isDone = !todo.isDone
         todo.doneBy = {id: user._id , userName: user.userName , fullName: user.fullName}
-        this.props.saveBoard(board)
+        // this.props.saveBoard(board)
         this.getTodosStatus()
     }
 
@@ -95,7 +98,7 @@ class CardTodoList extends Component {
                     <button className="todos-hide-complete-btn" onClick={this.onHideComplete}>{`${toggleMode} (${completedTodos.length}) complete items`}</button>
                 </div>
                 <div className="todos-bar-wrapper">
-                    <span className="todos-bar-fill" style={{ width: `${barFillWidth}%` }} />
+                    <span className="todos-bar-fill" style={{ width: `${card.todosBarWidth}%` }} />
                 </div>
                 <div style={{ marginBottom: "15px" }} className="todo-add-wrapper flex align-center">
                     <button className="todo-add-btn" style={{ marginLeft: "40px", padding: "0px" }}

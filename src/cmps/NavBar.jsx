@@ -25,34 +25,48 @@ class NavBar extends React.Component {
 
     componentDidMount() {
         socketService.setup()
-
         this.props.getUser()
             .then(() => {
+                if (this.props.loggedUser) {
+                    socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
+                        this.notifiBoardCollab(invData);
+                    })
+
+                    socketService.on(`user-card-assign-${this.props.loggedUser._id}`, (assignData) => {
+                        this.notifiCardAssign(assignData);
+                    })
+                }
                 if (!this.props.loggedUser) this.props.history.push('/')
                 else this.props.setBoards()
             })
     }
 
     componentWillUnmount() {
-        socketService.off(`user-invite-${this.props.loggedUser._id}`)
+       
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.loggedUser !== prevProps.loggedUser) {
-            socketService.off(`user-invite-${this.props.loggedUser._id}`)
+    notifiBoardCollab = (invData) => {
+        this.props.loggedUser.notifications.unshift({
+            data: `Exciting news! ${invData.sender} invited you to collaborate in a board.`,
+            createdAt: moment(invData.createdAt).fromNow(),
+            collabBoardId: invData.collabBoardId,
+            isRead: false,
+            type: 'board-collab'
+        })
+        this.props.update(this.props.loggedUser)
+        soundService.notification()
+    }
 
-            socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
-                this.props.loggedUser.notifications.unshift({
-                    data: `Exciting news! ${invData.sender} invited you to collaborate in a board.`,
-                    createdAt: moment(invData.createdAt).fromNow(),
-                    collabBoardId: invData.collabBoardId,
-                    isRead: false,
-                    type: 'board-collab'
-                })
-                this.props.update(this.props.loggedUser)
-                soundService.notification()
-            })
-        }
+    notifiCardAssign = (assignData) => {
+        this.props.loggedUser.notifications.unshift({
+            data: `Congratz! you have new card assign by ${assignData.assingedBy}.`,
+            type: 'card-assign',
+            isRead: false,
+            cardId: assignData.cardId,
+            boardId: assignData.boardId
+        })
+        this.props.update(this.props.loggedUser)
+        soundService.notification()
     }
 
     onMenuClick = () => {

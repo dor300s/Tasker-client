@@ -17,6 +17,7 @@ function setup() {
 }
 
 function terminate() {
+
   socket = null;
 }
 
