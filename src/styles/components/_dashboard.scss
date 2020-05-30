@@ -5,7 +5,7 @@
 
     .boards-main-container {
         background-color: lighten($color: $clr4, $amount: 10);
-        padding: 20px;
+        padding-top: 20px;
         border-radius: 4px;
         // animation: boards-main-container-animation 1s;
         &:first-child {
@@ -111,21 +111,20 @@
     }
 }
 
-
 @keyframes boards-main-container-animation {
-    0%{
-        transform:translateY(-100%) ;
+    0% {
+        transform: translateY(-100%);
     }
-    100%{
-        transform:translateY(0%) ;
+    100% {
+        transform: translateY(0%);
     }
 }
 @keyframes board-animation {
-    0%{
+    0% {
         width: 0;
         height: 0;
     }
-    100%{
+    100% {
         width: 200px;
         height: 100px;
     }

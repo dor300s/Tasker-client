@@ -91,7 +91,9 @@ class NavBar extends React.Component {
         if (!loggedUser) return <></>
         return (
             <nav className="nav-bar flex align-center space-between" >
-                {!activeBoard && <img className="logo" width='60px' alt="" />}
+                {!activeBoard && <div className="img-wrapper"onClick={() => this.props.history.push('/board')}>
+                    <img className="logo" width='60px' alt="" />
+                </div>}
                 <div className="nav-left-section flex align-center">
                     {activeBoard &&
                         <div className="board-button flex align-center justiry-center space-between cursor" onClick={this.onMenuClick}>
