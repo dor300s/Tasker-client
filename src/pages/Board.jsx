@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import uuid from "uuid/v4";
 import { clearCurrBoard, setBoards, setBoard, saveBoard, removeBoard } from '../store/actions/boardActions.js'
 import socketService from '../services/socketService'
+import { max } from "moment";
 
 
 class Board extends Component {
@@ -72,7 +73,10 @@ class Board extends Component {
         const { cardLists } = currBoard;
         cardLists.push(this.getNewList(title));
         await this.props.saveBoard(currBoard)
-        window.scrollTo(100000, 0)
+        window.scrollTo({
+            left: 100000,
+            behavior: 'smooth'
+        });
     }
 
     onAddCard = async (ListId, txt = "") => {

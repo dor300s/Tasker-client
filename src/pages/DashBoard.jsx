@@ -27,12 +27,12 @@ class DashBoard extends React.Component {
 
         return (
             <div className="dashboard">
-                <section className="boards-main-container">
-                    {Boolean(filteredBoards.length) && <h3 className="starred-title">Starred</h3>}
+                {Boolean(filteredBoards.length) && <section className="boards-main-container">
+                    <h3 className="starred-title">Starred</h3>
                     <div className="boards-container flex">
                         <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} saveBoard={saveBoard} clearCurrBoard={clearCurrBoard} editable={true} />
                     </div>
-                </section>
+                </section>}
 
                 <section className="boards-main-container">
                     <h3 className="all-board-title">All Boards</h3>
