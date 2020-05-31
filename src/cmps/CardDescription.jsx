@@ -53,7 +53,7 @@ class CardDescription extends Component {
                     <span className="text"></span>
                     <h4>Description</h4>
                 </div>
-                {!isEditMode && <p onClick={this.onDescClicked}>{card.description || 'Add some details about this board'}</p>}
+                {!isEditMode && <p onClick={this.onDescClicked}>{card.description || 'Add some details about this card'}</p>}
                 {isEditMode && <TextareaAutosize className={dynamicClass} onFocus={this.onTextFocus} onBlur={this.onTextAreaLeave} type="text" autoFocus={true}
                     value={description} placeholder="Add more details about this card..." onChange={this.onDescEdit}
                     onFocus={this.moveCaretAtEnd} spellCheck={false} />}
