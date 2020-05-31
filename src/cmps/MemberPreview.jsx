@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import userService from '../services/userService.js'
+import socketService from '../services/socketService.js';
 
 
 export class MemberPreview extends Component {
@@ -30,12 +31,12 @@ export class MemberPreview extends Component {
         this.setState(prevState => ({ isUserModalOpen: !prevState.isUserModalOpen }))
     }
 
-    onUserLogOut = async(ev) => {
+    onUserLogOut = async (ev) => {
         ev.stopPropagation()
-        const { history } = this.props
-        await userService.logout()
+        const { history , user } = this.props
+        await userService.logout(user) 
+        socketService.emit('user log-out-ui')
         history.push('/')
-
     }
 
     render() {
@@ -57,7 +58,7 @@ export class MemberPreview extends Component {
                     :
                     <h3 className="nav-user-profile flex justify-center align-center">{user.fullName.charAt(0)}</h3>}
 
-                {<div className={`member-modal ${isUserModalOpen? "modal-open": ""}`}>
+                {<div className={`member-modal ${isUserModalOpen ? "modal-open" : ""}`}>
                     <div onClick={() => history.push(`/user/${user._id}`)}> My details </div>
                     <div onClick={(ev) => onUserLogOut(ev)}>Log Out</div>
                 </div>}
