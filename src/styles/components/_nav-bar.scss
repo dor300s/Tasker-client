@@ -1,7 +1,7 @@
 .nav-bar {
     z-index: 4;
     color: $clr2;
-    z-index: 1;
+    z-index: 4;
     position: fixed;
     font-size: 16.5px;
     width: 100vw;
@@ -21,6 +21,7 @@
         width: 120px;
         padding: 0;
         margin: 0;
+        
         .logo {
             content: url(../../images/taskker-logo-black.svg);
             position: relative;
@@ -120,16 +121,25 @@
     .nav-notification-btn {
         margin-left: 10px;
         content: url(../../images/bell.svg);
-        width: 30px;
-        height: 30px;
-        background-color: transparent;
-        box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
+        width: 32px;
+        height: 32px;
+        // background-color: transparent;
+        // box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
         padding: 5px;
         border-radius: 5px;
         &:hover {
             cursor: pointer;
-            background-color: rgba(90, 140, 248, 0.267);
+            // background-color: rgba(90, 140, 248, 0.267);
         }
+    }
+    .notification-indicator {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        z-index: 1;
+        border-radius: 50%;
+        background-color: #4886ff;
+        transform: translate(27px,-24px);
     }
     .board-txt {
         font-size: 14px;

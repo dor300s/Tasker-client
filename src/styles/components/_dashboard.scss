@@ -40,7 +40,6 @@
                 height: 100px;
                 width: 200px;
                 color: $clr6;
-                animation: board-animation 1s;
                 cursor: pointer;
 
                 h3 {
@@ -54,6 +53,10 @@
                     top: 50%;
                     left: 90%;
                     cursor: pointer;
+                    @include for-narrow-layout {
+                        // 860px
+                        visibility: visible;
+                    }
                 }
 
                 .menu-btn {
@@ -64,6 +67,10 @@
                     bottom: 45%;
                     left: 91%;
                     cursor: pointer;
+                    @include for-narrow-layout {
+                        // 860px
+                        visibility: visible;
+                    }
                 }
 
                 &:hover {
@@ -110,13 +117,3 @@
 }
 
 
-@keyframes board-animation {
-    0% {
-        width: 0;
-        height: 0;
-    }
-    100% {
-        width: 200px;
-        height: 100px;
-    }
-}

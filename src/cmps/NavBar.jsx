@@ -170,7 +170,10 @@ class NavBar extends React.Component {
                 </div>
                 <div className="nav-right-section flex align-center">
                     {activeBoard && <ChartModal />}
-                    <span style={{ backgroundColor: `${notifiToShow.length ? "rgb(252, 115, 126)" : ""} ` }} className="nav-notification-btn" onClick={this.onUserNotificationClick}></span>
+                    <div>
+                        <div /* style={{ backgroundColor: `${notifiToShow.length ? "rgb(252, 115, 126)" : ""} ` }} */ className="nav-notification-btn" onClick={this.onUserNotificationClick}></div>
+                            {Boolean(notifiToShow.length) && <div className="notification-indicator"></div>}
+                    </div>
                     {<NavUserNotificationMenu onCloseNotificationMenu={onCloseNotificationMenu} isNotificationModalOpen={isNotificationModalOpen} history={history} user={loggedUser} />}
                     <MemberPreview user={loggedUser} history={history} />
                 </div>

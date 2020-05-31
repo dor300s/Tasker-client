@@ -9,7 +9,7 @@
     .screen {
         align-items: center;
         justify-content: center;
-        transform: translateX(-100%);
+        transform: translateY(100%);
 
         .chart-modal {
             overflow: overlay;
@@ -22,13 +22,15 @@
             justify-content: space-between;
             background-color: $clr6;
             padding: 15px;
-            transform: translateX(-100%);
-            transition: 0.25s;
+            transform: translateY(100%);
+            transition: 0.5s;
+            opacity: 0;
         }
 
         &.modal-open {
             display: flex;
-            transform: translateX(0%);
+            transform: translateY(0%);
+            opacity: 1;
             > *:not(:last-child) {
                 margin-bottom: 20px;
             }

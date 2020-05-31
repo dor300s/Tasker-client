@@ -73,6 +73,10 @@
             content: url(../../images/menu.svg);
             visibility: visible;
         }
+        @include for-narrow-layout {
+            // 860px
+            visibility: visible;
+        }
     }
 
     &:hover .menu-btn {
@@ -89,12 +93,14 @@
         font-size: .8rem;
         .card-icons:first-child{
             max-height: 30px;
+            margin-bottom: 15px;
             :last-child{
                 width: inherit;
             }
         }
-
+        
         .icon {
+            // margin-bottom: 20px;
             width: max-content;
         }
         .icon div:first-child{
@@ -116,13 +122,15 @@
             // min-height: 27px;
             .board-member{
                 margin-left: 0;
+                width: 30x;
+                // height: 30px;
             }
         }
        
     }
 }
 .card-menu-container {
-    transform: translate(-10px , -10px);
+    transform: translate(-10px , -5px);
     position: absolute;
     right: 0;
     bottom: 0;
