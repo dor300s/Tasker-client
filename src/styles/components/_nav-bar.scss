@@ -90,6 +90,7 @@
     }
 
     .member-modal {
+        visibility: hidden;
         background: white;
         position: absolute;
         z-index: 1;
@@ -105,6 +106,7 @@
         transform: translateX(100%);
         &.modal-open {
             transform: translateX(-20%);
+            visibility: visible !important;
         }
 
         > * {

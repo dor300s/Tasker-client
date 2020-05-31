@@ -153,7 +153,7 @@ class NavBar extends React.Component {
                         {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                         {activeBoard && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
                     </div>
-                    {< NavBarSearch /* boar ds={boards} */ history={history} currBoard={activeBoard} history={history} />}
+                    {< NavBarSearch boards={boards} history={history} currBoard={activeBoard} history={history} />}
                 </div>
                 <div className="nav-right-section flex align-center">
                     {/* <button className="board-menu" onClick={() => history.push(`/board`)}>Board Menu</button> */}
