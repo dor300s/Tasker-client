@@ -1,9 +1,10 @@
 .card-preview {
     cursor: pointer !important;
     position: relative;
-    padding: 5px;
-    border: 1px solid darken($color: $clr5, $amount: 6);
-    border-radius: 4px;
+    padding: 2px 5px;
+    border: 1px solid #e7e7e7;
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
+    border-radius: 3px;
     margin: 10px;
     color: $clr2;
     background-color: $clr6;
@@ -24,10 +25,11 @@
 
     .card-labels{
         .card-label-style{
-            height: 4px;
+            height: 8px;
             width: 30px;
             margin: 0 5px 5px 0;
             line-height: 1em;
+            border-radius: 5px;
         }
     }
 
@@ -59,10 +61,14 @@
 
     .card-text {
         width: 200px;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: normal;
         word-break: break-word;
         text-overflow: ellipsis;
         overflow: hidden;
         height: fit-content;
+        color: #6d7788;
     }
 
     .menu-btn {
@@ -90,7 +96,9 @@
     .wrap-icons{
         // border: 1px solid $clr2;
         color: darken($color: $clr3, $amount: 20);
-        font-size: .8rem;
+        font-size: 12px;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
         .card-icons:first-child{
             max-height: 30px;
             margin-bottom: 15px;

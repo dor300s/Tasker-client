@@ -6,7 +6,7 @@ import { HistoryNotifications } from './HistoryNotifications'
 import { AllReadNotifications } from './AllReadNotifications';
 import { UnReadNotifications } from './UnReadNotifications';
 import { saveBoard } from '../store/actions/boardActions.js'
-import {getUser , update , setUser} from '../store/actions/userActions'
+import { getUser, update, setUser } from '../store/actions/userActions'
 
 
 class NavUserNotificationMenu extends Component {
@@ -45,32 +45,31 @@ class NavUserNotificationMenu extends Component {
         this.setState(prevState => ({ isHistoryShown: !prevState.isHistoryShown }))
     }
 
-    onBoardCollab = (notifi , idx) => {
-        const {loggedUser} = this.props
-        boardService.get(notifi.collabBoardId)
-            .then(res => {
-                let userIdxOnBoard = res.members.findIndex(user => user._id === loggedUser._id)
-                
-                if(userIdxOnBoard !== -1) {
-                    loggedUser.notifications.splice(idx , 1)
-                    return
-                }
-                res.members.push({
-                    _id: loggedUser._id ,
-                    imgUrl: loggedUser.imgUrl,
-                    userName: loggedUser.userName,
-                    fullName: loggedUser.fullName
-                })
-                loggedUser.notifications.splice(idx , 1)
-                this.props.update(loggedUser)
-                this.props.saveBoard(res)
-                this.props.history.push(`/board/${res._id}`)
-            },this.props.onCloseNotificationMenu())  
-}
+    onBoardCollab = async (notifi, idx) => {
+        const userToUpdate = { ...this.props.loggedUser }
+        const board = await boardService.get(notifi.collabBoardId)
+        let user = board.members.find(user => user._id === userToUpdate._id);
+        if (!user) {
+            board.members.push({
+                _id: userToUpdate._id,
+                imgUrl: userToUpdate.imgUrl,
+                userName: userToUpdate.userName,
+                fullName: userToUpdate.fullName
+            });
+        }
+        userToUpdate.notifications = userToUpdate.notifications.filter((notifi, _idx) => _idx !== idx);
+        await this.props.update(userToUpdate)
+        await this.props.saveBoard(board)
+        this.props.onCloseNotificationMenu()
 
-    onInviteDecline = (idx) =>{
-        const {loggedUser} = this.props
-        loggedUser.notifications.splice(idx , 1)
+        if(!user) this.props.history.push(`/board/${board._id}`)
+    }
+
+    
+
+    onInviteDecline = (idx) => {
+        const { loggedUser } = this.props
+        loggedUser.notifications.splice(idx, 1)
         this.props.update(loggedUser)
     }
 
