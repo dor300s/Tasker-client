@@ -125,10 +125,10 @@ class NavBar extends React.Component {
                             <div className="board-txt">Boards</div>
                         </div>}
 
-                    <div className="mobile-menu">
+                    <div className={`mobile-menu ${(isMenuActive)? 'modal-open': ""}`}>
+                        {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                         {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                         {activeBoard && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
-                        {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                     </div>
                     {< NavBarSearch /* boar ds={boards} */ history={history} currBoard={activeBoard} history={history} />}
                 </div>
