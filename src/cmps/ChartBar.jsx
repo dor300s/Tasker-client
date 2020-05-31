@@ -10,20 +10,20 @@ let data = {
     datasets: [
         {
             label: 'Dor Ben Itzhak',
-            backgroundColor: 'rgba(111,11,11,0.2)',
-            borderColor: 'rgba(111,11,11,1)',
+            backgroundColor: cssVar.$clrChart3,
+            borderColor: cssVar.$clrChart3,
             borderWidth: 1,
-            hoverBackgroundColor: 'rgba(111,11,11,0.4)',
-            hoverBorderColor: 'rgba(111,11,11,1)',
+            hoverBackgroundColor: cssVar.$clrChart3,
+            hoverBorderColor: cssVar.$clrChart3,
             data: [1, 2, 3, 2, 1, 1, 3]
         },
         {
             label: 'Reem Alon',
-            backgroundColor: 'rgba(222,22,22,0.2)',
-            borderColor: 'rgba(222,22,22,1)',
+            backgroundColor: cssVar.$clrChart6,
+            borderColor: cssVar.$clrChart6,
             borderWidth: 1,
-            hoverBackgroundColor: 'rgba(222,22,22,0.4)',
-            hoverBorderColor: 'rgba(222,22,22,2)',
+            hoverBackgroundColor: cssVar.$clrChart6,
+            hoverBorderColor: cssVar.$clrChart6,
             data: [3, 2, 5, 1, 6, 5, 2]
         }
     ]
@@ -96,7 +96,7 @@ class ChartBar extends Component {
                 <h2>Done tasks by user</h2>
                 <Bar
                     data={usersData}
-                    width={10}
+                    width={2}
                     height={1}
                     options={{
                         maintainAspectRatio: false,
