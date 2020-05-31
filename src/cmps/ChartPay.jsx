@@ -6,17 +6,20 @@ const data = {
 	labels: [
 		'Todo',
 		'In progress',
+		'Done'
 	],
 	datasets: [{
-		data: [10, 5],
+		data: [10, 5, 2],
 		backgroundColor: [
 			cssVar.$clrChart9,
 			cssVar.$clrChart10,
+			cssVar.$clrChart8,
 		],
 
 		hoverBackgroundColor: [
 			`rgba(${cssVar.$clrChart9}, 0.8)`,
 			`rgba(${cssVar.$clrChart10}, 0.8)`,
+			`rgba(${cssVar.$clrChart8}, 0.8)`,
 		]
 	}]
 };
