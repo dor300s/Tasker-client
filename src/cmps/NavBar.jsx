@@ -38,7 +38,7 @@ class NavBar extends React.Component {
         })
         socketService.on(`user-disconnected-ui`, () => {
             console.log('USER DC FROM UI BTN');
-                        this.props.loadUsers()
+            this.props.loadUsers()
         })
         this.props.getUser()
             .then(() => {
@@ -149,7 +149,7 @@ class NavBar extends React.Component {
                             <div className="board-txt">Boards</div>
                         </div>}
 
-                    <div className={`mobile-menu ${(isMenuActive) ? 'modal-open' : ""}`}  ref={node => this.node = node}>
+                    <div className={`mobile-menu ${(isMenuActive) ? 'modal-open' : ""}`} ref={node => this.node = node}>
                         {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                         {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                         {activeBoard && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
@@ -159,8 +159,9 @@ class NavBar extends React.Component {
                 <div className="nav-right-section flex align-center">
                     {/* <button className="board-menu" onClick={() => history.push(`/board`)}>Board Menu</button> */}
                     {activeBoard && <ChartModal />}
-                    <div style={{ backgroundColor: `${notifiToShow.length ? "rgb(252, 115, 126)" : ""} ` }} className="nav-notification-btn" onClick={this.onUserNotificationClick}>
-                        {/* <div className="notification-indocator">aaaaa</div> */}
+                    <div>
+                        <div /* style={{ backgroundColor: `${notifiToShow.length ? "rgb(252, 115, 126)" : ""} ` }} */ className="nav-notification-btn" onClick={this.onUserNotificationClick}></div>
+                            {Boolean(notifiToShow.length) && <div className="notification-indicator"></div>}
                     </div>
                     {<NavUserNotificationMenu onCloseNotificationMenu={onCloseNotificationMenu} isNotificationModalOpen={isNotificationModalOpen} history={history} user={loggedUser} />}
                     <MemberPreview user={loggedUser} history={history} />
