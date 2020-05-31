@@ -1,6 +1,5 @@
 .chart-container {
-
-    .chartjs-render-monitor{
+    .chartjs-render-monitor {
         width: 40vw !important;
         height: auto !important;
         // max-width: % !important;
@@ -10,7 +9,7 @@
     .screen {
         align-items: center;
         justify-content: center;
-        transform: translateX(-100%);
+        transform: translateY(100%);
 
         .chart-modal {
             overflow: overlay;
@@ -21,22 +20,23 @@
             flex-wrap: wrap;
             background-color: $clr6;
             padding: 15px;
-            transform: translateX(-100%);
-            transition: 0.25s;
-           
+            transform: translateY(100%);
+            opacity: 0;
+            transition: 0.5s;
         }
 
-        .chart-bar{
+        .chart-bar {
             justify-self: center;
             align-self: center;
         }
 
         &.modal-open {
             display: flex;
-            transform: translateX(0%);
-
-            .chart-modal{
-            transform: translateX(0%);
+            transform: translateY(0%);
+            
+            .chart-modal {
+                opacity: 1;
+                transform: translateY(0%);
             }
         }
     }

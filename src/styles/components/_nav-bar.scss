@@ -6,6 +6,7 @@
     font-size: 16.5px;
     width: 100vw;
     top: 0;
+    left: 0;
     margin: 0;
     background-color: rgba($clr6, 0.8);
     padding: 7px 30px 7px 32px;
@@ -118,15 +119,20 @@
     .nav-notification-btn {
         margin-left: 10px;
         content: url(../../images/bell.svg);
-        width: 30px;
-        height: 30px;
+        width: 34px;
+        height: 34px;
         background-color: transparent;
-        box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
+        // box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
         padding: 5px;
         border-radius: 5px;
         &:hover {
             cursor: pointer;
             background-color: rgba(90, 140, 248, 0.267);
+        }
+        .notification-indocator {
+            width: 5px;
+            height: 5px;
+            background-color: #4886ff;
         }
     }
     .board-txt {
@@ -135,16 +141,15 @@
         &:hover {
             color: #4886ff;
         }
-        @include for-w-mobile-layout{
+        @include for-w-mobile-layout {
             content: " ";
             display: none;
         }
     }
 }
 
-
-.mobile-menu{
-    @include for-w-mobile-layout{
+.mobile-menu {
+    @include for-w-mobile-layout {
         padding: 10px;
         top: 0;
         left: 0;
@@ -155,7 +160,7 @@
         height: -moz-fit-content;
         height: fit-content;
         text-align: center;
-        box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.08);        
+        box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.08);
         display: flex;
         flex-direction: column;
         align-items: center;

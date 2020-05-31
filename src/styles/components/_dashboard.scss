@@ -54,6 +54,10 @@
                     top: 50%;
                     left: 90%;
                     cursor: pointer;
+                    @include for-narrow-layout {
+                        // 860px
+                        visibility: visible;
+                    }
                 }
 
                 .menu-btn {
@@ -64,6 +68,10 @@
                     bottom: 45%;
                     left: 91%;
                     cursor: pointer;
+                    @include for-narrow-layout {
+                        // 860px
+                        visibility: visible;
+                    }
                 }
 
                 &:hover {
@@ -108,7 +116,6 @@
         }
     }
 }
-
 
 @keyframes board-animation {
     0% {

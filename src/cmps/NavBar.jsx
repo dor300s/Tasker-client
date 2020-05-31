@@ -5,7 +5,7 @@ import NavMenu from '../cmps/NavMenu'
 import NavUserNotificationMenu from './NavUserNotificationMenu'
 import { connect } from 'react-redux'
 import { setBoards, setBoard } from '../store/actions/boardActions.js'
-import { getUser, update , loadUsers } from '../store/actions/userActions.js'
+import { getUser, update, loadUsers } from '../store/actions/userActions.js'
 import { BoardMembers } from './BoardMembers'
 import { MemberPreview } from './MemberPreview'
 import NavBarSearch from './NavBarSearch'
@@ -135,7 +135,9 @@ class NavBar extends React.Component {
                 <div className="nav-right-section flex align-center">
                     {/* <button className="board-menu" onClick={() => history.push(`/board`)}>Board Menu</button> */}
                     {activeBoard && <ChartModal />}
-                    <span style={{ backgroundColor: `${notifiToShow.length ? "rgb(252, 115, 126)" : ""} ` }} className="nav-notification-btn" onClick={this.onUserNotificationClick}></span>
+                    <span style={{ backgroundColor: `${notifiToShow.length ? "rgb(252, 115, 126)" : ""} ` }} className="nav-notification-btn" onClick={this.onUserNotificationClick}>
+                        {notifiToShow.length && <div className="notification-indocator"></div>}
+                    </span>
                     {<NavUserNotificationMenu onCloseNotificationMenu={onCloseNotificationMenu} isNotificationModalOpen={isNotificationModalOpen} history={history} user={loggedUser} />}
                     <MemberPreview user={loggedUser} history={history} />
                 </div>
