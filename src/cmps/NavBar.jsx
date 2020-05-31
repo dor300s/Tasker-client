@@ -28,43 +28,51 @@ class NavBar extends React.Component {
         document.addEventListener("keydown", this.onCloseMenu, false);
 
         window.onbeforeunload = this.closingCode
-
-
         socketService.setup()
+        socketService.on(`newuserconnect`, () => {
+            console.log('NEW USER CONNECTED!!!!!!!!!!!');
+            this.props.loadUsers()
+        })
+        socketService.on(`user-disconnected`, () => {
+            this.props.loadUsers()
+        })
+        socketService.on(`user-disconnected-ui`, () => {
+            this.props.loadUsers()
+        })
         this.props.getUser()
             .then(() => {
-                socketService.on(`newuserconnect`, () => {
-                    this.props.loadUsers()
-                })
-                if (this.props.loggedUser) {
-                    socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
-                        this.notifiBoardCollab(invData);
-                    })
-
-                    socketService.on(`user-disconnected`, () => {
-                        this.props.loadUsers()
-                    })
-
-                    socketService.on(`user-card-assign-${this.props.loggedUser._id}`, (assignData) => {
-                        this.notifiCardAssign(assignData);
-                    })
-                }
+                this.socketSubscribers()
                 if (!this.props.loggedUser) this.props.history.push('/')
                 else this.props.setBoards()
             })
     }
 
-
-    componentWillUnmount() {
-        document.removeEventListener("mousedown", this.onCloseMenu, false);
-        document.removeEventListener("keydown", this.onCloseMenu, false);
+    componentDidUpdate(prevProps) {
+        if (prevProps.loggedUser !== this.props.loggedUser) {
+            this.socketSubscribers()
+        }
     }
 
-    onCloseMenu = (ev) => {
-        ev.stopPropagation();
-        if (!this.node.contains(ev.target) || ev.keyCode === 27) {
-            // this.setState({ isMenuOpen: false })
-            this.onCloseMenu();
+    closingCode = () => {
+        this.props.loggedUser.isLogIn = false
+        this.props.update(this.props.loggedUser)
+            .then(() => {
+                socketService.emit('user logged-out')
+                return null
+            })
+    }
+
+    socketSubscribers = () => {
+        socketService.off(`user-invite-${this.props.loggedUser._id}`)
+        socketService.off(`user-card-assign-${this.props.loggedUser._id}`)
+
+        if (this.props.loggedUser) {
+            socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
+                this.notifiBoardCollab(invData);
+            })
+            socketService.on(`user-card-assign-${this.props.loggedUser._id}`, (assignData) => {
+                this.notifiCardAssign(assignData);
+            })
         }
     }
 

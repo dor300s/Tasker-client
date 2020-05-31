@@ -1,4 +1,6 @@
 import userService from '../../services/userService'
+import socketService from '../../services/socketService'
+
 
 export function loadUsers() {
   return async dispatch => {
