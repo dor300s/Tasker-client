@@ -2,7 +2,8 @@ import React from 'react'
 
 export function BoardMembers(props) {
     const { board, history, cardMemberMode } = props
-
+    console.log('Members Historyyyyyyyy',history);
+    
     return (
         <div className="nav-board-members flex align-center">
 

@@ -9,30 +9,21 @@ let data = {
     labels: ['23/5', '24/5', '25/5', '26/5', '27/5', '28/5', '29/5'],
     datasets: [
         {
-            label: 'Eliyahu Dayan',
-            backgroundColor: 'rgba(255,99,132,0.2)',
-            borderColor: 'rgba(255,99,132,1)',
-            borderWidth: 1,
-            hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-            hoverBorderColor: 'rgba(255,99,132,1)',
-            data: [3, 4, 1, 3, 4, 5, 6]
-        },
-        {
             label: 'Dor Ben Itzhak',
-            backgroundColor: 'rgba(111,11,11,0.2)',
-            borderColor: 'rgba(111,11,11,1)',
+            backgroundColor: cssVar.$clrChart3,
+            borderColor: cssVar.$clrChart3,
             borderWidth: 1,
-            hoverBackgroundColor: 'rgba(111,11,11,0.4)',
-            hoverBorderColor: 'rgba(111,11,11,1)',
+            hoverBackgroundColor: cssVar.$clrChart3,
+            hoverBorderColor: cssVar.$clrChart3,
             data: [1, 2, 3, 2, 1, 1, 3]
         },
         {
             label: 'Reem Alon',
-            backgroundColor: 'rgba(222,22,22,0.2)',
-            borderColor: 'rgba(222,22,22,1)',
+            backgroundColor: cssVar.$clrChart6,
+            borderColor: cssVar.$clrChart6,
             borderWidth: 1,
-            hoverBackgroundColor: 'rgba(222,22,22,0.4)',
-            hoverBorderColor: 'rgba(222,22,22,2)',
+            hoverBackgroundColor: cssVar.$clrChart6,
+            hoverBorderColor: cssVar.$clrChart6,
             data: [3, 2, 5, 1, 6, 5, 2]
         }
     ]
@@ -98,13 +89,15 @@ class ChartBar extends Component {
     render() {
         const { usersData } = this.state;
 
+        
         return (
+            (!usersData)? <div>loading</div> :
             <div className="chart-bar">
                 <h2>Done tasks by user</h2>
                 <Bar
                     data={usersData}
-                    width={10}
-                    height={5}
+                    width={2}
+                    height={1}
                     options={{
                         maintainAspectRatio: false,
                     }

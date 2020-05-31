@@ -22,14 +22,48 @@
             transition: 0.5s;
         }
         &:focus {
+            z-index: 1;
             width: 350px;
             padding-left: 45px;
-            z-index: 2;
             &::placeholder {
                 opacity: 0;
             }
         }
     }
+    // .card-search {
+    //     height: 35px;
+    //     border: 0;
+    //     width: 100px;
+    //     outline: none;
+    //     padding-left: 35px !important;
+    //     background: url(../../images/search.svg) center / contain no-repeat;
+    //     background-size: 20px;
+    //     background-position: 10px;
+    //     // border-bottom: 1px solid $clr4;
+    //     // border: 1px solid $clr4;
+    //     transition: 0.5s;
+    //     transition-delay: 0.1s;
+    //     &::placeholder {
+    //         padding-left: 5px;
+    //         font-size: 14px;
+    //         transition: 0.5s;
+    //     }
+    //     &:focus {
+    //         width: 350px;
+    //         @include for-w-mobile-layout {
+    //             width: 0;
+    //         }
+    //         padding-left: 45px;
+    //         z-index: 2;
+    //         &::placeholder {
+    //             padding-left: 100px;
+    //             @include for-w-mobile-layout {
+    //                 padding-left: 0px;
+    //             }
+    //             opacity: 0;
+    //         }
+    //     }
+    // }
     .header {
         font-weight: bold;
     }
@@ -49,12 +83,13 @@
         background-color: rgb(255, 255, 255);
         transition: 0.2s;
         opacity: 0;
-        width: 350px;
+        width: 100%;
+
         &.open-modal {
             transition-delay: 0.5s;
             transform: translateY(-10%);
-            width: 350px;
             opacity: 1;
+
         }
 
         > * {

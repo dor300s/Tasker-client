@@ -16,19 +16,18 @@ class InviteMemberModal extends Component {
         document.addEventListener("keydown", this.onCloseInviteMenu, false);
     }
 
-    // componentDidUpdate(prevProps){
-    //     if(this.state.users !== this.props.users){
-    //         console.log('USERS CHANGED @@@@@@@@@@@@@@@');
-    //         this.setState({users: this.props.users})
-    //         // this.props.loadUsers()
-    //     }
-    // }
-    
+
     componentWillUnmount() {
         document.removeEventListener("mousedown", this.onCloseInviteMenu, false);
         document.removeEventListener("keydown", this.onCloseInviteMenu, false);
     }
 
+    componentDidUpdate(prevProps){
+        if(prevProps.users !== this.props.users){
+            console.log('CHANGEEEEEEEEEEEEEEEEEEEEEEEEEE');
+            // this.props.loadUsers()
+        }
+    }
 
     onCloseInviteMenu = (ev) => {
         ev.stopPropagation();

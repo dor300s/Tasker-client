@@ -6,7 +6,6 @@
     font-size: 16.5px;
     width: 100vw;
     top: 0;
-    left: 0;
     margin: 0;
     background-color: rgba($clr6, 0.8);
     padding: 7px 30px 7px 32px;
@@ -22,6 +21,10 @@
         width: 120px;
         padding: 0;
         margin: 0;
+        &::after {
+            background-color: yellow;
+            content: " bbbbbbbbbbbbbbbbbbb";
+        }
         .logo {
             content: url(../../images/taskker-logo-black.svg);
             position: relative;
@@ -87,6 +90,7 @@
     }
 
     .member-modal {
+        visibility: hidden;
         background: white;
         position: absolute;
         z-index: 1;
@@ -102,6 +106,7 @@
         transform: translateX(100%);
         &.modal-open {
             transform: translateX(-20%);
+            visibility: visible !important;
         }
 
         > * {
@@ -119,19 +124,20 @@
     .nav-notification-btn {
         margin-left: 10px;
         content: url(../../images/bell.svg);
-        width: 34px;
-        height: 34px;
+        width: 30px;
+        height: 30px;
         background-color: transparent;
-        // box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
+        box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.199);
         padding: 5px;
         border-radius: 5px;
         &:hover {
             cursor: pointer;
             background-color: rgba(90, 140, 248, 0.267);
         }
-        .notification-indocator {
-            width: 5px;
-            height: 5px;
+        .notification-indocator{
+            width: 10px;
+            height: 10px;
+            z-index: 1;
             background-color: #4886ff;
         }
     }
@@ -148,33 +154,84 @@
     }
 }
 
-.mobile-menu {
+.nav-bar {
     @include for-w-mobile-layout {
-        padding: 10px;
-        top: 0;
-        left: 0;
-        background: white;
-        position: absolute;
-        z-index: 3;
-        width: max-content;
-        height: -moz-fit-content;
-        height: fit-content;
-        text-align: center;
-        box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.08);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        > * {
-            position: static !important;
-            left: 0 !important;
-            top: 0 !important;
-            transform: translate(0, 0) !important;
+        .card-search {
             width: 100% !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            border: 0 !important;
-            box-shadow: none !important;
+            &::placeholder {
+                &:focus {
+                    &::placeholder {
+                        padding-left: 0px;
+                    }
+                }
+            }
+        }
+        // .nav-search-result {
+        //     &.open-modal {
+        //         width: 80vw;
+        //     }
+        .nav-search-result-container {
+            position: static;
+            transform: translate(0, 0);
+            // .card-search {
+            //     :focus {
+            //         position: absolute;
+            //         left: 0;
+            //         top: 0;
+            //     }
+            // }
+        }
+
+        .nav-search-result {
+            &.open-modal {
+                width: 80vw;
+                transform: translate(0%, 0%);
+            }
+        }
+
+        .mobile-menu {
+            padding: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            background: white;
+            z-index: 3;
+            width: max-content;
+            text-align: center;
+            box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            // justify-content: center;
+            transform: translate(-100%, 0%);
+            transition: 0.25s;
+
+            &.modal-open {
+                transform: translate(0%, 0%);
+            }
+
+            > * {
+                position: static !important;
+                left: 0 !important;
+                top: 0 !important;
+                width: 100% !important;
+                height: auto !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                border: 0 !important;
+                box-shadow: none !important;
+            }
+            * {
+                transform: translate(0, 0) !important;
+            }
+            > *:not(:last-child) {
+                margin-bottom: 20px;
+                box-shadow: 0px 14px 16px -20px rgba(0, 0, 0, 0.75);
+            }
+            > *:first-child {
+                margin-bottom: 50px !important;
+            }
         }
     }
 }

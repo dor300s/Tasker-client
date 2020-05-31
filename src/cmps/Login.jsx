@@ -27,6 +27,7 @@ class Login extends React.Component {
 
         this.props.login(credentials)
             .then(() => {
+
                 this.props.history.push('/board')
             })
             .catch(console.log('ERROR')) // TODO: Show error modal

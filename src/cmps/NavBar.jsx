@@ -24,35 +24,58 @@ class NavBar extends React.Component {
     }
 
     componentDidMount() {
-        window.onbeforeunload = this.closingCode
+        document.addEventListener("mousedown", this.onCloseMenu, false);
+        document.addEventListener("keydown", this.onCloseMenu, false);
 
+        window.onbeforeunload = this.closingCode
         socketService.setup()
+        socketService.on(`newuserconnect`, () => {
+            console.log('NEW USER CONNECTED!!!!!!!!!!!');
+            this.props.loadUsers()
+        })
+        socketService.on(`user-disconnected`, () => {
+            this.props.loadUsers()
+        })
+        socketService.on(`user-disconnected-ui`, () => {
+            this.props.loadUsers()
+        })
         this.props.getUser()
             .then(() => {
-                socketService.on(`newuserconnect`, () => {
-                    this.props.loadUsers()
-                })
-                if (this.props.loggedUser) {
-                    socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
-                        this.notifiBoardCollab(invData);
-                    })
-
-                    socketService.on(`user-disconnected`, () => {
-                        this.props.loadUsers()
-                    })
-
-                    socketService.on(`user-card-assign-${this.props.loggedUser._id}`, (assignData) => {
-                        this.notifiCardAssign(assignData);
-                    })
-                }
+                this.socketSubscribers()
                 if (!this.props.loggedUser) this.props.history.push('/')
                 else this.props.setBoards()
             })
     }
 
-    componentWillUnmount() {
-
+    componentDidUpdate(prevProps) {
+        if (prevProps.loggedUser !== this.props.loggedUser) {
+            this.socketSubscribers()
+        }
     }
+
+    closingCode = () => {
+        this.props.loggedUser.isLogIn = false
+        this.props.update(this.props.loggedUser)
+            .then(() => {
+                socketService.emit('user logged-out')
+                return null
+            })
+    }
+
+    socketSubscribers = () => {
+        socketService.off(`user-invite-${this.props.loggedUser._id}`)
+        socketService.off(`user-card-assign-${this.props.loggedUser._id}`)
+
+        if (this.props.loggedUser) {
+            socketService.on(`user-invite-${this.props.loggedUser._id}`, (invData) => {
+                this.notifiBoardCollab(invData);
+            })
+            socketService.on(`user-card-assign-${this.props.loggedUser._id}`, (assignData) => {
+                this.notifiCardAssign(assignData);
+            })
+        }
+    }
+
 
     notifiBoardCollab = (invData) => {
         this.props.loggedUser.notifications.unshift({
@@ -125,19 +148,19 @@ class NavBar extends React.Component {
                             <div className="board-txt">Boards</div>
                         </div>}
 
-                    <div className="mobile-menu">
+                    <div className={`mobile-menu ${(isMenuActive) ? 'modal-open' : ""}`}  ref={node => this.node = node}>
+                        {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                         {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                         {activeBoard && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
-                        {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                     </div>
-                    {< NavBarSearch /* boar ds={boards} */ history={history} currBoard={activeBoard} history={history} />}
+                    {< NavBarSearch boards={boards} history={history} currBoard={activeBoard} history={history} />}
                 </div>
                 <div className="nav-right-section flex align-center">
                     {/* <button className="board-menu" onClick={() => history.push(`/board`)}>Board Menu</button> */}
                     {activeBoard && <ChartModal />}
-                    <span style={{ backgroundColor: `${notifiToShow.length ? "rgb(252, 115, 126)" : ""} ` }} className="nav-notification-btn" onClick={this.onUserNotificationClick}>
-                        {notifiToShow.length && <div className="notification-indocator"></div>}
-                    </span>
+                    <div style={{ backgroundColor: `${notifiToShow.length ? "rgb(252, 115, 126)" : ""} ` }} className="nav-notification-btn" onClick={this.onUserNotificationClick}>
+                        {/* <div className="notification-indocator">aaaaa</div> */}
+                    </div>
                     {<NavUserNotificationMenu onCloseNotificationMenu={onCloseNotificationMenu} isNotificationModalOpen={isNotificationModalOpen} history={history} user={loggedUser} />}
                     <MemberPreview user={loggedUser} history={history} />
                 </div>

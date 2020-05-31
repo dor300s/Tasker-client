@@ -11,6 +11,12 @@
     }
 }
 
+@mixin for-w2-mobile-layout {
+    @media (max-width: $w2-mobile-breakpoint + 40) {
+        @content;
+    }
+}
+
 @mixin for-narrow-layout {
     @media (max-width: $narrow-breakpoint + 40) {
         @content;

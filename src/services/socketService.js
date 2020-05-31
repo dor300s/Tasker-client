@@ -9,7 +9,7 @@ export default {
   terminate,
   on,
   off,
-  emit
+  emit,
 };
 
 function setup() {
@@ -32,3 +32,5 @@ function off(eventName, cb) {
 function emit(eventName, data) {
   socket.emit(eventName, data);
 }
+
+

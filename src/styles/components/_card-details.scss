@@ -698,3 +698,33 @@
         }
     }
 }
+
+@include for-w2-mobile-layout {
+    .card-details-modal{
+        width: 610px !important;
+    }
+}
+@include for-w-mobile-layout {
+    .card-details-actions{
+        display: none;
+    }
+    .card-details-content-wrapper{
+        width: 410px !important;
+        // margin-left: 60px !important;
+    }
+    .card-details-modal{
+        padding: 15px 7px !important;
+        width: 400px !important;
+    }
+    .img-modal-close-btn{
+        left: 90% !important;
+    }
+    .cancel{
+        margin-right: 15px !important;
+    }
+    .card-details-description{
+        & p{
+            width: 320px !important;
+        }
+    }
+}

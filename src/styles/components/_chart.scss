@@ -1,6 +1,6 @@
 .chart-container {
     .chartjs-render-monitor {
-        width: 40vw !important;
+        width: 100% !important;
         height: auto !important;
         // max-width: % !important;
     }
@@ -18,25 +18,32 @@
             height: 85vh;
             display: flex;
             flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
             background-color: $clr6;
             padding: 15px;
             transform: translateY(100%);
-            opacity: 0;
             transition: 0.5s;
-        }
-
-        .chart-bar {
-            justify-self: center;
-            align-self: center;
+            opacity: 0;
         }
 
         &.modal-open {
             display: flex;
             transform: translateY(0%);
-            
+            opacity: 1;
+            > *:not(:last-child) {
+                margin-bottom: 20px;
+            }
+
             .chart-modal {
-                opacity: 1;
                 transform: translateY(0%);
+                opacity: 1;
+                > * {
+                    padding: 20px;
+                    margin-bottom: 20px;
+                    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.397);
+
+                }
             }
         }
     }

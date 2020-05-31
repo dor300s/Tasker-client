@@ -1,4 +1,5 @@
 import httpService from './httpService'
+import socketService from './socketService'
 
 export default {
     login,
@@ -25,6 +26,8 @@ function remove(userId) {
 }
 
 function update(user) {
+    console.log('Update', user);
+    
     return httpService.put(`user/${user._id}`, user)
 }
 
@@ -38,11 +41,12 @@ async function signup(userCred) {
     return _handleLogin(user)
 }
 
-async function logout() {
-   let res = await httpService.post('auth/logout');
+async function logout(user) {
+    user.isLogIn = false
+    await update(user)
+    let res = await httpService.post('auth/logout');
    sessionStorage.clear();
     return res
-    
 }
 
 function clearNotifications(user) {
@@ -53,6 +57,7 @@ function clearNotifications(user) {
 function _handleLogin(user) {
     user.isLogIn = true ;
     update(user)
+    socketService.emit('user login')
     sessionStorage.setItem('user', JSON.stringify(user))
     return user;
 }

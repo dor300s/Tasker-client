@@ -1,12 +1,14 @@
 export default {
-    $clrChart8: 'rgb(255, 166, 0)',
     $clrChart1: 'rgb(0, 63, 92)',
     $clrChart2: 'rgb(47, 75, 124)',
     $clrChart3: 'rgb(102, 81, 149)',
     $clrChart4: 'rgb(160, 81, 149)',
     $clrChart5: 'rgb(212, 80, 135)',
     $clrChart6: 'rgb(249, 93, 106)',
-    $clrChart7: 'rgb(255, 124, 67)'
+    $clrChart7: 'rgb(255, 124, 67)',
+    $clrChart8: 'rgb(255, 166, 0)',
+    $clrChart9: 'rgb(24, 170, 225)',
+    $clrChart10: 'rgb(238, 83, 141)',
 }
 
 // const color = {
