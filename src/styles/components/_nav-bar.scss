@@ -139,7 +139,8 @@
         z-index: 1;
         border-radius: 50%;
         background-color: #4886ff;
-        transform: translate(27px,-24px);
+        transform: translate(27px, -24px);
+        animation: notification-animation 1s;
     }
     .board-txt {
         font-size: 14px;
@@ -169,7 +170,6 @@
         .nav-search-result-container {
             position: static;
             transform: translate(0, 0);
-
         }
 
         .nav-search-result {
@@ -223,14 +223,14 @@
                 margin-bottom: 50px !important;
             }
 
-            .nav-board-members{
-                .invite{
+            .nav-board-members {
+                .invite {
                     display: none;
                 }
             }
-            
+
             .invite-members-modal {
-                .invite-header{
+                .invite-header {
                     display: none;
                 }
                 input {
@@ -239,9 +239,20 @@
                         font-size: 10px;
                         text-align: center;
                     }
-                
                 }
             }
         }
+    }
+}
+
+@keyframes notification-animation {
+    0% {
+        transform: translate(27px, -10px);
+    }
+    50% {
+        transform: translate(27px, -34px);
+    }
+    100% {
+        transform: translate(27px, -24px);
     }
 }
