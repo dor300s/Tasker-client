@@ -98,13 +98,15 @@ class ChartBar extends Component {
     render() {
         const { usersData } = this.state;
 
+        
         return (
+            (!usersData)? <div>loading</div> :
             <div className="chart-bar">
                 <h2>Done tasks by user</h2>
                 <Bar
                     data={usersData}
                     width={10}
-                    height={5}
+                    height={1}
                     options={{
                         maintainAspectRatio: false,
                     }

@@ -24,6 +24,9 @@ class NavBar extends React.Component {
     }
 
     componentDidMount() {
+        document.addEventListener("mousedown", this.onCloseMenu, false);
+        document.addEventListener("keydown", this.onCloseMenu, false);
+
         window.onbeforeunload = this.closingCode
         socketService.setup()
         socketService.on(`newuserconnect`, () => {
@@ -72,6 +75,7 @@ class NavBar extends React.Component {
             })
         }
     }
+
 
     notifiBoardCollab = (invData) => {
         this.props.loggedUser.notifications.unshift({
@@ -144,12 +148,12 @@ class NavBar extends React.Component {
                             <div className="board-txt">Boards</div>
                         </div>}
 
-                    <div className="mobile-menu">
+                    <div className={`mobile-menu ${(isMenuActive) ? 'modal-open' : ""}`}  ref={node => this.node = node}>
+                        {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                         {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                         {activeBoard && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
-                        {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                     </div>
-                    {< NavBarSearch /* boar ds={boards} */ history={history} currBoard={activeBoard} history={history} />}
+                    {< NavBarSearch boards={boards} history={history} currBoard={activeBoard} history={history} />}
                 </div>
                 <div className="nav-right-section flex align-center">
                     {/* <button className="board-menu" onClick={() => history.push(`/board`)}>Board Menu</button> */}

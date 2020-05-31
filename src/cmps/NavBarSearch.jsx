@@ -58,12 +58,8 @@ export default class NavBarSearch extends React.Component {
             this.setState({ filterBoards: [], filterLists: [], filterCards: [], filterUsers: [] })
             return;
         }
-        if (boards) {
-            let filterBoards = boards.filter(board => board.title.toLowerCase().includes(searchWord.toLowerCase()));
-            if (!filterBoards.length) filterBoards = boards;
-            this.setState({ filterBoards })
-            return
-        } else {
+        
+        if (currBoard) {
             let filterLists = []
             currBoard.cardLists.forEach(cardList => {
                 if (cardList.title.toLowerCase().includes(searchWord.toLowerCase())) {
@@ -86,6 +82,11 @@ export default class NavBarSearch extends React.Component {
                 })
             });
             this.setState({ filterLists, filterCards })
+        }else if (boards) {
+            let filterBoards = boards.filter(board => board.title.toLowerCase().includes(searchWord.toLowerCase()));
+            if (!filterBoards.length) filterBoards = boards;
+            this.setState({ filterBoards })
+            return
         }
     }
 
@@ -114,7 +115,7 @@ export default class NavBarSearch extends React.Component {
                                 )}
                             </div>
                         </div>}
-                    {!Boolean(filterLists.length) && !Boolean(filterCards.length) &&
+                    {!Boolean(filterLists.length) && !Boolean(filterCards.length) && filterBoards && !Boolean(filterBoards.length) &&  
                         <div className='empty-search-massage'>
                             <div className="search"></div>
                             <div>Search</div>
