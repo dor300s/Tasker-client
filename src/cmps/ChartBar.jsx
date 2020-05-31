@@ -9,15 +9,6 @@ let data = {
     labels: ['23/5', '24/5', '25/5', '26/5', '27/5', '28/5', '29/5'],
     datasets: [
         {
-            label: 'Eliyahu Dayan',
-            backgroundColor: 'rgba(255,99,132,0.2)',
-            borderColor: 'rgba(255,99,132,1)',
-            borderWidth: 1,
-            hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-            hoverBorderColor: 'rgba(255,99,132,1)',
-            data: [3, 4, 1, 3, 4, 5, 6]
-        },
-        {
             label: 'Dor Ben Itzhak',
             backgroundColor: 'rgba(111,11,11,0.2)',
             borderColor: 'rgba(111,11,11,1)',
