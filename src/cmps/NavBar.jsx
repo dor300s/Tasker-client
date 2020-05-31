@@ -37,7 +37,8 @@ class NavBar extends React.Component {
             this.props.loadUsers()
         })
         socketService.on(`user-disconnected-ui`, () => {
-            this.props.loadUsers()
+            console.log('USER DC FROM UI BTN');
+                        this.props.loadUsers()
         })
         this.props.getUser()
             .then(() => {
@@ -134,7 +135,7 @@ class NavBar extends React.Component {
             notifiToShow = loggedUser.notifications.filter(notifi => !notifi.isRead)
         }
 
-        if (!loggedUser) return <></>
+        if (!loggedUser) return ''
         return (
             <nav className="nav-bar flex align-center space-between" >
                 {!activeBoard && <div className="img-wrapper" onClick={() => this.props.history.push('/board')}>
