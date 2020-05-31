@@ -54,6 +54,12 @@ class NavBar extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        document.removeEventListener("mousedown", this.onCloseMenu, false);
+        document.removeEventListener("keydown", this.onCloseMenu, false);
+    }
+
+
     closingCode = () => {
         this.props.loggedUser.isLogIn = false
         this.props.update(this.props.loggedUser)
@@ -106,8 +112,12 @@ class NavBar extends React.Component {
         this.setState(prevState => ({ isMenuActive: !prevState.isMenuActive }))
     }
 
-    onCloseMenu = () => {
-        this.setState({ isMenuActive: false })
+    onCloseMenu = (ev) => {
+        //TODO REMOVE IT and fix it
+        ev.stopPropagation();
+        if (!this.node.contains(ev.target) || ev.keyCode === 27) {
+            this.setState({ isMenuActive: false })
+        }
     }
 
     onCloseInviteMenu = () => {
@@ -126,10 +136,15 @@ class NavBar extends React.Component {
         this.setState(prevState => ({ isInviteModalOpen: !prevState.isInviteModalOpen }))
     }
 
+    onPageChange = () => {
+        console.log('page changeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
+        this.setState({ isMenuActive: false })
+    }
+
     render() {
         const { isMenuActive, isNotificationModalOpen, isInviteModalOpen } = this.state
         const { boards, activeBoard, history, loggedUser } = this.props
-        const { onCloseInviteMenu, onInviteMember, onCloseNotificationMenu } = this
+        const { onCloseInviteMenu, onInviteMember, onCloseNotificationMenu, onPageChange } = this
         let notifiToShow;
         if (loggedUser) {
             notifiToShow = loggedUser.notifications.filter(notifi => !notifi.isRead)
@@ -150,14 +165,13 @@ class NavBar extends React.Component {
                         </div>}
 
                     <div className={`mobile-menu ${(isMenuActive) ? 'modal-open' : ""}`} ref={node => this.node = node}>
-                        {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
+                        {<NavMenu onPageChange={onPageChange} history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                         {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                         {activeBoard && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
                     </div>
-                    {< NavBarSearch boards={boards} history={history} currBoard={activeBoard} history={history} />}
+                    {< NavBarSearch onPageChange={onPageChange} history={history} boards={boards}  currBoard={activeBoard} history={history} />}
                 </div>
                 <div className="nav-right-section flex align-center">
-                    {/* <button className="board-menu" onClick={() => history.push(`/board`)}>Board Menu</button> */}
                     {activeBoard && <ChartModal />}
                     <div>
                         <div /* style={{ backgroundColor: `${notifiToShow.length ? "rgb(252, 115, 126)" : ""} ` }} */ className="nav-notification-btn" onClick={this.onUserNotificationClick}></div>
