@@ -24,7 +24,6 @@ class InviteMemberModal extends Component {
 
     componentDidUpdate(prevProps){
         if(prevProps.users !== this.props.users){
-            console.log('CHANGEEEEEEEEEEEEEEEEEEEEEEEEEE');
             // this.props.loadUsers()
         }
     }
@@ -71,7 +70,6 @@ class InviteMemberModal extends Component {
     render() {
         const { filteredUsers , isAlreadyInvitesShown } = this.state
         const { isInviteModalOpen } = this.props
-        console.log(isInviteModalOpen)
 
         return (
             <div ref={node => this.node = node} className={`invite-members-modal ${(isInviteModalOpen) ? 'modal-open' : ''} flex column align-center`}>

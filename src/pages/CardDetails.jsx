@@ -70,7 +70,6 @@ class CardDetails extends Component {
     }
 
     onDatePicked = (timeStamp) => {
-        console.log('OPEN CALENDAR');
         
         const { currCard } = this.state
         const { currBoard } = this.props
@@ -90,7 +89,6 @@ class CardDetails extends Component {
     }
 
     onTitleBlur = () =>{
-        console.log('LUREDED');
         
         const { currBoard } = this.props
         this.props.saveBoard(currBoard)

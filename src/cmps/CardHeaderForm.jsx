@@ -6,14 +6,23 @@ export class CardHeaderForm extends Component {
         cardTitle: this.props.cardHeader,
     }
 
+    // componentDidMount() {
+    //     document.addEventListener("mousedown", this.closeCardMenu, false);
+    //     document.addEventListener("keydown", this.closeCardMenu, false);
+    // }
+
+    // componentWillUnmount() {
+    //     document.removeEventListener("mousedown", this.closeCardMenu, false);
+    //     document.removeEventListener("keydown", this.closeCardMenu, false);
+    // }
+
     componentDidMount() {
-        document.addEventListener("mousedown", this.closeCardMenu, false);
-        document.addEventListener("keydown", this.closeCardMenu, false);
+        document.addEventListener("keydown", this.escFunction, false);
     }
 
+
     componentWillUnmount() {
-        document.removeEventListener("mousedown", this.closeCardMenu, false);
-        document.removeEventListener("keydown", this.closeCardMenu, false);
+        document.removeEventListener("keydown", this.escFunction, false);
     }
 
     closeCardMenu = (e) => {
@@ -42,14 +51,7 @@ export class CardHeaderForm extends Component {
     }
 
 
-    componentDidMount() {
-        document.addEventListener("keydown", this.escFunction, false);
-    }
 
-
-    componentWillUnmount() {
-        document.removeEventListener("keydown", this.escFunction, false);
-    }
 
     onSubmit = () => {
         this.props.offEditCardHeader(this.props.cardId, this.props.cardListId, this.state.cardTitle)

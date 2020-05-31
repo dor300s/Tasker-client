@@ -20,7 +20,6 @@ class CardMembers extends Component {
     addMember = (member) => {
         
         const { card, board , user } = this.props
-        console.log(card.id , board._id);
         let idx = card.members.findIndex(user => user._id === member._id)
         if (idx !== -1) return
 

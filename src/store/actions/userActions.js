@@ -52,13 +52,6 @@ export function getUser() {
   }
 }
 
-/* export function getUserById(id) {
-  const user = userService.getById(id);
-  console.log('user actionnnnnnnnnn', user);
-
-} */
-
-
 export function update(userData) {
   return async dispatch => {
     const user = await userService.update(userData);

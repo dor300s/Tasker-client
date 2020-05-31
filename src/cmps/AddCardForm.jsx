@@ -43,7 +43,6 @@ export class AddCardForm extends Component {
 
     createNewCard() {
         const { title } = { title: this.state.newCardTitle }
-        console.log('creatNewCard', title)
         this.props.onAddCard(this.props.cardListId, title)
         this.setState({ addCardForm: false, newCardTitle: '' })
     }
