@@ -11,24 +11,7 @@ class NavMenu extends React.Component {
         filteredBoards: null,
     }
 
-    componentDidMount() {
-        document.addEventListener("mousedown", this.onCloseMenu, false);
-        document.addEventListener("keydown", this.onCloseMenu, false);
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener("mousedown", this.onCloseMenu, false);
-        document.removeEventListener("keydown", this.onCloseMenu, false);
-    }
-
-    onCloseMenu = (ev) => {
-        ev.stopPropagation();
-        if (!this.node.contains(ev.target) || ev.keyCode === 27) {
-            // this.setState({ isMenuOpen: false })
-            this.props.onCloseMenu();
-        }
-    }
-
+   
     onBoardClicked = (id) => {
         this.props.history.push(`/board/${id}`)
         this.props.setBoard(id)
@@ -58,7 +41,7 @@ class NavMenu extends React.Component {
         let starredBoards = boards.filter(board => board.isStarred);
 
         return (
-            <div className={`nav-menu flex column ${(isMenuActive)? "nav-open": ""}`} ref={node => this.node = node}>
+            <div className={`nav-menu flex column ${(isMenuActive)? "nav-open": ""}`} >
                 {currBoard &&
                     <div className="home-button flex align-center justify-center cursor" onClick={() => this.onHomeBtnClick()} >
                         <div className="dashboard-btn"></div>
@@ -70,7 +53,7 @@ class NavMenu extends React.Component {
                     <div className="nav-board-preview-overlay"></div>
 
                     {filteredBoards && <h3 className="list-header">Searched Boards</h3>}
-                    {filteredBoards && !filteredBoards.length && <h4 className="label no-match">- There is no matches</h4>}
+                    {filteredBoards && !filteredBoards.length && <h4 className="no-match">- There is no matches</h4>}
                     {filteredBoards && <div className="boards-container flex column align-center">
                         <BoardList boards={filteredBoards} onBoardClicked={this.onBoardClicked} />
                     </div>}

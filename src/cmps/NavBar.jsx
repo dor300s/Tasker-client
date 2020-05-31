@@ -5,7 +5,7 @@ import NavMenu from '../cmps/NavMenu'
 import NavUserNotificationMenu from './NavUserNotificationMenu'
 import { connect } from 'react-redux'
 import { setBoards, setBoard } from '../store/actions/boardActions.js'
-import { getUser, update , loadUsers } from '../store/actions/userActions.js'
+import { getUser, update, loadUsers } from '../store/actions/userActions.js'
 import { BoardMembers } from './BoardMembers'
 import { MemberPreview } from './MemberPreview'
 import NavBarSearch from './NavBarSearch'
@@ -24,7 +24,11 @@ class NavBar extends React.Component {
     }
 
     componentDidMount() {
+        document.addEventListener("mousedown", this.onCloseMenu, false);
+        document.addEventListener("keydown", this.onCloseMenu, false);
+
         window.onbeforeunload = this.closingCode
+
 
         socketService.setup()
         this.props.getUser()
@@ -50,9 +54,20 @@ class NavBar extends React.Component {
             })
     }
 
-    componentWillUnmount() {
 
+    componentWillUnmount() {
+        document.removeEventListener("mousedown", this.onCloseMenu, false);
+        document.removeEventListener("keydown", this.onCloseMenu, false);
     }
+
+    onCloseMenu = (ev) => {
+        ev.stopPropagation();
+        if (!this.node.contains(ev.target) || ev.keyCode === 27) {
+            // this.setState({ isMenuOpen: false })
+            this.onCloseMenu();
+        }
+    }
+
 
     notifiBoardCollab = (invData) => {
         this.props.loggedUser.notifications.unshift({
@@ -125,7 +140,7 @@ class NavBar extends React.Component {
                             <div className="board-txt">Boards</div>
                         </div>}
 
-                    <div className={`mobile-menu ${(isMenuActive)? 'modal-open': ""}`}>
+                    <div className={`mobile-menu ${(isMenuActive) ? 'modal-open' : ""}`}  ref={node => this.node = node}>
                         {<NavMenu history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
                         {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
                         {activeBoard && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
