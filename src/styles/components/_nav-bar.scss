@@ -160,20 +160,10 @@
                 }
             }
         }
-        // .nav-search-result {
-        //     &.open-modal {
-        //         width: 80vw;
-        //     }
         .nav-search-result-container {
             position: static;
             transform: translate(0, 0);
-            // .card-search {
-            //     :focus {
-            //         position: absolute;
-            //         left: 0;
-            //         top: 0;
-            //     }
-            // }
+
         }
 
         .nav-search-result {
@@ -225,6 +215,26 @@
             }
             > *:first-child {
                 margin-bottom: 50px !important;
+            }
+
+            .nav-board-members{
+                .invite{
+                    display: none;
+                }
+            }
+            
+            .invite-members-modal {
+                .invite-header{
+                    display: none;
+                }
+                input {
+                    padding: 0;
+                    &::placeholder {
+                        font-size: 10px;
+                        text-align: center;
+                    }
+                
+                }
             }
         }
     }
