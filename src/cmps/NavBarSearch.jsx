@@ -90,6 +90,12 @@ export default class NavBarSearch extends React.Component {
         }
     }
 
+    onBoardClick = (boardId) => {
+        console.log('board clicckkkkkkkckkckkckkckck')
+        this.props.history.push(`/board/${boardId}`);
+        this.props.onPageChange();
+    }
+
     render() {
         const { searchWord, filterLists, filterCards, filterBoards, isSearchOpenModal } = this.state
         const { currBoard, history } = this.props
@@ -100,7 +106,7 @@ export default class NavBarSearch extends React.Component {
         return (
             <div ref={node => this.node = node} className=" nav-search-result-container flex column">
 
-                <input onClick={() => this.openSearchModal()} autoComplete="off" onSubmit={() => this.onSearch} className="card-search" type="text" value={searchWord} name="keyword" placeholder="Search" onChange={this.handleChange} />
+                <input onClick={() => this.openSearchModal()} autoComplete="off" onSubmit={() => this.onSearch} className="card-search" type="text" value={searchWord} name="keyword" placeholder={currBoard? "Search" : "Search"} onChange={this.handleChange} />
                 <div className={`nav-search-result ${(isSearchOpenModal) ? "open-modal" : ""} flex column`}>
                     {filterBoards && Boolean(filterBoards.length) &&
 
@@ -108,7 +114,7 @@ export default class NavBarSearch extends React.Component {
                             <h3 className="result-header">Board result</h3>
                             <div className="search-results">
                                 {filterBoards.map(board =>
-                                    <div className="result-preview" onClick={() => history.push(`/board/${board._id}`)}>
+                                    <div className="result-preview" onClick={() => this.onBoardClick(board._id)}>
                                         <div className="board-btn"></div>
                                         <div className="header">{board.title}</div>
                                     </div>

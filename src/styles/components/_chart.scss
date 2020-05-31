@@ -9,7 +9,7 @@
     .screen {
         align-items: center;
         justify-content: center;
-        transform: translateX(-100%);
+        transform: translateY(100%);
 
         .chart-modal {
             overflow: overlay;
@@ -19,27 +19,44 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             background-color: $clr6;
             padding: 15px;
-            transform: translateX(-100%);
-            transition: 0.25s;
+            transform: translateY(100%);
+            transition: 0.5s;
+            opacity: 0;
         }
 
         &.modal-open {
             display: flex;
-            transform: translateX(0%);
+            transform: translateY(0%);
+            opacity: 1;
             > *:not(:last-child) {
                 margin-bottom: 20px;
             }
 
             .chart-modal {
                 transform: translateX(0%);
-                > * {
-                    padding: 20px;
-                    margin-bottom: 20px;
-                    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.397);
+                h2 {
+                    font-size: 16px;
+                    margin-bottom: 15px;
+                }
+                > *:nth-child(odd) {
+                    margin-right: 20px;
+                }
 
+                > * {
+                    width: 48%;
+                    height: fit-content;
+                    padding: 20px;
+                    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.397);
+                    &:not(:last-child) {
+                        margin-bottom: 20px;
+                    }
+                    @include for-w-mobile-layout {
+                        width: 100%;
+                        margin-right: 0 !important;
+                    }
                 }
             }
         }

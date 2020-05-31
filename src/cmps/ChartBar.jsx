@@ -96,8 +96,6 @@ class ChartBar extends Component {
                 <h2>Done tasks by user</h2>
                 <Bar
                     data={usersData}
-                    width={2}
-                    height={1}
                     options={{
                         maintainAspectRatio: false,
                     }

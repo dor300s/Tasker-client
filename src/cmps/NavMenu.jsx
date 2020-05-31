@@ -10,11 +10,11 @@ class NavMenu extends React.Component {
     state = {
         filteredBoards: null,
     }
-
    
     onBoardClicked = (id) => {
         this.props.history.push(`/board/${id}`)
         this.props.setBoard(id)
+        this.props.onPageChange();
     }
 
     onFilter = (filterBy) => {
@@ -32,7 +32,7 @@ class NavMenu extends React.Component {
 
     onHomeBtnClick = () => {
         this.props.history.push(`/board`)
-        this.props.onCloseMenu();
+        this.props.onPageChange();
     }
 
     render() {
@@ -41,13 +41,13 @@ class NavMenu extends React.Component {
         let starredBoards = boards.filter(board => board.isStarred);
 
         return (
-            <div className={`nav-menu flex column ${(isMenuActive)? "nav-open": ""}`} >
+            <div className={`nav-menu flex column  ${(isMenuActive)? "nav-open": ""}`} >
                 {currBoard &&
                     <div className="home-button flex align-center justify-center cursor" onClick={() => this.onHomeBtnClick()} >
                         <div className="dashboard-btn"></div>
                         <div className="flex align-center justify-center">Dashboard</div>
                     </div>}
-                <NavMenuFilter onFilter={(filterBy) => this.onFilter(filterBy)} />
+                <NavMenuFilter  onFilter={(filterBy) => this.onFilter(filterBy)} />
 
                 <div className="nav-boards-preview-wrapper flex column">
                     <div className="nav-board-preview-overlay"></div>
@@ -66,7 +66,6 @@ class NavMenu extends React.Component {
                                 <BoardList boards={starredBoards} onBoardClicked={this.onBoardClicked} />
                             </div> </>}
                         <div>
-                            {/* <h3 className=""></h3> */}
                             <h3 className="list-header">All Boards</h3>
                         </div>
                         <div className="boards-container flex column align-center">

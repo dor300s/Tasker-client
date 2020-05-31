@@ -30,7 +30,7 @@ class Home extends React.Component {
                 <div className="wallpaper" />
                 <div className="home-content-wrapper flex">
                     <div className="home-pitch flex column justify-center align-center">
-                        <h2 className="logo"></h2>
+                        {/* <h2 className="logo"></h2> */}
                         <div className="home-description-wrapper">
                             <h3 className="line-a">Taskerr</h3>
                             <h3 className="line-b">Like Trello,</h3>
