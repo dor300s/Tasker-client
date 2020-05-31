@@ -13,8 +13,6 @@
         background: url(../../images/search.svg) center / contain no-repeat;
         background-size: 20px;
         background-position: 10px;
-        // border-bottom: 1px solid $clr4;
-        // border: 1px solid $clr4;
         transition: .5s;
         transition-delay: .1s;
         &::placeholder {
@@ -27,7 +25,6 @@
             padding-left: 45px;
             z-index: 1;
             &::placeholder {
-                // padding-left: 100px;
                 opacity: 0;
             }
         }

@@ -10,12 +10,13 @@
         position: fixed;
     }
     .wrap-card-lists {
-        padding: 79px 0 0 30px;
         width: fit-content;
+        height: 99vh;
 
-        // .card-lists {
-
-        // }
+        .card-lists {
+            padding: 79px 10px 0 30px;
+            height: 100%;
+        }
 
         .wrap-card-list {
             height: fit-content;
@@ -36,8 +37,13 @@
                     margin-right: 2px;
                     overflow-y: auto;
 
-                    /* > :last-child {
-                    } */
+                    > :last-child{
+                        position: relative;
+                        .menu-options {
+                            // transform: translateY(-50%);
+                            display: inline-block;
+                        }
+                    } 
                 }
 
                 .title-content {
@@ -91,9 +97,6 @@
                     margin-bottom: 5px;
                 }
 
-                .top-icons {
-                    float: right;
-                }
             }
         }
         .add-list {
