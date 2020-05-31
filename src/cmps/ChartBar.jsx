@@ -106,7 +106,7 @@ class ChartBar extends Component {
                 <Bar
                     data={usersData}
                     width={10}
-                    height={5}
+                    height={1}
                     options={{
                         maintainAspectRatio: false,
                     }
