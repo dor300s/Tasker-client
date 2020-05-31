@@ -13,7 +13,8 @@ import { max } from "moment";
 class Board extends Component {
 
     state = {
-        animation: 'animation'
+        animation: 'animation',
+        isScrolling: false,
     }
 
     componentDidMount() {
@@ -132,6 +133,17 @@ class Board extends Component {
         } : { background: board.background.color }
     }
 
+    onMouseDown = (e) => {
+        if (e._targetInst.memoizedProps.className === 'card-lists flex ') this.setState({ ...this.state, isScrolling: true });
+
+    }
+    onMouseUp = () => {
+        this.setState({ ...this.state, isScrolling: false });
+    }
+    onMouseMove = ({ movementX }) => {
+        if (this.state.isScrolling) window.scrollBy(-movementX, 0);
+    }
+
     render() {
 
         const { onDragEnd, onAddList, onAddCard } = this;
@@ -151,7 +163,7 @@ class Board extends Component {
                         <Droppable droppableId="all-lists" direction="horizontal" type="list">
                             {(provided, snapshot) => (
                                 <div className={`card-lists flex ${snapshot.isDraggingOver ? "light" : ""}`}
-                                    {...provided.droppableProps} ref={provided.innerRef}
+                                    {...provided.droppableProps} ref={provided.innerRef} onMouseDown={this.onMouseDown} onMouseUp={this.onMouseUp} onMouseMove={this.onMouseMove}
                                 >
                                     {cardLists.map((cardList, index) => {
                                         return (<CardListPreview currBoard={currBoard} onAddCard={onAddCard} key={cardList.id} cardList={cardList} index={index} history={history} animation={animation} />

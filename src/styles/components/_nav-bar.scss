@@ -135,5 +135,41 @@
         &:hover {
             color: #4886ff;
         }
+        @include for-w-mobile-layout{
+            content: " ";
+            display: none;
+        }
+    }
+}
+
+
+.mobile-menu{
+    @include for-w-mobile-layout{
+        padding: 10px;
+        top: 0;
+        left: 0;
+        background: white;
+        position: absolute;
+        z-index: 3;
+        width: max-content;
+        height: -moz-fit-content;
+        height: fit-content;
+        text-align: center;
+        box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.08);        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        > * {
+            position: static !important;
+            left: 0 !important;
+            top: 0 !important;
+            transform: translate(0, 0) !important;
+            width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
     }
 }
