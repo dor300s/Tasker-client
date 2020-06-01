@@ -42,9 +42,11 @@ class CardTodoList extends Component {
     }
 
     onComplete = (todo) => {
-        const { board , user } = this.props
-        todo.isDone = !todo.isDone
-        todo.doneBy = {id: user._id , userName: user.userName , fullName: user.fullName}
+        const { board , user } = this.props;
+        todo.isDone = !todo.isDone;
+        todo.doneBy = {id: user._id , userName: user.userName , fullName: user.fullName};
+        todo.doneTime = Date.now();
+
         // this.props.saveBoard(board)
         this.getTodosStatus()
     }
