@@ -25,6 +25,8 @@ class InviteMemberModal extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.users !== this.props.users) {
+            console.log('props Changedddddddddd');
+            
             setTimeout(()=>{this.filterUsers(this.state.keyword)},1500)
     }
 }

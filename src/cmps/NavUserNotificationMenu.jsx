@@ -45,6 +45,11 @@ class NavUserNotificationMenu extends Component {
         this.setState(prevState => ({ isHistoryShown: !prevState.isHistoryShown }))
     }
 
+
+
+
+    
+
     onBoardCollab = async (notifi, idx) => {
         const userToUpdate = { ...this.props.loggedUser }
         const board = await boardService.get(notifi.collabBoardId)
@@ -64,6 +69,11 @@ class NavUserNotificationMenu extends Component {
 
         if(!user) this.props.history.push(`/board/${board._id}`)
     }
+
+
+
+
+
 
     onInviteDecline = (idx) => {
         const { loggedUser } = this.props
