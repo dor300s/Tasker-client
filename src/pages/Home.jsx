@@ -7,7 +7,6 @@ import { login, getUser } from '../store/actions/userActions.js'
 
 class Home extends React.Component {
 
-
     componentDidMount() {
         this.props.getUser()
             .then(() => {
@@ -23,10 +22,13 @@ class Home extends React.Component {
         this.props.login({ username: 'guest', password: 'guest' })
     }
 
+    
+
     render() {
 
         return (
             <div className="home-container">
+               
                 <div className="wallpaper" />
                 <div className="home-content-wrapper flex">
                     <div className="home-pitch flex column justify-center align-center">

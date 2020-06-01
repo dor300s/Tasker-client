@@ -24,7 +24,6 @@
             padding: 15px;
             transform: translateY(100%);
             transition: 0.5s;
-            // opacity: 0;
         }
 
         &.modal-open {
@@ -36,12 +35,18 @@
             }
 
             .chart-modal {
+                .chart-bar{
+                    flex: 1;
+                    height: 45%;
+
+
+                }
                 transform: translateX(0%);
                 h2 {
                     font-size: 16px;
                     margin-bottom: 15px;
                 }
-                > *:nth-child(odd) {
+                > *:nth-child(1) {
                     margin-right: 20px;
                 }
 

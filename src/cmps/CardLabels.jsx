@@ -34,6 +34,8 @@ class CardLabels extends Component {
         this.props.saveBoard(board)
     }
 
+    
+
     render() {
         const { card, board, isShown } = this.props
         const { isDeleteBtnShow } = this.state
@@ -48,7 +50,7 @@ class CardLabels extends Component {
                         {isDeleteBtnShow && <button onClick={() => this.onRemovelabel(idx)} className="lable-remove"></button>}
                     </div>
                 })}
-                {isShown && < LabelsModal card={this.props.card} board={this.props.board} />}
+                {isShown && < LabelsModal onClose={this.props.onClose} card={this.props.card} board={this.props.board} />}
             </div>
         )
     }

@@ -65,8 +65,6 @@ class NavUserNotificationMenu extends Component {
         if(!user) this.props.history.push(`/board/${board._id}`)
     }
 
-    
-
     onInviteDecline = (idx) => {
         const { loggedUser } = this.props
         loggedUser.notifications.splice(idx, 1)
@@ -90,7 +88,7 @@ class NavUserNotificationMenu extends Component {
 
                                 <AllReadNotifications showHistory={this.onNotificationsHistory} />
                                 :
-                                <UnReadNotifications onInviteDecline={this.onInviteDecline} markAsRead={this.onClearNotification} notifications={notifiToShow} onBoardCollab={this.onBoardCollab} user={loggedUser} />
+                                <UnReadNotifications onViewCard={(idx)=>this.props.onViewCardNotification(idx)} onInviteDecline={this.onInviteDecline} markAsRead={this.onClearNotification} notifications={notifiToShow} onBoardCollab={this.onBoardCollab} user={loggedUser} />
                             }
                         </>}
                 </div>

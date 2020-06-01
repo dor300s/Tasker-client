@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from "react-router-dom";
-// import boardService from "../services/boardService.js"
+import { withRouter } from "react-router-dom";
 import NavMenu from '../cmps/NavMenu'
 import NavUserNotificationMenu from './NavUserNotificationMenu'
 import { connect } from 'react-redux'
@@ -125,6 +124,14 @@ class NavBar extends React.Component {
         this.setState({ isNotificationModalOpen: false })
     }
 
+    onViewCardNotification = (idx) => {
+        const {loggedUser} = this.props
+        const userToUpdate = { ...loggedUser }
+        userToUpdate.notifications = userToUpdate.notifications.filter((notifi,_idx) => _idx !== idx )
+        this.props.update(userToUpdate)
+        this.onCloseNotificationMenu()
+    }
+
     onUserNotificationClick = () => {
         this.setState(prevState => ({ isNotificationModalOpen: !prevState.isNotificationModalOpen }))
     }
@@ -134,7 +141,6 @@ class NavBar extends React.Component {
     }
 
     onPageChange = () => {
-
         this.setState({ isMenuActive: false })
     }
 
@@ -163,7 +169,8 @@ class NavBar extends React.Component {
 
                     <div className={`mobile-menu ${(isMenuActive) ? 'modal-open' : ""}`} ref={node => this.node = node}>
                         {<NavMenu onPageChange={onPageChange} history={history} isMenuActive={isMenuActive} boards={boards} currBoard={activeBoard} onCloseMenu={this.onCloseMenu} />}
-                        {activeBoard && <BoardMembers onInvite={onInviteMember} history={history} board={activeBoard} />}
+                        {activeBoard && <BoardMembers user={this.props.loggedUser} onInvite={onInviteMember} history={history} board={activeBoard} />}
+                    
                         {activeBoard && <InviteMemberModal isInviteModalOpen={isInviteModalOpen} onCloseInviteMenu={onCloseInviteMenu} />}
                     </div>
                     {< NavBarSearch onPageChange={onPageChange} history={history} boards={boards}  currBoard={activeBoard} history={history} />}
@@ -174,7 +181,7 @@ class NavBar extends React.Component {
                         <div /* style={{ backgroundColor: `${notifiToShow.length ? "rgb(252, 115, 126)" : ""} ` }} */ className="nav-notification-btn" onClick={this.onUserNotificationClick}></div>
                             {Boolean(notifiToShow.length) && <div className="notification-indicator"></div>}
                     </div>
-                    {<NavUserNotificationMenu onCloseNotificationMenu={onCloseNotificationMenu} isNotificationModalOpen={isNotificationModalOpen} history={history} user={loggedUser} />}
+                    {<NavUserNotificationMenu onCloseNotificationMenu={onCloseNotificationMenu} onViewCardNotification={(idx)=>this.onViewCardNotification(idx)} isNotificationModalOpen={isNotificationModalOpen} history={history} user={loggedUser} />}
                     <MemberPreview user={loggedUser} history={history} />
                 </div>
             </nav>
