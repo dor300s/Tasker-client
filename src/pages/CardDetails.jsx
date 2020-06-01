@@ -32,6 +32,10 @@ class CardDetails extends Component {
 
     componentDidMount() {
         this.getCurrCard()
+        window.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+        });
     }
 
     componentDidUpdate(prevProps) {
@@ -101,7 +105,11 @@ class CardDetails extends Component {
         this.setState({ isActionTodoActive: true })
     }
     onAddTodo = () => {
-        this.setState({ isActionTodoActive: false })
+        this.setState(prevState => ({ isActionTodoActive: !prevState.isActionTodoActive }))
+    }
+
+    onLabelsClose = () =>{
+        this.setState(prevState => ({ isLabelsModalShown: !prevState.isLabelsModalShown }))
     }
 
     render() {
@@ -126,7 +134,7 @@ class CardDetails extends Component {
 
                         <div className="card-details-content-wrapper flex">
                             <div className="card-details-content flex column">
-                                < CardLabels card={currCard} board={currBoard} isShown={isLabelsModalShown} />
+                                < CardLabels onClose={this.onLabelsClose} card={currCard} board={currBoard} isShown={isLabelsModalShown} />
                                 < CardMembers user={loggedUser} history={this.props.history} card={currCard} board={currBoard}
                                     showModal={isMembersModalShown} />
                                 {currCard.dueDate && < DueDate card={currCard} board={currBoard} />}

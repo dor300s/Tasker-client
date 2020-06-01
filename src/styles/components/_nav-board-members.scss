@@ -35,10 +35,11 @@
         overflow-wrap: normal;
         transform: translateY(110%);
         display: none;
-        width: fit-content !important;
+        width: max-content !important;
         background-color: rgba(0, 0, 0, 0.733);
+        font-size: 12px;
         color: #fff;
-        padding: 5px;
+        padding: 2px 5px;
         text-align: center;
         border-radius: 6px;
         z-index: 1;

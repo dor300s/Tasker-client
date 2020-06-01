@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { loadUsers } from '../store/actions/userActions'
+import { loadUsers , getUser } from '../store/actions/userActions'
 import { connect } from 'react-redux'
 import socketService from '../services/socketService'
 
@@ -7,7 +7,8 @@ class InviteMemberModal extends Component {
 
     state = {
         filteredUsers: null,
-        isAlreadyInvitesShown: false
+        isAlreadyInvitesShown: false,
+        keyword: ''
     }
 
     componentDidMount() {
@@ -22,11 +23,11 @@ class InviteMemberModal extends Component {
         document.removeEventListener("keydown", this.onCloseInviteMenu, false);
     }
 
-    componentDidUpdate(prevProps){
-        if(prevProps.users !== this.props.users){
-            // this.props.loadUsers()
-        }
+    componentDidUpdate(prevProps) {
+        if (prevProps.users !== this.props.users) {
+            setTimeout(()=>{this.filterUsers(this.state.keyword)},1500)
     }
+}
 
     onCloseInviteMenu = (ev) => {
         ev.stopPropagation();
@@ -37,7 +38,7 @@ class InviteMemberModal extends Component {
     }
 
     inputHandler = ({ target }) => {
-        this.props.loadUsers()
+        this.setState({keyword: target.value})
         if (!target.value) {
             this.setState({ filteredUsers: null })
             return
@@ -49,15 +50,23 @@ class InviteMemberModal extends Component {
         this.setState({ filteredUsers })
     }
 
+    filterUsers = (keyword) => {
+        // this.props.loadUsers()
+        const { users } = this.props
+       keyword = keyword.toLowerCase()
+       let filteredUsers = users.filter(user => user.userName.includes(keyword.toLowerCase())) 
+       this.setState({ filteredUsers })   
+    }
+
     onInvite = (userId) => {
-      let userIdxInBoard = this.props.activeBoard.members.findIndex(user => user._id === userId)
-      if(userIdxInBoard !== -1){
-       this.setState({isAlreadyInvitesShown: true})
-       setTimeout(()=>{
-        this.setState({isAlreadyInvitesShown: false})
-       },1500)
-        return
-      }
+        let userIdxInBoard = this.props.activeBoard.members.findIndex(user => user._id === userId)
+        if (userIdxInBoard !== -1) {
+            this.setState({ isAlreadyInvitesShown: true })
+            setTimeout(() => {
+                this.setState({ isAlreadyInvitesShown: false })
+            }, 1500)
+            return
+        }
         let data = {
             invitedUserId: userId,
             sender: this.props.loggedUser.userName,
@@ -68,7 +77,7 @@ class InviteMemberModal extends Component {
     }
 
     render() {
-        const { filteredUsers , isAlreadyInvitesShown } = this.state
+        const { filteredUsers, isAlreadyInvitesShown } = this.state
         const { isInviteModalOpen } = this.props
 
         return (
@@ -78,7 +87,7 @@ class InviteMemberModal extends Component {
                 <input type="text" placeholder="Enter userName to invite" onKeyUp={this.inputHandler} />
                 {filteredUsers && <div className="invite-users-list flex column align-center">
                     {filteredUsers.map((user, idx) => {
-                        return <div key={idx} className="user-to-invite flex align-center space-between ">
+                        return <div key={idx} className="user-to-invite flex align-center ">
                             <span className="nav-user-profile" style={{
                                 backgroundImage: "url(" + `${user.imgUrl}` + ")",
                                 backgroundPosition: 'center',
@@ -86,19 +95,21 @@ class InviteMemberModal extends Component {
                                 backgroundRepeat: 'no-repeat'
                             }}>
                             </span>
-                            <h4>{user.fullName}</h4>
-                            <button className="user-invite-btn" onClick={() => this.onInvite(user._id)}>Invite</button>
-                            {user.isLogIn &&
-                                <div className="user-status flex column align-center">
-                                    <span className="user-online"></span>
-                                    <h5>Online</h5>
-                                </div>}
+                            <div className="flex column" style={{marginLeft:"10px"}}>
+                                <h4 style={{marginBottom:"3px"}}>{user.fullName}</h4>
+                                {user.isLogIn &&
+                                    <div className="user-status flex align-center">
+                                        <h5>Online</h5>
+                                        <span className="user-online"></span>
+                                    </div>}
 
-                            {!user.isLogIn &&
-                                <div className="user-status flex column align-center">
-                                    <span className="user-offline"></span>
-                                    <h5>Offline</h5>
-                                </div>}
+                                {!user.isLogIn &&
+                                    <div className="user-status flex align-center">
+                                        <h5>Offline</h5>
+                                        <span className="user-offline"></span>
+                                    </div>}
+                            </div>
+                            <button className="user-invite-btn" onClick={() => this.onInvite(user._id)}>Invite</button>
 
                         </div>
                     })}
@@ -116,7 +127,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    loadUsers
+    loadUsers,
+    getUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InviteMemberModal)

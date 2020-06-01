@@ -72,19 +72,25 @@
             font-size: 13px;
         }
         .user-invite-btn {
-            height: 35px;
+            height: 25px;
             width: fit-content;
+            margin-left: auto !important;
             border: none;
-            background-color: rgba(216, 216, 216, 0.315);
-            font-weight: 600;
+            background-color: #4886FF;
+            font-weight: 500;
             border-radius: 5px;
             margin-left: 10px;
-            color: $clr1;
+            color: white;
+            letter-spacing: 1px;
+            text-align: left;
+           
             &:hover {
-                background-color: rgba(136, 172, 250, 0.267);
+                background-color: rgb(102, 182, 247); 
+                color: rgb(0, 0, 0);
+                
             }
             &:active{
-                background-color: rgba(57, 230, 158, 0.548);
+                background-color: rgba(34, 252, 161, 0.548);
             }
         }
     }
@@ -112,7 +118,7 @@
     }
     .user-status {
         span {
-            margin-bottom: 5px;
+            margin: 3px 0px 0px 8px
         }
         h5 {
             font-size: 10px;

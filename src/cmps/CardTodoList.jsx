@@ -52,7 +52,7 @@ class CardTodoList extends Component {
     }
 
     onAddTodo = () => {
-        this.setState(prevState => ({ isAddModalShown: !prevState.isAddModalShown }))
+        this.props.onAddTodo()
     }
 
     onHideComplete = () => {

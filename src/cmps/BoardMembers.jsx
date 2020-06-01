@@ -3,11 +3,12 @@ import React from 'react'
 export function BoardMembers(props) {
     const { board, history, cardMemberMode } = props
     
+    if(!user) return ''
     return (
         <div className="nav-board-members flex align-center">
 
             {board.members.map((member, idx) => {
-                
+
                 if (member.imgUrl) {
                     return <div key={idx} className="board-member" style={{
                         backgroundImage: "url(" + `${member.imgUrl}` + ")",
@@ -26,6 +27,9 @@ export function BoardMembers(props) {
                 }
             })}
             {!cardMemberMode && <button className="nav-user-profile invite flex align-center justify-center index-1" onClick={() => props.onInvite()}><div className="plus-white flex align-center justify-center"></div></button>}
+            <div className="flex align-center">
+          {/* <h3 style={{marginLeft:"15px" , border:"none"}} className="nav-user-board-indicator">{user.userName} | {board.title}</h3> */}
+            </div>
         </div>
     )
 }
