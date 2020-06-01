@@ -43,7 +43,6 @@ class CardPreview extends Component {
 
         const { index, card, currBoard, cardListId, history, animation } = this.props
         const { showCard, offEditCardHeader, onEditCardHeader } = this;
-        // console.log(card.attachments)
         return (
             <Draggable key={card.id} draggableId={card.id} index={index} >
                 {(provided, snapshot) => {

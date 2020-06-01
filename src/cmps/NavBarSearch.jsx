@@ -46,10 +46,6 @@ export default class NavBarSearch extends React.Component {
         this.setState({ searchWord: value }, () => this.onSearch())
     }
 
-    onBoardClicked = (id) => {
-        this.props.history.push(`/board/${id}`)
-    }
-
     onSearch = () => {
         const { searchWord } = this.state
         const { currBoard, boards } = this.props
@@ -91,14 +87,19 @@ export default class NavBarSearch extends React.Component {
     }
 
     onBoardClick = (boardId) => {
-        console.log('board clicckkkkkkkckkckkckkckck')
         this.props.history.push(`/board/${boardId}`);
-        this.props.onPageChange();
+        this.setState({ isSearchOpenModal: false });
+    }
+
+    onCardClicked = (cardId) => {
+        this.props.history.push(`/board/${this.props.currBoard._id}/${cardId}`);
+        this.setState({ isSearchOpenModal: false });
     }
 
     render() {
         const { searchWord, filterLists, filterCards, filterBoards, isSearchOpenModal } = this.state
         const { currBoard, history } = this.props
+        const { onCardClicked } = this
         let starredBoards
         if (filterBoards) starredBoards = filterBoards.filter(board => board.isStarred)
 
@@ -111,10 +112,10 @@ export default class NavBarSearch extends React.Component {
                     {filterBoards && Boolean(filterBoards.length) &&
 
                         <div>
-                            <h3 className="result-header">Board result</h3>
+                            <h3 className="result-header">Board results</h3>
                             <div className="search-results">
                                 {filterBoards.map(board =>
-                                    <div className="result-preview" onClick={() => this.onBoardClick(board._id)}>
+                                    <div key={board._id} className="result-preview" onClick={() => this.onBoardClick(board._id)}>
                                         <div className="board-btn"></div>
                                         <div className="header">{board.title}</div>
                                     </div>
@@ -150,7 +151,7 @@ export default class NavBarSearch extends React.Component {
                             <div className="result-header">{/* Card results */}</div>
                             <div className="search-results">
                                 {filterCards.map(card => (
-                                    <div className="result-preview" onClick={() => history.push(`/board/${currBoard._id}/${card.id}`)}>
+                                    <div className="result-preview" onClick={() => onCardClicked(card.id) }>
                                         <div className="card result-icon" ></div>
                                         <div className="text-result">
                                             <div className="header">{card.text}</div>

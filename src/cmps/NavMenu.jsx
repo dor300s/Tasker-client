@@ -18,7 +18,6 @@ class NavMenu extends React.Component {
     }
 
     onFilter = (filterBy) => {
-        console.log(filterBy);
 
         if (!filterBy.length) {
             this.setState({ filteredBoards: null })
@@ -78,11 +77,8 @@ class NavMenu extends React.Component {
     }
 }
 
-// export default withRouter(NavMenu);
 const mapDispatchToProps = {
     setBoards,
     setBoard
 }
 export default connect(null, mapDispatchToProps)(withRouter(NavMenu))
-
-// export default connect(mapStateToProps, mapDispatchToProps)(withRouter(DashBoard))

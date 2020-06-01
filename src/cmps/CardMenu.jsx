@@ -48,7 +48,7 @@ class CardMenu extends Component {
     }
 
     render() {
-        const { onEditCardHeader, cardId, cardListId } = this.props
+        const { cardId, cardListId } = this.props
         const { onDeleteCard } = this
         const { isMenuOpen } = this.state;
 

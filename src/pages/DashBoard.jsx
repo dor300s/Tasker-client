@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import BoardList from '../cmps/BoardList.jsx';
 import { setBoards, saveBoard, clearCurrBoard } from '../store/actions/boardActions.js'
-import socketService from '../services/socketService'
-import moment from 'moment'
 import { setUser, getUser, update } from '../store/actions/userActions'
 
 class DashBoard extends React.Component {

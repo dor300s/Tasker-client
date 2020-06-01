@@ -1,8 +1,7 @@
 import React from 'react'
 
 export function BoardMembers(props) {
-    const { board, history, cardMemberMode, user } = props
-    console.log(user);
+    const { board, history, cardMemberMode } = props
     
     if(!user) return ''
     return (

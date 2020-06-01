@@ -35,7 +35,6 @@ class NavBar extends React.Component {
             this.props.loadUsers()
         })
         socketService.on(`user-disconnected-ui`, () => {
-            
             this.props.loadUsers()
         })
         this.props.getUser()
@@ -111,7 +110,6 @@ class NavBar extends React.Component {
     }
 
     onCloseMenu = (ev) => {
-        //TODO REMOVE IT and fix it
         ev.stopPropagation();
         if (!this.node?.contains(ev.target) || ev.keyCode === 27) {
             this.setState({ isMenuActive: false })
