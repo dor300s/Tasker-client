@@ -9,7 +9,24 @@ class LabelsModal extends Component {
         isErrorShown: false
     }
 
-    onLabelClick = (color) => {
+    componentDidMount(){
+        document.addEventListener('click', this.onOutSideClick)
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener('click', this.onOutSideClick)
+    }
+
+    onOutSideClick = (e) =>{
+      
+        if (!this.node.contains(e.target)){
+            console.log('Cliked outside');
+            
+            this.props.onClose()
+        }
+    }
+
+    onLabelClick = (color , title) => {
         const { card , board } = this.props
         let colorIdx = card.labels.findIndex(label => label.color === color)
         if (colorIdx !== -1){
@@ -21,7 +38,7 @@ class LabelsModal extends Component {
         }
         
         let label ={
-            title: this.state.title ,
+            title,
             color
         }
         card.labels.push(label)
@@ -35,50 +52,50 @@ class LabelsModal extends Component {
     render() {
         const { title , isErrorShown } = this.state
         return (
-            <div className="card-labels-modal flex column align-center">
+            <div ref={node => this.node = node} className="card-labels-modal flex column align-center">
                 <h3 className="labels-header">Labels</h3>
                 {isErrorShown && <h5>This label already exist</h5>}
 
                 <div style={{ marginBottom: "10px" }} className="flex space-between align-center">
                     <div className="card-label flex justify-center align-center" style={{ width: "80%", height: "30px", backgroundColor: "#61BD4F" }}>
-                        <input placeholder="Opt. Add label titles" onChange={this.inputHandler} />
+                        <input placeholder="Opt. Add label titles" value={'Frontend'} onChange={this.inputHandler} />
                     </div>
-                    <button className="label-del-btn" onClick={() => this.onLabelClick('#61BD4F')}>Set</button>
+                    <button className="label-del-btn" onClick={() => this.onLabelClick('#61BD4F' , 'Frontend')}>Set</button>
                 </div>
 
                 <div style={{ marginBottom: "10px" }} className="flex space-between align-center">
                     <div className="card-label flex justify-center align-center" style={{ width: "80%", height: "30px", backgroundColor: "#F2D600" }}>
-                        <input onChange={this.inputHandler} />
+                        <input value={'Backend Database'} onChange={this.inputHandler} />
                     </div>
-                    <button className="label-del-btn" onClick={() => this.onLabelClick('#F2D600')}>Set</button>
+                    <button className="label-del-btn" onClick={() => this.onLabelClick('#F2D600','Backend Database')}>Set</button>
                 </div>
 
                 <div style={{ marginBottom: "10px" }} className="flex space-between align-center">
                     <div className="card-label flex justify-center align-center" style={{ width: "80%", height: "30px", backgroundColor: "#FF9F1A" }}>
-                        <input onChange={this.inputHandler} />
+                        <input value={'Bugs'} onChange={this.inputHandler} />
                     </div>
-                    <button className="label-del-btn" onClick={() => this.onLabelClick('#FF9F1A')}>Set</button>
+                    <button className="label-del-btn" onClick={() => this.onLabelClick('#FF9F1A','Bugs')}>Set</button>
                 </div>
 
                 <div style={{ marginBottom: "10px" }} className="flex space-between align-center">
                     <div className="card-label flex justify-center align-center" style={{ width: "80%", height: "30px", backgroundColor: "#EB5A46" }}>
-                        <input onChange={this.inputHandler} />
+                        <input value={'TechDebt'} onChange={this.inputHandler} />
                     </div>
-                    <button className="label-del-btn" onClick={() => this.onLabelClick('#EB5A46')}>Set</button>
+                    <button className="label-del-btn" onClick={() => this.onLabelClick('#EB5A46','TechDebt')}>Set</button>
                 </div>
 
                 <div style={{ marginBottom: "10px" }} className="flex space-between align-center">
                     <div className="card-label flex justify-center align-center" style={{ width: "80%", height: "30px", backgroundColor: "#0079BF" }}>
-                        <input onChange={this.inputHandler} />
+                        <input value={'Server'} onChange={this.inputHandler} />
                     </div>
-                    <button className="label-del-btn" onClick={() => this.onLabelClick('#0079BF')}>Set</button>
+                    <button className="label-del-btn" onClick={() => this.onLabelClick('#0079BF','Server')}>Set</button>
                 </div>
                 
                 <div style={{ marginBottom: "10px" }} className="flex space-between align-center">
                     <div className="card-label flex justify-center align-center" style={{ width: "80%", height: "30px", backgroundColor: "#FF78CB" }}>
-                        <input onChange={this.inputHandler} />
+                        <input value={'User management'} onChange={this.inputHandler} />
                     </div>
-                    <button className="label-del-btn" onClick={() => this.onLabelClick('#FF78CB')}>Set</button>
+                    <button className="label-del-btn" onClick={() => this.onLabelClick('#FF78CB','User management')}>Set</button>
                 </div>
 
             </div>

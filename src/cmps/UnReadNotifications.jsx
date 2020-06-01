@@ -20,7 +20,7 @@ export function UnReadNotifications(props) {
                 else if(notifi.type === 'card-assign'){
                     return <div className="user-notification flex column" key={idx}>
                         <p className="card-assign-content">{notifi.data}</p>
-                        <Link className="notification-card-link" to={`/board/${notifi.boardId}/${notifi.cardId}`}>View Card</Link>
+                        <Link className="notification-card-link" onClick={()=> props.onViewCard(idx)} to={`/board/${notifi.boardId}/${notifi.cardId}`}>View Card</Link>
                     </div>
                 }
                 else {
