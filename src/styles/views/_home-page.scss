@@ -28,6 +28,8 @@
             // 860px
             transform: translate(-50%, -25%) rotate(-243deg);
             width: 195%;
+
+            animation: none;
         }
         @include for-w-mobile-layout {
             // 650px
@@ -129,6 +131,7 @@
                     }
                 }
                 .demo-btn {
+                    animation: none;
                     top: 55vh;
                     left: 0;
                     margin: 0 auto;
@@ -156,6 +159,7 @@
         // background-color: rgb(140, 240, 240);
         @include for-narrow-layout {
             // 860px
+            animation: none;
             height: fit-content;
             position: absolute;
             top: 60%;
@@ -195,7 +199,4 @@
         top: -50px;
         opacity: 1;
     }
-}
-
-@media (max-width: 1400px) {
 }
