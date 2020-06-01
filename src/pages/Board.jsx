@@ -82,14 +82,10 @@ class Board extends Component {
 
     onAddCard = async (ListId, txt = "") => {
         this.setState({ animation: 'animation' })
-        console.log("listId", ListId)
-        console.log("txt", txt)
         const { currBoard } = this.props
         const { cardLists } = currBoard;
         const list = cardLists.find(cardList => cardList.id === ListId);
-        console.log('list', list)
         list.cards.push(this.getNewCard(txt))
-        console.log(currBoard)
         await this.props.saveBoard(currBoard)
     }
 

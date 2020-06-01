@@ -30,14 +30,12 @@ class NavBar extends React.Component {
         window.onbeforeunload = this.closingCode
         socketService.setup()
         socketService.on(`newuserconnect`, () => {
-            console.log('NEW USER CONNECTED!!!!!!!!!!!');
             this.props.loadUsers()
         })
         socketService.on(`user-disconnected`, () => {
             this.props.loadUsers()
         })
         socketService.on(`user-disconnected-ui`, () => {
-            console.log('USER DC FROM UI BTN');
             this.props.loadUsers()
         })
         this.props.getUser()
@@ -113,7 +111,6 @@ class NavBar extends React.Component {
     }
 
     onCloseMenu = (ev) => {
-        //TODO REMOVE IT and fix it
         ev.stopPropagation();
         if (!this.node?.contains(ev.target) || ev.keyCode === 27) {
             this.setState({ isMenuActive: false })
@@ -137,7 +134,7 @@ class NavBar extends React.Component {
     }
 
     onPageChange = () => {
-        console.log('page changeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
+
         this.setState({ isMenuActive: false })
     }
 

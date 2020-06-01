@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 
 export function CardCommentsList(props) {
-    const { card, board, user } = props
+    const { card, user } = props
     return (
         <div className="card-msgs-container">
             {card.comments.map((comment, idx) => {

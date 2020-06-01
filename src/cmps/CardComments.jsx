@@ -18,7 +18,6 @@ class CardComments extends Component {
         const id = this.props.card.id
 
         socketService.on(`user-type-${id}`, (status) => {
-            console.log('Get Focus Status from server');
             this.setState({isTypeActive: status})
         })
     }
@@ -91,7 +90,7 @@ class CardComments extends Component {
                     </form>
                     {isTypeActive && <span className="pulse" />}
                 </div>
-                < CardCommentsList card={card} user={currUser} board={board} deleteComment={this.deleteComment} />
+                < CardCommentsList card={card} user={currUser} deleteComment={this.deleteComment} />
             </div>
         )
     }
