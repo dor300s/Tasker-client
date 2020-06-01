@@ -34,7 +34,6 @@ class ChartModal extends Component {
     render() {
         const { isCartModalOpen } = this.state;
         const { currBoard } = this.props
-        console.log(currBoard)
 
 
         return (
