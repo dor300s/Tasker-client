@@ -44,6 +44,8 @@ async function signup(userCred) {
 async function logout(user) {
     user.isLogIn = false
     await update(user)
+    socketService.off(`user-invite-${user._id}`)
+    socketService.off(`user-card-assign-${user._id}`)
     let res = await httpService.post('auth/logout');
    sessionStorage.clear();
     return res

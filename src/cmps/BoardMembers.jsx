@@ -3,7 +3,7 @@ import React from 'react'
 export function BoardMembers(props) {
     const { board, history, cardMemberMode } = props
     
-    if(!user) return ''
+    // if(!user) return ''
     return (
         <div className="nav-board-members flex align-center">
 

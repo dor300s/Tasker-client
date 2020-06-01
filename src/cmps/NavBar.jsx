@@ -32,6 +32,8 @@ class NavBar extends React.Component {
             this.props.loadUsers()
         })
         socketService.on(`user-disconnected`, () => {
+            console.log('USERS RELOADING...');
+            
             this.props.loadUsers()
         })
         socketService.on(`user-disconnected-ui`, () => {
@@ -57,13 +59,13 @@ class NavBar extends React.Component {
     }
 
 
-    closingCode = () => {
-        this.props.loggedUser.isLogIn = false
-        this.props.update(this.props.loggedUser)
-            .then(() => {
-                socketService.emit('user logged-out')
-                return null
-            })
+    closingCode = async () => {
+        const {loggedUser} = this.props
+        const userToUpdate = {...loggedUser}
+        userToUpdate.isLogIn = false
+        await this.props.update(userToUpdate)
+        socketService.emit('user logged-out')
+        return null
     }
 
     socketSubscribers = () => {

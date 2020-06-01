@@ -64,6 +64,8 @@
     .invite-users-list {
         width: 80%;
         min-height: 100px;
+        max-height: 314px;
+        overflow-y: scroll;
     }
     .user-to-invite {
         width: 100%;
