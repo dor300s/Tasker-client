@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-// import moment from 'moment'
+import moment from 'moment'
 import { Bar } from 'react-chartjs-2';
 import cssVar from '../styles/setup/variable.js'
 
@@ -30,90 +29,92 @@ let data = {
 };
 
 
-class ChartBar extends Component {
+export default class ChartBar extends Component {
 
-    state = {
-        usersData: null
+    reducerJoinTaskByUser = () => {
+        const { currBoard } = this.props
+        if (!currBoard) return;
+
+        return currBoard.cardLists.reduce((acc, cardList) => {
+            cardList.cards.forEach(card => {
+                card.checkList.forEach(checkBox => {
+                    if (checkBox.isDone && checkBox.doneBy) {
+                        const doneAt = moment(checkBox.doneTime).format("MMM Do")
+                        if (!acc[checkBox.doneBy.userName]) {
+                            acc[checkBox.doneBy.userName] = {};
+                        }
+                        if (!acc[checkBox.doneBy.userName][doneAt]) {
+                            acc[checkBox.doneBy.userName][doneAt] = [checkBox]
+                        }
+                        else {
+                            acc[checkBox.doneBy.userName][doneAt].push(checkBox);
+                        }
+                    }
+
+                })
+            })
+            return acc
+        }, {})
     }
 
-    componentDidMount() {
-        this.setState({ usersData: data })
+    graphColors = () => {
+        return [cssVar.$clrChart1, cssVar.$clrChart2, cssVar.$clrChart3, cssVar.$clrChart4, cssVar.$clrChart5, cssVar.$clrChart6, cssVar.$clrChart7, cssVar.$clrChart8, cssVar.$clrChart9, cssVar.$clrChart10]
+
     }
 
-    // usersDataGenerator = () => {
-    //     let data = {};
-    //     const dateNow = Date.now()
-    //     data.labels = []
-    //     for (let step = 5; step > 0; step--) {
-    //         const day = 1000 * 60 * 60 * 24;
-    //         data.labels.push(moment(dateNow - (day * step)).format("MMM Do"))
-    //     }
-    //     ;
-    //     let usersDoneCard = this.reducerJoinTaskByUser();
-    //     for (const userId in usersDoneCard) {
-    //         data.datasets.push({
-    //             label: usersDoneCard[userId].doneBy.name,
-    //             backgroundColor: 'rgba(111,11,11,0.2)',
-    //             borderColor: 'rgba(111,11,11,1)',
-    //             borderWidth: 1,
-    //             hoverBackgroundColor: 'rgba(111,11,11,0.4)',
-    //             hoverBorderColor: 'rgba(111,11,11,1)',
-    //             data: [65, 59, 80, 81, 56, 55, 40]
-    //         })
-    //     }
-
-    // }
-
-    // reducerJoinTaskByUser = () => {
-    //     const currBoard = this.state;
-
-    //     return currBoard.cardLists.reducer((acc, cardList) => {
-    //         cardList.cards.forEach(card => {
-    //             card.checkList.forEach(checkBox => {
-    //                 if (checkBox.isDone && checkBox.doneBy) {
-    //                     if (!acc[checkBox.doneBy.id]) {
-    //                         acc[checkBox.doneBy.id] = []
-    //                         acc[checkBox.doneBy.id].push(checkBox);
-    //                     } else {
-    //                         acc[checkBox.doneBy.id].push(checkBox);
-    //                     }
-    //                 }
-
-    //             })
-    //         })
-    //         return acc
-    //     }, {})
-    // }
+    updateUsersDoneTaskData = () => {
+        let data = {};
+        const dateNow = Date.now();
+        data.labels = [];
+        data.datasets = [];
+        for (let step = 5; step > 0; step--) {
+            const day = 1000 * 60 * 60 * 24;
+            data.labels.push(moment(dateNow - (day * (step-1))).format("MMM Do"))
+        }
+        console.log(data.labels)
+        let usersDoneCard = this.reducerJoinTaskByUser();
+        let colorPalate = this.graphColors();
+        for (const userId in usersDoneCard) {
+            const dataUserDoneTasks = data.labels.map(label => {
+                if (usersDoneCard[userId][label]){
+                    console.log(usersDoneCard[userId])
+                    return usersDoneCard[userId][label].length
+                }else return 0;
+                    
+            })
+            const columnColor = colorPalate.splice(0,1)[0]
+            console.log(columnColor)
+            data.datasets.push({
+                label: userId,
+                backgroundColor: columnColor,
+                borderColor: columnColor,
+                borderWidth: 1,
+                hoverBackgroundColor: columnColor,
+                hoverBorderColor: columnColor,
+                data: dataUserDoneTasks,
+            })
+        }
+        return data;
+    }
 
 
     render() {
-        const { usersData } = this.state;
 
-        
+        console.log(this.updateUsersDoneTaskData())
+
+
         return (
-            (!usersData)? <div>loading</div> :
-            <div className="chart-bar">
-                <h2>Done tasks by user</h2>
-                <Bar
-                    data={usersData}
-                    options={{
-                        maintainAspectRatio: false,
-                    }
-                    }
-                />
-            </div>
+            (!data) ? <div>loading</div> :
+                <div className="chart-bar">
+                    <h2>Done tasks by user</h2>
+                    <Bar
+                        data={this.updateUsersDoneTaskData()}
+                        options={{  
+                            maintainAspectRatio: false,
+
+                        }}
+                    />
+                </div>
         );
     }
 }
-
-const mapStateToProps = (state) => {
-    return {
-        currBoard: state.boardApp.currBoard,
-    }
-}
-
-const mapDispatchToProps = {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ChartBar)

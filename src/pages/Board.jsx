@@ -147,7 +147,7 @@ class Board extends Component {
         const { animation } = this.state;
 
         const { cardId } = this.props.match.params;
-        if (!currBoard) return <div>loading</div>;
+        if (!currBoard) return <div></div>;
         const { cardLists } = currBoard;
 
 

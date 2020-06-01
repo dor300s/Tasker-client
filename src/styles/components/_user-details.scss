@@ -1,21 +1,24 @@
-.user-profile-container{
+.user-profile-container {
     position: absolute;
     top: 150px;
     left: 50%;
     transform: translateX(-50%);
-    width: 600px;
+    width: 50vw;
 
-    h2{
+    h2 {
         text-align: center;
         width: 100%;
         margin-bottom: 30px;
         font-size: 3rem;
     }
 
-    img{
+    img {
         border-radius: 50%;
-        width: 250px;
+        width: 35vw;
+        max-width: 250px;
+        height: 35vw;
+        max-height: 250px;
         margin-bottom: 20px;
-        
+        object-fit: cover;
     }
 }

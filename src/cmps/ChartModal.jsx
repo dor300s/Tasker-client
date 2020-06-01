@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import ChartBar from '../cmps/ChartBar.jsx';
 import ChartPay from '../cmps/ChartPay.jsx';
 import ChartLine from '../cmps/ChartLine.jsx';
+import { connect } from 'react-redux'
 
 
-export default class ChartModal extends Component {
+class ChartModal extends Component {
     state = {
         isCartModalOpen: false
     }
@@ -32,6 +33,7 @@ export default class ChartModal extends Component {
 
     render() {
         const { isCartModalOpen } = this.state;
+        const { currBoard } = this.props
 
 
         return (
@@ -39,9 +41,9 @@ export default class ChartModal extends Component {
                 <div className="nav-chart-btn chart" onClick={this.onChartClick}></div>
                 <div className={`screen  ${(isCartModalOpen) ? "modal-open" : ""} `}>
                     <div ref={node => this.node = node} className="chart-modal flex wrap">
-                        <ChartPay />
-                        <ChartLine />
-                        <ChartBar />
+                        <ChartPay currBoard={currBoard} />
+                        <ChartLine currBoard={currBoard} />
+                        <ChartBar currBoard={currBoard} />
                     </div>
                 </div>
 
@@ -49,3 +51,16 @@ export default class ChartModal extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        currBoard: state.boardApp.currBoard,
+    }
+}
+
+const mapDispatchToProps = {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChartModal)

@@ -22,7 +22,6 @@ class DashBoard extends React.Component {
         let filteredBoards = boards.filter(board => board.isStarred);
 
 
-
         return (
             <div className="dashboard">
                 {Boolean(filteredBoards.length) && <section className="boards-main-container">
@@ -54,8 +53,7 @@ const mapDispatchToProps = {
     saveBoard,
     clearCurrBoard,
     setUser,
-    getUser,
-    update
+    getUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard)
