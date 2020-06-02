@@ -101,14 +101,14 @@ class InviteMemberModal extends Component {
                                 <h4 style={{marginBottom:"3px"}}>{user.fullName}</h4>
                                 {user.isLogIn &&
                                     <div className="user-status flex align-center">
-                                        <h5>Online</h5>
-                                        <span className="user-online"></span>
+                                        <h5 style={{color:"green"}}>Online</h5>
+                                        {/* <span className="user-online"></span> */}
                                     </div>}
 
                                 {!user.isLogIn &&
                                     <div className="user-status flex align-center">
-                                        <h5>Offline</h5>
-                                        <span className="user-offline"></span>
+                                        <h5 style={{color:"gray"}}>Offline</h5>
+                                        {/* <span className="user-offline"></span> */}
                                     </div>}
                             </div>
                             <button className="user-invite-btn" onClick={() => this.onInvite(user._id)}>Invite</button>

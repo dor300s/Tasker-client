@@ -76,12 +76,12 @@
         .user-invite-btn {
             height: 25px;
             width: fit-content;
-            margin-left: auto !important;
+            margin-left: auto;
+            margin-right: 10px;
             border: none;
             background-color: #4886FF;
             font-weight: 500;
             border-radius: 5px;
-            margin-left: 10px;
             color: white;
             letter-spacing: 1px;
             text-align: left;
