@@ -4,29 +4,29 @@ import { Bar } from 'react-chartjs-2';
 import cssVar from '../styles/setup/variable.js'
 
 
-let data = {
-    labels: ['23/5', '24/5', '25/5', '26/5', '27/5', '28/5', '29/5'],
-    datasets: [
-        {
-            label: 'Dor Ben Itzhak',
-            backgroundColor: cssVar.$clrChart3,
-            borderColor: cssVar.$clrChart3,
-            borderWidth: 1,
-            hoverBackgroundColor: cssVar.$clrChart3,
-            hoverBorderColor: cssVar.$clrChart3,
-            data: [1, 2, 3, 2, 1, 1, 3]
-        },
-        {
-            label: 'Reem Alon',
-            backgroundColor: cssVar.$clrChart6,
-            borderColor: cssVar.$clrChart6,
-            borderWidth: 1,
-            hoverBackgroundColor: cssVar.$clrChart6,
-            hoverBorderColor: cssVar.$clrChart6,
-            data: [3, 2, 5, 1, 6, 5, 2]
-        }
-    ]
-};
+// let data = {
+//     labels: ['23/5', '24/5', '25/5', '26/5', '27/5', '28/5', '29/5'],
+//     datasets: [
+//         {
+//             label: 'Dor Ben Itzhak',
+//             backgroundColor: cssVar.$clrChart3,
+//             borderColor: cssVar.$clrChart3,
+//             borderWidth: 1,
+//             hoverBackgroundColor: cssVar.$clrChart3,
+//             hoverBorderColor: cssVar.$clrChart3,
+//             data: [1, 2, 3, 2, 1, 1, 3]
+//         },
+//         {
+//             label: 'Reem Alon',
+//             backgroundColor: cssVar.$clrChart6,
+//             borderColor: cssVar.$clrChart6,
+//             borderWidth: 1,
+//             hoverBackgroundColor: cssVar.$clrChart6,
+//             hoverBorderColor: cssVar.$clrChart6,
+//             data: [3, 2, 5, 1, 6, 5, 2]
+//         }
+//     ]
+// };
 
 
 export default class ChartBar extends Component {
@@ -71,19 +71,16 @@ export default class ChartBar extends Component {
             const day = 1000 * 60 * 60 * 24;
             data.labels.push(moment(dateNow - (day * (step-1))).format("MMM Do"))
         }
-        console.log(data.labels)
         let usersDoneCard = this.reducerJoinTaskByUser();
         let colorPalate = this.graphColors();
         for (const userId in usersDoneCard) {
             const dataUserDoneTasks = data.labels.map(label => {
                 if (usersDoneCard[userId][label]){
-                    console.log(usersDoneCard[userId])
                     return usersDoneCard[userId][label].length
                 }else return 0;
                     
             })
             const columnColor = colorPalate.splice(0,1)[0]
-            console.log(columnColor)
             data.datasets.push({
                 label: userId,
                 backgroundColor: columnColor,
@@ -99,16 +96,14 @@ export default class ChartBar extends Component {
 
 
     render() {
-
-        console.log(this.updateUsersDoneTaskData())
-
+        const data = this.updateUsersDoneTaskData();
+        console.log(data);
 
         return (
-            (!data) ? <div>loading</div> :
                 <div className="chart-bar">
                     <h2>Done tasks by user</h2>
                     <Bar
-                        data={this.updateUsersDoneTaskData()}
+                        data={data}
                         options={{  
                             maintainAspectRatio: false,
 
