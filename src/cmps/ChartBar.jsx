@@ -97,7 +97,6 @@ export default class ChartBar extends Component {
 
     render() {
         const data = this.updateUsersDoneTaskData();
-        console.log(data);
 
         return (
                 <div className="chart-bar">

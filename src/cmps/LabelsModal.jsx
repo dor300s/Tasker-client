@@ -20,7 +20,6 @@ class LabelsModal extends Component {
     onOutSideClick = (e) =>{
       
         if (!this.node.contains(e.target)){
-            console.log('Cliked outside');
             
             this.props.onClose()
         }

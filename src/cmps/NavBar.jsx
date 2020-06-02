@@ -32,7 +32,6 @@ class NavBar extends React.Component {
             this.props.loadUsers()
         })
         socketService.on(`user-disconnected`, () => {
-            console.log('USERS RELOADING...');
             
             this.props.loadUsers()
         })
