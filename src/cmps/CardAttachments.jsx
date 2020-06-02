@@ -60,7 +60,7 @@ class CardAttachments extends Component {
                         <h4 className="attachments-header">Images</h4>
                     </div>
                     <label style={{ marginLeft: "42px" }}> Add
-                    <input type="file" accept="image/png, image/jpeg" onChange={this.onUpload} multiple />
+                    <input type="file" accept="image/png, image/jpeg" onChange={this.onUpload} hidden multiple />
                     </label>
                     <div style={{ marginTop: "15px", marginLeft: "42px" }} className="attachments-files-container flex align-center space-between">
                         {attachments && attachments.map((file, idx) => {
