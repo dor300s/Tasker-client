@@ -101,14 +101,10 @@ class BoardMenu extends React.Component {
                         {!editTitleMode ? <>
                             <div onClick={this.activeEditMode}>Edit Title</div>
                             <div className="update-cover-btn" onClick={(e) => e.stopPropagation()} onMouseOver={this.openCoverMode} onMouseLeave={this.closeCoverMode}>Update cover
-                            {coverMode && <div className="change-cover-wrap flex column">
+                            {(coverMode) && <div className="change-cover-wrap flex column">
                                     <div className="color-palette flex">
-                                        <div onClick={() => this.onChangeColor('#e74c3c')}>⬤</div>
-                                        <div onClick={() => this.onChangeColor('#e67e22')}>⬤</div>
-                                        <div onClick={() => this.onChangeColor('#f1c40f')}>⬤</div>
-                                        <div onClick={() => this.onChangeColor('#27ae60')}>⬤</div>
-                                        <div onClick={() => this.onChangeColor('#2980b9')}>⬤</div>
-                                        <div onClick={() => this.onChangeColor('#8e44ad')}>⬤</div>
+                                        {['#e74c3c', '#e67e22', '#f1c40f', '#27ae60', '#2980b9', '#8e44ad'].map(color =>
+                                            <div onClick={() => this.onChangeColor(color)}>⬤</div>)}
                                     </div>
                                     <label>
                                         <div className="upload-pic-btn">Upload Image

@@ -22,7 +22,7 @@
         }
     }
 
-    .delete-btn{
+    .delete-btn {
         color: #eb4d4b;
     }
 
@@ -30,7 +30,6 @@
         content: url(../../images/Gusano-loader.gif);
         width: auto;
         padding: 3px 38px;
-        
     }
 
     form {
@@ -56,16 +55,18 @@
         background-color: $clr6;
         color: $clr1;
         height: fit-content;
-        box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15), 0 5px 20px 0 rgba(21, 27, 38, 0.08);
+        box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15),
+                    0 5px 20px 0 rgba(21, 27, 38, 0.08);
         border-radius: 4px;
         padding: 10px;
-        transform: translate(50%, 25px);
+        right: 0;
+        transform: translate(100%, 25px);
 
         .upload-pic-btn {
             width: 100%;
             cursor: pointer;
             text-align: center;
-            &:hover{
+            &:hover {
                 background-color: #e8ecee;
             }
         }
@@ -73,28 +74,28 @@
         .color-palette {
             padding: 0;
             margin-bottom: 10px;
-            >* {
+            > * {
                 font-size: 25px;
                 padding: 5px;
                 cursor: pointer;
                 flex-wrap: wrap;
             }
-            :nth-child(1){
+            :nth-child(1) {
                 color: #e74c3c;
             }
-            :nth-child(2){
+            :nth-child(2) {
                 color: #e67e22;
             }
-            :nth-child(3){
+            :nth-child(3) {
                 color: #f1c40f;
             }
-            :nth-child(4){
+            :nth-child(4) {
                 color: #27ae60;
             }
-            :nth-child(5){
+            :nth-child(5) {
                 color: #2980b9;
             }
-            :nth-child(6){
+            :nth-child(6) {
                 color: #8e44ad;
             }
         }
